@@ -3,6 +3,7 @@ package model;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
 import controlador.Constants;
 import controlador.GestorDB;
@@ -13,6 +14,22 @@ public class UsuariDAO {
 	
 	public UsuariDAO(){
 		gestorDB = new GestorDB(Constants.SERVER, Constants.PORT, Constants.BD);
+	}
+	
+	public List<String> validarLogin(Usuari usuari){
+		ResultSet rs = null;
+		List<String> llista = new ArrayList<String>();
+	    try {
+			rs = gestorDB.consultaRegistres("SELECT NIF, password FROM usuari WHERE NIF='"+usuari.getNIF()+"' AND password='"+usuari.getPasswd()+"'");
+			while(rs.next()){
+				llista.add(rs.getString("NIF"));
+				llista.add(rs.getString("password"));
+			}
+		} catch (SQLException e) {
+			System.out.println("error xsda");
+		}
+		
+		return llista;
 	}
 	
 	public boolean iniciSessio(String nif, String pw){
