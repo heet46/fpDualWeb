@@ -29,7 +29,7 @@ h2{
   box-sizing: border-box;
   font-size: 14px;
 }
-.form button {
+.form .boto {
   font-family: "Roboto", sans-serif;
   text-transform: uppercase;
   outline: 0;
@@ -43,7 +43,7 @@ h2{
   transition: all 0.3 ease;
   cursor: pointer;
 }
-.form button:hover,.form button:active,.form button:focus {
+.form .boto:hover,.form .boto:active,.form .boto:focus {
   background: #356F96;
 }
 .form .message {

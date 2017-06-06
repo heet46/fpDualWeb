@@ -9,10 +9,10 @@
   <div class="login-page">
   <div class="form">
   <h2>Sistema de registre d'hores</h2>
-    <form class="login-form">
-      <input type="text" placeholder="Usuari"/>
-      <input type="password" placeholder="Contrassenya"/>
-      <button>Login</button>
+    <form class="login-form" method="POST" action="Login" name="frmLogin">
+      <input type="text" name="dni" placeholder="D.N.I."/>
+      <input type="password" name="password" placeholder="Contrassenya"/>
+      <input type="submit" value="Login" class="boto" />
     </form>
   </div>
 </div>
