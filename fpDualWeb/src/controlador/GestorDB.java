@@ -9,16 +9,18 @@ import java.sql.Statement;
 public class GestorDB {
 
 	protected String url;
-	protected Connection conn = null;
-	protected Statement stmt = null;
+	protected Connection conn;
+	protected Statement stmt;
 	
 	public GestorDB(String server, int port, String bd){
 		this.url = "jdbc:mysql://"+server+":"+port+"/"+bd;
 		try{
-			Class.forName(Constants.DRIVER).newInstance();
+			Class.forName("com.mysql.jdbc.Driver");
 			conn = DriverManager.getConnection(url, Constants.DBUSER, Constants.DBPW);
 		}catch(Exception e){
-			System.out.println("No puc instanciar el driver MySQL !");
+			e.getMessage();
+			e.printStackTrace();
+			e.getClass().getName();
 		}
 	}
 	
