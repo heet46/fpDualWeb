@@ -11,7 +11,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import model.UserDAO;
 import model.Usuari;
 import model.UsuariDAO;
 
@@ -39,12 +38,12 @@ public class Login extends HttpServlet {
 	        
 	        System.out.println(llista.toString());
 	        //deberíamos buscar el usuario en la base de datos, pero dado que se escapa de este tema, ponemos un ejemplo en el mismo código
-	        if(usuari.equals("12345678A") && pass.equals("1234") && sesion.getAttribute("usuario") == null){
+	        if(usuari.equals("12345678A") && pass.equals("1234") && sesion.getAttribute("nom") == null){
 	            //si coincide usuario y password y además no hay sesión iniciada
-	            sesion.setAttribute("usuario", usuari);
+	            sesion.setAttribute("nom", usu.getNom());
 	            //redirijo a página con información de login exitoso
-	            out.println("Exito");
-	            //response.sendRedirect("loginExito.jsp");
+	            
+	            response.sendRedirect("index.jsp");
 	        }else{
 	            //lógica para login inválido
 	        }

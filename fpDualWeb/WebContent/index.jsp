@@ -55,7 +55,7 @@
                 <ul class="nav" id="main-menu">
                  
                     <li class="active-link">
-                        <a href="index.html" ><i class="fa fa-desktop "></i>Panell de control </a>
+                        <a href="index.html" ><i class="fa fa-desktop "></i>Inici </a>
                     </li>
 
                     <li>
