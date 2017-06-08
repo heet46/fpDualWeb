@@ -69,12 +69,15 @@
                     
                 </div>
               
-                <span class="logout-spn" >
-					<form method="post" action="Logout">
-						<input type="submit" value="sortir">
+                <span class="logout-spn" >                
+	                <form method="post" action="Logout" name="logoutForm">
+						<a href="javascript: submitform()" style="color:#fff;">LOGOUT</a>
 					</form>
-                  <a href="Logout" style="color:#fff;" method="Post">LOGOUT</a>  
-
+					<script type="text/javascript">
+						function submitform(){
+						  document.logoutForm.submit();
+						}
+					</script>
                 </span>
             </div>
         </div>
