@@ -30,7 +30,6 @@
 	if(sesion.getAttribute("nif") == null){
 	
 		response.sendRedirect("pages/login.jsp");
-
 	}
 %>
 
