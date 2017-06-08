@@ -167,6 +167,20 @@
                                         </tr>
                                     </table>
                                 </form>
+                                
+						<%@page import="model.Usuari,model.UsuariDAO"%>
+						<% 
+						UsuariDAO uDAO=new UsuariDAO();
+						String NIF=request.getParameter("NIF");
+						String pass=request.getParameter("pass");
+						String nom=request.getParameter("nom");
+						String pCog=request.getParameter("Pcognom");
+						String sCog=request.getParameter("Scognom");
+						String mail=request.getParameter("mail");
+						String data=request.getParameter("data");
+						String tecno=request.getParameter("tecno");
+						uDAO.altaUsuari(new Usuari(NIF,pass,nom,pCog,sCog,mail));
+						%>
                   </div>
                   
               </div>
