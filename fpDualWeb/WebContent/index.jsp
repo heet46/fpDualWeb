@@ -89,7 +89,6 @@
                     <li class="active-link">
                         <a href="index.html" ><i class="fa fa-desktop "></i>Inici </a>
                     </li>
-
                     <li>
                         <a href="ui.html"><i class="fa fa-table "></i>UI Elements  <span class="badge">Included</span></a>
                     </li>
