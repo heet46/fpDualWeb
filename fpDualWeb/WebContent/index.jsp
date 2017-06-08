@@ -65,7 +65,6 @@
                     </button>
                     <a class="navbar-brand" href="#">
                         <img src="assets/img/logo.png" height="50px"/>
-
                     </a>
                     
                 </div>
@@ -99,7 +98,7 @@
                         <a href="pages/alumnes.jsp"><i class="fa fa-graduation-cap "></i>Alumnes</a>
                     </li>
                     <li>
-                        <a href="pages/tutors.html"><i class="fa fa-book"></i>Tutors</a>
+                        <a href="pages/tutors.jsp"><i class="fa fa-book"></i>Tutors</a>
                     </li>
 
                     <li>
@@ -146,7 +145,7 @@
                  
                   <div class="col-lg-3 col-md-2 col-sm-2 col-xs-6">
                       <div class="div-square">
-                           <a href="pages/tutors.html" >
+                           <a href="pages/tutors.jsp" >
                     <i class="fa fa-book fa-5x" aria-hidden="true"></i>
                       <h4>Tutors</h4>
                       </a>
