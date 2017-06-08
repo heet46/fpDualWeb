@@ -17,13 +17,23 @@
 
     <link href="../assets/css/bootstrap-theme.min.css" rel="stylesheet" />
     
-    <link href="../assets/css/tutors.css" rel="stylesheet" />
-    
     <link href="../assets/css/custom.css" rel="stylesheet" />
+    
+    <link href="../assets/css/tutors.css" rel="stylesheet" />
      <!-- GOOGLE FONTS-->
     <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
 </head>
 <body>
+<%
+	HttpSession sesion=request.getSession(); 
+	String nif;
+	if(sesion.getAttribute("nif") == null){
+	
+		response.sendRedirect("pages/login.jsp");
+
+	}
+%>
+
     <div id="wrapper">
          <div class="navbar navbar-inverse navbar-fixed-top">
             <div class="adjust-nav">
@@ -50,7 +60,6 @@
         <nav class="navbar-default navbar-side" role="navigation">
             <div class="sidebar-collapse">
                 <ul class="nav" id="main-menu">
-                 
                     <li>
                         <a href="../index.html" ><i class="fa fa-desktop "></i>Inici </a>
                     </li>
@@ -78,40 +87,29 @@
             <div id="page-inner">
                 <div class="row">
                     <div class="col-lg-12">
-                     <h2>Baixa tutors</h2>   
+                     <h2>Modificar tutors</h2>   
                     </div>
                 </div>              
                  <!-- /. ROW  -->
                   <hr />
                 <div class="row">
                     <div class="col-lg-12 ">
-                        <!--
-                        <div class="alert alert-info">
-                             <strong>Benvingut (usuari)! </strong>
-                        </div>
-                       -->
+                       
                     </div>
  
                     </div>
                   <!-- /. ROW  --> 
-                            <div class="row text-center pad-top">
-                                <form type="post" action="tutors.html">
-                                    <table>
-                                        <tr>
-                                            <td>NIF del tutor: </td>
-                                            <td><input type="text" name="NIF" size="25"/></td>
-                                        </tr>
-                                        <tr>
-                                            <td><br></td>
-                                        </tr>
-                                        <tr>
-                                            <th><input type="submit" name="Baixa"/></th>
-                                        </tr>
-                                    </table>
-                                </form>
-                  </div>
-                  
-              </div>
+                    <form method="post" action="tutors.html">
+                        <table>
+                            <tr>
+                                <td>NIF tutor: </td>
+                                <td><input type="text" name="NIF" size="25"/></td>
+                            </tr>
+                            <tr>
+                                <th><input type="submit" name="Modificar"/></th>
+                            </tr>
+                        </table>
+                    </form>             
                   <!-- /. ROW  --> 
     </div>
              <!-- /. PAGE INNER  -->
@@ -123,7 +121,7 @@
     
             <div class="row">
                 <div class="col-lg-12" >
-                    &copy;  2017 yourdomain.com | Design by: Joan Espuñes, Sergi Fernàndez, Sisco Navarro, Thiago Hachikyan
+                  &copy;  2017 yourdomain.com | Design by: Joan Espuñes, Sergi Fernàndez, Sisco Navarro, Thiago Hachikyan
                 </div>
             </div>
         </div>

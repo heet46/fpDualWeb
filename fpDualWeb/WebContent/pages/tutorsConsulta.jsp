@@ -22,20 +22,18 @@
     <link href="../assets/css/custom.css" rel="stylesheet" />
      <!-- GOOGLE FONTS-->
     <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
-    
-    <script type="text/javascript">
-    function nif(dni) {
-     numero = dni.substr(0,dni.length-1);
-     let = dni.substr(dni.length-1,1);
-     numero = numero % 23;
-     letra='TRWAGMYFPDXBNJZSQVHLCKET';
-     letra=letra.substring(numero,numero+1);
-     if (letra!=let) 
-      alert('Dni erroneo');
-    }
-</script>
 </head>
 <body>
+<%
+	HttpSession sesion=request.getSession(); 
+	String nif;
+	if(sesion.getAttribute("nif") == null){
+	
+		response.sendRedirect("pages/login.jsp");
+
+	}
+%>
+
     <div id="wrapper">
          <div class="navbar navbar-inverse navbar-fixed-top">
             <div class="adjust-nav">
@@ -62,7 +60,6 @@
         <nav class="navbar-default navbar-side" role="navigation">
             <div class="sidebar-collapse">
                 <ul class="nav" id="main-menu">
-                 
                     <li>
                         <a href="../index.html" ><i class="fa fa-desktop "></i>Inici </a>
                     </li>
@@ -90,7 +87,7 @@
             <div id="page-inner">
                 <div class="row">
                     <div class="col-lg-12">
-                     <h2>Afegir tutors</h2>   
+                     <h2>Consultar tutors</h2>   
                     </div>
                 </div>              
                  <!-- /. ROW  -->
@@ -110,50 +107,11 @@
                                 <form method="post" action="tutors.html">
                                     <table>
                                         <tr>
-                                            <td>NIF: </td>
-                                            <td><input type="text" name="NIF" size="25" onblur="nif(this.value)"/></td>
+                                            <td>NIF tutor: </td>
+                                            <td><input type="text" name="NIF" size="25"/></td>
                                         </tr>
                                         <tr>
-                                            <td>Password: </td>
-                                            <td><input type="password" name="pass" size="25"/></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Nom: </td>
-                                            <td><input type="text" name="nom" size="25"/></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Primer cognom: </td>
-                                            <td><input type="text" name="Pcognom" size="25"/></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Segon cognom: </td>
-                                            <td><input type="text" name="Scognom" size="25"/></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Mail: </td>
-                                            <td><input type="email" name="mail" size="25"/></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Data: </td>
-                                            <td><input type="date" name="data" size="25"/></td>
-                                        </tr>
-                                        <tr>
-                                        <td>Tecnologia: </td>
-                                        <td>
-                                            <select name="tecno">
-                                                <option selected disabled>Selecciona una opció:</option>
-                                                <option value="java">JAVA</option>
-                                                <option value="sap">SAP</option>
-                                                <option value="net">NET</option>
-                                             </select>
-                                        </td>
-                                        </tr>
-                                        <tr>
-                                            <td><br></td>
-                                        </tr>
-                                        <tr>
-                                            <th><input type="submit" name="Afegir"/></th>
-                                            <th><input type="reset" name="Esborrar"/></th>
+                                            <th><input type="submit" name="Consultar"/></th>
                                         </tr>
                                     </table>
                                 </form>
@@ -171,7 +129,7 @@
     
             <div class="row">
                 <div class="col-lg-12" >
-                   &copy;  2017 yourdomain.com | Design by: Joan Espuñes, Sergi Fernàndez, Sisco Navarro, Thiago Hachikyan
+                    &copy;  2017 yourdomain.com | Design by: Joan Espuñes, Sergi Fernàndez, Sisco Navarro, Thiago Hachikyan
                 </div>
             </div>
         </div>
