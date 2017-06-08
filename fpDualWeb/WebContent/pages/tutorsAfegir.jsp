@@ -117,7 +117,7 @@
                     </div>
                   <!-- /. ROW  --> 
                             <div class="row text-center pad-top">
-                                <form method="post" action="tutors.jsp">
+                                <form method="Post" action="fpDualWeb/afegirTutor">
                                     <table>
                                         <tr>
                                             <td>NIF: </td>
@@ -144,10 +144,6 @@
                                             <td><input type="email" name="mail" size="25"/></td>
                                         </tr>
                                         <tr>
-                                            <td>Data: </td>
-                                            <td><input type="date" name="data" size="25"/></td>
-                                        </tr>
-                                        <tr>
                                         <td>Tecnologia: </td>
                                         <td>
                                             <select name="tecno">
@@ -167,20 +163,7 @@
                                         </tr>
                                     </table>
                                 </form>
-                                
-						<%@page import="model.Usuari,model.UsuariDAO"%>
-						<% 
-						UsuariDAO uDAO=new UsuariDAO();
-						String NIF=request.getParameter("NIF");
-						String pass=request.getParameter("pass");
-						String nom=request.getParameter("nom");
-						String pCog=request.getParameter("Pcognom");
-						String sCog=request.getParameter("Scognom");
-						String mail=request.getParameter("mail");
-						String data=request.getParameter("data");
-						String tecno=request.getParameter("tecno");
-						uDAO.altaUsuari(new Usuari(NIF,pass,nom,pCog,sCog,mail));
-						%>
+ 
                   </div>
                   
               </div>
