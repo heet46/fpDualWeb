@@ -22,6 +22,15 @@
     <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
 </head>
 <body>
+<%
+	HttpSession sesion=request.getSession(); 
+	String nif;
+	if(sesion.getAttribute("nif") == null){
+	
+		response.sendRedirect("pages/login.jsp");
+
+	}
+%>
     <div id="wrapper">
          <div class="navbar navbar-inverse navbar-fixed-top">
             <div class="adjust-nav">
@@ -76,7 +85,7 @@
             <div id="page-inner">
                 <div class="row">
                     <div class="col-lg-12">
-                     <h2>Gesti√≥ d'alumnes</h2>   
+                     <h2>GestiÛ d'alumnes</h2>   
                     </div>
                 </div>              
                  <!-- /. ROW  -->
@@ -169,7 +178,7 @@
     
              <div class="row">
                 <div class="col-lg-12" >
-                    &copy;  2017 yourdomain.com | Design by: Joan Espu√±es, Sergi Fern√†ndez, Sisco Navarro, Thiago Hachikyan
+                    &copy;  2017 yourdomain.com | Design by: Joan EspuÒes, Sergi Fern·ndez, Sisco Navarro, Thiago Hachikyan
                 </div>
         </div>
         </div>
