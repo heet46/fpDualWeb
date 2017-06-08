@@ -61,21 +61,21 @@
             <div class="sidebar-collapse">
                 <ul class="nav" id="main-menu">
                     <li>
-                        <a href="../index.html" ><i class="fa fa-desktop "></i>Inici </a>
+                        <a href="../index.jsp" ><i class="fa fa-desktop "></i>Inici </a>
                     </li>
 
                     <li>
-                        <a href="alumnes.html"><i class="fa fa-graduation-cap "></i>Alumnes</a>
+                        <a href="alumnes.jsp"><i class="fa fa-graduation-cap "></i>Alumnes</a>
                     </li>
                     <li  class="active-link">
                         <a href="#"><i class="fa fa-book"></i>Tutors</a>
                     </li>
 
                     <li>
-                        <a href="centre.html"><i class="fa fa-university "></i>Centres </a>
+                        <a href="centre.jsp"><i class="fa fa-university "></i>Centres </a>
                     </li>
                     <li>
-                        <a href="activitats.html"><i class="fa fa-list "></i>Activitats</a>
+                        <a href="activitats.jsp"><i class="fa fa-list "></i>Activitats</a>
                     </li>
                 </ul>
             </div>
@@ -117,7 +117,7 @@
                  
                   <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
                       <div class="div-square">
-                           <a href="tutorsModificar.html" >
+                           <a href="tutorsModificar.jsp" >
                         <i class="fa fa-pencil fa-5x" aria-hidden="true"></i>
                       <h4>Modificar tutors</h4>
                       </a>
@@ -127,7 +127,7 @@
                   </div>
                   <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
                       <div class="div-square">
-                           <a href="tutorsConsulta.html" >
+                           <a href="tutorsConsulta.jsp" >
                      <i class="fa fa-list fa-5x"></i>
                       <h4>Llistat de tutors</h4>
                       </a>
@@ -137,7 +137,7 @@
                   
                   <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
                       <div class="div-square">
-                           <a href="tutorsBaixa.html" >
+                           <a href="tutorsBaixa.jsp" >
                         <i class="fa fa-user-times fa-5x" aria-hidden="true"></i>
                       <h4>Eliminar tutors</h4>
                       </a>
