@@ -105,7 +105,7 @@
                             <div class="row text-center pad-top">
                   <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
                       <div class="div-square">
-                           <a href="tutorsAfegir.html" >
+                           <a href="tutorsAfegir.jsp" >
                         <i class="fa fa-user-plus fa-5x" aria-hidden="true"></i>
 
                         <h4>Afegir tutors</h4>
