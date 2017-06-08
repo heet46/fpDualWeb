@@ -90,13 +90,6 @@
                         <a href="index.html" ><i class="fa fa-desktop "></i>Inici </a>
                     </li>
                     <li>
-                        <a href="ui.html"><i class="fa fa-table "></i>UI Elements  <span class="badge">Included</span></a>
-                    </li>
-                    <li>
-                        <a href="blank.html"><i class="fa fa-edit "></i>Blank Page  <span class="badge">Included</span></a>
-                    </li>
-
-                    <li>
                         <a href="pages/alumnes.jsp"><i class="fa fa-graduation-cap "></i>Alumnes</a>
                     </li>
                     <li>
