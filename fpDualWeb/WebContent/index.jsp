@@ -33,7 +33,6 @@
 <!-- Permetre acces nomes si hi ha una sessio -->
 <%
 	HttpSession sesion=request.getSession(); 
-	sesion=request.getSession();
 	String nif;
 	if(sesion.getAttribute("nif") == null){
 	
@@ -97,7 +96,7 @@
                     </li>
 
                     <li>
-                        <a href="pages/alumnes.html"><i class="fa fa-graduation-cap "></i>Alumnes</a>
+                        <a href="pages/alumnes.jsp"><i class="fa fa-graduation-cap "></i>Alumnes</a>
                     </li>
                     <li>
                         <a href="pages/tutors.html"><i class="fa fa-book"></i>Tutors</a>
@@ -136,7 +135,7 @@
                             <div class="row text-center pad-top">
                   <div class="col-lg-3 col-md-2 col-sm-2 col-xs-6">
                       <div class="div-square">
-                           <a href="pages/alumnes.html" >
+                           <a href="pages/alumnes.jsp" >
                         <i class="fa fa-graduation-cap fa-5x" aria-hidden="true"></i>
                         <h4>Alumnes</h4>
                       </a>
