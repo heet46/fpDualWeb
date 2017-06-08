@@ -4,8 +4,10 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -20,8 +22,7 @@ public class Login extends HttpServlet {
 	   //metodo encargado de la gestión del método POST
 	    protected void doPost(HttpServletRequest request, HttpServletResponse response)
 	            throws ServletException, IOException {
-	        PrintWriter out = response.getWriter();
-	        HttpSession sesion = request.getSession();
+	        HttpSession session;
 	        
 	        UsuariDAO uDAO = new UsuariDAO();
 	        Usuari usu = new Usuari();
@@ -35,17 +36,32 @@ public class Login extends HttpServlet {
 	        usu.setPasswd(pass);
 	        System.out.println(usuari+" "+pass);
 	        List<String> llista = uDAO.validarLogin(usu);
-	        
-	        System.out.println(llista.toString());
+
 	        //deberíamos buscar el usuario en la base de datos, pero dado que se escapa de este tema, ponemos un ejemplo en el mismo código
-	        if(usuari.equals("12345678A") && pass.equals("1234") && sesion.getAttribute("nom") == null){
-	            //si coincide usuario y password y además no hay sesión iniciada
-	            sesion.setAttribute("nom", usu.getNom());
-	            //redirijo a página con información de login exitoso
-	            
-	            response.sendRedirect("index.jsp");
-	        }else{
-	            //lógica para login inválido
+	        try{
+		        	if(usuari.equals(llista.get(0)) && pass.equals(llista.get(1))){
+		            
+		        	session = request.getSession();
+		            session.setAttribute("nif", usu.getNIF());
+		            //Expirar en 30 min
+		            session.setMaxInactiveInterval(30*60);
+		            
+		            Cookie userName = new Cookie("usuari", usuari);
+		            userName.setMaxAge(30*60);
+		            
+		            System.out.println(session.getAttribute("nif")+" "+userName.getValue());
+		            response.addCookie(userName);
+		            
+		            //redirijo a página con información de login exitoso	            
+		            response.sendRedirect("index.jsp");
+		      	        
+		        }
+	        }catch(Exception e){
+	        	//RequestDispatcher rd = getServletContext().getRequestDispatcher("/login.jsp");
+		        PrintWriter out = response.getWriter();
+		        out.println("<font color=red>Nif o contrassenya incorrectes</font>");
+	            response.sendRedirect("pages/login.jsp");
+		        //rd.include(request, response);
 	        }
 	    }
 	    

@@ -1,3 +1,7 @@
+<%@ page import="controlador.*" %>
+<%@ page import="model.*" %>
+
+
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -26,7 +30,31 @@
    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
 </head>
 <body>
+<!-- Permetre acces nomes si hi ha una sessio -->
+<%
+	HttpSession sesion=request.getSession(); 
+	sesion=request.getSession();
+	String nif;
+	if(sesion.getAttribute("nif") == null){
+	
+		response.sendRedirect("pages/login.jsp");
 
+	}else{
+		nif = (String) sesion.getAttribute("nif");
+	}
+
+	String usuNif = null;
+	String sessionID = null;
+	Cookie[] cookies = request.getCookies();
+	if(cookies != null){
+		for(Cookie cookie : cookies){
+		
+			if(cookie.getName().equals("usuari")) usuNif = cookie.getValue();
+			if(cookie.getName().equals("JSESSIONID")) sessionID = cookie.getValue();
+			
+		}
+	}
+%>
     <div id="wrapper">
          <div class="navbar navbar-inverse navbar-fixed-top">
             <div class="adjust-nav">
@@ -44,7 +72,10 @@
                 </div>
               
                 <span class="logout-spn" >
-                  <a href="pages/login.jsp" style="color:#fff;">LOGOUT</a>  
+					<form method="post" action="Logout">
+						<input type="submit" value="sortir">
+					</form>
+                  <a href="Logout" style="color:#fff;" method="Post">LOGOUT</a>  
 
                 </span>
             </div>
@@ -96,7 +127,7 @@
                 <div class="row">
                     <div class="col-lg-12 ">
                         <div class="alert alert-info">
-                             <strong>Benvingut (usuari)! </strong>
+                             <strong>Benvingut <%=usuNif %>! </strong>
                         </div>
                        
                     </div>
