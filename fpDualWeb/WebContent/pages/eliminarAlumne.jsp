@@ -22,8 +22,13 @@
    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
 </head>
 <body>
-     
-           
+<%
+	HttpSession sesion=request.getSession(); 
+	String nif;
+	if(sesion.getAttribute("nif") == null){	
+		response.sendRedirect("login.jsp");
+	}
+%>          
           
     <div id="wrapper">
          <div class="navbar navbar-inverse navbar-fixed-top">
@@ -34,14 +39,20 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="../index.html">
+                    <a class="navbar-brand" href="../index.jsp">
                         <img src="../assets/img/logo.png" height="50px" />
                     </a>
                 </div>
               
-                 <span class="logout-spn" >
-                  <a href="#" style="color:#fff;">LOGOUT</a>  
-
+                <span class="logout-spn" >                
+	                <form method="post" action="../Logout" name="logoutForm">
+						<a href="javascript: submitform()" style="color:#fff;">LOGOUT</a>
+					</form>
+					<script type="text/javascript">
+						function submitform(){
+						  document.logoutForm.submit();
+						}
+					</script>
                 </span>
             </div>
         </div>
@@ -51,21 +62,21 @@
                 <ul class="nav" id="main-menu">
                  
                     <li>
-                        <a href="../index.html" ><i class="fa fa-desktop "></i>Inici </a>
+                        <a href="../index.jsp" ><i class="fa fa-desktop "></i>Inici </a>
                     </li>
 
                     <li class="active-link">
                         <a href="#"><i class="fa fa-graduation-cap "></i>Alumnes</a>
                     </li>
                     <li>
-                        <a href="tutors.html"><i class="fa fa-book"></i>Tutors</a>
+                        <a href="tutors.jsp"><i class="fa fa-book"></i>Tutors</a>
                     </li>
 
                     <li>
-                        <a href="centre.html"><i class="fa fa-university "></i>Centres </a>
+                        <a href="centre.jsp"><i class="fa fa-university "></i>Centres </a>
                     </li>
                     <li>
-                        <a href="activitats.html"><i class="fa fa-list "></i>Activitats</a>
+                        <a href="activitats.jsp"><i class="fa fa-list "></i>Activitats</a>
                     </li>
                 </ul>
             </div>

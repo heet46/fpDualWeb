@@ -39,7 +39,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="../index.html">
+                    <a class="navbar-brand" href="../index.jsp">
                         <img src="../assets/img/logo.png" height="50px"/>
 
                     </a>
@@ -64,21 +64,21 @@
                 <ul class="nav" id="main-menu">
                  
                     <li>
-                        <a href="../index.html" ><i class="fa fa-desktop "></i>Inici </a>
+                        <a href="../index.jsp" ><i class="fa fa-desktop "></i>Inici </a>
                     </li>
 
                     <li class="active-link">
                         <a href="#"><i class="fa fa-graduation-cap "></i>Alumnes</a>
                     </li>
                     <li>
-                        <a href="tutors.html"><i class="fa fa-book"></i>Tutors</a>
+                        <a href="tutors.jsp"><i class="fa fa-book"></i>Tutors</a>
                     </li>
 
                     <li>
-                        <a href="centre.html"><i class="fa fa-university "></i>Centres </a>
+                        <a href="centre.jsp"><i class="fa fa-university "></i>Centres </a>
                     </li>
                     <li>
-                        <a href="activitats.html"><i class="fa fa-list "></i>Activitats</a>
+                        <a href="activitats.jsp"><i class="fa fa-list "></i>Activitats</a>
                     </li>
                 </ul>
             </div>
@@ -111,7 +111,7 @@
                 <div class="row text-center pad-top">
                   <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
                       <div class="div-square">
-                           <a href="afegirAlumne.html" >
+                           <a href="afegirAlumne.jsp" >
                         <i class="fa fa-user-plus fa-5x" aria-hidden="true"></i>
                         <h4>Afegir alumne</h4>
                       </a>
@@ -122,7 +122,7 @@
                  
                   <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
                       <div class="div-square">
-                           <a href="modificarAlumne.html" >
+                           <a href="modificarAlumne.jsp" >
                         <i class="fa fa-pencil fa-5x" aria-hidden="true"></i>
                       <h4>Modificar alumne</h4>
                       </a>
@@ -132,7 +132,7 @@
                   </div>
                   <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
                       <div class="div-square">
-                           <a href="llistatAlumnes.html" >
+                           <a href="llistatAlumnes.jsp" >
                      <i class="fa fa-list fa-5x"></i>
                       <h4>Llistat d'alumnes</h4>
                       </a>
@@ -141,7 +141,7 @@
                   
                   <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
                       <div class="div-square">
-                           <a href="eliminarAlumne.html" >
+                           <a href="eliminarAlumne.jsp" >
                         <i class="fa fa-user-times fa-5x" aria-hidden="true"></i>
                       <h4>Eliminar alumne</h4>
                       </a>
