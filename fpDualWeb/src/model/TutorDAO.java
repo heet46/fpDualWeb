@@ -34,21 +34,18 @@ public class TutorDAO {
 		
 	}
 	
-	public Usuari[] consultaTutor(){
-		consultaSQL="SELECT usuari.nom,usuari.NIF,usuari.data_alta,usuari.mail "
-				+ "FROM usuari,tutor WHERE tutor.id_usuari=usuari.id_usuari;";
-		ResultSet rs;
+	public List<Usuari> consultaTutor() throws SQLException{
+		consultaSQL="SELECT u.id_usuari,u.NIF,u.password,u.nom,u.primer_cognom,u.segon_cognom,u.mail "
+				+ "FROM usuari AS u,tutor AS t "
+				+ "WHERE t.id_usuari=u.id_usuari;";
+		ResultSet rs=null;
 		List<Usuari> llista=new ArrayList<Usuari>();
-		try {
-			rs=g.consultaRegistres(consultaSQL);
-			while(rs.next()){
-				llista.add(new Usuari(rs.getString("NIF"),rs.getString("password"),rs.getString("nom"),rs.getString("primer_cognom"),rs.getString("segon_cognom"),rs.getString("mail")));
-			}
-		} catch (SQLException e) {
-			System.out.println("Error consulta tutor "+e.toString());
+		rs=g.consultaRegistres(consultaSQL);
+		while(rs.next()){
+			llista.add(new Usuari(rs.getString("NIF"),rs.getString("password"),rs.getString("nom"),rs.getString("primer_cognom"),rs.getString("segon_cognom"),rs.getString("mail")));
+			System.out.println(llista.get(0).getNIF());
 		}
-		Usuari[] u=(Usuari[]) llista.toArray();
-		return u;
+		return llista;
 	}
 	
 	public List<Integer> consultaIDTutor(){

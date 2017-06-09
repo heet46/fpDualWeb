@@ -1,3 +1,5 @@
+<%@page import="model.*" %>
+<%@page import="java.util.*" %>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -121,40 +123,28 @@
                                                         </tr>
                                                     </thead>
                                                     <tbody>
-                                                        <tr>
-                                                            <td>
-                                                                Prova1
-                                                            </td>
-                                                            <td>12345678B</td>
-                                                            <td>2013/08/12</td>
-                                                            <td class="text-center">
-                                                                <span class="label label-default">Pendent</span>
-                                                            </td>
-                                                            <td>
-                                                                marlon@brando.com
-                                                            </td>
-                                                            <td style="width: 20%;">
-                                                                <a href="#" class="table-link">
-                                                                    <span class="fa-stack">
-                                                                        <i class="fa fa-square fa-stack-2x"></i>
-                                                                        <i class="fa fa-search-plus fa-stack-1x fa-inverse"></i>
-                                                                    </span>
-                                                                </a>
-                                                        </tr>
-                                                        <%@page import="model.TutorDAO,model.Usuari" %>
                                                         <%
                                                         	TutorDAO tDAO=new TutorDAO();
-                                                        	Usuari[] usu=tDAO.consultaTutor();
+                                                        	List<Usuari> usu=tDAO.consultaTutor();
+                                                        	response.setContentType("text/html");
                                                         	for(Usuari u:usu){
                                                         		out.println("<tr>");
                                                         		out.println("<td>");
-                                                        		u.getNom();
+                                                        		out.println(u.getNom());
                                                         		out.println("</td>");
                                                         		out.println("<td>");
-                                                        		u.getNIF();
+                                                        		out.println(u.getNIF());
                                                         		out.println("</td>");
                                                         		out.println("<td>");
+                                                        		out.println(u.getDataAlta());
                                                         		out.println("</td>");
+                                                        		out.println("<td class=\"text-center\">");
+                                                        		out.println("<span class=\"label label-default\">Pendent</span>");
+                                                        		out.println("</td>");
+                                                        		out.println("<td>");
+                                                        		out.println(u.getMail());
+                                                        		out.println("</td>");
+                                                        		
                                                         	}
                                                         %>
                                                     </tbody>
