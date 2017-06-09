@@ -31,7 +31,7 @@
 	HttpSession sesion=request.getSession(); 
 	String nif;
 	if(sesion.getAttribute("nif") == null){	
-		response.sendRedirect("pages/login.jsp");
+		response.sendRedirect("login.jsp");
 	}
 %>     
 <%
