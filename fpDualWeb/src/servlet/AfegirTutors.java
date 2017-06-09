@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import model.UsuariDAO;
+import model.Tutor;
 import model.TutorDAO;
 import model.Usuari;
 
@@ -16,13 +17,13 @@ import model.Usuari;
  * Servlet implementation class afegirTutors
  */
 @WebServlet("/afegirTutors")
-public class afegirTutors extends HttpServlet {
+public class AfegirTutors extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public afegirTutors() {
+    public AfegirTutors() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -32,6 +33,8 @@ public class afegirTutors extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		UsuariDAO uDAO=new UsuariDAO();
+		TutorDAO tDAO=new TutorDAO();
+		Usuari u=new Usuari();
 		String NIF=(String)request.getParameter("NIF");
 		String pass=(String)request.getParameter("pass");
 		String nom=(String)request.getParameter("nom");
@@ -41,6 +44,7 @@ public class afegirTutors extends HttpServlet {
 		String tecno=(String)request.getParameter("tecno");
 		
 		uDAO.altaUsuari(new Usuari(NIF,pass,nom,pCog,sCog,mail));
+		tDAO.altaTutor(new Tutor(uDAO.consultaID(NIF),tecno));
 		
 		response.sendRedirect("/fpDualWeb/pages/tutors.jsp");
 	}

@@ -123,7 +123,6 @@
                                                     <tbody>
                                                         <tr>
                                                             <td>
-                                                                <img src="https://bootdey.com/img/Content/user_1.jpg" alt="">
                                                                 Prova1
                                                             </td>
                                                             <td>12345678B</td>
@@ -141,94 +140,12 @@
                                                                         <i class="fa fa-search-plus fa-stack-1x fa-inverse"></i>
                                                                     </span>
                                                                 </a>
-                                                                <!--
-                                                                <a href="#" class="table-link">
-                                                                    <span class="fa-stack">
-                                                                        <i class="fa fa-square fa-stack-2x"></i>
-                                                                        <i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
-                                                                    </span>
-                                                                </a>
-                                                                <a href="#" class="table-link danger">
-                                                                    <span class="fa-stack">
-                                                                        <i class="fa fa-square fa-stack-2x"></i>
-                                                                        <i class="fa fa-trash-o fa-stack-1x fa-inverse"></i>
-                                                                    </span>
-                                                                </a>
-                                                                -->
-                                                            </td>
                                                         </tr>
-                                                        <tr>
-                                                            <td>
-                                                                <img src="https://bootdey.com/img/Content/user_3.jpg" alt="">
-                                                                Prova2
-                                                            </td>
-                                                            <td>87654321S</td>
-                                                            <td>2013/08/12</td>
-                                                            <td class="text-center">
-                                                                <span class="label label-success">Actiu</span>
-                                                            </td>
-                                                            <td>
-                                                                marlon@brando.com
-                                                            </td>
-                                                            <td style="width: 20%;">
-                                                                <a href="#" class="table-link">
-                                                                    <span class="fa-stack">
-                                                                        <i class="fa fa-square fa-stack-2x"></i>
-                                                                        <i class="fa fa-search-plus fa-stack-1x fa-inverse"></i>
-                                                                    </span>
-                                                                </a>
-                                                                <!--
-                                                                <a href="#" class="table-link">
-                                                                    <span class="fa-stack">
-                                                                        <i class="fa fa-square fa-stack-2x"></i>
-                                                                        <i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
-                                                                    </span>
-                                                                </a>
-                                                                <a href="#" class="table-link danger">
-                                                                    <span class="fa-stack">
-                                                                        <i class="fa fa-square fa-stack-2x"></i>
-                                                                        <i class="fa fa-trash-o fa-stack-1x fa-inverse"></i>
-                                                                    </span>
-                                                                </a>
-                                                                -->
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>
-                                                                <img src="https://bootdey.com/img/Content/user_2.jpg" alt="">
-                                                                Prova3
-                                                            </td>
-                                                            <td>54321678B</td>
-                                                            <td>2013/08/12</td>
-                                                            <td class="text-center">
-                                                                <span class="label label-danger">Inactiu</span>
-                                                            </td>
-                                                            <td>
-                                                                marlon@brando.com
-                                                            </td>
-                                                            <td style="width: 20%;">
-                                                                <a href="#" class="table-link">
-                                                                    <span class="fa-stack">
-                                                                        <i class="fa fa-square fa-stack-2x"></i>
-                                                                        <i class="fa fa-search-plus fa-stack-1x fa-inverse"></i>
-                                                                    </span>
-                                                                </a>
-                                                                <!--
-                                                                <a href="#" class="table-link">
-                                                                    <span class="fa-stack">
-                                                                        <i class="fa fa-square fa-stack-2x"></i>
-                                                                        <i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
-                                                                    </span>
-                                                                </a>
-                                                                <a href="#" class="table-link danger">
-                                                                    <span class="fa-stack">
-                                                                        <i class="fa fa-square fa-stack-2x"></i>
-                                                                        <i class="fa fa-trash-o fa-stack-1x fa-inverse"></i>
-                                                                    </span>
-                                                                </a>
-                                                                -->
-                                                            </td>
-                                                        </tr>
+                                                        <%@page import="model.TutorDAO,model.Usuari" %>
+                                                        <%
+                                                        	TutorDAO tDAO=new TutorDAO();
+                                                        	Usuari[] usu=tDAO.consultaTutor();
+                                                        %>
                                                     </tbody>
                                                 </table>
                                             </div>

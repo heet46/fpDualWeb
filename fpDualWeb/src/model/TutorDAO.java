@@ -20,10 +20,7 @@ public class TutorDAO {
 	}
 	
 	public void altaTutor(Tutor t){
-		consultaSQL="INSERT INTO tutor (Id_usuari,Tecnologia) "+
-					"SELECT Id_usuari,'"+t.getTecnologia()+"' "+
-					"FROM usuari "+
-					"WHERE NIF='"+t.getNIF()+"';";
+		consultaSQL="INSERT INTO tutor VALUES("+t.getId_usuari()+",'"+t.getTecnologia()+"');";
 		g.modificarRegistre(consultaSQL);
 		
 	}
@@ -37,19 +34,21 @@ public class TutorDAO {
 		
 	}
 	
-	public HashMap<Usuari,Tutor> consultaTutor(){
-		consultaSQL="SELECT t.Id_usuari,t.tecnologia,u.nom,u.NIF FROM tutor AS t,usuari AS u WHERE t.Id_usuari=u.Id_usuari;";
+	public Usuari[] consultaTutor(){
+		consultaSQL="SELECT usuari.nom,usuari.NIF,usuari.data_alta,usuari.mail "
+				+ "FROM usuari,tutor WHERE tutor.id_usuari=usuari.id_usuari;";
 		ResultSet rs;
-		HashMap<Usuari,Tutor> dades = new HashMap<Usuari,Tutor>();
+		List<Usuari> llista=new ArrayList<Usuari>();
 		try {
 			rs=g.consultaRegistres(consultaSQL);
 			while(rs.next()){
-				dades.put(new Usuari(rs.getString("NIF"),rs.getString("password"),rs.getString("nom"),rs.getString("primer_cognom"),rs.getString("segon_cognom"),rs.getString("mail")),new Tutor(rs.getInt("Id_usuari"),rs.getString("Tecnologia")));
+				llista.add(new Usuari(rs.getString("NIF"),rs.getString("password"),rs.getString("nom"),rs.getString("primer_cognom"),rs.getString("segon_cognom"),rs.getString("mail")));
 			}
 		} catch (SQLException e) {
 			System.out.println("Error consulta tutor "+e.toString());
 		}
-		return dades;
+		Usuari[] u=(Usuari[]) llista.toArray();
+		return u;
 	}
 	
 	public List<Integer> consultaIDTutor(){
@@ -64,6 +63,21 @@ public class TutorDAO {
 			System.out.println("Error consulta id tutor "+e.toString());
 		}
 		return dades;
+	}
+	
+	public List<String> consultarNom(){
+		consultaSQL="SELECT u.nom FROM usuari AS u,tutor AS t WHERE u.Id_usuari=t.Id_usuari";
+		List<String> llista=new ArrayList<String>();
+		ResultSet rs = null;
+		try{
+			g.consultaRegistres(consultaSQL);
+			while(rs.next()){
+				llista.add(rs.getString(1));
+			}
+		}catch(SQLException e){
+			System.out.println("Error consulta nom tutor "+e.toString());
+		}
+		return llista;
 	}
 	
 	public void tancarConn(){
