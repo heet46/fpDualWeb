@@ -125,6 +125,7 @@
                                                     <tbody>
                                                         <%
                                                         	TutorDAO tDAO=new TutorDAO();
+                                                        	UsuariDAO uDAO=new UsuariDAO();
                                                         	List<Usuari> usu=tDAO.consultaTutor();
                                                         	response.setContentType("text/html");
                                                         	for(Usuari u:usu){
@@ -136,7 +137,7 @@
                                                         		out.println(u.getNIF());
                                                         		out.println("</td>");
                                                         		out.println("<td>");
-                                                        		out.println(u.getDataAlta());
+                                                        		out.println(uDAO.consultarData(u.getNIF()).toString());
                                                         		out.println("</td>");
                                                         		out.println("<td class=\"text-center\">");
                                                         		out.println("<span class=\"label label-default\">Pendent</span>");
