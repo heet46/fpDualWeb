@@ -145,6 +145,17 @@
                                                         <%
                                                         	TutorDAO tDAO=new TutorDAO();
                                                         	Usuari[] usu=tDAO.consultaTutor();
+                                                        	for(Usuari u:usu){
+                                                        		out.println("<tr>");
+                                                        		out.println("<td>");
+                                                        		u.getNom();
+                                                        		out.println("</td>");
+                                                        		out.println("<td>");
+                                                        		u.getNIF();
+                                                        		out.println("</td>");
+                                                        		out.println("<td>");
+                                                        		out.println("</td>");
+                                                        	}
                                                         %>
                                                     </tbody>
                                                 </table>
