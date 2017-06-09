@@ -65,19 +65,19 @@ public class TutorDAO {
 		return dades;
 	}
 	
-	public List<String> consultarNom(){
-		consultaSQL="SELECT u.nom FROM usuari AS u,tutor AS t WHERE u.Id_usuari=t.Id_usuari";
-		List<String> llista=new ArrayList<String>();
+	public List<String> nomsTutors() throws SQLException{
+		List<String> tutors = new ArrayList<String>();
 		ResultSet rs = null;
-		try{
-			g.consultaRegistres(consultaSQL);
-			while(rs.next()){
-				llista.add(rs.getString(1));
-			}
-		}catch(SQLException e){
-			System.out.println("Error consulta nom tutor "+e.toString());
+		String consultaSQL = "SELECT u.nom "
+				+ "FROM tutor AS t, usuari AS u "
+				+ "WHERE t.id_usuari=u.id_usuari";
+		
+		rs = g.consultaRegistres(consultaSQL);
+		
+		while(rs.next()){
+			tutors.add(rs.getString(1));
 		}
-		return llista;
+		return tutors;
 	}
 	
 	public void tancarConn(){

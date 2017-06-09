@@ -97,6 +97,21 @@ public class AlumneDAO {
 		return alumnes;
 	}
 	
+	public List<String> nomsTutors() throws SQLException{
+		List<String> tutors = new ArrayList<String>();
+		ResultSet rs = null;
+		String consultaSQL = "SELECT u.nom "
+				+ "FROM tutor AS t, usuari AS u "
+				+ "WHERE t.id_usuari=u.id_usuari";
+		
+		rs = gestorDB.consultaRegistres(consultaSQL);
+		
+		while(rs.next()){
+			tutors.add(rs.getString(1));
+		}
+		return tutors;
+	}
+	
 	
 	
 	public void tancarConn(){

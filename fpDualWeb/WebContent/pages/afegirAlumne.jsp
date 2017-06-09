@@ -38,7 +38,9 @@
 <%
 	CentreDAO cDAO = new CentreDAO();
 	List<String> llistaCentres = cDAO.nomsCentres();
-%>        
+	TutorDAO tDAO = new TutorDAO();
+	List<String> llistaTutors = tDAO.nomsTutors();
+%>
     <div id="wrapper">
          <div class="navbar navbar-inverse navbar-fixed-top">
             <div class="adjust-nav">
@@ -149,7 +151,16 @@
                         <div class="col-md-6">
                             <h5>Tutor</h5>
                             <select class="form-control" name="size">
-                                <option value="">Selecciona el tutor</option>
+                            	<option>Selecciona el tutor</option>
+                            	<% 
+                            	for(int i=0; i<llistaTutors.size(); i++) { 
+                            	%>
+	                                <option value="<%=llistaTutors.get(i) %>">
+	                                	<%=llistaTutors.get(i) %>
+	                                </option>
+                            <% 
+                            	} 
+                            %>
                             </select>
                         </div>
                         <div class="col-md-6">
