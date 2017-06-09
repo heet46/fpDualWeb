@@ -42,7 +42,6 @@
               
                 <span class="logout-spn" >
                   <a href="login.jsp" style="color:#fff;">LOGOUT</a>  
-
                 </span>
             </div>
         </div>

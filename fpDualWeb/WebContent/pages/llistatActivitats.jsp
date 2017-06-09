@@ -135,7 +135,7 @@
                         <i class="fa fa-arrow-left fa-2x"></i>
                     </a>
                 </div>
-                 
+                
               </div>
                  <!-- /. ROW  -->   
 				 <!-- 
