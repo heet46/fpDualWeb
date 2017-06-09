@@ -1,3 +1,8 @@
+<%@ page import="controlador.*" %>
+<%@ page import="model.*" %>
+<%@ page import="servlet.*" %>
+<%@ page import="java.util.*" %>
+
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -29,7 +34,11 @@
 	if(sesion.getAttribute("nif") == null){	
 		response.sendRedirect("login.jsp");
 	}
-%>            
+%>     
+<%
+	CentreDAO cDAO = new CentreDAO();
+	List<String> llistaCentres = cDAO.nomsCentres();
+%>        
     <div id="wrapper">
          <div class="navbar navbar-inverse navbar-fixed-top">
             <div class="adjust-nav">
@@ -103,28 +112,25 @@
                 <form>
                 <div class="row">
                         <div class="col-md-6">
-                            <input type="text" class="form-control" placeholder="D.N.I." />
+                            <input type="text" class="form-control" placeholder="D.N.I." name="dni" />
                         </div>
                         <div class="col-md-6">
-                            <input type="password" class="form-control" placeholder="Contrassenya" />
-                        </div>
-                </div>
-                <br>
-                <div class="row">
-                        <div class="col-md-6">
-                            <input type="text" class="form-control" placeholder="Nom" />
-                        </div>
-                        <div class="col-md-6">
-                            <input type="text" class="form-control" placeholder="Cognoms" />
+                            <input type="password" class="form-control" placeholder="Contrassenya" name="password" />
                         </div>
                 </div>
                 <br>
                 <div class="row">
                         <div class="col-md-6">
-                            <input type="text" class="form-control" placeholder="Correu electrònic" />
+                            <input type="text" class="form-control" placeholder="Nom" name="nom" />
                         </div>
                         <div class="col-md-6">
-                            <input type="text" class="form-control" placeholder="Cognoms" />
+                            <input type="text" class="form-control" placeholder="Cognoms" name="cognoms" />
+                        </div>
+                </div>
+                <br>
+                <div class="row">
+                        <div class="col-md-12">
+                            <input type="text" class="form-control" placeholder="Correu electronic" name="email" />
                         </div>
                 </div>
                 <hr>
@@ -134,7 +140,7 @@
                             <input type="date" class="form-control" />
                         </div>
                         <div class="col-md-6">
-                            <h5>Data finalització</h5>
+                            <h5>Data finalitzacio</h5>
                             <input type="date" class="form-control" />
                         </div>
                 </div>
@@ -149,13 +155,21 @@
                         <div class="col-md-6">
                             <h5>Centre</h5>
                             <select class="form-control" name="size">
-                                <option value="">Selecciona el centre</option>
+                            	<option>Selecciona el centre</option>
+                            	<% 
+                            	for(int i=0; i<llistaCentres.size(); i++) { 
+                            	%>
+	                                <option value="<%=llistaCentres.get(i) %>">
+	                                	<%=llistaCentres.get(i) %>
+	                                </option>
+                            <% 
+                            	} 
+                            %>
                             </select>
                         </div>
                 </div>
                 
                 </form>
-                
             
              <!-- /. PAGE INNER  -->
             </div>
@@ -166,7 +180,7 @@
     
              <div class="row">
                 <div class="col-lg-12" >
-                    &copy;  2017 yourdomain.com | Design by: Joan Espuñes, Sergi Fernàndez, Sisco Navarro, Thiago Hachikyan
+                    &copy;  2017 yourdomain.com | Design by: Joan Espu�es, Sergi Fernandez, Sisco Navarro, Thiago Hachikyan
                 </div>
         </div>
         </div>

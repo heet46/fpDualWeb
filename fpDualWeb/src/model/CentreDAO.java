@@ -107,6 +107,19 @@ public class CentreDAO {
 		String consultaSQL = "SELECT * FROM centre";
 		return gestorDB.consultaRegistres(consultaSQL);
 	}
+	
+	public List<String> nomsCentres() throws SQLException{
+		List<String> centres = new ArrayList<String>();
+		ResultSet rs = null;
+		String consultaSQL = "SELECT nom FROM centre";
+		
+		rs = gestorDB.consultaRegistres(consultaSQL);
+		
+		while(rs.next()){
+			centres.add(rs.getString(1));
+		}
+		return centres;
+	}
 
 	public void tancarCon() {
 		gestorDB.tancarConnexio();

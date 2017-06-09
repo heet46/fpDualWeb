@@ -97,6 +97,8 @@ public class AlumneDAO {
 		return alumnes;
 	}
 	
+	
+	
 	public void tancarConn(){
 		gestorDB.tancarConnexio();
 	}
