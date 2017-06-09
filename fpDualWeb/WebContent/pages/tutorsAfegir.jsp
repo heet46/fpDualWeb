@@ -41,7 +41,7 @@
 	String nif;
 	if(sesion.getAttribute("nif") == null){
 	
-		response.sendRedirect("pages/login.jsp");
+		response.sendRedirect("login.jsp");
 
 	}
 %>
@@ -117,7 +117,8 @@
                     </div>
                   <!-- /. ROW  --> 
                             <div class="row text-center pad-top">
-                                <form method="Post" action="fpDualWeb/afegirTutor">
+                                <form method="post" action="/fpDualWeb/afegirTutors">
+                                
                                     <table>
                                         <tr>
                                             <td>NIF: </td>

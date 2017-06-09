@@ -29,10 +29,10 @@
 	String nif;
 	if(sesion.getAttribute("nif") == null){
 	
-		response.sendRedirect("pages/login.jsp");
+		response.sendRedirect("login.jsp");
+
 	}
 %>
-
     <div id="wrapper">
          <div class="navbar navbar-inverse navbar-fixed-top">
             <div class="adjust-nav">
@@ -50,7 +50,7 @@
                 </div>
               
                 <span class="logout-spn" >
-                  <a href="login.html" style="color:#fff;">LOGOUT</a>  
+                  <a href="login.jsp" style="color:#fff;">LOGOUT</a>  
 
                 </span>
             </div>
@@ -98,17 +98,147 @@
  
                     </div>
                   <!-- /. ROW  --> 
-                    <form method="post" action="tutors.jsp">
-                        <table>
-                            <tr>
-                                <td>NIF tutor: </td>
-                                <td><input type="text" name="NIF" size="25"/></td>
-                            </tr>
-                            <tr>
-                                <th><input type="submit" name="Modificar"/></th>
-                            </tr>
-                        </table>
-                    </form>             
+                     <div class="container bootstrap snippet">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="main-box no-header clearfix">
+                                        <div class="main-box-body clearfix">
+                                            <div class="table-responsive">
+                                                <table class="table user-list">
+                                                    <thead>
+                                                        <tr>
+                                                        <th><span>Usuari</span></th>
+                                                        <th><span>NIF</span></th>
+                                                        <th><span>Data</span></th>
+                                                        <th class="text-center"><span>Estat</span></th>
+                                                        <th><span>E-mail</span></th>
+                                                        <th>&nbsp;</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>
+                                                                <img src="https://bootdey.com/img/Content/user_1.jpg" alt="">
+                                                                Pepito
+                                                            </td>
+                                                            <td>1234567A</td>
+                                                            <td>2013/08/12</td>
+                                                            <td class="text-center">
+                                                                <span class="label label-default">Pendent</span>
+                                                            </td>
+                                                            <td>
+                                                                marlon@brando.com
+                                                            </td>
+                                                            <td style="width: 20%;">
+                                                                <!--
+                                                                <a href="#" class="table-link">
+                                                                    <span class="fa-stack">
+                                                                        <i class="fa fa-square fa-stack-2x"></i>
+                                                                        <i class="fa fa-search-plus fa-stack-1x fa-inverse"></i>
+                                                                    </span>
+                                                                </a>
+                                                                -->
+                                                                <a href="tutorsModificar2.jsp" class="table-link">
+                                                                    <span class="fa-stack">
+                                                                        <i class="fa fa-square fa-stack-2x"></i>
+                                                                        <i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
+                                                                    </span>
+                                                                </a>
+                                                                <!--
+                                                                <a href="#" class="table-link danger">
+                                                                    <span class="fa-stack">
+                                                                        <i class="fa fa-square fa-stack-2x"></i>
+                                                                        <i class="fa fa-trash-o fa-stack-1x fa-inverse"></i>
+                                                                    </span>
+                                                                </a>
+                                                                -->
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <img src="https://bootdey.com/img/Content/user_3.jpg" alt="">
+                                                                Prova
+                                                            </td>
+                                                            <td>87654321S</td>
+                                                            <td>2013/08/12</td>
+                                                            <td class="text-center">
+                                                                <span class="label label-success">Actiu</span>
+                                                            </td>
+                                                            <td>
+                                                                marlon@brando.com
+                                                            </td>
+                                                            <td style="width: 20%;">
+                                                                <!--
+                                                                <a href="#" class="table-link">
+                                                                    <span class="fa-stack">
+                                                                        <i class="fa fa-square fa-stack-2x"></i>
+                                                                        <i class="fa fa-search-plus fa-stack-1x fa-inverse"></i>
+                                                                    </span>
+                                                                </a>
+                                                                -->
+                                                                <a href="tutorsModificar2.jsp" class="table-link">
+                                                                    <span class="fa-stack">
+                                                                        <i class="fa fa-square fa-stack-2x"></i>
+                                                                        <i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
+                                                                    </span>
+                                                                </a>
+                                                                <!--
+                                                                <a href="#" class="table-link danger">
+                                                                    <span class="fa-stack">
+                                                                        <i class="fa fa-square fa-stack-2x"></i>
+                                                                        <i class="fa fa-trash-o fa-stack-1x fa-inverse"></i>
+                                                                    </span>
+                                                                </a>
+                                                                -->
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <img src="https://bootdey.com/img/Content/user_2.jpg" alt="">
+                                                                Prova2
+                                                            </td>
+                                                            <td>54321678B</td>
+                                                            <td>2013/08/12</td>
+                                                            <td class="text-center">
+                                                                <span class="label label-danger">Inactiu</span>
+                                                            </td>
+                                                            <td>
+                                                                marlon@brando.com
+                                                            </td>
+                                                            <td style="width: 20%;">
+                                                                <!--
+                                                                <a href="#" class="table-link">
+                                                                    <span class="fa-stack">
+                                                                        <i class="fa fa-square fa-stack-2x"></i>
+                                                                        <i class="fa fa-search-plus fa-stack-1x fa-inverse"></i>
+                                                                    </span>
+                                                                </a>
+                                                                -->
+                                                                <a href="tutorsModificar2.jsp" class="table-link">
+                                                                    <span class="fa-stack">
+                                                                        <i class="fa fa-square fa-stack-2x"></i>
+                                                                        <i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
+                                                                    </span>
+                                                                </a>
+                                                                <!--
+                                                                <a href="#" class="table-link danger">
+                                                                    <span class="fa-stack">
+                                                                        <i class="fa fa-square fa-stack-2x"></i>
+                                                                        <i class="fa fa-trash-o fa-stack-1x fa-inverse"></i>
+                                                                    </span>
+                                                                </a>
+                                                                -->
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                  </div>             
                   <!-- /. ROW  --> 
     </div>
              <!-- /. PAGE INNER  -->
@@ -120,7 +250,7 @@
     
             <div class="row">
                 <div class="col-lg-12" >
-                  &copy;  2017 yourdomain.com | Design by: Joan Espu√±es, Sergi Fern√†ndez, Sisco Navarro, Thiago Hachikyan
+                  &copy;  2017 yourdomain.com | Design by: Joan EspuÒes, Sergi Fern‡ndez, Sisco Navarro, Thiago Hachikyan
                 </div>
             </div>
         </div>
