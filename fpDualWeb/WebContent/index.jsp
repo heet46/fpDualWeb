@@ -87,7 +87,7 @@
                 <ul class="nav" id="main-menu">
                  
                     <li class="active-link">
-                        <a href="index.html" ><i class="fa fa-desktop "></i>Inici </a>
+                        <a href="index.jsp" ><i class="fa fa-desktop "></i>Inici </a>
                     </li>
                     <li>
                         <a href="pages/alumnes.jsp"><i class="fa fa-graduation-cap "></i>Alumnes</a>
@@ -97,10 +97,10 @@
                     </li>
 
                     <li>
-                        <a href="pages/centre.html"><i class="fa fa-university "></i>Centres </a>
+                        <a href="pages/centre.jsp"><i class="fa fa-university "></i>Centres </a>
                     </li>
                     <li>
-                        <a href="pages/activitats.html"><i class="fa fa-list "></i>Activitats</a>
+                        <a href="pages/activitats.jsp"><i class="fa fa-list "></i>Activitats</a>
                     </li>
                 </ul>
             </div>
@@ -160,7 +160,7 @@
                   </div>
                   <div class="col-lg-3 col-md-2 col-sm-2 col-xs-6">
                       <div class="div-square">
-                           <a href="pages/activitats.html" >
+                           <a href="pages/activitats.jsp" >
  <i class="fa fa-list fa-5x"></i>
                       <h4>Activitats</h4>
                       </a>
