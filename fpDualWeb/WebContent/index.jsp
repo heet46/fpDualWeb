@@ -1,5 +1,6 @@
 <%@ page import="controlador.*" %>
 <%@ page import="model.*" %>
+<%@ page import="servlet.*" %>
 
 
 <!DOCTYPE html>
@@ -14,9 +15,8 @@
      <!-- FONTAWESOME STYLES-->
     <link href="assets/css/font-awesome.css" rel="stylesheet" />
         <!-- CUSTOM STYLES-->
-
     <link href="assets/css/bootstrap-theme.css" rel="stylesheet" />
-
+   
     <link href="assets/css/bootstrap-theme.min.css" rel="stylesheet" />
 
     <link href="assets/css/bootstrap.min.css" rel="stylesheet" />

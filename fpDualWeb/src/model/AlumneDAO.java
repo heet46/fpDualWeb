@@ -56,7 +56,6 @@ public class AlumneDAO {
 		String consultaSQL="SELECT u.id_usuari, u.nom, u.primer_cognom FROM usuari AS u, alumne AS a WHERE a.id_usuari=u.id_usuari";
 		ResultSet rs = null;
 		List<String> dades = new ArrayList<String>();
-		int i=0;
 		try {
 			rs = gestorDB.consultaRegistres(consultaSQL);
 			while (rs.next()) {
@@ -70,6 +69,32 @@ public class AlumneDAO {
 			e.printStackTrace();
 		}
 		return dades;
+	}
+	
+	public List<Alumne> llistaTotsAlumnes() throws SQLException{
+		List<Alumne> alumnes = new ArrayList<Alumne>();
+		ResultSet rs = null;
+		String consultaSQL = "SELECT u.id_usuari, u.nom AS nom_alumne, u.primer_cognom, c.Nom AS nom_centre, u2.nom AS nom_tutor "
+				+ "FROM usuari AS u, usuari AS u2, alumne AS a, centre AS c "
+				+ "WHERE u2.id_usuari=a.id_tutor AND u.id_usuari=a.id_usuari AND c.Id_centre=a.id_centre";
+		
+		rs = gestorDB.consultaRegistres(consultaSQL);
+		
+		while(rs.next()){
+			Alumne alumne = new Alumne();
+			Centre centre = new Centre();
+			Tutor tutor = new Tutor();
+			alumne.setIdUsuari(rs.getInt(1));
+			alumne.setNom(rs.getString(2));
+			alumne.setCognom1(rs.getString(3));
+			centre.setNom(rs.getString(4));
+			alumne.setCentre(centre);
+			tutor.setNom(rs.getString(5));
+			alumne.setTutor(tutor);
+			alumnes.add(alumne);
+		}
+		
+		return alumnes;
 	}
 	
 	public void tancarConn(){

@@ -1,3 +1,8 @@
+<%@ page import="controlador.*" %>
+<%@ page import="model.*" %>
+<%@ page import="servlet.*" %>
+<%@ page import="java.util.*" %>
+
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -22,9 +27,17 @@
    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
 </head>
 <body>
-     
-           
-          
+<%
+	HttpSession sesion=request.getSession(); 
+	String nif;
+	if(sesion.getAttribute("nif") == null){	
+		response.sendRedirect("pages/login.jsp");
+	}
+%>     
+<%
+	AlumneDAO aDAO = new AlumneDAO();
+	List<Alumne> llistaAlumnes = aDAO.llistaTotsAlumnes();
+%>    
     <div id="wrapper">
          <div class="navbar navbar-inverse navbar-fixed-top">
             <div class="adjust-nav">
@@ -40,7 +53,7 @@
                 </div>
            
                 <span class="logout-spn" >                
-	                <form method="post" action="Logout" name="logoutForm">
+	                <form method="post" action="../Logout" name="logoutForm">
 						<a href="javascript: submitform()" style="color:#fff;">LOGOUT</a>
 					</form>
 					<script type="text/javascript">
@@ -104,37 +117,23 @@
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>1</td>
-                                    <td>Mark</td>
-                                    <td>Otto</td>
-                                    <td>@mdo</td>
-                                    <td>Otto</td>
-                                    <td><a href="#" class="btn btn-primary">Veure</a></td>
-                                </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td>Jacob</td>
-                                    <td>Thornton</td>
-                                    <td>@fat</td>
-                                    <td>Otto</td>
-                                    <td><a href="#" class="btn btn-primary">Veure</a></td>
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Mark</td>
-                                    <td>Otto</td>
-                                    <td>@mdo</td>
-                                    <td>Otto</td>
-                                    <td><a href="#" class="btn btn-primary">Veure</a></td>
-                                </tr>
-                                <tr>
-                                    <td>3</td>
-                                    <td>Larry</td>
-                                    <td>the Bird</td>
-                                    <td>@twitter</td>
-                                    <td>Otto</td>
-                                    <td><a href="#" class="btn btn-primary">Veure</a></td>
-                                </tr>
+									<%
+										for (Alumne alumne : llistaAlumnes) {
+									%>
+									<td><%=alumne.getIdUsuari()%></td>
+									<td><%=alumne.getNom()%></td>
+									<td><%=alumne.getCognom1()%></td>
+									<td><%=alumne.getTutor().getNom()%></td>
+									<td><%=alumne.getCentre().getNom()%></td>
+									<td><a href="#" class="btn btn-primary">Veure</a></td>
+
+							
+								</tr>
+								<%
+									}
+									
+								%>
+                                
                             </tbody>
                         </table>
 
