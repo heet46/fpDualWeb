@@ -47,9 +47,15 @@
                     
                 </div>
               
-                <span class="logout-spn" >
-                  <a href="login.html" style="color:#fff;">LOGOUT</a>  
-
+                <span class="logout-spn" >                
+	                <form method="post" action="Logout" name="logoutForm">
+						<a href="javascript: submitform()" style="color:#fff;">LOGOUT</a>
+					</form>
+					<script type="text/javascript">
+						function submitform(){
+						  document.logoutForm.submit();
+						}
+					</script>
                 </span>
             </div>
         </div>

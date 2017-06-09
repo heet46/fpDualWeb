@@ -34,14 +34,20 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="../index.html">
+                    <a class="navbar-brand" href="../index.jsp">
                         <img src="../assets/img/logo.png" height="50px" />
                     </a>
                 </div>
-              
-                 <span class="logout-spn" >
-                  <a href="#" style="color:#fff;">LOGOUT</a>  
-
+           
+                <span class="logout-spn" >                
+	                <form method="post" action="Logout" name="logoutForm">
+						<a href="javascript: submitform()" style="color:#fff;">LOGOUT</a>
+					</form>
+					<script type="text/javascript">
+						function submitform(){
+						  document.logoutForm.submit();
+						}
+					</script>
                 </span>
             </div>
         </div>
@@ -51,14 +57,14 @@
                 <ul class="nav" id="main-menu">
                  
                     <li>
-                        <a href="../index.html" ><i class="fa fa-desktop "></i>Inici </a>
+                        <a href="../index.jsp" ><i class="fa fa-desktop "></i>Inici </a>
                     </li>
 
                     <li class="active-link">
                         <a href="#"><i class="fa fa-graduation-cap "></i>Alumnes</a>
                     </li>
                     <li>
-                        <a href="tutors.html"><i class="fa fa-book"></i>Tutors</a>
+                        <a href="tutors.jsp"><i class="fa fa-book"></i>Tutors</a>
                     </li>
 
                     <li>
@@ -144,7 +150,7 @@
     
              <div class="row">
                 <div class="col-lg-12" >
-                    &copy;  2017 yourdomain.com | Design by: Joan Espuñes, Sergi Fernàndez, Sisco Navarro, Thiago Hachikyan
+                    &copy;  2017 yourdomain.com | Design by: Joan Espu�es, Sergi Fernandez, Sisco Navarro, Thiago Hachikyan
                 </div>
         </div>
         </div>
