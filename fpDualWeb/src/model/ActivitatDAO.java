@@ -15,15 +15,15 @@ public class ActivitatDAO {
 		gestorDB = new GestorDB(Constants.SERVER, Constants.PORT, Constants.BD);
 	}
 	
-	public void altaActivitat(String codi, String desc){
-		String consultaSQL = "INSERT INTO ACTIVITAT(CODI, DESCRIPCIO) VALUES('"+codi+"', '"+desc+"')";
+	public void altaActivitat(Activitat activitat){
+		String consultaSQL = "INSERT INTO ACTIVITAT(CODI, DESCRIPCIO) VALUES('"+activitat.getCodi()+"', '"+activitat.getDescripcio()+"')";
 		if(gestorDB.modificarRegistre(consultaSQL)!=0){
 			System.out.println("Alta realitzada amb èxit");
 		}
 	}
 	
-	public void baixaActivitat(int id){
-		String consultaSQL = "DELETE FROM ACTIVITAT WHERE ID_ACTIVITAT="+id+"";
+	public void baixaActivitat(Activitat activitat){
+		String consultaSQL = "DELETE FROM ACTIVITAT WHERE ID_ACTIVITAT="+activitat.getId()+"";
 		if(gestorDB.modificarRegistre(consultaSQL)!=0){
 			System.out.println("Baixa realitzada amb èxit");
 		}else{

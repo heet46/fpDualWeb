@@ -2,15 +2,23 @@ package model;
 
 public class Activitat {
 	
+	private String id;
 	private String codi;
 	private String descripcio;
 	
-	public Activitat(String codi, String descripcio) {
+	public Activitat(String codi, String descripcio, String id) {
 		super();
+		this.id =id;
 		this.codi = codi;
 		this.descripcio = descripcio;
 	}
 	
+	public String getId(){
+		return id;
+	}
+	public void setId(String id){
+		this.id = id;
+	}
 	public String getCodi() {
 		return codi;
 	}
