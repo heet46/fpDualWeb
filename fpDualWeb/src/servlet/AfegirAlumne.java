@@ -86,6 +86,11 @@ public class AfegirAlumne extends HttpServlet {
 		centre.setNom(sCentre);
 		
 		CentreDAO cDAO = new CentreDAO();
+		try{
+			idCentre = cDAO.idCentre(sCentre);
+		}catch( SQLException e){
+			e.printStackTrace();
+		}
 		Alumne alumne = new Alumne();
 		AlumneDAO aDAO = new AlumneDAO();
 		

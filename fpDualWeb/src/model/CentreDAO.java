@@ -121,7 +121,7 @@ public class CentreDAO {
 		return centres;
 	}
 	
-	public int idTutor(String nom) throws SQLException{
+	public int idCentre(String nom) throws SQLException{
 		int id=0;
 		ResultSet rs = null;
 		String consultaSQL = "SELECT c.Id_centre "
