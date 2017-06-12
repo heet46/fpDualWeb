@@ -77,6 +77,20 @@ public class TutorDAO {
 		return tutors;
 	}
 	
+	public int idTutor(String nom) throws SQLException{
+		int id=0;
+		ResultSet rs = null;
+		String consultaSQL = "SELECT t.id_usuari "
+				+ "FROM tutor AS t, usuari AS u "
+				+ "WHERE u.id_usuari=t.id_usuari AND u.nom='"+nom+"'";
+		rs = g.consultaRegistres(consultaSQL);
+		
+		while(rs.next()){
+			id = rs.getInt(1);
+		}
+		return id;
+	}
+	
 	public void tancarConn(){
 		g.tancarConnexio();
 	}

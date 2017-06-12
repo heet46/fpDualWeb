@@ -1,5 +1,7 @@
 package model;
 
+import java.util.Date;
+
 public class Alumne extends Usuari {
 
 	private String dataInici;

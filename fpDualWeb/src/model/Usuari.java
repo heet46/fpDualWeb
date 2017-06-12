@@ -1,5 +1,7 @@
 package model;
 
+import java.util.Date;
+
 public class Usuari {
 
 	private int idUsuari;
@@ -8,7 +10,7 @@ public class Usuari {
 	private String nom;
 	private String cognom1;
 	private String cognom2;
-	private String dataAlta;
+	private Date dataAlta;
 	private String mail;
 	
 	public Usuari() {}
@@ -62,10 +64,10 @@ public class Usuari {
 	public void setCognom2(String cognom2) {
 		this.cognom2 = cognom2;
 	}
-	public String getDataAlta() {
+	public Date getDataAlta() {
 		return dataAlta;
 	}
-	public void setDataAlta(String dataAlta) {
+	public void setDataAlta(Date dataAlta) {
 		this.dataAlta = dataAlta;
 	}
 	public String getMail() {

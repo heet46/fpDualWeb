@@ -111,7 +111,7 @@
                      <h4>Formulari d'alta alumnes </h4>
                     </div>
                 </div>  
-                <form>
+                <form method="post" action="../AfegirAlumne" name="afgAlumne">
                 <div class="row">
                         <div class="col-md-6">
                             <input type="text" class="form-control" placeholder="D.N.I." name="dni" />
@@ -139,19 +139,19 @@
                 <div class="row">
                         <div class="col-md-6">
                             <h5>Data inicial</h5>
-                            <input type="date" class="form-control" />
+                            <input type="date" class="form-control" name="dataInici" />
                         </div>
                         <div class="col-md-6">
                             <h5>Data finalitzacio</h5>
-                            <input type="date" class="form-control" />
+                            <input type="date" class="form-control"  name="dataFinal" />
                         </div>
                 </div>
                 <hr>
                 <div class="row">
                         <div class="col-md-6">
                             <h5>Tutor</h5>
-                            <select class="form-control" name="size">
-                            	<option>Selecciona el tutor</option>
+                            <select class="form-control" name="tutor">
+                            	<option selected>Selecciona el tutor</option>
                             	<% 
                             	for(int i=0; i<llistaTutors.size(); i++) { 
                             	%>
@@ -165,8 +165,8 @@
                         </div>
                         <div class="col-md-6">
                             <h5>Centre</h5>
-                            <select class="form-control" name="size">
-                            	<option>Selecciona el centre</option>
+                            <select class="form-control" name="centre">
+                            	<option selected>Selecciona el centre</option>
                             	<% 
                             	for(int i=0; i<llistaCentres.size(); i++) { 
                             	%>
@@ -179,8 +179,17 @@
                             </select>
                         </div>
                 </div>
+                <hr>
+                <div class="row">
+                	<center><a href="javascript: submitform()" class="btn btn-primary">AFEGIR ALUMNE</a></center>                
+                </div>
                 
                 </form>
+                <script type="text/javascript">
+						function submitform(){
+						  document.afgAlumne.submit();
+						}
+				</script>
             
              <!-- /. PAGE INNER  -->
             </div>
