@@ -95,18 +95,7 @@
                 </div>              
                  <!-- /. ROW  -->
                   <hr />
-                
-                <!--
-                <div class="row">
-                    <div class="col-lg-12 ">
-                        <div class="alert alert-info">
-                             <strong>Benvingut (usuari)! </strong>
-                        </div>
-                       
-                    </div>
- 
-                    </div>
-                -->
+              
                   <!-- /. ROW  --> 
                 <div class="row text-center pad-top">
                   <div class="col-lg-3 col-md-2 col-sm-2 col-xs-6">
