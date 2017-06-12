@@ -1,5 +1,6 @@
 package model;
 
+import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -70,6 +71,17 @@ public class UsuariDAO {
 			System.out.println("Error consulta ID");
 		}
 		return id;
+	}
+	
+	public Date consultarData(String nif) throws SQLException{
+		Date data;
+		String consultaSQL="SELECT data_alta "
+				+ "FROM usuari "
+				+ "WHERE NIF='"+nif+"';";
+		ResultSet rs=null;
+		gestorDB.consultaRegistres(consultaSQL);
+		data=rs.getDate(1);
+		return data;
 	}
 	
 
