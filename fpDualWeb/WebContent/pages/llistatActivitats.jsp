@@ -121,7 +121,6 @@
 									<td><%=activitat.getDescripcio()%></td>
 									<td><a href="#" class="btn btn-primary">Veure</a></td>
 
-							
 								</tr>
 								<%
 									}

@@ -70,6 +70,5 @@ public class Activitat {
 	@Override
 	public String toString() {
 		return "Activitat [codi=" + codi + ", descripcio=" + descripcio + "]";
-	}
-	
+	}	
 }
