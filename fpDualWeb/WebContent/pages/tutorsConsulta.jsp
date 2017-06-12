@@ -1,5 +1,9 @@
-<%@page import="model.*" %>
-<%@page import="java.util.*" %>
+<%@page import="model.UsuariDAO" %>
+<%@page import="model.Usuari" %>
+<%@page import="model.TutorDAO" %>
+<%@page import="java.util.List" %>
+<%@page import="java.sql.Date" %>
+<%@page import="java.text.*" %>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -116,7 +120,7 @@
                                                         <tr>
                                                         <th><span>Usuari</span></th>
                                                         <th><span>NIF</span></th>
-                                                        <th><span>Data</span></th>
+                                                        <th><span>Cognom</span></th>
                                                         <th class="text-center"><span>Estat</span></th>
                                                         <th><span>E-mail</span></th>
                                                         <th>&nbsp;</th>
@@ -127,6 +131,7 @@
                                                         	TutorDAO tDAO=new TutorDAO();
                                                         	UsuariDAO uDAO=new UsuariDAO();
                                                         	List<Usuari> usu=tDAO.consultaTutor();
+                                                        	DateFormat formatter=new SimpleDateFormat("yyyy-MM-dd");
                                                         	response.setContentType("text/html");
                                                         	for(Usuari u:usu){
                                                         		out.println("<tr>");
@@ -137,7 +142,7 @@
                                                         		out.println(u.getNIF());
                                                         		out.println("</td>");
                                                         		out.println("<td>");
-                                                        		out.println(uDAO.consultarData(u.getNIF()).toString());
+                                                        		out.println(u.getCognom1());
                                                         		out.println("</td>");
                                                         		out.println("<td class=\"text-center\">");
                                                         		out.println("<span class=\"label label-default\">Pendent</span>");

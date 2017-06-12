@@ -5,8 +5,8 @@ public class Tutor extends Usuari{
 	String tecnologia;
 	Usuari u=new Usuari();
 	public Tutor(int id_usuari, String tecnologia) {
-		super.setIdUsuari(u.getIdUsuari());
 		this.tecnologia = tecnologia;
+		this.id_usuari=id_usuari;
 	}
 	
 	
@@ -52,7 +52,7 @@ public class Tutor extends Usuari{
 
 
 	public int getId_usuari() {
-		return super.getIdUsuari();
+		return id_usuari;
 	}
 	public void setId_usuari(int id_usuari) {
 		this.id_usuari = id_usuari;
