@@ -109,7 +109,7 @@
                 -->
                   <!-- /. ROW  --> 
                 <div class="row text-center pad-top">
-                  <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
+                  <div class="col-lg-3 col-md-2 col-sm-2 col-xs-6">
                       <div class="div-square">
                            <a href="afegirAlumne.jsp" >
                         <i class="fa fa-user-plus fa-5x" aria-hidden="true"></i>
@@ -120,7 +120,7 @@
                      
                   </div> 
                  
-                  <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
+                  <div class="col-lg-3 col-md-2 col-sm-2 col-xs-6">
                       <div class="div-square">
                            <a href="modificarAlumne.jsp" >
                         <i class="fa fa-pencil fa-5x" aria-hidden="true"></i>
@@ -130,7 +130,7 @@
                      
                      
                   </div>
-                  <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
+                  <div class="col-lg-3 col-md-2 col-sm-2 col-xs-6">
                       <div class="div-square">
                            <a href="llistatAlumnes.jsp" >
                      <i class="fa fa-list fa-5x"></i>
@@ -139,7 +139,7 @@
                       </div>
                   </div>
                   
-                  <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
+                  <div class="col-lg-3 col-md-2 col-sm-2 col-xs-6">
                       <div class="div-square">
                            <a href="eliminarAlumne.jsp" >
                         <i class="fa fa-user-times fa-5x" aria-hidden="true"></i>
@@ -149,7 +149,7 @@
                      
                      
                   </div>
-                  
+                  <!-- 
                   <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
                       <div class="div-square">
                            <a href="blank.html" >
@@ -158,6 +158,7 @@
                       </a>
                       </div>
                   </div>
+                   -->
               </div>
               
               
