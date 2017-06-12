@@ -77,5 +77,21 @@ public class ActivitatDAO {
 			System.err.println("Error llistat");
 		}
 		return dades;
-	} 
+	}
+	
+	public List<Activitat> llistaTotesActivitats() throws SQLException{
+		ResultSet rs;
+		List<Activitat> activitats = new ArrayList<Activitat>();
+		String sentencia = "SELECT * FROM ACTIVITAT";
+		rs = gestorDB.consultaRegistres(sentencia);
+		while(rs.next()){
+			Activitat activitat = new Activitat();
+			activitat.setId(rs.getString(1));
+			activitat.setCodi(rs.getString(2));
+			activitat.setDescripcio(rs.getString(3));
+			activitats.add(activitat);
+		}
+		return activitats;
+	}
+	
 }

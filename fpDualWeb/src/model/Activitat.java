@@ -6,6 +6,10 @@ public class Activitat {
 	private String codi;
 	private String descripcio;
 	
+	public Activitat() {
+		super();
+	}
+	
 	public Activitat(String codi, String descripcio, String id) {
 		super();
 		this.id =id;
