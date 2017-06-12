@@ -7,7 +7,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <script src="https://use.fontawesome.com/d43d49ce33.js"></script>
-    <meta charset="utf-8" />
+    <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Registre d'hores</title>
 	<!-- BOOTSTRAP STYLES-->
@@ -121,13 +121,13 @@
                 
                 <div class="row">
                     <div class="col-lg-12 ">
-                        <div class="alert alert-info">
+                        <div class="alert alert-info" id="alerta">
                         	<span class="closebtn"><font size="8pt">&times;</font></span> 
                              &nbsp;Benvingut <strong><%=usuNif %>! </strong>
                         </div>                     
                     </div>
                 </div>
-                
+
 <script>
 var close = document.getElementsByClassName("closebtn");
 var i;
@@ -140,6 +140,7 @@ for (i = 0; i < close.length; i++) {
 	}
 }
 </script>
+
                   <!-- /. ROW  --> 
                             <div class="row text-center pad-top">
                   <div class="col-lg-3 col-md-2 col-sm-2 col-xs-6">
@@ -186,15 +187,7 @@ for (i = 0; i < close.length; i++) {
                   
               </div>
                  <!-- /. ROW  -->   
-				  <div class="row">
-                    <div class="col-lg-12 ">
-					<br/>
-                        <div class="alert alert-danger">
-                             <strong>Want More Icons Free ? </strong> Checkout fontawesome website and use any icon <a target="_blank" href="http://fortawesome.github.io/Font-Awesome/icons/">Click Here</a>.
-                        </div>
-                       
-                    </div>
-                    </div>
+				  
                   <!-- /. ROW  --> 
     </div>
              <!-- /. PAGE INNER  -->
@@ -206,7 +199,7 @@ for (i = 0; i < close.length; i++) {
     
              <div class="row">
                 <div class="col-lg-12" >
-                    &copy;  2017 yourdomain.com | Design by: Joan Espuñes, Sergi Fernàndez, Sisco Navarro, Thiago Hachikyan
+                    &copy;  2017 Indra Software Labs | Design by: Joan Espunyes, Sergi Fernandez, Sisco Navarro, Thiago Hachikyan
                 </div>
         </div>
         </div>
@@ -215,8 +208,8 @@ for (i = 0; i < close.length; i++) {
      <!-- /. WRAPPER  -->
     <!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
     <!-- JQUERY SCRIPTS -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script src="../assets/js/bootstrap.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js">    
+	<script src="../assets/js/bootstrap.min.js"></script>
     <script src="../assets/js/custom.js"></script>
     
    

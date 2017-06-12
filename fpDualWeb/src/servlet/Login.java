@@ -34,7 +34,6 @@ public class Login extends HttpServlet {
 	        
 	        usu.setNIF(usuari);
 	        usu.setPasswd(pass);
-	        System.out.println(usuari+" "+pass);
 	        List<String> llista = uDAO.validarLogin(usu);
 
 	        //deberíamos buscar el usuario en la base de datos, pero dado que se escapa de este tema, ponemos un ejemplo en el mismo código
@@ -49,7 +48,6 @@ public class Login extends HttpServlet {
 		            Cookie userName = new Cookie("usuari", usuari);
 		            userName.setMaxAge(30*60);
 		            
-		            System.out.println(session.getAttribute("nif")+" "+userName.getValue());
 		            response.addCookie(userName);
 		            
 		            //redirijo a página con información de login exitoso	            
@@ -64,21 +62,7 @@ public class Login extends HttpServlet {
 		        //rd.include(request, response);
 	        }
 	    }
-	    
-	   //método encargado de la gestión del método GET
-	    protected void doGET(HttpServletRequest request, HttpServletResponse response)
-	            throws ServletException, IOException {
-	        
-	        //me llega la url "proyecto/login/out"
-	        String action=(request.getPathInfo()!=null?request.getPathInfo():"");
-	        HttpSession sesion = request.getSession();
-	        if(action.equals("/out")){
-	            sesion.invalidate();
-	            response.sendRedirect("/home.jsp");
-	        }else{
-	           
-	        }
-	    }
+	 
 	}
 
 
