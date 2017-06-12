@@ -19,10 +19,10 @@ public class AlumneDAO {
 
 		
 		String consultaSQL = "INSERT INTO alumne(id_usuari,data_inici,data_fi,id_centre,id_tutor) "
-				+ "SELECT id_usuari, '"+alumne.getDataInici()+"','"+alumne.getDataFi()+"', "+alumne.centre.getIdCentre()+", "+alumne.tutor.getId_usuari()+" "
+				+ "SELECT id_usuari, '"+alumne.getDataInici()+"','"+alumne.getDataFi()+"', "+alumne.centre.getIdCentre()+", "+alumne.tutor.id_usuari+" "
 				+ "FROM usuari WHERE NIF LIKE '"+alumne.getNIF()+"'";
 		System.out.println(consultaSQL);
-		//gestorDB.modificarRegistre(consultaSQL);
+		gestorDB.modificarRegistre(consultaSQL);
 		
 	}
 	

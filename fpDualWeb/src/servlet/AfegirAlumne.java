@@ -78,6 +78,7 @@ public class AfegirAlumne extends HttpServlet {
 		TutorDAO tDAO = new TutorDAO();
 		try {
 			idTutor = tDAO.idTutor(sTutor);
+			tutor.setId_usuari(idTutor);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -88,6 +89,7 @@ public class AfegirAlumne extends HttpServlet {
 		CentreDAO cDAO = new CentreDAO();
 		try{
 			idCentre = cDAO.idCentre(sCentre);
+			centre.setIdCentre(idCentre);
 		}catch( SQLException e){
 			e.printStackTrace();
 		}
@@ -101,6 +103,7 @@ public class AfegirAlumne extends HttpServlet {
 		alumne.setTutor(tutor);
 		
 		aDAO.altaAlumne(alumne);
+        response.sendRedirect("pages/alumnes.jsp");
 
 	}
 

@@ -54,6 +54,7 @@
 		}
 	}
 %>
+
     <div id="wrapper">
          <div class="navbar navbar-inverse navbar-fixed-top">
             <div class="adjust-nav">
@@ -112,19 +113,33 @@
             <div id="page-inner">
                 <div class="row">
                     <div class="col-lg-12">
-                     <h2>PANELL DE CONTROL</h2>   
+                     <h2>Panell de control</h2>   
                     </div>
                 </div>              
                  <!-- /. ROW  -->
                   <hr />
+                
                 <div class="row">
                     <div class="col-lg-12 ">
                         <div class="alert alert-info">
-                             <strong>Benvingut <%=usuNif %>! </strong>
-                        </div>
-                       
+                        	<span class="closebtn"><font size="8pt">&times;</font></span> 
+                             &nbsp;Benvingut <strong><%=usuNif %>! </strong>
+                        </div>                     
                     </div>
-                    </div>
+                </div>
+                
+<script>
+var close = document.getElementsByClassName("closebtn");
+var i;
+
+for (i = 0; i < close.length; i++) {
+	close[i].onclick = function(){
+		var div = this.parentElement;
+		div.style.opacity = "0";
+		setTimeout(function(){ div.style.display = "none"; }, 600);
+	}
+}
+</script>
                   <!-- /. ROW  --> 
                             <div class="row text-center pad-top">
                   <div class="col-lg-3 col-md-2 col-sm-2 col-xs-6">
