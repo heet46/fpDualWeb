@@ -22,8 +22,8 @@
     <link href="../assets/css/custom.css" rel="stylesheet" />
      <!-- GOOGLE FONTS-->
     <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
-    
-    <script type="text/javascript">
+      
+     <script type="text/javascript">
     function nif(dni) {
      numero = dni.substr(0,dni.length-1);
      let = dni.substr(dni.length-1,1);
