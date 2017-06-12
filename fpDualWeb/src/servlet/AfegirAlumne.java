@@ -1,6 +1,7 @@
 package servlet;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -16,7 +17,9 @@ import javax.servlet.http.HttpServletResponse;
 import model.Alumne;
 import model.AlumneDAO;
 import model.Centre;
+import model.CentreDAO;
 import model.Tutor;
+import model.TutorDAO;
 import model.Usuari;
 import model.UsuariDAO;
 
@@ -47,6 +50,9 @@ public class AfegirAlumne extends HttpServlet {
 		String sCentre = request.getParameter("centre");
 		String sDataInici = request.getParameter("dataInici");
 		String sDataFinal = request.getParameter("dataFinal");
+		int idTutor = 0;
+		int idCentre = 0;
+		
 
 		StringTokenizer st = new StringTokenizer(cognoms);
 		while(st.hasMoreTokens()){
@@ -69,9 +75,17 @@ public class AfegirAlumne extends HttpServlet {
 		Tutor tutor = new Tutor();
 		tutor.setNom(sTutor);
 
+		TutorDAO tDAO = new TutorDAO();
+		try {
+			idTutor = tDAO.idTutor(sTutor);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
 		Centre centre = new Centre();
 		centre.setNom(sCentre);
 		
+		CentreDAO cDAO = new CentreDAO();
 		Alumne alumne = new Alumne();
 		AlumneDAO aDAO = new AlumneDAO();
 		

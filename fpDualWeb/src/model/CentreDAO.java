@@ -120,6 +120,20 @@ public class CentreDAO {
 		}
 		return centres;
 	}
+	
+	public int idTutor(String nom) throws SQLException{
+		int id=0;
+		ResultSet rs = null;
+		String consultaSQL = "SELECT c.Id_centre "
+				+ "FROM centre AS c "
+				+ "WHERE c.Nom='"+nom+"'";
+		rs = gestorDB.consultaRegistres(consultaSQL);
+		
+		while(rs.next()){
+			id = rs.getInt(1);
+		}
+		return id;
+	}
 
 	public void tancarCon() {
 		gestorDB.tancarConnexio();
