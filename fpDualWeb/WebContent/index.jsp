@@ -76,7 +76,7 @@
                     <a class="navbar-brand" href="#">
                         <img src="assets/img/logo.png" height="50px"/>
                     </a>
-                </div>
+                </div> 
               
                 <span class="logout-spn" >                
 	                <form method="post" action="Logout" name="logoutForm">
