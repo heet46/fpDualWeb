@@ -111,7 +111,7 @@
                                     <th>Detalls</th>
                                 </tr>
                             </thead>
-                            <tbody>
+                            <tbody> 
                                 <tr>
 									<%
 										for (Activitat activitat : llistaActivitats) {
@@ -119,7 +119,7 @@
 									<td><%=activitat.getId()%></td>
 									<td><%=activitat.getCodi()%></td>
 									<td><%=activitat.getDescripcio()%></td>
-									<td><a href="#" class="btn btn-primary">Veure</a></td>
+									<td><a href="" class="btn btn-primary">Veure</a></td>
 
 								</tr>
 								<%

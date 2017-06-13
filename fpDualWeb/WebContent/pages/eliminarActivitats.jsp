@@ -24,6 +24,7 @@
     <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
 </head>
 <body>
+
     <div id="wrapper">
          <div class="navbar navbar-inverse navbar-fixed-top">
             <div class="adjust-nav">
@@ -123,7 +124,7 @@
                                     <td>4</td>
                                     <td>PRV</td>
                                     <td>Prova</td>
-                                    <td><a href="eliminarActivitatsDefinitiu.jsp" class="btn btn-danger">Eliminar</a></td>
+                                    <td><a href="eliminarActivitatsDefinitiu.jsp" class="btn btn-danger"  data-confirm="Vols esborrar aquesta activitat?">Eliminar</a></td>
                                 </tr>
                             </tbody>
                         </table>
@@ -173,7 +174,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="../assets/js/bootstrap.min.js"></script>
     <script src="../assets/js/custom.js"></script>
-
+	<script src="../assets/js/confirm.js"></script>
     
    
 </body>
