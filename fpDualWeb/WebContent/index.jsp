@@ -24,10 +24,20 @@
     <link href="assets/css/bootstrap-theme.min.css" rel="stylesheet" />
     
     <link href="assets/css/custom.css" rel="stylesheet" />
-
+    
 
      <!-- GOOGLE FONTS-->
    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
+   
+    <script src="assets/js/jquery-3.2.1.min.js"></script>
+
+	<script type="text/javascript">
+		$(document).ready(function() {
+    		setTimeout(function() {
+        	$(".content").fadeOut(1500);
+    		},1500);
+		});
+	</script>
 </head>
 <body>
 <!-- Permetre acces nomes si hi ha una sessio -->
@@ -35,7 +45,6 @@
 	HttpSession sesion=request.getSession(); 
 	String nif;
 	if(sesion.getAttribute("nif") == null){
-	
 		response.sendRedirect("pages/login.jsp");
 
 	}else{
@@ -67,7 +76,6 @@
                     <a class="navbar-brand" href="#">
                         <img src="assets/img/logo.png" height="50px"/>
                     </a>
-                    
                 </div>
               
                 <span class="logout-spn" >                
@@ -118,28 +126,15 @@
                 </div>              
                  <!-- /. ROW  -->
                   <hr />
-                
+              
                 <div class="row">
                     <div class="col-lg-12 ">
-                        <div class="alert alert-info" id="alerta">
-                        	<span class="closebtn"><font size="8pt">&times;</font></span> 
+                        <div class="alert alert-info content" id="alerta">
                              &nbsp;Benvingut <strong><%=usuNif %>! </strong>
                         </div>                     
                     </div>
                 </div>
 
-<script>
-var close = document.getElementsByClassName("closebtn");
-var i;
-
-for (i = 0; i < close.length; i++) {
-	close[i].onclick = function(){
-		var div = this.parentElement;
-		div.style.opacity = "0";
-		setTimeout(function(){ div.style.display = "none"; }, 600);
-	}
-}
-</script>
 
                   <!-- /. ROW  --> 
                             <div class="row text-center pad-top">
@@ -208,7 +203,7 @@ for (i = 0; i < close.length; i++) {
      <!-- /. WRAPPER  -->
     <!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
     <!-- JQUERY SCRIPTS -->
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js">    
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>    
 	<script src="../assets/js/bootstrap.min.js"></script>
     <script src="../assets/js/custom.js"></script>
     

@@ -43,11 +43,11 @@
                         <img src="../assets/img/logo.png" height="50px"/>
 
                     </a>
-                    
+                   
                 </div>
               
                 <span class="logout-spn" >                
-	                <form method="post" action="Logout" name="logoutForm">
+	                <form method="post" action="../Logout" name="logoutForm">
 						<a href="javascript: submitform()" style="color:#fff;">LOGOUT</a>
 					</form>
 					<script type="text/javascript">
