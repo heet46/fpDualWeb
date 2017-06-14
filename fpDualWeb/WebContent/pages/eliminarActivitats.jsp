@@ -122,7 +122,7 @@
 
 								</tr>
 								<%
-								int id = Integer.parseInt(activitat.getId());
+								String id = activitat.getId();
 									}
 									
 								%>
@@ -171,6 +171,19 @@
     <!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
     <!-- JQUERY SCRIPTS -->
     <!-- CUSTOM SCRIPTS -->
+    <script>
+    var btns = document.querySelector('.boto');
+
+    Array.prototype.forEach.call(btns, function addClickListener(btn) {
+      btn.addEventListener('click', function(event) {
+        <% Activitat act = new Activitat();
+        	act.setId("22");
+        	aDAO.baixaActivitat(act);
+        %>
+        
+      });
+    });
+    </script>
     
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="../assets/js/bootstrap.min.js"></script>
