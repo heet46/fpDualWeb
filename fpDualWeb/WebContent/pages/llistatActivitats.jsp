@@ -103,11 +103,9 @@
                                 <table class="table table-striped  table-hover">
                             <thead>
                                 <tr>
-                                    <th>#</th>
-                                    <th>Nom</th>
-                                    <th>Cognom</th>
-                                    <th>Tutor</th>
-                                    <th>Centre</th>
+                                    <th>#ID</th>
+                                    <th>Codi</th>
+                                    <th>Descripció</th>
                                     <th>Detalls</th>
                                 </tr>
                             </thead>

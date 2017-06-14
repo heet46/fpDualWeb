@@ -1,3 +1,8 @@
+<%@ page import="controlador.*" %>
+<%@ page import="model.*" %>
+<%@ page import="servlet.*" %>
+<%@ page import="java.util.*" %>
+
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -24,6 +29,10 @@
     <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
 </head>
 <body>
+<%
+	ActivitatDAO aDAO = new ActivitatDAO();
+	List<Activitat> llistaActivitats = aDAO.llistaTotesActivitats();
+%> 
 
     <div id="wrapper">
          <div class="navbar navbar-inverse navbar-fixed-top">
@@ -95,37 +104,29 @@
                                 <table class="table table-striped  table-hover">
                             <thead>
                                 <tr>
-                                    <th>ID</th>
+                                    <th>#ID</th>
                                     <th>Codi</th>
-                                    <th>Descripcio</th>
-                                    <th>Eliminar</th>
+                                    <th>Descripció</th>
+                                    <th>Detalls</th>
                                 </tr>
                             </thead>
-                            <tbody>
+                            <tbody> 
                                 <tr>
-                                    <td>1</td>
-                                    <td>EXC</td>
-                                    <td>Me cago en tu puta vida</td>
-                                    <td><a href="eliminarActivitatsDefinitiu.jsp" class="btn btn-danger">Eliminar</a></td>
-                                </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td>EXC</td>
-                                    <td>JODER</td>
-                                    <td><a href="eliminarActivitatsDefinitiu.jsp" class="btn btn-danger">Eliminar</a></td>
-                                </tr>
-                                <tr>
-                                    <td>3</td>
-                                    <td>TLL</td>
-                                    <td>Talllll</td>
-                                    <td><a href="eliminarActivitatsDefinitiu.jsp" class="btn btn-danger">Eliminar</a></td>
-                                </tr>
-                                <tr>
-                                    <td>4</td>
-                                    <td>PRV</td>
-                                    <td>Prova</td>
-                                    <td><a href="eliminarActivitatsDefinitiu.jsp" class="btn btn-danger"  data-confirm="Vols esborrar aquesta activitat?">Eliminar</a></td>
-                                </tr>
+									<%
+										for (Activitat activitat : llistaActivitats) {
+									%>
+									<td><%=activitat.getId()%></td>
+									<td><%=activitat.getCodi()%></td>
+									<td><%=activitat.getDescripcio()%></td>
+									<td><a href="eliminarActivitats.jsp" class="boto" data-confirm="Are you sure?"><button class="btn btn-danger">Eliminar</button></a></td>
+
+								</tr>
+								<%
+								int id = Integer.parseInt(activitat.getId());
+									}
+									
+								%>
+                                
                             </tbody>
                         </table>
                  
