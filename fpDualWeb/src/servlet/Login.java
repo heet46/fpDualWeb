@@ -2,6 +2,8 @@ package servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -27,28 +29,49 @@ public class Login extends HttpServlet {
 	        UsuariDAO uDAO = new UsuariDAO();
 	        Usuari usu = new Usuari();
 	        
-	        String usuari;
+	        String nif;
 	        String pass;
-	        usuari = request.getParameter("dni");
+	        nif = request.getParameter("dni");
 	        pass = request.getParameter("password");
 	        
-	        usu.setNIF(usuari);
+	        List<String> valors = new ArrayList<String>();
+	        try {
+				valors = uDAO.valorsUsuari(nif, pass);
+			} catch (SQLException e1) {
+				e1.printStackTrace();
+			}
+	        usu.setNom(valors.get(0));
+	        usu.setCognom1(valors.get(1));
+	        usu.setMail(valors.get(1));
+	       
+	        usu.setNIF(nif);
 	        usu.setPasswd(pass);
 	        List<String> llista = uDAO.validarLogin(usu);
 
 	        //deberíamos buscar el usuario en la base de datos, pero dado que se escapa de este tema, ponemos un ejemplo en el mismo código
 	        try{
-		        	if(usuari.equals(llista.get(0)) && pass.equals(llista.get(1))){
+		        	if(nif.equals(llista.get(0)) && pass.equals(llista.get(1))){
 		            
 		        	session = request.getSession();
 		            session.setAttribute("nif", usu.getNIF());
 		            //Expirar en 30 min
 		            session.setMaxInactiveInterval(30*60);
 		            
-		            Cookie userName = new Cookie("usuari", usuari);
-		            userName.setMaxAge(30*60);
+		            Cookie userNif = new Cookie("nif", nif);
+		            userNif.setMaxAge(30*60);		            
+		            response.addCookie(userNif);
 		            
-		            response.addCookie(userName);
+		            Cookie userNom = new Cookie("nom", usu.getNom());
+		            userNom.setMaxAge(30*60);		            
+		            response.addCookie(userNom);
+		            
+		            Cookie userCognom = new Cookie("cognom", usu.getCognom1());
+		            userCognom.setMaxAge(30*60);		            
+		            response.addCookie(userCognom);
+		            
+		            Cookie userMail = new Cookie("mail", usu.getMail());
+		            userMail.setMaxAge(30*60);		            
+		            response.addCookie(userMail);
 		            
 		            //redirijo a página con información de login exitoso	            
 		            response.sendRedirect("index.jsp");

@@ -86,6 +86,21 @@ public class UsuariDAO {
 		}
 		return fila.toArray();
 	}
+	
+	public List<String> valorsUsuari(String nif, String passwd) throws SQLException{
+		List<String> llista = new ArrayList<String>();
+		ResultSet rs = null;
+		String consultaSQL = "SELECT u.nom, u.primer_cognom, u.mail "
+				+ "FROM usuari AS u "
+				+ "WHERE u.NIF='"+nif+"' AND u.password='"+passwd+"'";
+		rs = gestorDB.consultaRegistres(consultaSQL);
+		while(rs.next()){
+			llista.add(rs.getString("nom"));
+			llista.add(rs.getString("primer_cognom"));
+			llista.add(rs.getString("mail"));
+		}
+		return llista;
+	}
 
 	public void tancarConn() {
 		gestorDB.tancarConnexio();

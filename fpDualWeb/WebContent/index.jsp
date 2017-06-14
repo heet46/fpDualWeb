@@ -53,12 +53,19 @@
 
 	String usuNif = null;
 	String sessionID = null;
+	String usuNom = null;
+	String usuCognom = null;
+	String usuMail = null;
 	Cookie[] cookies = request.getCookies();
 	if(cookies != null){
 		for(Cookie cookie : cookies){
 		
-			if(cookie.getName().equals("usuari")) usuNif = cookie.getValue();
+			if(cookie.getName().equals("nif")) usuNif = cookie.getValue();
+			if(cookie.getName().equals("nom")) usuNom = cookie.getValue();
+			if(cookie.getName().equals("cognom")) usuCognom = cookie.getValue();
+			if(cookie.getName().equals("mail")) usuMail = cookie.getValue();
 			if(cookie.getName().equals("JSESSIONID")) sessionID = cookie.getValue();
+			
 			
 		}
 	}
@@ -125,12 +132,12 @@
                     </div>
                 </div>              
                  <!-- /. ROW  -->
-                  <hr />
+                <hr />
               
                 <div class="row">
                     <div class="col-lg-12 ">
                         <div class="alert alert-info content" id="alerta">
-                             &nbsp;Benvingut <strong><%=usuNif %>! </strong>
+                             &nbsp;Benvingut <strong><%=usuNom %>! </strong>
                         </div>                     
                     </div>
                 </div>
@@ -140,7 +147,7 @@
                             <div class="row text-center pad-top">
                   <div class="col-lg-3 col-md-2 col-sm-2 col-xs-6">
                       <div class="div-square">
-                           <a href="pages/alumnes.jsp" >
+                           <a href="pages/alumnes.jsp">
                         <i class="fa fa-graduation-cap fa-5x" aria-hidden="true"></i>
                         <h4>Alumnes</h4>
                       </a>
