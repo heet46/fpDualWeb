@@ -1,3 +1,8 @@
+<%@ page import="controlador.*" %>
+<%@ page import="model.*" %>
+<%@ page import="servlet.*" %>
+<%@ page import="java.util.*" %>
+
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -20,10 +25,21 @@
     <link href="../assets/css/custom.css" rel="stylesheet" />
      <!-- GOOGLE FONTS-->
    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
+
 </head>
-<body>
+<body> 
      
-           
+<%
+	HttpSession sesion=request.getSession(); 
+	String nif;
+	if(sesion.getAttribute("nif") == null){	
+		response.sendRedirect("login.jsp");
+	}
+%>      
+<%
+	AlumneDAO aDAO = new AlumneDAO();
+	List<Alumne> llistaAlumnes = aDAO.llistaTotsAlumnes();
+%>           
           
     <div id="wrapper">
          <div class="navbar navbar-inverse navbar-fixed-top">
@@ -39,9 +55,16 @@
                     </a>
                 </div>
               
-                 <span class="logout-spn" >
-                  <a href="#" style="color:#fff;">LOGOUT</a>  
-
+                 <span class="logout-spn" >                
+	                <form method="post" action="../Logout" name="logoutForm">
+						<a href="javascript: submitform()" style="color:#fff;">LOGOUT</a>
+					</form>
+					<script type="text/javascript">
+						function submitform(){
+						  document.logoutForm.submit();
+						}
+					</script>
+					
                 </span>
             </div>
         </div>
@@ -93,44 +116,37 @@
                                     <th>Cognom</th>
                                     <th>Tutor</th>
                                     <th>Centre</th>
+                                    <th></th>
                                     <th>Modificar</th>
                                 </tr>
                             </thead>
                             <tbody>
+                                                        
                                 <tr>
-                                    <td>1</td>
-                                    <td>Mark</td>
-                                    <td>Otto</td>
-                                    <td>@mdo</td>
-                                    <td>Otto</td>
-                                    <td><a href="modificarAlumne2.html" class="btn btn-warning">Edita</a></td>
-                                </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td>Jacob</td>
-                                    <td>Thornton</td>
-                                    <td>@fat</td>
-                                    <td>Otto</td>
-                                    <td><a href="modificarAlumne2.html" class="btn btn-warning">Edita</a></td>
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Mark</td>
-                                    <td>Otto</td>
-                                    <td>@mdo</td>
-                                    <td>Otto</td>
-                                    <td><a href="modificarAlumne2.html" class="btn btn-warning">Edita</a></td>
-                                </tr>
-                                <tr>
-                                    <td>3</td>
-                                    <td>Larry</td>
-                                    <td>the Bird</td>
-                                    <td>@twitter</td>
-                                    <td>Otto</td>
-                                    <td><a href="modificarAlumne2.html" class="btn btn-warning">Edita</a></td>
-                                </tr>
+									<%
+										for (Alumne alumne : llistaAlumnes) {
+									%>
+									<td><%=alumne.getIdUsuari()%></td>
+									<td><%=alumne.getNom()%></td>
+									<td><%=alumne.getCognom1()%></td>
+									<td><%=alumne.getTutor().getNom()%></td>
+									<td><%=alumne.getCentre().getNom()%></td>
+									<form action="../ModificarAlumne" method="Post" name="modForm">
+										<td><input type="hidden" name="idUsuari" value="<%=alumne.getIdUsuari()%>"></td>
+	                                    <td>
+	                                    	<input type="Submit" value="Edita" class="btn btn-warning">
+	                             		</td>
+                             		</form>
+                             									
+								</tr>
+								<%
+									}
+								%>
+                                
                             </tbody>
+                                <!-- <a href="#" class="btn btn-warning">Edita</a> -->
                         </table>
+
 
                     </div>
                  <!-- /. ROW  -->           
