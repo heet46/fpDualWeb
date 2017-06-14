@@ -68,6 +68,20 @@ public class UsuariDAO {
 		return id;
 	}
 	
+	public Usuari consultaUsuari(String nif){
+		String consultaSQL="SELECT * FROM Usuari WHERE NIF='"+nif+"';";
+		ResultSet rs=gestorDB.consultaRegistres(consultaSQL);
+		Usuari u = null;
+		try {
+			while(rs.next()){
+				u=new Usuari(rs.getString("NIF"),rs.getString("password"),rs.getString("nom"),rs.getString("primer_cognom"),rs.getString("segon_cognom"),rs.getString("mail"));
+			}
+		}catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return u;
+	}
+	
 
 	public Object[] consultaNifs(String nif){
 		ResultSet rs = null;
