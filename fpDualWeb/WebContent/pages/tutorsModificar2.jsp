@@ -1,6 +1,3 @@
-<%@page import="model.UsuariDAO" %>
-<%@page import="model.Usuari" %>
-<%@page import="model.TutorDAO" %>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -120,41 +117,33 @@
                     </div>
                   <!-- /. ROW  --> 
                             <div class="row text-center pad-top">
-                            <%
-                            	String NIF=request.getParameter("NIF");
-                            	UsuariDAO uDAO=new UsuariDAO();
-                            	System.out.println(NIF);
-                            %>
                                 <form method="Get" action="/fpDualWeb/afegirTutors">
                                 
-                                
+                                <%String nifVell=request.getParameter("NIF"); %>
                                     <table>
                                         <tr>
                                             <td>NIF: </td>
-                              
-                              
-                              
-                                            <td><input type="text" name="NIF" size="25" onblur="nif(this.value)"/></td>
+                                            <td><input type="text" name="NIF" size="25"  value="${NIF}" onblur="nif(this.value)"/></td>
                                         </tr>
                                         <tr>
                                             <td>Password: </td>
-                                            <td><input type="password" name="pass" size="25"/></td>
+                                            <td><input type="password" name="pass" value="${password}" size="25"/></td>
                                         </tr>
                                         <tr>
                                             <td>Nom: </td>
-                                            <td><input type="text" name="nom" size="25"/></td>
+                                            <td><input type="text" name="nom" size="25" value="${nom}" /></td>
                                         </tr>
                                         <tr>
                                             <td>Primer cognom: </td>
-                                            <td><input type="text" name="Pcognom" size="25"/></td>
+                                            <td><input type="text" name="Pcognom" value="${Pcognom}" size="25"/></td>
                                         </tr>
                                         <tr>
                                             <td>Segon cognom: </td>
-                                            <td><input type="text" name="Scognom" size="25"/></td>
+                                            <td><input type="text" name="Scognom" value="${Scognom}" size="25"/></td>
                                         </tr>
                                         <tr>
                                             <td>Mail: </td>
-                                            <td><input type="email" name="mail" size="25"/></td>
+                                            <td><input type="email" name="mail" value="${mail}" size="25"/></td>
                                         </tr>
                                         <tr>
                                         <td>Tecnologia: </td>

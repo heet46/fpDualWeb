@@ -82,6 +82,14 @@ public class UsuariDAO {
 		return u;
 	}
 	
+	public void modificarUsuari(String NIF,Usuari usu){
+		String consultaSQL="UPDATE FROM usuari SET NIF='"+usu.getNIF()+"',"+
+		"password='"+usu.getPasswd()+"',"+"nom='"+usu.getNom()+"',"+"primer_cognom='"+usu.getCognom1()+"',"+
+		"segon_cognom='"+usu.getCognom2()+"',mail='"+usu.getMail()+"'"+
+		"WHERE nif='"+NIF+"';";
+		gestorDB.modificarRegistre(consultaSQL);
+	}
+	
 
 	public Object[] consultaNifs(String nif){
 		ResultSet rs = null;

@@ -45,16 +45,15 @@ public class modificarTutor extends HttpServlet {
 		
 		Usuari usu=new Usuari();
 		String NIF=(String)request.getParameter("NIF");
-		
 		usu=uDAO.consultaUsuari(NIF);
 		
 		response.setContentType("text/html");
-		request.setAttribute("NIF", usu.getNIF());
-		request.setAttribute("password", usu.getPasswd());
-		request.setAttribute("nom", usu.getNom());
-		request.setAttribute("Pcognom", usu.getCognom1());
-		request.setAttribute("Scognom", usu.getCognom2());
-		request.setAttribute("mail", usu.getMail());
+		request.getSession().setAttribute("NIF", usu.getNIF());
+		request.getSession().setAttribute("password", usu.getPasswd());
+		request.getSession().setAttribute("nom", usu.getNom());
+		request.getSession().setAttribute("Pcognom", usu.getCognom1());
+		request.getSession().setAttribute("Scognom", usu.getCognom2());
+		request.getSession().setAttribute("mail", usu.getMail());
 		
 		response.sendRedirect("/fpDualWeb/pages/tutorsModificar2.jsp");
 	}

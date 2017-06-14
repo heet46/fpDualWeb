@@ -127,7 +127,6 @@
                                                         	TutorDAO tDAO=new TutorDAO();
                                                         	UsuariDAO uDAO=new UsuariDAO();
                                                         	List<Usuari> usu=tDAO.consultaTutor();
-                                                        	int fila=1;
                                                         	DateFormat formatter=new SimpleDateFormat("yyyy-MM-dd");
                                                         	response.setContentType("text/html");
                                                         	for(Usuari u:usu){
@@ -157,7 +156,6 @@
                                                                 out.println("</span>");
                                                             	out.println("</form>");
                                                             	out.println("</td>");
-                                                            	fila++;
                                                             	
                                                         	}
                                                         %>
