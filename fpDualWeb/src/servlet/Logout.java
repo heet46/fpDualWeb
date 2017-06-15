@@ -16,6 +16,8 @@ public class Logout extends HttpServlet {
        
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     	response.setContentType("text/html");
+    	String id = request.getParameter("idUsuari");
+    	System.out.println(id);
     	Cookie[] cookies = request.getCookies();
     	if(cookies != null){
     	for(Cookie cookie : cookies){

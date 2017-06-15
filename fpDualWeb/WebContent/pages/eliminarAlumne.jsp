@@ -1,3 +1,7 @@
+<%@ page import="model.*" %>
+<%@ page import="servlet.*" %>
+<%@ page import="java.util.*" %>
+
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -24,10 +28,13 @@
 <body>
 <%
 	HttpSession sesion=request.getSession(); 
-	String nif;
+
 	if(sesion.getAttribute("nif") == null){	
 		response.sendRedirect("login.jsp");
 	}
+	
+	AlumneDAO aDAO = new AlumneDAO();
+	List<Alumne> llistaAlumnes = aDAO.llistaTotsAlumnes();
 %>          
           
     <div id="wrapper">
@@ -105,41 +112,32 @@
                                     <th>Tutor</th>
                                     <th>Centre</th>
                                     <th></th>
+                                    <th>Modificar</th>
                                 </tr>
                             </thead>
                             <tbody>
+                                                        
                                 <tr>
-                                    <td>1</td>
-                                    <td>Mark</td>
-                                    <td>Otto</td>
-                                    <td>@mdo</td>
-                                    <td>Otto</td>
-                                    <td><a href="#" class="btn btn-danger">Eliminar</a></td>
-                                </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td>Jacob</td>
-                                    <td>Thornton</td>
-                                    <td>@fat</td>
-                                    <td>Otto</td>
-                                    <td><a href="#" class="btn btn-danger">Eliminar</a></td>
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Mark</td>
-                                    <td>Otto</td>
-                                    <td>@mdo</td>
-                                    <td>Otto</td>
-                                    <td><a href="#" class="btn btn-danger">Eliminar</a></td>
-                                </tr>
-                                <tr>
-                                    <td>3</td>
-                                    <td>Larry</td>
-                                    <td>the Bird</td>
-                                    <td>@twitter</td>
-                                    <td>Otto</td>
-                                    <td><a href="#" class="btn btn-danger">Eliminar</a></td>
-                                </tr>
+									<%
+										for (Alumne alumne : llistaAlumnes) {
+									%>
+									<td><%=alumne.getIdUsuari()%></td>
+									<td><%=alumne.getNom()%></td>
+									<td><%=alumne.getCognom1()%></td>
+									<td><%=alumne.getTutor().getNom()%></td>
+									<td><%=alumne.getCentre().getNom()%></td>
+									<form action="../EliminarAlumne" method="Post">
+										<td><input type="hidden" name="idUsuari" value="<%=alumne.getIdUsuari()%>"></td>
+	                                    <td>
+	                                    	<input type="Submit" value="Borrar" class="btn btn-danger">
+	                             		</td>
+                             		</form>
+                             									
+								</tr>
+								<%
+									}
+								%>
+                                
                             </tbody>
                         </table>
 

@@ -2,7 +2,10 @@ package model;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import controlador.Constants;
@@ -51,6 +54,16 @@ public class AlumneDAO {
 			e.printStackTrace();
 		}
 		return fila.toArray();
+	}
+	
+	public void modificarAlumne(Usuari usuari, Alumne alumne){
+		String consultaSQL = "UPDATE  alumne AS a "
+					+ "INNER JOIN usuari AS u "
+					+ "ON a.id_usuari = u.id_usuari "
+					+ "SET u.NIF='"+usuari.getNIF()+"', u.password='"+usuari.getPasswd()+"', u.nom='"+usuari.getNom()+"', u.primer_cognom='"+usuari.getCognom1()+"', u.segon_cognom='"+usuari.getCognom2()+"', u.mail='"+usuari.getMail()+"', a.data_inici='"+alumne.getDataInici()+"', a.data_fi='"+alumne.getDataFi()+"', a.id_tutor="+alumne.tutor.id_usuari+", a.id_centre="+alumne.centre.getIdCentre()+" "
+					+ "WHERE u.id_usuari="+usuari.getIdUsuari();
+		System.out.println(consultaSQL);
+		gestorDB.modificarRegistre(consultaSQL);
 	}
 	
 	public List<String> consultaIDAlumne(){
@@ -113,7 +126,37 @@ public class AlumneDAO {
 		return tutors;
 	}
 	
-	
+	public List<String> valorsAlumne(int id) throws SQLException{
+		List<String> valors = new ArrayList<String>();
+		ResultSet rs = null;
+		String consultaSQL = "SELECT u.NIF, u.password, u.nom, u.primer_cognom, u.segon_cognom, u.mail, a.data_inici, a.data_fi, u2.nom, c.Nom "
+				+ "FROM usuari AS u, usuari AS u2, alumne AS a, centre AS c "
+				+ "WHERE u2.id_usuari=a.id_tutor AND u.id_usuari=a.id_usuari AND c.Id_centre=a.id_centre AND u.id_usuari="+id;
+		
+		rs = gestorDB.consultaRegistres(consultaSQL);
+		
+		DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+		while(rs.next()){
+			valors.add(rs.getString(1)); //NIF
+			valors.add(rs.getString(2)); //pw
+			valors.add(rs.getString(3)); //nom
+			valors.add(rs.getString(4)); //cognom1			 
+			valors.add(rs.getString(5)); //cognom2
+			valors.add(rs.getString(6)); //mail
+			
+			Date dIn = rs.getDate(7);
+			String dataInici = df.format(dIn);
+			valors.add(dataInici);		 //data inici
+			
+			Date dFi = rs.getDate(8);
+			String dataFinal = df.format(dFi);
+			valors.add(dataFinal); 		 //data fi
+			
+			valors.add(rs.getString(9)); //tutor
+			valors.add(rs.getString(10));//centre
+		}
+		return valors;
+	}
 	
 	public void tancarConn(){
 		gestorDB.tancarConnexio();

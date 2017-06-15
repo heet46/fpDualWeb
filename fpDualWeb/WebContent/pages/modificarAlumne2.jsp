@@ -1,3 +1,8 @@
+<%@ page import="controlador.*" %>
+<%@ page import="model.*" %>
+<%@ page import="servlet.*" %>
+<%@ page import="java.util.*" %>
+
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -25,8 +30,21 @@
 </head>
 <body>
      
-           
-          
+<%
+	HttpSession sesion=request.getSession(); 
+	String nif;
+	if(sesion.getAttribute("nif") == null){	
+		response.sendRedirect("login.jsp");
+	}
+
+	CentreDAO cDAO = new CentreDAO();
+	List<String> llistaCentres = cDAO.nomsCentres();
+	TutorDAO tDAO = new TutorDAO();
+	List<String> llistaTutors = tDAO.nomsTutors();
+	String tutor = session.getAttribute("tutor").toString();
+	String centre= session.getAttribute("centre").toString();
+	int id = Integer.parseInt(session.getAttribute("id").toString());
+%>          
     <div id="wrapper">
          <div class="navbar navbar-inverse navbar-fixed-top">
             <div class="adjust-nav">
@@ -36,14 +54,21 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="../index.html">
+                    <a class="navbar-brand" href="../index.jsp">
                         <img src="../assets/img/logo.png" height="50px" />
                     </a>
                 </div>
               
-                 <span class="logout-spn" >
-                  <a href="#" style="color:#fff;">LOGOUT</a>  
-
+				<span class="logout-spn" >                
+	                <form method="post" action="../Logout" name="logoutForm">
+						<a href="javascript: submitform()" style="color:#fff;">LOGOUT</a>
+					</form>
+					<script type="text/javascript">
+						function submitform(){
+						  document.logoutForm.submit();
+						}
+					</script>
+					
                 </span>
             </div>
         </div>
@@ -54,13 +79,6 @@
                  
                     <li>
                         <a href="../index.html" ><i class="fa fa-desktop "></i>Panell de control </a>
-                    </li>
-
-                    <li>
-                        <a href="../ui.html"><i class="fa fa-table "></i>UI Elements  <span class="badge">Included</span></a>
-                    </li>
-                    <li>
-                        <a href="../blank.html"><i class="fa fa-edit "></i>Blank Page  <span class="badge">Included</span></a>
                     </li>
 
                     <li class="active-link">
@@ -87,7 +105,7 @@
                 
                 <div class="row">
                     <div class="col-md-12">
-                     <h2>ModificaciÃ³ d'alumnes </h2>
+                     <h2>Modificació d'alumnes </h2>
                     </div>
                 </div>              
                  <!-- /. ROW  -->
@@ -95,64 +113,86 @@
                   
                 <div class="row">
                     <div class="col-md-12">
-                     <h4>Formulari de modificaciÃ³ d'alumnes </h4>
+                     <h4>Formulari de modificació d'alumnes </h4>
                     </div>
                 </div>  
-                <form>
+                <form method="Post" action="../ModificarAlumne">
                 <div class="row">
                         <div class="col-md-6">
-                            <input type="text" class="form-control" placeholder="D.N.I." />
+                        	<input type="hidden" name="idUsuari" value="<%=id%>">
+                            <input type="text" class="form-control" name="dni" placeholder="D.N.I." value="${nif}" />
                         </div>
                         <div class="col-md-6">
-                            <input type="password" class="form-control" placeholder="Contrassenya" />
+                            <input type="password" class="form-control" name="password" placeholder="Contrassenya" value="${password}" />
                         </div>
                 </div>
                 <br>
                 <div class="row">
                         <div class="col-md-6">
-                            <input type="text" class="form-control" placeholder="Nom" />
+                            <input type="text" class="form-control" name="nom" placeholder="Nom" value="${nom}" />
                         </div>
                         <div class="col-md-6">
-                            <input type="text" class="form-control" placeholder="Cognoms" />
+                            <input type="text" class="form-control" name="cognoms" placeholder="Cognoms" value="${cognoms}" />
                         </div>
                 </div>
                 <br>
                 <div class="row">
-                        <div class="col-md-6">
-                            <input type="text" class="form-control" placeholder="Correu electrÃ²nic" />
-                        </div>
-                        <div class="col-md-6">
-                            <input type="text" class="form-control" placeholder="Cognoms" />
+                        <div class="col-md-12">
+                            <input type="text" class="form-control" name="mail" placeholder="Correu electrònic" value="${mail}" />
                         </div>
                 </div>
                 <hr>
                 <div class="row">
                         <div class="col-md-6">
                             <h5>Data inicial</h5>
-                            <input type="date" class="form-control" />
+                            <input type="date" class="form-control" name="dataInici" value="${dataInici}"/>
                         </div>
                         <div class="col-md-6">
-                            <h5>Data finalitzaciÃ³</h5>
-                            <input type="date" class="form-control" />
+                            <h5>Data finalització</h5>
+                            <input type="date" class="form-control" name="dataFinal" value="${dataFinal}"/>
                         </div>
                 </div>
                 <hr>
                 <div class="row">
                         <div class="col-md-6">
                             <h5>Tutor</h5>
-                            <select class="form-control" name="size">
-                                <option value="">Selecciona el tutor</option>
+                            <select class="form-control" name="tutor">
+                            	<option>Selecciona el tutor</option>
+                            	<% 
+								for(int i=0; i<llistaTutors.size(); i++) { 
+	                                %>
+		                                <option value="<%=llistaTutors.get(i) %>">
+		                                	<%=llistaTutors.get(i) %>
+		                                </option>
+		                   <%        
+                              	} 
+                            %>
                             </select>
                         </div>
                         <div class="col-md-6">
                             <h5>Centre</h5>
-                            <select class="form-control" name="size">
-                                <option value="">Selecciona el centre</option>
+                            <select class="form-control" name="centre">
+                            	<option>Selecciona el tutor</option>
+                            	<% 
+								for(int j=0; j<llistaCentres.size(); j++) { 
+	                     		%>
+		                                <option value="<%=llistaCentres.get(j) %>">
+		                                	<%=llistaCentres.get(j) %>
+		                                </option>
+							<%
+                            	} 
+                            %>
                             </select>
                         </div>
+                        
+                </div>
+                <hr>
+                <div class="row">
+                	<center><input type="submit" class="btn btn-primary" value="MODIFICAR ALUMNE" /></center>                
                 </div>
                 
                 </form>
+                
                 
             
              <!-- /. PAGE INNER  -->

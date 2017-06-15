@@ -28,14 +28,13 @@
 
 </head>
 <body> 
-     
 <%
 	HttpSession sesion=request.getSession(); 
 	String nif;
 	if(sesion.getAttribute("nif") == null){	
-		response.sendRedirect("login.jsp");
+		response.sendRedirect("pages/login.jsp");
 	}
-%>      
+%>  
 <%
 	AlumneDAO aDAO = new AlumneDAO();
 	List<Alumne> llistaAlumnes = aDAO.llistaTotsAlumnes();
@@ -131,7 +130,7 @@
 									<td><%=alumne.getCognom1()%></td>
 									<td><%=alumne.getTutor().getNom()%></td>
 									<td><%=alumne.getCentre().getNom()%></td>
-									<form action="../ModificarAlumne" method="Post" name="modForm">
+									<form action="../ModificarAlumne" method="Get">
 										<td><input type="hidden" name="idUsuari" value="<%=alumne.getIdUsuari()%>"></td>
 	                                    <td>
 	                                    	<input type="Submit" value="Edita" class="btn btn-warning">
@@ -144,7 +143,6 @@
 								%>
                                 
                             </tbody>
-                                <!-- <a href="#" class="btn btn-warning">Edita</a> -->
                         </table>
 
 

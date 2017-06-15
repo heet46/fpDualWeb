@@ -33,8 +33,7 @@
 	if(sesion.getAttribute("nif") == null){	
 		response.sendRedirect("login.jsp");
 	}
-%>     
-<%
+
 	AlumneDAO aDAO = new AlumneDAO();
 	List<Alumne> llistaAlumnes = aDAO.llistaTotsAlumnes();
 %>    
@@ -74,7 +73,7 @@
                     </li>
 
                     <li class="active-link">
-                        <a href="#"><i class="fa fa-graduation-cap "></i>Alumnes</a>
+                        <a href="alumnes.jsp"><i class="fa fa-graduation-cap "></i>Alumnes</a>
                     </li>
                     <li>
                         <a href="tutors.jsp"><i class="fa fa-book"></i>Tutors</a>
