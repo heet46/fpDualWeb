@@ -117,12 +117,13 @@
                     </div>
                   <!-- /. ROW  --> 
                             <div class="row text-center pad-top">
-                                <form method="Get" action="/fpDualWeb/afegirTutors">
+                                <form method="Post" action="../modificarTutors2">
                                 
                                 <%String nifVell=request.getParameter("NIF"); %>
                                     <table>
                                         <tr>
                                             <td>NIF: </td>
+                                            <input type="hidden" name="IdVella" value="${NIF}">
                                             <td><input type="text" name="NIF" size="25"  value="${NIF}" onblur="nif(this.value)"/></td>
                                         </tr>
                                         <tr>
@@ -150,9 +151,9 @@
                                         <td>
                                             <select name="tecno">
                                                 <option selected disabled>Selecciona una opció:</option>
-                                                <option value="java">JAVA</option>
-                                                <option value="sap">SAP</option>
-                                                <option value="net">NET</option>
+                                                <option value="JAVA">JAVA</option>
+                                                <option value="SAP">SAP</option>
+                                                <option value="NET">NET</option>
                                              </select>
                                         </td>
                                         </tr>

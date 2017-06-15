@@ -58,12 +58,16 @@ public class UsuariDAO {
 	}
 	
 	
-	public int consultaID(String nif) throws SQLException{
+	public int consultaID(String nif){
 		String consultaSQL="SELECT id_usuari FROM usuari WHERE nif='"+nif+"';";
 		ResultSet rs=gestorDB.consultaRegistres(consultaSQL);
 		int id=0;
-		while(rs.next()){
-			id=rs.getInt("id_usuari");
+		try {
+			while(rs.next()){
+				id=rs.getInt("id_usuari");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
 		}
 		return id;
 	}
@@ -83,9 +87,9 @@ public class UsuariDAO {
 	}
 	
 	public void modificarUsuari(String NIF,Usuari usu){
-		String consultaSQL="UPDATE FROM usuari SET NIF='"+usu.getNIF()+"',"+
+		String consultaSQL="UPDATE usuari SET NIF='"+usu.getNIF()+"',"+
 		"password='"+usu.getPasswd()+"',"+"nom='"+usu.getNom()+"',"+"primer_cognom='"+usu.getCognom1()+"',"+
-		"segon_cognom='"+usu.getCognom2()+"',mail='"+usu.getMail()+"'"+
+		"segon_cognom='"+usu.getCognom2()+"',mail='"+usu.getMail()+"' "+
 		"WHERE nif='"+NIF+"';";
 		gestorDB.modificarRegistre(consultaSQL);
 	}

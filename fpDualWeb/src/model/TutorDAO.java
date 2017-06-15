@@ -34,6 +34,11 @@ public class TutorDAO {
 		
 	}
 	
+	public void modificarTutor(Tutor t){
+		consultaSQL="UPDATE tutor SET tecnologia='"+t.getTecnologia()+"' WHERE id_usuari="+t.getId_usuari()+";";
+		g.modificarRegistre(consultaSQL);
+	}
+	
 	public List<Usuari> consultaTutor() throws SQLException{
 		consultaSQL="SELECT u.id_usuari,u.NIF,u.password,u.nom,u.primer_cognom,u.segon_cognom,u.mail "
 				+ "FROM usuari AS u,tutor AS t "
@@ -89,6 +94,18 @@ public class TutorDAO {
 			id = rs.getInt(1);
 		}
 		return id;
+	}
+	
+	public String consultaTecno(int id){
+		String tecno="";
+		consultaSQL="SELECT tecnologia FROM tutor WHERE Id_usuari="+id+";";
+		ResultSet rs=g.consultaRegistres(consultaSQL);
+		try {
+			tecno=rs.getString("tecnologia");
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return tecno;
 	}
 	
 	public void tancarConn(){

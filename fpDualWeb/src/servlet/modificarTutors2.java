@@ -1,13 +1,12 @@
 package servlet;
 
 import java.io.IOException;
-import java.sql.SQLException;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import model.Tutor;
 import model.TutorDAO;
@@ -15,16 +14,16 @@ import model.Usuari;
 import model.UsuariDAO;
 
 /**
- * Servlet implementation class modificarTutor
+ * Servlet implementation class modificarTutors2
  */
-@WebServlet("/modificarTutor")
-public class modificarTutor extends HttpServlet {
+@WebServlet("/modificarTutors2")
+public class modificarTutors2 extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public modificarTutor() {
+    public modificarTutors2() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -43,21 +42,15 @@ public class modificarTutor extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		UsuariDAO uDAO=new UsuariDAO();
 		TutorDAO tDAO=new TutorDAO();
-		Usuari usu=new Usuari();
-		String NIF=(String)request.getParameter("NIF");
-		usu=uDAO.consultaUsuari(NIF);
-		String tecno=tDAO.consultaTecno(uDAO.consultaID(NIF));
-		
-		response.setContentType("text/html");
-		request.getSession().setAttribute("NIF", usu.getNIF());
-		request.getSession().setAttribute("password", usu.getPasswd());
-		request.getSession().setAttribute("nom", usu.getNom());
-		request.getSession().setAttribute("Pcognom", usu.getCognom1());
-		request.getSession().setAttribute("Scognom", usu.getCognom2());
-		request.getSession().setAttribute("mail", usu.getMail());
-		request.getSession().setAttribute("tecno", tecno);
-		
-		response.sendRedirect("/fpDualWeb/pages/tutorsModificar2.jsp");
+		String idVella=request.getParameter("IdVella");
+		System.out.println(idVella);
+		uDAO.modificarUsuari(idVella, new Usuari(request.getParameter("NIF"),
+				request.getParameter("pass"),request.getParameter("nom"),
+				request.getParameter("Pcognom"),request.getParameter("Scognom"),
+				request.getParameter("mail")));
+		tDAO.modificarTutor(new Tutor(uDAO.consultaID(request.getParameter("NIF")),request.getParameter("tecno")));
+		doGet(request, response);
+		response.sendRedirect("pages/tutors.jsp");
 	}
 
 }
