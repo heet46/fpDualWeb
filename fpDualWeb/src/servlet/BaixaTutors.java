@@ -6,24 +6,21 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
-import model.Tutor;
 import model.TutorDAO;
-import model.Usuari;
 import model.UsuariDAO;
 
 /**
- * Servlet implementation class modificarTutors2
+ * Servlet implementation class baixaTutors
  */
-@WebServlet("/modificarTutors2")
-public class modificarTutors2 extends HttpServlet {
+@WebServlet("/baixaTutors")
+public class BaixaTutors extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public modificarTutors2() {
+    public BaixaTutors() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -40,17 +37,11 @@ public class modificarTutors2 extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		UsuariDAO uDAO=new UsuariDAO();
 		TutorDAO tDAO=new TutorDAO();
-		String idVella=request.getParameter("IdVella");
-		System.out.println(idVella);
-		uDAO.modificarUsuari(idVella, new Usuari(request.getParameter("NIF"),
-				request.getParameter("pass"),request.getParameter("nom"),
-				request.getParameter("Pcognom"),request.getParameter("Scognom"),
-				request.getParameter("mail")));
-		tDAO.modificarTutor(new Tutor(uDAO.consultaID(request.getParameter("NIF")),request.getParameter("tecno")));
-		doGet(request, response);
-		response.sendRedirect("pages/tutors.jsp");
+		UsuariDAO uDAO=new UsuariDAO();
+		String NIF=request.getParameter("NIF");
+		tDAO.baixaTutor(uDAO.consultaID(NIF));
+		response.sendRedirect("/fpDualWeb/pages/tutors.jsp");
 	}
 
 }

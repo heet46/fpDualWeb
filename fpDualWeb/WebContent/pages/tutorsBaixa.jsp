@@ -1,3 +1,9 @@
+<%@page import="model.UsuariDAO" %>
+<%@page import="model.Usuari" %>
+<%@page import="model.TutorDAO" %>
+<%@page import="java.util.List" %>
+<%@page import="java.sql.Date" %>
+<%@page import="java.text.*" %>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -17,9 +23,9 @@
 
     <link href="../assets/css/bootstrap-theme.min.css" rel="stylesheet" />
     
-    <link href="../assets/css/tutors.css" rel="stylesheet" />
-    
     <link href="../assets/css/custom.css" rel="stylesheet" />
+    
+    <link href="../assets/css/tutors.css" rel="stylesheet" />
      <!-- GOOGLE FONTS-->
     <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
 </head>
@@ -59,7 +65,6 @@
         <nav class="navbar-default navbar-side" role="navigation">
             <div class="sidebar-collapse">
                 <ul class="nav" id="main-menu">
-                 
                     <li>
                         <a href="../index.jsp" ><i class="fa fa-desktop "></i>Inici </a>
                     </li>
@@ -94,154 +99,76 @@
                   <hr />
                 <div class="row">
                     <div class="col-lg-12 ">
-                        <!--
-                        <div class="alert alert-info">
-                             <strong>Benvingut (usuari)! </strong>
-                        </div>
-                       -->
+                       
                     </div>
  
                     </div>
                   <!-- /. ROW  --> 
-                            <div class="row text-center pad-top">
-                                 <div class="container bootstrap snippet">
-                                <div class="row">
-                                    <div class="col-lg-12">
-                                        <div class="main-box no-header clearfix">
-                                            <div class="main-box-body clearfix">
-                                                <div class="table-responsive">
-                                                    <table class="table user-list">
-                                                        <thead>
-                                                            <tr>
-                                                            <th><span>Usuari</span></th>
-                                                            <th><span>NIF</span></th>
-                                                            <th><span>Data</span></th>
-                                                            <th class="text-center"><span>Estat</span></th>
-                                                            <th><span>E-mail</span></th>
-                                                            <th>&nbsp;</th>
-                                                            </tr>
-                                                        </thead>
-                                                        <tbody>
-                                                            <tr>
-                                                                <td>
-                                                                    <img src="https://bootdey.com/img/Content/user_1.jpg" alt="">
-                                                                    Hola
-                                                                </td>
-                                                                <td>87654321B</td>
-                                                                <td>2013/08/12</td>
-                                                                <td class="text-center">
-                                                                    <span class="label label-default">Pendent</span>
-                                                                </td>
-                                                                <td>
-                                                                    marlon@brando.com
-                                                                </td>
-                                                                <td style="width: 20%;">
-                                                                    <!--
-                                                                    <a href="#" class="table-link">
-                                                                        <span class="fa-stack">
-                                                                            <i class="fa fa-square fa-stack-2x"></i>
-                                                                            <i class="fa fa-search-plus fa-stack-1x fa-inverse"></i>
-                                                                        </span>
-                                                                    </a>
-                                                                    <a href="#" class="table-link">
-                                                                        <span class="fa-stack">
-                                                                            <i class="fa fa-square fa-stack-2x"></i>
-                                                                            <i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
-                                                                        </span>
-                                                                    </a>
-                                                                    -->
-                                                                    <a href="#" class="table-link danger">
-                                                                        <span class="fa-stack">
-                                                                            <i class="fa fa-square fa-stack-2x"></i>
-                                                                            <i class="fa fa-trash-o fa-stack-1x fa-inverse"></i>
-                                                                        </span>
-                                                                    </a>
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>
-                                                                    <img src="https://bootdey.com/img/Content/user_3.jpg" alt="">
-                                                                    Pepe
-                                                                </td>
-                                                                <td>12345678S</td>
-                                                                <td>2013/08/12</td>
-                                                                <td class="text-center">
-                                                                    <span class="label label-success">Actiu</span>
-                                                                </td>
-                                                                <td>
-                                                                    marlon@brando.com
-                                                                </td>
-                                                                <td style="width: 20%;">
-                                                                    <!--
-                                                                    <a href="#" class="table-link">
-                                                                        <span class="fa-stack">
-                                                                            <i class="fa fa-square fa-stack-2x"></i>
-                                                                            <i class="fa fa-search-plus fa-stack-1x fa-inverse"></i>
-                                                                        </span>
-                                                                    </a>
-                                                                    <a href="#" class="table-link">
-                                                                        <span class="fa-stack">
-                                                                            <i class="fa fa-square fa-stack-2x"></i>
-                                                                            <i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
-                                                                        </span>
-                                                                    </a
-                                                                    -->
-                                                                    <a href="#" class="table-link danger">
-                                                                        <span class="fa-stack">
-                                                                            <i class="fa fa-square fa-stack-2x"></i>
-                                                                            <i class="fa fa-trash-o fa-stack-1x fa-inverse"></i>
-                                                                        </span>
-                                                                    </a>
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>
-                                                                    <img src="https://bootdey.com/img/Content/user_2.jpg" alt="">
-                                                                    AA
-                                                                </td>
-                                                                <td>54321678B</td>
-                                                                <td>2013/08/12</td>
-                                                                <td class="text-center">
-                                                                    <span class="label label-danger">Inactiu</span>
-                                                                </td>
-                                                                <td>
-                                                                   marlon@brando.com
-                                                                </td>
-                                                                <td style="width: 20%;">
-                                                                    <!--
-                                                                    <a href="#" class="table-link">
-                                                                        <span class="fa-stack">
-                                                                            <i class="fa fa-square fa-stack-2x"></i>
-                                                                            <i class="fa fa-search-plus fa-stack-1x fa-inverse"></i>
-                                                                        </span>
-                                                                    </a>
-                                                                    <a href="#" class="table-link">
-                                                                        <span class="fa-stack">
-                                                                            <i class="fa fa-square fa-stack-2x"></i>
-                                                                            <i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
-                                                                        </span>
-                                                                    </a>
-                                                                    -->
-                                                                    <a href="#" class="table-link danger">
-                                                                        <span class="fa-stack">
-                                                                            <i class="fa fa-square fa-stack-2x"></i>
-                                                                            <i class="fa fa-trash-o fa-stack-1x fa-inverse"></i>
-                                                                        </span>
-                                                                    </a>
-                                                                </td>
-                                                            </tr>
-                                                        </tbody>
-                                                    </table>
-                                                </div>
+                         <div class="row text-center pad-top">
+                        <div class="container bootstrap snippet">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="main-box no-header clearfix">
+                                        <div class="main-box-body clearfix">
+                                            <div class="table-responsive">
+                                                <table class="table user-list">
+                                                    <thead>
+                                                        <tr>
+                                                        <th><span>Usuari</span></th>
+                                                        <th><span>NIF</span></th>
+                                                        <th><span>Cognom</span></th>
+                                                        <th class="text-center"><span>Estat</span></th>
+                                                        <th><span>E-mail</span></th>
+                                                        <th>&nbsp;</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <%
+                                                        	TutorDAO tDAO=new TutorDAO();
+                                                        	UsuariDAO uDAO=new UsuariDAO();
+                                                        	List<Usuari> usu=tDAO.consultaTutor();
+                                                        	response.setContentType("text/html");
+                                                        	for(Usuari u:usu){
+                                                        		out.println("<tr>");
+                                                        		out.println("<td>");
+                                                        		out.println(u.getNom());
+                                                        		out.println("</td>");
+                                                        		out.println("<td>");
+                                                        		out.println(u.getNIF());
+                                                        		out.println("</td>");
+                                                        		out.println("<td>");
+                                                        		out.println(u.getCognom1());
+                                                        		out.println("</td>");
+                                                        		out.println("<td class=\"text-center\">");
+                                                        		out.println("<span class=\"label label-default\">Pendent</span>");
+                                                        		out.println("</td>");
+                                                        		out.println("<td>");
+                                                        		out.println(u.getMail());
+                                                        		out.println("</td>");
+                                                        		out.println("<td style=\"width: 20%;\">");
+                                                        		out.println("<form name=\"form\" method=\"Post\" action=\"..\\BaixaTutors\" class=\"table-link danger\">");
+                                                               	out.println("<input type=\"hidden\" name=\"NIF\" value=\""+u.getNIF()+"\">");
+                                                        		out.println("<input type=\"submit\" name=\"enviar\" class=\"table-link\">");
+                                                                out.println("<span class=\"fa-stack\">");
+                                                                out.println("<i class=\"fa fa-square fa-stack-2x\"></i>");
+                                                                out.println("<i class=\"fa fa-trash-o fa-stack-1x fa-inverse\"></i>");
+                                                                out.println("</span>");
+                                                            	out.println("</form>");
+                                                            	out.println("</td>");
+                                                            	
+                                                        	}
+                                                        %>
+                                                    </tbody>
+                                                </table>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                      </div>
+                        </div>
                   </div>
                   
-              </div>
+              </div>          
                   <!-- /. ROW  --> 
     </div>
              <!-- /. PAGE INNER  -->
@@ -253,7 +180,7 @@
     
             <div class="row">
                 <div class="col-lg-12" >
-                    &copy;  2017 yourdomain.com | Design by: Joan Espuñes, Sergi Fernàndez, Sisco Navarro, Thiago Hachikyan
+                  &copy;  2017 yourdomain.com | Design by: Joan Espuñes, Sergi Fernàndez, Sisco Navarro, Thiago Hachikyan
                 </div>
             </div>
         </div>
