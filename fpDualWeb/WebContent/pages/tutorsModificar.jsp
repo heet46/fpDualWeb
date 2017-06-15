@@ -147,7 +147,7 @@
                                                         		out.println(u.getMail());
                                                         		out.println("</td>");
                                                         		out.println("<td style=\"width: 20%;\">");
-                                                        		out.println("<form name=\"form\" method=\"Post\" action=\"..\\ModificarTutor\" class=\"table-link\">");
+                                                        		out.println("<form name=\"form\" method=\"Post\" action=\"..\\modificarTutor\" class=\"table-link\">");
                                                                	out.println("<input type=\"hidden\" name=\"NIF\" value=\""+u.getNIF()+"\">");
                                                         		out.println("<input type=\"submit\" name=\"enviar\" class=\"table-link\">");
                                                                 out.println("<span class=\"fa-stack\">");

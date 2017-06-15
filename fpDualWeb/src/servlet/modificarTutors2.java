@@ -17,13 +17,13 @@ import model.UsuariDAO;
  * Servlet implementation class modificarTutors2
  */
 @WebServlet("/modificarTutors2")
-public class ModificarTutors2 extends HttpServlet {
+public class modificarTutors2 extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ModificarTutors2() {
+    public modificarTutors2() {
         super();
         // TODO Auto-generated constructor stub
     }
