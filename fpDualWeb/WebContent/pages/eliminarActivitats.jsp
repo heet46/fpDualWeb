@@ -1,8 +1,3 @@
-<%@ page import="controlador.*" %>
-<%@ page import="model.*" %>
-<%@ page import="servlet.*" %>
-<%@ page import="java.util.*" %>
-
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -10,12 +5,22 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Registre d'hores</title>
+    
+    <script>
+        function habilitar(value) {
+            if(value=="1"){
+                document.getElementById("id").disabled = true;
+            }else if(value=="2"){
+                document.getElementById("id").disabled = false;
+            }
+        }
+    </script>
 	<!-- BOOTSTRAP STYLES-->
      <!-- FONTAWESOME STYLES-->
+    <link rel="stylesheet" href="../assets/css/activitats.css">
+     
     <link href="../assets/css/font-awesome.css" rel="stylesheet" />
         <!-- CUSTOM STYLES-->
-    <link rel="stylesheet" href="../assets/css/activitats.css">    
-    
     <link href="../assets/css/bootstrap-theme.css" rel="stylesheet" />
 
     <link href="../assets/css/bootstrap-theme.min.css" rel="stylesheet" />
@@ -25,15 +30,12 @@
     <link href="../assets/css/bootstrap-theme.min.css" rel="stylesheet" />
     
     <link href="../assets/css/custom.css" rel="stylesheet" />
+    
+    <link href="../assets/css/activitats.css" rel="stylesheet" />
      <!-- GOOGLE FONTS-->
     <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
 </head>
 <body>
-<%
-	ActivitatDAO aDAO = new ActivitatDAO();
-	List<Activitat> llistaActivitats = aDAO.llistaTotesActivitats();
-%> 
-
     <div id="wrapper">
          <div class="navbar navbar-inverse navbar-fixed-top">
             <div class="adjust-nav">
@@ -93,51 +95,64 @@
                 </div>              
                  <!-- /. ROW  -->
                   <hr />
-                  <h3>Llistat d'activitats</h3>
-                <div class="row col-lg-12">
+                  <h3>Alta d'activitat</h3>
+                <div class="row">
                     
- 
+                    
+                    <form class="form-horizontal"  action="../AfegirActivitats" method="Post">
+                        <div class="col-lg-2"></div>
+                        <div class="form-group">
+                            <label class="control-label col-lg-2" for="id">ID:</label>
+                            <div class="col-lg-1">
+                                <input type="text" class="form-control" disabled id="id" name="id">
+                                
+                            </div>
+                            <label class="control-label col-lg-1" for="auto">Auto ID:</label>
+                            <div class="col-lg-2">
+                                <label class="radio-inline"><input type="radio" value="1" onchange="habilitar(this.value);" checked="checked" name="auto1">Si</label>
+                                <label class="radio-inline"><input type="radio" value="2" onchange="habilitar(this.value);" name="auto1">No</label>
+                            </div>
+                        </div>
+                        <div class="col-lg-2"></div>
+                       
+                        <br>
+                        <div class="col-lg-2"></div>
+                        <div class="form-group">
+                            <label class="control-label col-lg-2" for="codi">Codi:</label>
+                            <div class="col-lg-4">
+                                <select class="form-control" name="codi">
+                                    <option disabled selected>Select an option</option>
+                                    <option value="EXC">EXC (Excursió)</option>
+                                    <option value="TLL">TLL (Taller)</option>
+                                    <option value="TBL">TBL (Treball)</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <br>
+                        <div class="col-lg-2"></div>
+                        <div class="form-group">
+                            <label class="control-label col-lg-2" for="desc">Descripció:</label>
+                            <div class="col-lg-4">
+                                <textarea class="form-control" rows="5" id="desc" name="descripcio"></textarea>
+                            </div>
+                        </div>
+                        <div class="col-lg-7"></div>
+                        <!--div class="col-lg-2"-->
+                        <input type="submit" value="Enviar" class="btn btn-default col-lg-1">
+                        
+                        <!--/div-->
+                    </form>    
                 </div>
                   <!-- /. ROW  --> 
-                            <div class="row">
-                                <div class="col-lg-12">
-                                <table class="table table-striped  table-hover">
-                            <thead>
-                                <tr>
-                                    <th>#ID</th>
-                                    <th>Codi</th>
-                                    <th>Descripció</th>
-                                    <th>Detalls</th>
-                                </tr>
-                            </thead>
-                            <tbody> 
-                                <tr>
-									<%
-										for (Activitat activitat : llistaActivitats) {
-									%>
-									<td><%=activitat.getId()%></td>
-									<td><%=activitat.getCodi()%></td>
-									<td><%=activitat.getDescripcio()%></td>
-									<td><a href="eliminarActivitats.jsp" class="boto" data-confirm="Are you sure?"><button class="btn btn-danger">Eliminar</button></a></td>
-
-								</tr>
-								<%
-								String id = activitat.getId();
-									}
-									
-								%>
-                                
-                            </tbody>
-                        </table>
-                 
-                <br><br><br><br><br><br><br><br><br>
+                <br><br><br><br><br><br><br>
                 <div class="col-lg-11"></div>
                 <div class="col-lg-1">
                     <a class="flotante" href="activitats.jsp">
                         <i class="fa fa-arrow-left fa-2x"></i>
                     </a>
-                </div> 
-               
+                </div>
+                                  
               </div>
                  <!-- /. ROW  -->   
 				 <!-- 
@@ -171,24 +186,11 @@
     <!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
     <!-- JQUERY SCRIPTS -->
     <!-- CUSTOM SCRIPTS -->
-    <script>
-    var btns = document.querySelector('.boto');
-
-    Array.prototype.forEach.call(btns, function addClickListener(btn) {
-      btn.addEventListener('click', function(event) {
-        <% Activitat act = new Activitat();
-        	act.setId("22");
-        	aDAO.baixaActivitat(act);
-        %>
-        
-      });
-    });
-    </script>
     
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="../assets/js/bootstrap.min.js"></script>
     <script src="../assets/js/custom.js"></script>
-	<script src="../assets/js/confirm.js"></script>
+
     
    
 </body>

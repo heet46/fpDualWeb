@@ -99,12 +99,12 @@
                 <div class="row">
                     
                     
-                    <form class="form-horizontal">
+                    <form class="form-horizontal"  action="../AfegirActivitats" method="Post">
                         <div class="col-lg-2"></div>
                         <div class="form-group">
                             <label class="control-label col-lg-2" for="id">ID:</label>
                             <div class="col-lg-1">
-                                <input type="text" class="form-control" disabled id="id">
+                                <input type="text" class="form-control" disabled id="id" name="id">
                                 
                             </div>
                             <label class="control-label col-lg-1" for="auto">Auto ID:</label>
@@ -120,11 +120,11 @@
                         <div class="form-group">
                             <label class="control-label col-lg-2" for="codi">Codi:</label>
                             <div class="col-lg-4">
-                                <select class="form-control" id="codi">
+                                <select class="form-control" name="codi">
                                     <option disabled selected>Select an option</option>
-                                    <option>EXC (Excursió)</option>
-                                    <option>TLL (Taller)</option>
-                                    <option>TBL (Treball)</option>
+                                    <option value="EXC">EXC (Excursió)</option>
+                                    <option value="TLL">TLL (Taller)</option>
+                                    <option value="TBL">TBL (Treball)</option>
                                 </select>
                             </div>
                         </div>
@@ -134,12 +134,13 @@
                         <div class="form-group">
                             <label class="control-label col-lg-2" for="desc">Descripció:</label>
                             <div class="col-lg-4">
-                                <textarea class="form-control" rows="5" id="desc"></textarea>
+                                <textarea class="form-control" rows="5" id="desc" name="descripcio"></textarea>
                             </div>
                         </div>
                         <div class="col-lg-7"></div>
                         <!--div class="col-lg-2"-->
-                        <button type="submit" class="btn btn-default col-lg-1">Enviar</button>
+                        <input type="submit" value="Enviar" class="btn btn-default col-lg-1">
+                        
                         <!--/div-->
                     </form>    
                 </div>

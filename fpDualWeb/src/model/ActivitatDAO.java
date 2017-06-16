@@ -22,6 +22,13 @@ public class ActivitatDAO {
 		}
 	}
 	
+	public void altaActivitatManual(Activitat activitat) {
+		String consultaSQL = "INSERT INTO ACTIVITAT(ID_ACTIVITAT, CODI, DESCRIPCIO) VALUES('"+activitat.getId()+"', '"+activitat.getCodi()+"', '"+activitat.getDescripcio()+"')";
+		if(gestorDB.modificarRegistre(consultaSQL)!=0){
+			System.out.println("Alta realitzada amb èxit");
+		}
+	}
+	
 	public void baixaActivitat(Activitat activitat){
 		String consultaSQL = "DELETE FROM ACTIVITAT WHERE ID_ACTIVITAT="+activitat.getId()+"";
 		if(gestorDB.modificarRegistre(consultaSQL)!=0){
@@ -93,4 +100,6 @@ public class ActivitatDAO {
 		}
 		return activitats;
 	}
+
+	
 }
