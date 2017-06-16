@@ -140,19 +140,15 @@
                                                         			<%=u.getCognom1()%>
                                                         		</td>
                                                         		<td class="text-center">
-                                                        			<span class="label label-default">Pendent</span>
+                                                        			<span class="label label-success">Actiu</span>
                                                         		</td>		
                                                         		<td>
                                                         			<%=u.getMail()%>
                                                         		</td>
-                                                        		<td style="width: 20%">
+                                                        		<td style="width: 27%">
                                                         			<form name="form" method="Post" action="../modificarTutor" class="table-link">
                                                         				<input type="hidden" name="NIF" value="<%=u.getNIF()%>">
-                                                        				<input type="submit" class="table-link">
-                                                        				<span class="fa-stack">
-                                                        					<i class="fa fa-square fa-stack-2x"></i>
-                                                        					<i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
-                                                        				</span> 
+                                                        				<input type="submit" class="btn btn-warning" value="Modificar">
                                                         			</form>
                                                         		</td>
                                                         	</tr>

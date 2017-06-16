@@ -23,17 +23,28 @@
      <!-- GOOGLE FONTS-->
     <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
       
-     <script type="text/javascript">
-    function nif(dni) {
-     numero = dni.substr(0,dni.length-1);
-     let = dni.substr(dni.length-1,1);
-     numero = numero % 23;
-     letra='TRWAGMYFPDXBNJZSQVHLCKET';
-     letra=letra.substring(numero,numero+1);
-     if (letra!=let) 
-      alert('Dni erroneo');
-    }
+<script type="text/javascript">
+   var restrict = function(tb) {
+     tb.value = tb.value.replace(/[^a-zA-Zñç]/g, '');
+   };
 </script>
+<script type="text/javascript">
+    function validateForm()
+    {
+    var a=document.forms["Form"]["NIF"].value;
+    var b=document.forms["Form"]["pass"].value;
+    var c=document.forms["Form"]["nom"].value;
+    var d=document.forms["Form"]["Pcognom"].value;
+    var e=document.forms["Form"]["Scognom"].value;
+    var f=document.forms["Form"]["mail"].value;
+    var g=document.getElementById("tec");
+    if (a==null || a=="",b==null || b=="",c==null || c=="",d==null || d=="" || e==null || e=="" || f==null || f=="" || g.selectedIndex==0)
+      {
+      alert("Introdueix tots els camps.");
+      return false;
+      }
+    }
+    </script>
 </head>
 <body>
 <%
@@ -117,40 +128,40 @@
                     </div>
                   <!-- /. ROW  --> 
                             <div class="row text-center pad-top">
-                                <form method="Post" action="../modificarTutors2">
+                                <form method="Post" name="Form" onsubmit="return validateForm()" action="../modificarTutors2">
                                 
                                 <%String nifVell=request.getParameter("NIF"); %>
                                     <table>
                                         <tr>
                                             <td>NIF: </td>
                                             <input type="hidden" name="IdVella" value="${NIF}">
-                                            <td><input type="text" name="NIF" size="25"  value="${NIF}" onblur="nif(this.value)"/></td>
+                                            <td><input type="text" class="form-control" name="NIF" size="25"  value="${NIF}"/></td>
                                         </tr>
                                         <tr>
                                             <td>Password: </td>
-                                            <td><input type="password" name="pass" value="${password}" size="25"/></td>
+                                            <td><input type="password" class="form-control" name="pass" value="${password}" size="25"/></td>
                                         </tr>
                                         <tr>
                                             <td>Nom: </td>
-                                            <td><input type="text" name="nom" size="25" value="${nom}" /></td>
+                                            <td><input type="text" class="form-control" onpaste="restrict(this);" onkeypress="restrict(this);" onkeyup="restrict(this);" name="nom" size="25"  value="${nom}" /></td>
                                         </tr>
                                         <tr>
                                             <td>Primer cognom: </td>
-                                            <td><input type="text" name="Pcognom" value="${Pcognom}" size="25"/></td>
+                                            <td><input type="text" class="form-control" onpaste="restrict(this);" onkeypress="restrict(this);" onkeyup="restrict(this);" name="Pcognom" value="${Pcognom}" size="25"/></td>
                                         </tr>
                                         <tr>
                                             <td>Segon cognom: </td>
-                                            <td><input type="text" name="Scognom" value="${Scognom}" size="25"/></td>
+                                            <td><input type="text" class="form-control" onpaste="restrict(this);" onkeypress="restrict(this);" onkeyup="restrict(this);" name="Scognom" value="${Scognom}" size="25"/></td>
                                         </tr>
                                         <tr>
                                             <td>Mail: </td>
-                                            <td><input type="email" name="mail" value="${mail}" size="25"/></td>
+                                            <td><input type="email" class="form-control" name="mail" value="${mail}" size="25"/></td>
                                         </tr>
                                         <tr>
                                         <td>Tecnologia: </td>
                                         <td>
-                                            <select name="tecno">
-                                                <option selected disabled>Selecciona una opciÃ³:</option>
+                                            <select name="tecno" id="tec" class="form-control">
+                                                <option selected disabled value="selec">Selecciona una opció:</option>
                                                 <option value="JAVA">JAVA</option>
                                                 <option value="SAP">SAP</option>
                                                 <option value="NET">NET</option>
@@ -161,8 +172,7 @@
                                             <td><br></td>
                                         </tr>
                                         <tr>
-                                            <th><input type="submit" name="Afegir"/></th>
-                                            <th><input type="reset" name="Esborrar"/></th>
+                                            <th><input type="submit" name="Modificar" class="btn btn-warning"  value="Modificar"/></th>
                                         </tr>
                                     </table>
                                 </form>
@@ -181,7 +191,7 @@
     
             <div class="row">
                 <div class="col-lg-12" >
-                   &copy;  2017 yourdomain.com | Design by: Joan EspuÃ±es, Sergi FernÃ ndez, Sisco Navarro, Thiago Hachikyan
+                   &copy;  2017 yourdomain.com | Design by: Joan Espuñes, Sergi Fernández, Sisco Navarro, Thiago Hachikyan
                 </div>
             </div>
         </div>

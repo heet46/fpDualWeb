@@ -23,6 +23,14 @@
 
     <link href="../assets/css/bootstrap-theme.min.css" rel="stylesheet" />
     
+     <link href="../assets/css/bootstrap-X.X.css" rel="stylesheet" />
+     
+     <link href="../assets/css/bootstrap-X.X-flex.css" rel="stylesheet" />
+     
+     <link href="../assets/css/bootstrap.js" rel="stylesheet" />
+    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.‌​2/css/bootstrap.min.‌​css">
+    
     <link href="../assets/css/tutors.css" rel="stylesheet" />
     
     <link href="../assets/css/custom.css" rel="stylesheet" />
@@ -115,7 +123,7 @@
                                     <div class="main-box no-header clearfix">
                                         <div class="main-box-body clearfix">
                                             <div class="table-responsive">
-                                                <table class="table user-list">
+                                                <table class="table table-hover table-inverse">
                                                     <thead>
                                                         <tr>
                                                         <th><span>Usuari</span></th>
@@ -144,7 +152,7 @@
                                                         				<%=u.getCognom1()%>
                                                         			</td>
                                                         			<td class="text-center">
-                                                        				<span class="label label-default">Pendent</span>
+                                                        				<span class="label label-success">Actiu</span>
                                                         			</td>
                                                         			<td>
                                                         				<%=u.getMail()%>
@@ -175,7 +183,7 @@
     
             <div class="row">
                 <div class="col-lg-12" >
-                    &copy;  2017 yourdomain.com | Design by: Joan Espu�es, Sergi Fern�ndez, Sisco Navarro, Thiago Hachikyan
+                    &copy;  2017 yourdomain.com | Design by: Joan Espuñes, Sergi Fernàndez, Sisco Navarro, Thiago Hachikyan
                 </div>
             </div>
         </div>
