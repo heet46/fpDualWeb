@@ -10,9 +10,9 @@ import javax.servlet.http.HttpServletResponse;
 import model.Activitat;
 
 /**
- * Servlet implementation class ModificarActivitatsId
+ * Servlet implementation class ModificarActivitats
  */
-@WebServlet("/ModificarActivitatsId")
+@WebServlet("/ModificarActivitats")
 public class ModificarActivitats extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
