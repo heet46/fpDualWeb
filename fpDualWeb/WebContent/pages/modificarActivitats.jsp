@@ -11,15 +11,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Registre d'hores</title>
     
-    <script>
-        function habilitar(value) {
-            if(value=="1"){
-                document.getElementById("id").disabled = true;
-            }else if(value=="2"){
-                document.getElementById("id").disabled = false;
-            }
-        }
-    </script>
 	<!-- BOOTSTRAP STYLES-->
      <!-- FONTAWESOME STYLES-->
     <link rel="stylesheet" href="../assets/css/activitats.css">
@@ -40,7 +31,7 @@
 </head>
 <body>
 <% 
-	Activitat activitat = new Activitat();
+	String id = (String) request.getSession().getAttribute("id");
 %>
     <div id="wrapper">
          <div class="navbar navbar-inverse navbar-fixed-top">
@@ -105,13 +96,13 @@
                 <div class="row">
                     
                     
-                    <form class="form-horizontal">
+                    <form class="form-horizontal" action="../ModificarActivitats2" method="Post">
                         <div class="col-lg-2"></div>
                         <div class="form-group">
                             <label class="control-label col-lg-2" for="id">ID:</label>
                             <div class="col-lg-1">
-                                <select type="text" class="form-control" id="id">
-                                    <option><%=activitat.getId()%></option>
+                                <select type="text" class="form-control" id="id" name="id">
+                                    <option><%=id%></option>
                                 </select>
                             </div>
                             <!-- <label class="control-label col-lg-1" for="auto">Nova ID:</label> 
@@ -126,11 +117,11 @@
                         <div class="form-group">
                             <label class="control-label col-lg-2" for="codi">Codi:</label>
                             <div class="col-lg-4">
-                                <select class="form-control" id="codi">
-                                    <option disabled selected>Select an option</option>
-                                    <option>EXC (Excursió)</option>
-                                    <option>TLL (Taller)</option>
-                                    <option>TBL (Treball)</option>
+                                <select class="form-control" id="codi" name="codi">
+                                    <option hidden selected>Select an option</option>
+                                    <option value="EXC">EXC (Excursió)</option>
+                                    <option value="TLL">TLL (Taller)</option>
+                                    <option value="TBL">TBL (Treball)</option>
                                 </select>
                             </div>
                         </div>
@@ -140,7 +131,7 @@
                         <div class="form-group">
                             <label class="control-label col-lg-2" for="desc">Descripció:</label>
                             <div class="col-lg-4">
-                                <textarea class="form-control" rows="5" id="desc"></textarea>
+                                <textarea class="form-control" rows="5" id="desc" name="descripcio"></textarea>
                             </div>
                         </div>
                         <div class="col-lg-7"></div>

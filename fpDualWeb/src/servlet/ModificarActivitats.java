@@ -1,6 +1,8 @@
 package servlet;
 
 import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -28,9 +30,9 @@ public class ModificarActivitats extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		String id = request.getParameter("idModificar");
-		Activitat activitat = new Activitat();
-		activitat.setId(id);
+		System.out.println(id);
 		
+		request.getSession().setAttribute("id", id);
 		response.sendRedirect("pages/modificarActivitats.jsp");
 	}
 

@@ -38,6 +38,10 @@ public class ActivitatDAO {
 		}
 	}
 	
+	public void modificarActivitat(Activitat activitat){
+		String consultaSQL = "UPDATE FROM ACTIVITAT SET CODI='"+activitat.getCodi()+"', DESCRIPCIO='"+activitat.getDescripcio()+"' WHERE ID_ACTIVITAT="+activitat.getId()+"";
+	}
+	
 	public List<Integer> consultarID(){
 		String sentencia = "SELECT id_activitat FROM activitat";
 		ResultSet rs;
