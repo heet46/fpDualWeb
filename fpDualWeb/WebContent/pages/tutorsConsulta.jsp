@@ -131,28 +131,28 @@
                                                         	TutorDAO tDAO=new TutorDAO();
                                                         	UsuariDAO uDAO=new UsuariDAO();
                                                         	List<Usuari> usu=tDAO.consultaTutor();
-                                                        	DateFormat formatter=new SimpleDateFormat("yyyy-MM-dd");
-                                                        	response.setContentType("text/html");
                                                         	for(Usuari u:usu){
-                                                        		out.println("<tr>");
-                                                        		out.println("<td>");
-                                                        		out.println(u.getNom());
-                                                        		out.println("</td>");
-                                                        		out.println("<td>");
-                                                        		out.println(u.getNIF());
-                                                        		out.println("</td>");
-                                                        		out.println("<td>");
-                                                        		out.println(u.getCognom1());
-                                                        		out.println("</td>");
-                                                        		out.println("<td class=\"text-center\">");
-                                                        		out.println("<span class=\"label label-default\">Pendent</span>");
-                                                        		out.println("</td>");
-                                                        		out.println("<td>");
-                                                        		out.println(u.getMail());
-                                                        		out.println("</td>");
-                                                        		
-                                                        	}
                                                         %>
+                                                        		<tr>
+                                                        			<td>
+                                                        				<%=u.getNom()%>
+                                                        			</td>
+                                                        			<td>
+                                                        				<%=u.getNIF()%>
+                                                        			</td>
+                                                        			<td>
+                                                        				<%=u.getCognom1()%>
+                                                        			</td>
+                                                        			<td class="text-center">
+                                                        				<span class="label label-default">Pendent</span>
+                                                        			</td>
+                                                        			<td>
+                                                        				<%=u.getMail()%>
+                                                        			</td>
+                                                        		</tr>
+                                                        <% 
+                                                        	}
+                                                       	%>	
                                                     </tbody>
                                                 </table>
                                             </div>

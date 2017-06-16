@@ -127,35 +127,36 @@
                                                         	TutorDAO tDAO=new TutorDAO();
                                                         	UsuariDAO uDAO=new UsuariDAO();
                                                         	List<Usuari> usu=tDAO.consultaTutor();
-                                                        	response.setContentType("text/html");
                                                         	for(Usuari u:usu){
-                                                        		out.println("<tr>");
-                                                        		out.println("<td>");
-                                                        		out.println(u.getNom());
-                                                        		out.println("</td>");
-                                                        		out.println("<td>");
-                                                        		out.println(u.getNIF());
-                                                        		out.println("</td>");
-                                                        		out.println("<td>");
-                                                        		out.println(u.getCognom1());
-                                                        		out.println("</td>");
-                                                        		out.println("<td class=\"text-center\">");
-                                                        		out.println("<span class=\"label label-default\">Pendent</span>");
-                                                        		out.println("</td>");
-                                                        		out.println("<td>");
-                                                        		out.println(u.getMail());
-                                                        		out.println("</td>");
-                                                        		out.println("<td style=\"width: 20%;\">");
-                                                        		out.println("<form name=\"form\" method=\"Post\" action=\"../baixaTutors\" class=\"table-link danger\">");
-                                                               	out.println("<input type=\"hidden\" name=\"NIF\" value=\""+u.getNIF()+"\">");
-                                                        		out.println("<input type=\"submit\" name=\"enviar\" class=\"table-link\">");
-                                                                out.println("<span class=\"fa-stack\">");
-                                                                out.println("<i class=\"fa fa-square fa-stack-2x\"></i>");
-                                                                out.println("<i class=\"fa fa-trash-o fa-stack-1x fa-inverse\"></i>");
-                                                                out.println("</span>");
-                                                            	out.println("</form>");
-                                                            	out.println("</td>");
-                                                            	
+                                                        %>
+                                                        	<tr>
+                                                        		<td>
+                                                        			<%=u.getNom()%>
+                                                        		</td>
+                                                        		<td>
+                                                        			<%=u.getNIF() %>
+                                                        		</td>
+                                                        		<td>
+                                                        			<%=u.getCognom1()%>
+                                                        		</td>
+                                                        		<td class="text-center">
+                                                        			<span class="label label-default">Pendent</span>
+                                                        		</td>		
+                                                        		<td>
+                                                        			<%=u.getMail()%>
+                                                        		</td>
+                                                        		<td style="width: 20%">
+                                                        			<form name="form" method="Post" action="../baixaTutors" class="table-link">
+                                                        				<input type="hidden" name="NIF" value="<%=u.getNIF()%>">
+                                                        				<input type="submit" class="table-link">
+                                                        				<span class="fa-stack">
+                                                        					<i class="fa fa-square fa-stack-2x"></i>
+                                                        					<i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
+                                                        				</span> 
+                                                        			</form>
+                                                        		</td>
+                                                        	</tr>
+                                                        <% 	
                                                         	}
                                                         %>
                                                     </tbody>
