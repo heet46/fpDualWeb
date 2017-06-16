@@ -1,3 +1,8 @@
+<%@ page import="controlador.*" %>
+<%@ page import="model.*" %>
+<%@ page import="servlet.*" %>
+<%@ page import="java.util.*" %>
+
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -34,6 +39,9 @@
     <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
 </head>
 <body>
+<% 
+	Activitat activitat = new Activitat();
+%>
     <div id="wrapper">
          <div class="navbar navbar-inverse navbar-fixed-top">
             <div class="adjust-nav">
@@ -103,13 +111,13 @@
                             <label class="control-label col-lg-2" for="id">ID:</label>
                             <div class="col-lg-1">
                                 <select type="text" class="form-control" id="id">
-                                    <option>1</option>
+                                    <option><%=activitat.getId()%></option>
                                 </select>
                             </div>
-                            <label class="control-label col-lg-1" for="auto">Nova ID:</label>
+                            <!-- <label class="control-label col-lg-1" for="auto">Nova ID:</label> 
                             <div class="col-lg-1">
                                 <input type="text" class="form-control" id="newid">
-                            </div>
+                            </div>-->
                         </div>
                         <div class="col-lg-2"></div>
                        

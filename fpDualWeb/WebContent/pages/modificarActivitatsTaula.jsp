@@ -1,3 +1,8 @@
+<%@ page import="controlador.*" %>
+<%@ page import="model.*" %>
+<%@ page import="servlet.*" %>
+<%@ page import="java.util.*" %>
+
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -24,6 +29,10 @@
     <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
 </head>
 <body>
+<%
+	ActivitatDAO aDAO = new ActivitatDAO();
+	List<Activitat> llistaActivitats = aDAO.llistaTotesActivitats();
+%>    
     <div id="wrapper">
          <div class="navbar navbar-inverse navbar-fixed-top">
             <div class="adjust-nav">
@@ -95,35 +104,32 @@
                                 <tr>
                                     <th>ID</th>
                                     <th>Codi</th>
-                                    <th>Descripcio</th>
-                                    <th>Modificar</th>
+                                    <th>Descripció</th>
+                                    <th></th>
+                                    <th>Detalls</th>
                                 </tr>
                             </thead>
-                            <tbody>
+                            <tbody> 
                                 <tr>
-                                    <td>1</td>
-                                    <td>EXC</td>
-                                    <td>Me cago en tu puta vida</td>
-                                    <td><a href="modificarActivitats.jsp" class="btn btn-warning">Edita</a></td>
-                                </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td>EXC</td>
-                                    <td>JODER</td>
-                                    <td><a href="modificarActivitats.jsp" class="btn btn-warning">Edita</a></td>
-                                </tr>
-                                <tr>
-                                    <td>3</td>
-                                    <td>TLL</td>
-                                    <td>Talllll</td>
-                                    <td><a href="modificarActivitats.jsp" class="btn btn-warning">Edita</a></td>
-                                </tr>
-                                <tr>
-                                    <td>4</td>
-                                    <td>PRV</td>
-                                    <td>Prova</td>
-                                    <td><a href="modificarActivitats.jsp" class="btn btn-warning">Edita</a></td>
-                                </tr>
+									<%
+										for (Activitat activitat : llistaActivitats) {
+									%>
+									<td><%=activitat.getId()%></td>
+									<td><%=activitat.getCodi()%></td>
+									<td><%=activitat.getDescripcio()%></td>
+									<form action="../ModificarActivitats" method="Post">
+										<td><input type="hidden" name="idModificar" value="<%=activitat.getId()%>"></td>
+	                                    <td>
+	                                    	<input type="Submit" value="Editar" class="btn btn-warning">
+	                             		</td>
+                             		</form>
+
+								</tr>
+								<%
+									}
+									
+								%>
+                                
                             </tbody>
                         </table>
                   
