@@ -5,7 +5,7 @@
   <title>Registre d'hores</title>
   <link rel="stylesheet" href="../assets/css/login.css">
   <!-- FAVICON -->
-	<link rel="shortcut icon" type="image/ico" href="assets/img/favicon-clock-o.ico" />
+	<link rel="shortcut icon" type="image/ico" href="../assets/img/favicon-clock-o.ico" />
 </head>
 <body>
   <div class="login-page">
