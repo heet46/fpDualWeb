@@ -165,7 +165,7 @@ table{
 }
 
 input #btnModificar {
-	color = #fff;
+	color: #fff;
 	background-color: #f0ad4e;
 	border-color: #eea236;
 	display: inline-block;
@@ -182,6 +182,10 @@ input #btnModificar {
 	user-select: none;
 	border: 1px solid transparent;
 	border-radius: 4px;
+}
+
+a .letstry{
+	font-size: 0px;
 }
     
 /*==============================================

@@ -2,6 +2,7 @@
 <%@ page import="servlet.*" %>
 <%@ page import="java.util.*" %>
 
+
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -37,6 +38,7 @@
 	List<Alumne> llistaAlumnes = aDAO.llistaTotsAlumnes();
 %>          
           
+
     <div id="wrapper">
          <div class="navbar navbar-inverse navbar-fixed-top">
             <div class="adjust-nav">
@@ -93,10 +95,11 @@
         <!-- /. NAV SIDE  -->
         <div id="page-wrapper" >
             <div id="page-inner">
+            
                 
                 <div class="row">
                     <div class="col-md-12">
-                     <h2>Llistat d'alumnes </h2>
+                     	<h2>Llistat d'alumnes </h2>                     
                     </div>
                 </div>              
                  <!-- /. ROW  -->
@@ -160,9 +163,20 @@
           
 
      <!-- /. WRAPPER  -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="../assets/js/bootstrap.min.js"></script>
     <script src="../assets/js/custom.js"></script>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+    <!-- bootbox code -->
+    <script src="bootbox.min.js"></script>
+    <script>
+        $(document).on("click", ".alert", function(e) {
+            bootbox.alert("Hello world!", function() {
+                console.log("Alert Callback");
+            });
+        });
+    </script>
     
    
 </body>

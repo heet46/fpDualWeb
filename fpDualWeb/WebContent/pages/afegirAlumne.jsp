@@ -23,6 +23,9 @@
     <link href="../assets/css/bootstrap-theme.min.css" rel="stylesheet" />
     
     <link href="../assets/css/custom.css" rel="stylesheet" />
+    
+    <script src="../assets/js/gen_validatorv4.js" type="text/javascript"></script>
+    
 
      <!-- GOOGLE FONTS-->
    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
@@ -114,36 +117,36 @@
                 <form method="post" action="../AfegirAlumne" name="afgAlumne">
                 <div class="row">
                         <div class="col-md-6">
-                            <input type="text" class="form-control" placeholder="D.N.I." name="dni" />
+                            <input type="text" class="form-control" placeholder="D.N.I." name="dni" id="dni" required/>
                         </div>
                         <div class="col-md-6">
-                            <input type="password" class="form-control" placeholder="Contrassenya" name="password" />
+                            <input type="password" class="form-control" placeholder="Contrassenya" name="password" required/>
                         </div>
                 </div>
                 <br>
                 <div class="row">
                         <div class="col-md-6">
-                            <input type="text" class="form-control" placeholder="Nom" name="nom" />
+                            <input type="text" class="form-control" placeholder="Nom" name="nom" required/>
                         </div>
                         <div class="col-md-6">
-                            <input type="text" class="form-control" placeholder="Cognoms" name="cognoms" />
+                            <input type="text" class="form-control" placeholder="Cognoms" name="cognoms" required/>
                         </div>
                 </div>
                 <br>
                 <div class="row">
                         <div class="col-md-12">
-                            <input type="text" class="form-control" placeholder="Correu electronic" name="email" />
+                            <input type="email" class="form-control" placeholder="Correu electronic" name="email" required/>
                         </div>
                 </div>
                 <hr>
                 <div class="row">
                         <div class="col-md-6">
                             <h5>Data inicial</h5>
-                            <input type="date" class="form-control" name="dataInici" />
+                            <input type="date" class="form-control" name="dataInici" required/>
                         </div>
                         <div class="col-md-6">
                             <h5>Data finalitzacio</h5>
-                            <input type="date" class="form-control"  name="dataFinal" />
+                            <input type="date" class="form-control"  name="dataFinal" required/>
                         </div>
                 </div>
                 <hr>
@@ -165,8 +168,8 @@
                         </div>
                         <div class="col-md-6">
                             <h5>Centre</h5>
-                            <select class="form-control" name="centre">
-                            	<option selected>Selecciona el centre</option>
+                            <select class="form-control" name="centre" required>
+                            	<option value="" selected>Selecciona el centre</option>
                             	<% 
                             	for(int i=0; i<llistaCentres.size(); i++) { 
                             	%>
@@ -181,15 +184,11 @@
                 </div>
                 <hr>
                 <div class="row">
-                	<center><a href="javascript: submitform()" class="btn btn-primary">AFEGIR ALUMNE</a></center>                
+                	<center><input type="submit" class="btn btn-primary" value="AFEGIR ALUMNE"/></center>                
                 </div>
                 
                 </form>
-                <script type="text/javascript">
-						function submitform(){
-						  document.afgAlumne.submit();
-						}
-				</script>
+				
             
              <!-- /. PAGE INNER  -->
             </div>

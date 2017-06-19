@@ -53,21 +53,26 @@ public class AfegirAlumne extends HttpServlet {
 		int idTutor = 0;
 		int idCentre = 0;
 		
-
-		StringTokenizer st = new StringTokenizer(cognoms);
-		while(st.hasMoreTokens()){
-			cognom1 = st.nextToken();
-			cognom2 = st.nextToken();
-		}
-		
 		Usuari usuari = new Usuari();
 		UsuariDAO uDAO = new UsuariDAO();
 		
 		usuari.setNIF(dni);
 		usuari.setPasswd(password);
 		usuari.setNom(nom);
-		usuari.setCognom1(cognom1);
-		usuari.setCognom2(cognom2);
+		
+		StringTokenizer st = new StringTokenizer(cognoms);
+		int nt = st.countTokens();
+		if(nt > 1){
+			while(st.hasMoreTokens()){
+				cognom1 = st.nextToken();
+				cognom2 = st.nextToken();
+			}
+			usuari.setCognom1(cognom1);
+			usuari.setCognom2(cognom2);
+		}else{
+			usuari.setCognom1(cognoms);
+		}
+		
 		usuari.setMail(email);
 		
 		uDAO.altaUsuari(usuari);		
