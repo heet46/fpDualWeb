@@ -39,7 +39,10 @@ public class ActivitatDAO {
 	}
 	
 	public void modificarActivitat(Activitat activitat){
-		String consultaSQL = "UPDATE FROM ACTIVITAT SET CODI='"+activitat.getCodi()+"', DESCRIPCIO='"+activitat.getDescripcio()+"' WHERE ID_ACTIVITAT="+activitat.getId()+"";
+		String consultaSQL = "UPDATE ACTIVITAT SET CODI='"+activitat.getCodi()+"', DESCRIPCIO='"+activitat.getDescripcio()+"' WHERE ID_ACTIVITAT="+activitat.getId()+"";
+		if(gestorDB.modificarRegistre(consultaSQL)!=0){
+			System.out.println("Modificació realitzada amb èxit");
+		}
 	}
 	
 	public List<Integer> consultarID(){

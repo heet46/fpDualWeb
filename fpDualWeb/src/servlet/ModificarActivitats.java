@@ -30,7 +30,6 @@ public class ModificarActivitats extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		String id = request.getParameter("idModificar");
-		System.out.println(id);
 		
 		request.getSession().setAttribute("id", id);
 		response.sendRedirect("pages/modificarActivitats.jsp");
