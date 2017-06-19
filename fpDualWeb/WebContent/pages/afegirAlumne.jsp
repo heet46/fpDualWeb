@@ -44,7 +44,15 @@
 	List<String> llistaCentres = cDAO.nomsCentres();
 	TutorDAO tDAO = new TutorDAO();
 	List<String> llistaTutors = tDAO.nomsTutors();
+	
+	int incorrecte = 0;
+	try{
+		incorrecte = Integer.parseInt(session.getAttribute("correcte").toString());
+	}catch(Exception e){
+		incorrecte = 0;
+	}
 %>
+
     <div id="wrapper">
          <div class="navbar navbar-inverse navbar-fixed-top">
             <div class="adjust-nav">
@@ -101,7 +109,24 @@
         <!-- /. NAV SIDE  -->
         <div id="page-wrapper" >
             <div id="page-inner">
-                
+                    	
+		<!-- JS dependencies -->
+	    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+	    <script src="../assets/js/bootstrap.min.js"></script>
+        <%
+        if(incorrecte == 1){ %>
+	
+		    <!-- bootbox code -->
+		    <script src="../assets/js/bootbox.min.js"></script>
+		    <script>		        
+		            bootbox.alert("Error, aquest NIF ja està introduit", function() {
+		                console.log("Alert Callback");
+		            });
+		    </script>
+        <%
+        }        
+        %>        
+   
                 <div class="row">
                     <div class="col-md-12">
                      <h2>Alta d'alumnes </h2>

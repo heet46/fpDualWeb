@@ -13,6 +13,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import model.Alumne;
 import model.AlumneDAO;
@@ -46,13 +47,15 @@ public class AfegirAlumne extends HttpServlet {
 		String nom = request.getParameter("nom");
 		String cognoms = request.getParameter("cognoms");
 		String email = request.getParameter("email");
-		System.out.println("MAIL AFG: "+email);
 		String sTutor = request.getParameter("tutor");
 		String sCentre = request.getParameter("centre");
 		String sDataInici = request.getParameter("dataInici");
 		String sDataFinal = request.getParameter("dataFinal");
 		int idTutor = 0;
 		int idCentre = 0;
+		
+		int incorrecte = 0;
+		HttpSession session = request.getSession();
 		
 		Usuari usuari = new Usuari();
 		UsuariDAO uDAO = new UsuariDAO();
@@ -76,11 +79,11 @@ public class AfegirAlumne extends HttpServlet {
 		
 		usuari.setMail(email);
 		
-		try {
+		/*try {
 			uDAO.altaUsuari(usuari);
 		} catch (SQLException e1) {
 			e1.printStackTrace();
-		}		
+		}		*/
 		
 		Tutor tutor = new Tutor();
 		tutor.setNom(sTutor);
@@ -113,11 +116,16 @@ public class AfegirAlumne extends HttpServlet {
 		alumne.setTutor(tutor);
 		
 		try {
+			uDAO.altaUsuari(usuari);
 			aDAO.altaAlumne(alumne);
+			incorrecte = 0;
+			session.setAttribute("correcte", incorrecte);
+	        response.sendRedirect("pages/alumnes.jsp");
 		} catch (SQLException e) {
-			e.printStackTrace();
+			incorrecte = 1;
+			session.setAttribute("correcte", incorrecte);
+			response.sendRedirect("pages/afegirAlumne.jsp");
 		}
-        response.sendRedirect("pages/alumnes.jsp");
 
 	}
 
