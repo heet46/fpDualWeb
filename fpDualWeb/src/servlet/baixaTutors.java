@@ -1,6 +1,8 @@
 package servlet;
 
 import java.io.IOException;
+import java.sql.SQLException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -40,7 +42,12 @@ public class baixaTutors extends HttpServlet {
 		TutorDAO tDAO=new TutorDAO();
 		UsuariDAO uDAO=new UsuariDAO();
 		String NIF=request.getParameter("NIF");
-		tDAO.baixaTutor(uDAO.consultaID(NIF));
+		try {
+			tDAO.baixaTutor(uDAO.consultaID(NIF));
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		response.sendRedirect("/fpDualWeb/pages/tutors.jsp");
 	}
 

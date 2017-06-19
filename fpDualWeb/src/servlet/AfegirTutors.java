@@ -44,8 +44,13 @@ public class AfegirTutors extends HttpServlet {
 		String mail=(String)request.getParameter("mail");
 		String tecno=(String)request.getParameter("tecno");
 		
-		uDAO.altaUsuari(new Usuari(NIF,pass,nom,pCog,sCog,mail));
-		tDAO.altaTutor(new Tutor(uDAO.consultaID(NIF),tecno));
+		try {
+			uDAO.altaUsuari(new Usuari(NIF,pass,nom,pCog,sCog,mail));
+			tDAO.altaTutor(new Tutor(uDAO.consultaID(NIF),tecno));
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
 		
 		response.sendRedirect("/fpDualWeb/pages/tutors.jsp");

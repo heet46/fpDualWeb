@@ -1,6 +1,8 @@
 package servlet;
 
 import java.io.IOException;
+import java.sql.SQLException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -44,11 +46,16 @@ public class modificarTutors2 extends HttpServlet {
 		TutorDAO tDAO=new TutorDAO();
 		String idVella=request.getParameter("IdVella");
 		System.out.println(idVella);
-		uDAO.modificarUsuari(idVella, new Usuari(request.getParameter("NIF"),
-				request.getParameter("pass"),request.getParameter("nom"),
-				request.getParameter("Pcognom"),request.getParameter("Scognom"),
-				request.getParameter("mail")));
-		tDAO.modificarTutor(new Tutor(uDAO.consultaID(request.getParameter("NIF")),request.getParameter("tecno")));
+		try {
+			uDAO.modificarUsuari(idVella, new Usuari(request.getParameter("NIF"),
+					request.getParameter("pass"),request.getParameter("nom"),
+					request.getParameter("Pcognom"),request.getParameter("Scognom"),
+					request.getParameter("mail")));
+			tDAO.modificarTutor(new Tutor(uDAO.consultaID(request.getParameter("NIF")),request.getParameter("tecno")));
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		doGet(request, response);
 		response.sendRedirect("pages/tutors.jsp");
 	}
