@@ -118,68 +118,56 @@
  
                     </div>
                   <!-- /. ROW  --> 
-                            <div class="row text-center pad-top">
-                        <div class="container bootstrap snippet">
+                        
                             <div class="row">
                                 <div class="col-lg-12">
-                                    <div class="main-box no-header clearfix">
-                                        <div class="main-box-body clearfix">
-                                            <div class="table-responsive">
-                                                <table class="table table-hover table-inverse">
-                                                    <thead>
-                                                        <tr>
-                                                        <th><span>Usuari</span></th>
-                                                        <th><span>NIF</span></th>
-                                                        <th><span>Cognom</span></th>
-                                                        <th class="text-center"><span>Estat</span></th>
-                                                        <th><span>E-mail</span></th>
-                                                        <th>&nbsp;</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        <%
-                                                        	TutorDAO tDAO=new TutorDAO();
-                                                        	UsuariDAO uDAO=new UsuariDAO();
-                                                        	List<Usuari> usu=tDAO.consultaTutor();
-                                                        	for(Usuari u:usu){
-                                                        %>
-                                                        		<tr>
-                                                        			<td>
-                                                        				<%=u.getNom()%>
-                                                        			</td>
-                                                        			<td>
-                                                        				<%=u.getNIF()%>
-                                                        			</td>
-                                                        			<td>
-                                                        				<%=u.getCognom1()%>
-                                                        			</td>
-                                                        			<td class="text-center">
-                                                        				<span class="label label-success">Actiu</span>
-                                                        			</td>
-                                                        			<td>
-                                                        				<%=u.getMail()%>
-                                                        			</td>
-                                                        		</tr>
-                                                        <% 
-                                                        	}
-                                                       	%>	
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                        </div>
+                                          
+	                                <table class="table table-hover table-inverse">
+	                                    <thead>
+	                                        <tr id="headeer">
+	                                        <th><span>Usuari</span></th>
+	                                        <th><span>NIF</span></th>
+	                                        <th><span>Cognom</span></th>
+	                                        <th class="text-center"><span>Estat</span></th>
+	                                        <th><span>E-mail</span></th>
+	                                        <th>&nbsp;</th>
+	                                        </tr>
+	                                    </thead>
+	                                    <tbody>
+	                                        <%
+	                                        	TutorDAO tDAO=new TutorDAO();
+	                                        	UsuariDAO uDAO=new UsuariDAO();
+	                                        	List<Usuari> usu=tDAO.consultaTutor();
+	                                        	for(Usuari u:usu){
+	                                        %>
+	                                        		<tr>
+	                                        			<td>
+	                                        				<%=u.getNom()%>
+	                                        			</td>
+	                                        			<td>
+	                                        				<%=u.getNIF()%>
+	                                        			</td>
+	                                        			<td>
+	                                        				<%=u.getCognom1()%>
+	                                        			</td>
+	                                        			<td class="text-center">
+	                                        				<span class="label label-success">Actiu</span>
+	                                        			</td>
+	                                        			<td>
+	                                        				<%=u.getMail()%>
+	                                        			</td>
+	                                        		</tr>
+	                                        <% 
+	                                        	}
+	                                       	%>	
+	                                    </tbody>
+	                                </table>
+                                   </div>
+                               </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                  </div>
-                  
-              </div>
-                  <!-- /. ROW  --> 
-    </div>
-             <!-- /. PAGE INNER  -->
-            </div>
-         <!-- /. PAGE WRAPPER  -->
-        </div>
+                        
     <div class="footer">
       
     
