@@ -25,6 +25,8 @@
     <link href="../assets/css/custom.css" rel="stylesheet" />
     
     <script src="../assets/js/gen_validatorv4.js" type="text/javascript"></script>
+    <!-- FAVICON -->
+	<link rel="shortcut icon" type="image/ico" href="../assets/img/favicon-clock-o.ico" />
     
 
      <!-- GOOGLE FONTS-->

@@ -24,7 +24,9 @@
     <!-- CUSTOM STYLES-->
     <link href="../assets/css/custom.css" rel="stylesheet" />
      <!-- GOOGLE FONTS-->
-   <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
+   	<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
+   	<!-- FAVICON -->
+	<link rel="shortcut icon" type="image/ico" href="../assets/img/favicon-clock-o.ico" />
 </head>
 <body>
 <%
