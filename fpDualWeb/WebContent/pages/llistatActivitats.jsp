@@ -114,7 +114,6 @@
                                     <th>ID</th>
                                     <th>Codi</th>
                                     <th>Descripció</th>
-                                    <th>Detalls</th>
                                 </tr>
                             </thead>
                             <tbody> 
@@ -125,7 +124,6 @@
 									<td><%=activitat.getId()%></td>
 									<td><%=activitat.getCodi()%></td>
 									<td><%=activitat.getDescripcio()%></td>
-									<td><a href="" class="btn btn-primary">Veure</a></td>
 
 								</tr>
 								<%
