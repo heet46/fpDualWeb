@@ -22,20 +22,25 @@
     <link href="../assets/css/custom.css" rel="stylesheet" />
      <!-- GOOGLE FONTS-->
     <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
-      
-     <script type="text/javascript">
-    function nif(dni) {
-     numero = dni.substr(0,dni.length-1);
-     let = dni.substr(dni.length-1,1);
-     numero = numero % 23;
-     letra='TRWAGMYFPDXBNJZSQVHLCKET';
-     letra=letra.substring(numero,numero+1);
-     if (letra!=let) 
-      alert('Dni erroneo');
-    }
-</script>
+
 </head>
 <body>
+<script type="text/javascript">
+var restrict = function(tb) {
+	  tb.value = tb.value.replace(/[^a-zA-Zñç]/g, '');
+	};
+</script>
+<script type="text/javascript">
+    function validateForm()
+    {
+    var g=document.getElementById("tec");
+    if (g.selectedIndex==0)
+      {
+      alert("No s'ha seleccionat una tecnologia.");
+      return false;
+      }
+    }
+    </script>
 <%
 	HttpSession sesion=request.getSession(); 
 	String nif;
@@ -117,41 +122,41 @@
                     </div>
                   <!-- /. ROW  --> 
                             <div class="row text-center pad-top">
-                                <form method="post" action="/fpDualWeb/afegirTutors">
+                                <form method="post" name="Form" onsubmit="return validateForm()" action="/fpDualWeb/afegirTutors">
                                 
                                     <table>
                                         <tr>
                                             <td>NIF: </td>
-                                            <td><input type="text" name="NIF" size="25" onblur="nif(this.value)"/></td>
+                                            <td><input type="text" class="form-control" name="NIF" size="25" maxlength="9" required/></td>
                                         </tr>
                                         <tr>
                                             <td>Password: </td>
-                                            <td><input type="password" name="pass" size="25"/></td>
+                                            <td><input type="password" class="form-control" name="pass" size="25" required/></td>
                                         </tr>
                                         <tr>
                                             <td>Nom: </td>
-                                            <td><input type="text" name="nom" size="25"/></td>
+                                            <td><input type="text" class="form-control" onpaste="restrict(this);" onkeypress="restrict(this);" onkeyup="restrict(this);" name="nom" size="25" required/></td>
                                         </tr>
                                         <tr>
                                             <td>Primer cognom: </td>
-                                            <td><input type="text" name="Pcognom" size="25"/></td>
+                                            <td><input type="text" class="form-control" onpaste="restrict(this);" onkeypress="restrict(this);" onkeyup="restrict(this);" name="Pcognom" size="25" required/></td>
                                         </tr>
                                         <tr>
                                             <td>Segon cognom: </td>
-                                            <td><input type="text" name="Scognom" size="25"/></td>
+                                            <td><input type="text" class="form-control" onpaste="restrict(this);" onkeypress="restrict(this);" onkeyup="restrict(this);" name="Scognom" size="25" required/></td>
                                         </tr>
                                         <tr>
                                             <td>Mail: </td>
-                                            <td><input type="email" name="mail" size="25"/></td>
+                                            <td><input type="email" class="form-control" name="mail" size="25" required/></td>
                                         </tr>
                                         <tr>
                                         <td>Tecnologia: </td>
                                         <td>
-                                            <select name="tecno">
-                                                <option selected disabled>Selecciona una opciÃ³:</option>
-                                                <option value="java">JAVA</option>
-                                                <option value="sap">SAP</option>
-                                                <option value="net">NET</option>
+                                            <select id="tec" name="tecno" class="form-control" required>
+                                                <option selected disabled value="selec">Selecciona una opció:</option>
+                                                <option value="JAVA">JAVA</option>
+                                                <option value="SAP">SAP</option>
+                                                <option value="NET">NET</option>
                                              </select>
                                         </td>
                                         </tr>
@@ -159,8 +164,8 @@
                                             <td><br></td>
                                         </tr>
                                         <tr>
-                                            <th><input type="submit" name="Afegir"/></th>
-                                            <th><input type="reset" name="Esborrar"/></th>
+                                            <th><input type="submit" name="Afegir" class="btn btn-primary"/></th>
+                                            <th><input type="reset" name="Esborrar" class="btn btn-danger"/></th>
                                         </tr>
                                     </table>
                                 </form>
@@ -179,7 +184,7 @@
     
             <div class="row">
                 <div class="col-lg-12" >
-                   &copy;  2017 yourdomain.com | Design by: Joan EspuÃ±es, Sergi FernÃ ndez, Sisco Navarro, Thiago Hachikyan
+                   &copy;  2017 yourdomain.com | Design by: Joan Espuñes, Sergi Fernández, Sisco Navarro, Thiago Hachikyan
                 </div>
             </div>
         </div>

@@ -87,7 +87,7 @@
             <div id="page-inner">
                 <div class="row">
                     <div class="col-lg-12">
-                     <h2>Gesti√≥ tutors</h2>   
+                     <h2>GestiÛ tutors</h2>   
                     </div>
                 </div>              
                  <!-- /. ROW  -->
@@ -155,7 +155,7 @@
     
             <div class="row">
                 <div class="col-lg-12" >
-                    &copy;  2017 yourdomain.com | Design by: Joan Espu√±es, Sergi Fern√†ndez, Sisco Navarro, Thiago Hachikyan
+                    &copy;  2017 yourdomain.com | Design by: Joan EspuÒes, Sergi Fern·ndez, Sisco Navarro, Thiago Hachikyan
                 </div>
             </div>
         </div>

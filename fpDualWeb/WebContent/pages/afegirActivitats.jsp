@@ -99,7 +99,7 @@
                 <div class="row">
                     
                     
-                    <form class="form-horizontal"  action="../AfegirActivitats" method="Post">
+                    <form class="form-horizontal" action="../AfegirActivitats" method="Post">
                         <div class="col-lg-2"></div>
                         <div class="form-group">
                             <label class="control-label col-lg-2" for="id">ID:</label>
