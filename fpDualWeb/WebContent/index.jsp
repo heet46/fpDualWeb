@@ -170,7 +170,7 @@
                   </div>
                   <div class="col-lg-3 col-md-2 col-sm-2 col-xs-6">
                       <div class="div-square">
-                           <a href="centre.jsp" >
+                           <a href="pages/centre.jsp" >
 <i class="fa fa-university fa-5x" aria-hidden="true"></i>
                       <h4>Centres</h4>
                       </a>
