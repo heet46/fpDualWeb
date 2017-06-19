@@ -163,7 +163,7 @@
                                         <td>Tecnologia: </td>
                                         <td>
                                             <select name="tecno" id="tec" class="form-control">
-                                                <option selected disabled value="selec">Selecciona una opció:</option>
+                                                <option selected hidden value="selec">Selecciona una opció:</option>
                                                 <option value="JAVA">JAVA</option>
                                                 <option value="SAP">SAP</option>
                                                 <option value="NET">NET</option>

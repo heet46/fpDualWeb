@@ -44,13 +44,8 @@ function nif(dni) {
 	     letra='TRWAGMYFPDXBNJZSQVHLCKET';
 	     letra=letra.substring(numero,numero+1);
 	    if (letra!=letr.toUpperCase()) {
-	       alert('Error DNI, la lletra no li correspon');
 	    	document.getElementById("NIF").value = "";
-	     }else{
-	       alert('Dni correcte');
-	     }
 	  }else{
-	     alert('Error DNI, format no vàlid');
 		  document.getElementById("NIF").value = "";
 	   }
 	}
@@ -201,8 +196,8 @@ var restrict = function(tb) {
                                             <td><br></td>
                                         </tr>
                                         <tr>
-                                            <th><input type="submit" name="Afegir" class="btn btn-primary"/></th>
-                                            <th><input type="reset" name="Esborrar" class="btn btn-danger"/></th>
+                                            <th><input type="submit" value="Afegir" class="btn btn-primary"/></th>
+                                            <th><input type="reset" value="Reset" class="btn btn-danger"/></th>
                                         </tr>
                                     </table>
                                 </form>

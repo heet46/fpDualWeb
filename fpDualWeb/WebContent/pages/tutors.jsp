@@ -31,7 +31,7 @@
 	String nif;
 	if(sesion.getAttribute("nif") == null){
 	
-		response.sendRedirect("pages/login.jsp");
+		response.sendRedirect("login.jsp");
 
 	}
 %>
@@ -45,7 +45,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="../index.html">
+                    <a class="navbar-brand" href="../index.jsp">
                         <img src="../assets/img/logo.png" height="50px"/>
 
                     </a>
