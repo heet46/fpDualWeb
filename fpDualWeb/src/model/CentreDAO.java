@@ -16,6 +16,38 @@ public class CentreDAO {
 		gestorDB = new GestorDB(Constants.SERVER, Constants.PORT, Constants.BD);
 	}
 
+	public void modificarCentrePerID(int id, String nom, int codi, int telefon, String web) throws SQLException {
+		sentenciaSQL = "UPDATE centre SET Nom='" + nom + "', Codi=" + codi + ", Telefon=" + telefon + ", Web='" + web
+				+ "' WHERE Id_centre LIKE " + id + ";";
+		gestorDB.modificarRegistre(sentenciaSQL);
+	}
+
+	public int consultaIDExisteix(int comprova) {
+		System.out.println("comprova CentreDAO entrada -> " + comprova);
+		ResultSet retorn;
+		int i = 0;
+		String consultarid = "SELECT * FROM centre WHERE Id_centre LIKE " + comprova + ";";
+		retorn = gestorDB.consultaRegistres(consultarid);
+		System.out.println("Consulta, IN.");
+		try {
+			i = 0;
+			while (retorn.next()) {
+				i = 1;
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return i;
+	}
+
+	public ResultSet consultaTotId(String id) {
+		ResultSet retorn;
+		String consultaSQL = "SELECT * FROM centre WHERE Id_centre LIKE " + id + ";";
+		retorn = gestorDB.consultaRegistres(consultaSQL);
+		return retorn;
+	}
+
 	public List<Integer> consultaIDCentre() {
 		String consultaSQL = "SELECT Id_centre FROM centre;";
 		ResultSet rs;
@@ -107,29 +139,27 @@ public class CentreDAO {
 		String consultaSQL = "SELECT * FROM centre";
 		return gestorDB.consultaRegistres(consultaSQL);
 	}
-	
-	public List<String> nomsCentres() throws SQLException{
+
+	public List<String> nomsCentres() throws SQLException {
 		List<String> centres = new ArrayList<String>();
 		ResultSet rs = null;
 		String consultaSQL = "SELECT nom FROM centre";
-		
+
 		rs = gestorDB.consultaRegistres(consultaSQL);
-		
-		while(rs.next()){
+
+		while (rs.next()) {
 			centres.add(rs.getString(1));
 		}
 		return centres;
 	}
-	
-	public int idCentre(String nom) throws SQLException{
-		int id=0;
+
+	public int idCentre(String nom) throws SQLException {
+		int id = 0;
 		ResultSet rs = null;
-		String consultaSQL = "SELECT c.Id_centre "
-				+ "FROM centre AS c "
-				+ "WHERE c.Nom='"+nom+"'";
+		String consultaSQL = "SELECT c.Id_centre " + "FROM centre AS c " + "WHERE c.Nom='" + nom + "'";
 		rs = gestorDB.consultaRegistres(consultaSQL);
-		
-		while(rs.next()){
+
+		while (rs.next()) {
 			id = rs.getInt(1);
 		}
 		return id;

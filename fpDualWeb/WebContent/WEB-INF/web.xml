@@ -81,6 +81,40 @@
 		<url-pattern>/ModificarActivitats</url-pattern>
 	</servlet-mapping>
 	
+	  <servlet>
+        <servlet-name>llista</servlet-name>
+        <servlet-class>llista</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>llista</servlet-name>
+        <url-pattern>/llista</url-pattern>
+    </servlet-mapping>
+    <servlet>
+  		<servlet-name>CentreFormulariAfegir</servlet-name>
+  		<servlet-class>CentreFormulariAfegir</servlet-class>
+  	</servlet>
+  	<servlet-mapping>
+  		<servlet-name>CentreFormulariAfegir</servlet-name>
+  		<url-pattern>/CentreFormulariAfegir</url-pattern>
+  	</servlet-mapping>
+  	<servlet>
+  		<servlet-name>CentreFormulariEliminar</servlet-name>
+  		<servlet-class>CentreFormulariEliminar</servlet-class>
+  	</servlet>
+  	<servlet-mapping>
+  		<servlet-name>CentreFormulariEliminar</servlet-name>
+  		<url-pattern>/CentreFormulariEliminar</url-pattern>
+  	</servlet-mapping>
+  
+  	<servlet>
+  		<servlet-name>CentreFormulariModificar</servlet-name>
+  		<servlet-class>CentreFormulariModificar</servlet-class>
+  	</servlet>
+  	<servlet-mapping>
+  		<servlet-name>CentreFormulariModificar</servlet-name>
+  		<url-pattern>/CentreFormulariModificar</url-pattern>
+ 	 </servlet-mapping>
+ 	 
 	<error-page>
 	    <exception-type>404</exception-type>
 	    <error-code>404</error-code>
