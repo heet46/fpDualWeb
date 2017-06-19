@@ -175,7 +175,7 @@
     
              <div class="row">
                 <div class="col-lg-12" >
-                    &copy;  2017 yourdomain.com | Design by: Joan Espuñes, Sergi Fernández, Sisco Navarro, Thiago Hachikyan
+                    &copy;  2017 Indra Software Labs | Design by: Joan Espuñes, Sergi Fernández, Sisco Navarro, Thiago Hachikyan
                 </div>
         </div>
         </div>
