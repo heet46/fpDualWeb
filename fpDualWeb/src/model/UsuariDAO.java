@@ -53,6 +53,7 @@ public class UsuariDAO {
 	
 	public void altaUsuari(Usuari usuari){
 		String consultaSQL="INSERT INTO Usuari VALUES(id_usuari,'"+usuari.getNIF()+"','"+usuari.getPasswd()+"','"+usuari.getNom()+"','"+usuari.getCognom1()+"','"+usuari.getCognom2()+"',NOW(),'"+usuari.getMail()+"')";
+		System.out.println(consultaSQL);
 		gestorDB.modificarRegistre(consultaSQL);
 		
 	}

@@ -18,7 +18,7 @@ public class AlumneDAO {
 		gestorDB = new GestorDB(Constants.SERVER, Constants.PORT, Constants.BD);
 	}
 	
-	public void altaAlumne(Alumne alumne){
+	public void altaAlumne(Alumne alumne) throws SQLException{
 
 		
 		String consultaSQL = "INSERT INTO alumne(id_usuari,data_inici,data_fi,id_centre,id_tutor) "
@@ -29,7 +29,7 @@ public class AlumneDAO {
 		
 	}
 	
-	public void baixaAlumne(int id){
+	public void baixaAlumne(int id) throws SQLException{
 		String consultaSQL = "DELETE FROM alumne WHERE id_usuari="+id;
 		gestorDB.modificarRegistre(consultaSQL);
 		consultaSQL = "DELETE FROM usuari WHERE id_usuari="+id;
@@ -56,7 +56,7 @@ public class AlumneDAO {
 		return fila.toArray();
 	}
 	
-	public void modificarAlumne(Usuari usuari, Alumne alumne){
+	public void modificarAlumne(Usuari usuari, Alumne alumne) throws SQLException{
 		String consultaSQL = "UPDATE  alumne AS a "
 					+ "INNER JOIN usuari AS u "
 					+ "ON a.id_usuari = u.id_usuari "
@@ -143,6 +143,7 @@ public class AlumneDAO {
 			valors.add(rs.getString(4)); //cognom1			 
 			valors.add(rs.getString(5)); //cognom2
 			valors.add(rs.getString(6)); //mail
+			System.out.println(rs.getString(6));
 			
 			Date dIn = rs.getDate(7);
 			String dataInici = df.format(dIn);

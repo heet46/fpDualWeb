@@ -83,7 +83,7 @@
                         <a href="centre.html"><i class="fa fa-university "></i>Centres </a>
                     </li>
                     <li>
-                        <a href="activitats.html"><i class="fa fa-list "></i>Activitats</a>
+                        <a href="activitats.jsp"><i class="fa fa-list "></i>Activitats</a>
                     </li>
                 </ul>
             </div>

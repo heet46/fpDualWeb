@@ -81,37 +81,8 @@
                     </li>
 
                     <li class="active-link dropdown">
-                        <a data-toggle="collapse" href="#collapse1" class="hoverExpand">
-                        	<i class="fa fa-graduation-cap "></i>Alumnes
-                        </a>
-                        <a href="alumnes.jsp" style="display: none"></a> <!-- Ocult, nomes link -->
+                        <a href="alumnes.jsp"><i class="fa fa-graduation-cap "></i>Alumnes</a>
                         
-                        <div id="collapse1" class="panel-collapse collapse">
-							<ul class="list-group">
-						        <li class="list-group-item"><a href="#">1</a></li>
-						        <li class="list-group-item"><a href="#">2</a></li>
-						        <li class="list-group-item"><a href="#">3</a></li>
-						        <li class="list-group-item"><a href="#">4</a></li>
-					      	</ul>
-					    </div>
-					    
-<script type="text/javascript">
-    $( ".hoverExpand" ).hover(
-    	    function() {
-    	        if (! $(this).hasClass('collapsing') && 
-    	            $(this).hasClass('collapsed')) {
-    	                $( this ).click();
-    	        }
-    	    }, function() {
-    	        if  (! $(this).hasClass('collapsing') || 
-    	             ! $(this).hasClass('collapsed')) {
-    	                $( this ).click();
-    	        }
-    	    }
-    	);
-    
-    </script>
-
                     </li>
                     <li>
                         <a href="tutors.jsp"><i class="fa fa-book"></i>Tutors</a>
@@ -121,7 +92,7 @@
                         <a href="centre.html"><i class="fa fa-university "></i>Centres </a>
                     </li>
                     <li>
-                        <a href="activitats.html"><i class="fa fa-list "></i>Activitats</a>
+                        <a href="activitats.jsp"><i class="fa fa-list "></i>Activitats</a>
                     </li>
                 </ul>
             </div>

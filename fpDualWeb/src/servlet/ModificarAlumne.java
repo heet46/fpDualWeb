@@ -47,6 +47,7 @@ public class ModificarAlumne extends HttpServlet {
 			String cognoms = valorsAlumne.get(3)+" "+valorsAlumne.get(4);
 			request.getSession().setAttribute("cognoms", cognoms);
 			request.getSession().setAttribute("mail", valorsAlumne.get(5));
+			System.out.println("MAIL DB: "+valorsAlumne.get(5));
 			request.getSession().setAttribute("dataInici", valorsAlumne.get(6));
 			request.getSession().setAttribute("dataFinal", valorsAlumne.get(7));
 			request.getSession().setAttribute("tutor", valorsAlumne.get(8));
@@ -67,6 +68,7 @@ public class ModificarAlumne extends HttpServlet {
 		String nom = request.getParameter("nom");
 		String cognoms = request.getParameter("cognoms");
 		String email = request.getParameter("email");
+		System.out.println("MAIL BO: "+email);
 		String sTutor = request.getParameter("tutor");
 		String sCentre = request.getParameter("centre");
 		String sDataInici = request.getParameter("dataInici");
@@ -74,20 +76,25 @@ public class ModificarAlumne extends HttpServlet {
 		int idTutor = 0;
 		int idCentre = 0;
 		
-		StringTokenizer st = new StringTokenizer(cognoms);
-		while(st.hasMoreTokens()){
-			cognom1 = st.nextToken();
-			cognom2 = st.nextToken();
-		}
-		
 		Usuari usuari = new Usuari();
+		
+		StringTokenizer st = new StringTokenizer(cognoms);
+		if(st.countTokens() > 1){
+			cognom1 = st.nextToken();
+			while(st.hasMoreTokens()){
+				cognom2 += st.nextToken()+" ";
+			}
+			usuari.setCognom1(cognom1);
+			usuari.setCognom2(cognom2);
+		}else{
+			usuari.setCognom1(cognoms);
+		}
 		
 		usuari.setIdUsuari(id);
 		usuari.setNIF(dni);
 		usuari.setPasswd(password);
 		usuari.setNom(nom);
-		usuari.setCognom1(cognom1);
-		usuari.setCognom2(cognom2);
+
 		usuari.setMail(email);
 				
 		Tutor tutor = new Tutor();
@@ -120,7 +127,12 @@ public class ModificarAlumne extends HttpServlet {
 		alumne.setCentre(centre);
 		alumne.setTutor(tutor);
 		
-		aDAO.modificarAlumne(usuari, alumne);
+		try {
+			aDAO.modificarAlumne(usuari, alumne);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		response.sendRedirect("pages/llistatAlumnes.jsp");
 		
 	}
