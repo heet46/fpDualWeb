@@ -29,6 +29,7 @@ public class Login extends HttpServlet {
 	        UsuariDAO uDAO = new UsuariDAO();
 	        Usuari usu = new Usuari();
 	        
+	        int incorrecte = 0;
 	        String nif;
 	        String pass;
 	        nif = request.getParameter("dni");
@@ -39,17 +40,19 @@ public class Login extends HttpServlet {
 	        usu.setNIF(nif);
 	        usu.setPasswd(pass);
 	        
+	        session = request.getSession();
+	        
 	        //deberíamos buscar el usuario en la base de datos, pero dado que se escapa de este tema, ponemos un ejemplo en el mismo código
 	        try{
         		List<String> llista = uDAO.validarLogin(usu);
 	        	if(nif.equals(llista.get(0)) && pass.equals(llista.get(1))){
-	            
+
 	        		valors = uDAO.valorsUsuari(nif, pass);
 			        usu.setNom(valors.get(0));
 			        usu.setCognom1(valors.get(1));
 			        usu.setMail(valors.get(1));
 			        
-		        	session = request.getSession();
+		        	
 		            session.setAttribute("nif", usu.getNIF());
 		            //Expirar en 30 min
 		            session.setMaxInactiveInterval(30*60);
@@ -75,7 +78,9 @@ public class Login extends HttpServlet {
 			      	        
 	        	}
 	        }catch(Exception e){
-	            response.sendRedirect("pages/badlogin.jsp");
+        		incorrecte = 1;
+        		session.setAttribute("correcte", incorrecte);
+	            response.sendRedirect("pages/login.jsp");
 	        }
 		          
 	        
