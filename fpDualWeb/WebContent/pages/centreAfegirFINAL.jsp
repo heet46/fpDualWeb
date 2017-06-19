@@ -81,7 +81,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="../index.html">
+                    <a class="navbar-brand" href="../index.jsp">
                         <img src="../assets/img/logo.png" height="50px" />
                     </a>
                 </div>
@@ -97,20 +97,20 @@
             <div class="sidebar-collapse">
               <ul class="nav" id="main-menu">
                 <li >
-                    <a href="../index.html" ><i class="fa fa-desktop "></i>Panell de control <span class="badge">Included</span></a>
+                    <a href="../index.jsp" ><i class="fa fa-desktop "></i>Panell de control <span class="badge">Included</span></a>
                 </li>
                 <li>
-                    <a href="alumnes.html"><i class="fa fa-graduation-cap "></i>Alumnes</a>
+                    <a href="alumnes.jsp"><i class="fa fa-graduation-cap "></i>Alumnes</a>
                 </li>
                 <li>
-                    <a href="tutors.html"><i class="fa fa-book"></i>Tutors</a>
+                    <a href="tutors.jsp"><i class="fa fa-book"></i>Tutors</a>
                 </li>
 
                 <li  class="active-link">
                     <a href="centre.jsp"><i class="fa fa-university "></i>Centres </a>
                 </li>
                 <li>
-                    <a href="activitats.html"><i class="fa fa-list "></i>Activitats</a>
+                    <a href="activitats.jsp"><i class="fa fa-list "></i>Activitats</a>
                 </li>
               </ul>
           </div>
@@ -141,7 +141,6 @@
         
             <input type="text" name="nomCentre" id="idNomCentre" maxlength="30" value="" onblur="validarNom()" required /><span><font color="silver"> *</font></span><span id="comprovaNom"> </span>
 	<script>      
-	document.getElementById("idNomCentre").focus();
        function validarNom() {
 			if ($('#idNomCentre').val().length == 0) {
 				//alert('Tens que introduïr una ID');
@@ -163,7 +162,6 @@
     	    	document.getElementById("comprovaNom").innerHTML = "<b>Correcte.</b>";
 				document.getElementById("comprovaNom").style.color="green";
 				document.getElementById("idNomCentre").style.borderColor="green";
-				document.getElementById("idCodiDelCentre").focus();
 				idNomOk = 1;
 			}
 			
@@ -197,7 +195,6 @@
     	    	document.getElementById("comprovaCodiCentre").innerHTML = "<b>Correcte.</b>";
 				document.getElementById("comprovaCodiCentre").style.color="green";
 				document.getElementById("idCodiDelCentre").style.borderColor="green";
-				document.getElementById("idTelefon").focus();
 				idCodiCentreOk = 1;
 			}
 			
@@ -234,7 +231,6 @@
     	    	document.getElementById("comprovaTelefon").innerHTML = "<b>Correcte.</b>";
 				document.getElementById("comprovaTelefon").style.color="green";
 				document.getElementById("idTelefon").style.borderColor="green";
-				document.getElementById("idPagWeb").focus();
 				idTelefonOk = 1;
 			}
 			
