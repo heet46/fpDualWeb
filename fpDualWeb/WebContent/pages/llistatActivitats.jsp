@@ -110,7 +110,7 @@
                                 <div class="col-lg-12">
                                 <table class="table table-striped  table-hover">
                             <thead>
-                                <tr>
+                                <tr id="headeer">
                                     <th>ID</th>
                                     <th>Codi</th>
                                     <th>Descripció</th>
