@@ -39,8 +39,7 @@
 	if(sesion.getAttribute("nif") == null){	
 		response.sendRedirect("login.jsp");
 	}
-%>     
-<%
+	
 	CentreDAO cDAO = new CentreDAO();
 	List<String> llistaCentres = cDAO.nomsCentres();
 	TutorDAO tDAO = new TutorDAO();
