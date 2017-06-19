@@ -12,33 +12,21 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
     
-    <!-- Variables Globals -->
-<%!
-	int idCentreOk = 1,
-	idNomOk = 0,
-	idCodiCentreOk = 0,
-	idTelefonOk = 0,
-	idPagWebOk = 0,
-	cosultaOK = 0,
-	resultatBuscar = 0,
-	resulte = 0,
-	intbuscar = 666;
-%>
 
 <!-- Scripts de Control d'entrada de dades -->
     <script>
 
-		function valida(e){ // Funcion que delimita los caracteres que entremos a unicamente Enteros.
-		    tecla = (document.all) ? e.keyCode : e.which;
-		    //Tecla de retroceso para borrar, siempre la permite
-		    if (tecla==8){
-		        return true;
-		    }
-		    // Patron de entrada, en este caso solo acepta numeros
-		    patron =/[0-9]/;
-		    tecla_final = String.fromCharCode(tecla);
-		    return patron.test(tecla_final);
-		}
+	function valida(e){ // Funcion que delimita los caracteres que entremos a unicamente Enteros.
+	    tecla = (document.all) ? e.keyCode : e.which;
+	    //Tecla de retroceso para borrar, siempre la permite
+	    if (tecla==8){
+	        return true;
+	    }
+	    // Patron de entrada, en este caso solo acepta numeros
+	    patron =/[0-9]/;
+	    tecla_final = String.fromCharCode(tecla);
+	    return patron.test(tecla_final);
+	}
 		
 		
 
@@ -93,18 +81,15 @@
           Nom del Centre:
         </td>
         <td><br>
-            <input type="text" name="nomCentre" id="idNomCentre" maxlength="30" value="" onblur="validarNom()"/><span><font color="silver"> *</font></span><span id="comprovaNom"> </span>
+            <input type="text" name="nomCentre" id="idNomCentre" maxlength="30" value="" onblur="validarNom()" required/><span><font color="silver"> *</font></span><span id="comprovaNom"> </span>
 	<script>      
        function validarNom() {
-    	   //boolean correcte = 0;
-    	   //int cosultaOK = 0;
 			if ($('#idNomCentre').val().length == 0) {
 				//alert('Tens que introduïr una ID');
     	    	document.getElementById("comprovaNom").innerHTML = "<b>No pots deixar-ho buit (Camp obligatori)!!</b>";
 				document.getElementById("comprovaNom").style.color="red";
 				document.getElementById("idNomCentre").style.borderColor="red";
 				document.getElementById("idNomCentre").focus();
-				idNomOk = 0;
     	     	return false;
     	   	}
 			if (($('#idNomCentre').val().length >= 1) && ($('#idNomCentre').val().length <= 3)) {
@@ -112,18 +97,16 @@
 				document.getElementById("comprovaNom").style.color="red";
 				document.getElementById("idNomCentre").style.borderColor="red";
 				document.getElementById("idNomCentre").focus();
-				idNomOk = 0;
 			}
 			if ($('#idNomCentre').val().length >= 4) {
     	    	document.getElementById("comprovaNom").innerHTML = "<b>Correcte.</b>";
 				document.getElementById("comprovaNom").style.color="green";
 				document.getElementById("idNomCentre").style.borderColor="green";
-				idNomOk = 1;
 			}
     	 }
        </script>
 	<td>
-          <input type="hidden" name="idcentreinvi" value="<%=idCentreActual %>"/>
+          <input type="hidden" name="idcentreinvi" value="<%=idCentreActual %>" required />
           </td>
 	
         </td>
@@ -133,26 +116,22 @@
           Codi del Centre:
           </td>
           <td>
-            <input type="text" name="codiCentre" id="idCodiDelCentre" value=""  maxlength="5" onkeypress="return valida(event)" onblur="validarCodiCentre()"/><span><font color="silver"> *</font></span><span id="comprovaCodiCentre"> </span>
+            <input type="text" name="codiCentre" id="idCodiDelCentre" value=""  maxlength="5" onkeypress="return valida(event)" onblur="validarCodiCentre()" required/><span><font color="silver"> *</font></span><span id="comprovaCodiCentre"> </span>
             
             <script>      
        function validarCodiCentre() {
-    	   //boolean correcte = 0;
-    	   //int cosultaOK = 0;
 			if ($('#idCodiDelCentre').val().length == 0) {
 				//alert('Tens que introduïr una ID');
     	    	document.getElementById("comprovaCodiCentre").innerHTML = "<b>No pots deixar-ho buit (Camp obligatori)!!</b>";
 				document.getElementById("comprovaCodiCentre").style.color="red";
 				document.getElementById("idCodiDelCentre").style.borderColor="red";
 				document.getElementById("idCodiDelCentre").focus();
-				idCodiCentreOk = 0;
     	     	return false;
     	   	}
 			if ($('#idCodiDelCentre').val().length >= 1) {
     	    	document.getElementById("comprovaCodiCentre").innerHTML = "<b>Correcte.</b>";
 				document.getElementById("comprovaCodiCentre").style.color="green";
 				document.getElementById("idCodiDelCentre").style.borderColor="green";
-				idCodiCentreOk = 1;
 			}
     	 }
        </script>
@@ -165,18 +144,15 @@
           </td>
           
           <td>
-            <input type="text" name="Telefon" id="idTelefon" value=""  maxlength="9" onkeypress="return valida(event)" onblur="validarTelefon()"/><span><font color="silver"> *</font></span><span id="comprovaTelefon"> </span>
+            <input type="text" name="Telefon" id="idTelefon" value=""  maxlength="9" onkeypress="return valida(event)" onblur="validarTelefon()" required/><span><font color="silver"> *</font></span><span id="comprovaTelefon"> </span>
              <script>      
        function validarTelefon() {
-    	   //boolean correcte = 0;
-    	   //int cosultaOK = 0;
 			if ($('#idTelefon').val().length == 0) {
 				//alert('Tens que introduïr una ID');
     	    	document.getElementById("comprovaTelefon").innerHTML = "<b>No pots deixar-ho buit (Camp obligatori)!!</b>";
 				document.getElementById("comprovaTelefon").style.color="red";
 				document.getElementById("idTelefon").style.borderColor="red";
 				document.getElementById("idTelefon").focus();
-				idTelefonOk = 0;
     	     	return false;
     	   	}
 			if ($('#idTelefon').val().length >= 1 && $('#idTelefon').val().length <= 8) {
@@ -184,13 +160,11 @@
 				document.getElementById("comprovaTelefon").style.color="red";
 				document.getElementById("idTelefon").style.borderColor="red";
 				document.getElementById("idTelefon").focus();
-				idTelefonOk = 0;
 			}
 			if ($('#idTelefon').val().length == 9) {
     	    	document.getElementById("comprovaTelefon").innerHTML = "<b>Correcte.</b>";
 				document.getElementById("comprovaTelefon").style.color="green";
 				document.getElementById("idTelefon").style.borderColor="green";
-				idTelefonOk = 1;
 			}
     	 }
        </script>
@@ -204,7 +178,7 @@
           </td>
           <td>
 
-            <input type="text" name="pagWeb" id="idPagWeb" maxlength="30" value="" onblur="validarURL(this.idPagWeb)"/><span><font color="silver"> *</font></span><span id="comprovaUrl"> </span>
+            <input type="text" name="pagWeb" id="idPagWeb" maxlength="30" value="" onblur="validarURL(this.idPagWeb)" required/><span><font color="silver"> *</font></span><span id="comprovaUrl"> </span>
              
   	<script>   
 	    function validarURL() {
@@ -215,21 +189,18 @@
 				document.getElementById("comprovaUrl").style.color="red";
 				document.getElementById("idPagWeb").style.borderColor="red";
 				document.getElementById("idPagWeb").focus();
-				idPagWebOk = 0;
     	     	return false;
     	   	}else{
 		    	if(is_url(Url)){
 		    		document.getElementById("comprovaUrl").innerHTML = "<b>Correcte.</b>";
 					document.getElementById("comprovaUrl").style.color="green";
 					document.getElementById("idPagWeb").style.borderColor="green";
-					idPagWebOk = 1;
 		    	}else{
 		    		document.getElementById("comprovaUrl").innerHTML = "<b>La URL no es correcta! ha de començar per ftp, http, https..</b>";
 		    		
 					document.getElementById("comprovaUrl").style.color="red";
 					document.getElementById("idPagWeb").style.borderColor="red";
 					document.getElementById("idPagWeb").focus();
-					idPagWebOk = 0;
 		    	}
     	   	}
 	    }
@@ -242,7 +213,6 @@
 	        return regexp.test(str);
 	     }
     </script> 
-            <br/><span><font color="silver">Tens que indicar el protocol ftp://, http://, https://</font></span>
         </td>
       </tr>
       
