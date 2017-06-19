@@ -12,6 +12,10 @@
     <!-- FONTAWESOME STYLES-->
     <link href="../assets/css/font-awesome.css" rel="stylesheet" />
     <!-- BOOTSTRAP STYLES-->    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  	<script src="../assets/js/bootbox.js"></script>
+  	
     <link href="../assets/css/bootstrap-theme.css" rel="stylesheet" />
 
     <link href="../assets/css/bootstrap-theme.min.css" rel="stylesheet" />
@@ -24,7 +28,7 @@
     <!-- CUSTOM STYLES-->
     <link href="../assets/css/custom.css" rel="stylesheet" />
      <!-- GOOGLE FONTS-->
-   <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
 
 </head>
 <body> 
@@ -49,7 +53,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="../index.html">
+                    <a class="navbar-brand" href="../index.jsp">
                         <img src="../assets/img/logo.png" height="50px" />
                     </a>
                 </div>
@@ -73,14 +77,44 @@
                 <ul class="nav" id="main-menu">
                  
                     <li>
-                        <a href="../index.html" ><i class="fa fa-desktop "></i>Inici </a>
+                        <a href="../index.jsp" ><i class="fa fa-desktop "></i>Inici </a>
                     </li>
 
-                    <li class="active-link">
-                        <a href="#"><i class="fa fa-graduation-cap "></i>Alumnes</a>
+                    <li class="active-link dropdown">
+                        <a data-toggle="collapse" href="#collapse1" class="hoverExpand">
+                        	<i class="fa fa-graduation-cap "></i>Alumnes
+                        </a>
+                        <a href="alumnes.jsp" style="display: none"></a> <!-- Ocult, nomes link -->
+                        
+                        <div id="collapse1" class="panel-collapse collapse">
+							<ul class="list-group">
+						        <li class="list-group-item"><a href="#">1</a></li>
+						        <li class="list-group-item"><a href="#">2</a></li>
+						        <li class="list-group-item"><a href="#">3</a></li>
+						        <li class="list-group-item"><a href="#">4</a></li>
+					      	</ul>
+					    </div>
+					    
+<script type="text/javascript">
+    $( ".hoverExpand" ).hover(
+    	    function() {
+    	        if (! $(this).hasClass('collapsing') && 
+    	            $(this).hasClass('collapsed')) {
+    	                $( this ).click();
+    	        }
+    	    }, function() {
+    	        if  (! $(this).hasClass('collapsing') || 
+    	             ! $(this).hasClass('collapsed')) {
+    	                $( this ).click();
+    	        }
+    	    }
+    	);
+    
+    </script>
+
                     </li>
                     <li>
-                        <a href="tutors.html"><i class="fa fa-book"></i>Tutors</a>
+                        <a href="tutors.jsp"><i class="fa fa-book"></i>Tutors</a>
                     </li>
 
                     <li>
@@ -91,8 +125,6 @@
                     </li>
                 </ul>
             </div>
-
-
         </nav>
         <!-- /. NAV SIDE  -->
         <div id="page-wrapper" >

@@ -118,26 +118,32 @@
                 </div>  
                 <form method="Post" action="../ModificarAlumne">
                 <div class="row">
+                                        	<input type="hidden" name="idUsuari" value="<%=id%>">
+                
                         <div class="col-md-6">
-                        	<input type="hidden" name="idUsuari" value="<%=id%>">
+                        	<h5>D.N.I.</h5>
                             <input type="text" class="form-control" name="dni" placeholder="D.N.I." value="${nif}" />
                         </div>
                         <div class="col-md-6">
+                        	<h5>Contrassenya</h5>
                             <input type="password" class="form-control" name="password" placeholder="Contrassenya" value="${password}" />
                         </div>
                 </div>
                 <br>
                 <div class="row">
                         <div class="col-md-6">
+                        	<h5>Nom</h5>
                             <input type="text" class="form-control" name="nom" placeholder="Nom" value="${nom}" />
                         </div>
                         <div class="col-md-6">
+                        	<h5>Cognoms</h5>
                             <input type="text" class="form-control" name="cognoms" placeholder="Cognoms" value="${cognoms}" />
                         </div>
                 </div>
                 <br>
                 <div class="row">
                         <div class="col-md-12">
+                        	<h5>Correu electrònic</h5>
                             <input type="text" class="form-control" name="mail" placeholder="Correu electrònic" value="${mail}" />
                         </div>
                 </div>
