@@ -31,7 +31,6 @@ public class EliminarAlumne extends HttpServlet {
 		try {
 			aDAO.baixaAlumne(id);
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		response.sendRedirect("pages/eliminarAlumne.jsp");

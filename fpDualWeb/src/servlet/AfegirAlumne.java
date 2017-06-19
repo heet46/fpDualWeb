@@ -76,7 +76,11 @@ public class AfegirAlumne extends HttpServlet {
 		
 		usuari.setMail(email);
 		
-		uDAO.altaUsuari(usuari);		
+		try {
+			uDAO.altaUsuari(usuari);
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		}		
 		
 		Tutor tutor = new Tutor();
 		tutor.setNom(sTutor);
