@@ -160,9 +160,10 @@ var restrict = function(tb) {
                                         <%
                                         	UsuariDAO uDAO=new UsuariDAO();
                                         	String NIF=request.getParameter("NIF");
-                                        	if(!uDAO.compararNIF(NIF)){%>
-                                        	
+                                        	if(!uDAO.compararNIF(NIF)){
+                                        		request.setAttribute("NIF", "");
                                         	}
+                                        %>
                                         <tr>
                                             <td>Password: </td>
                                             <td><input type="password" class="form-control" name="pass" size="25" required/></td>
