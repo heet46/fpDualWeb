@@ -105,13 +105,13 @@
                     <div class="col-lg-12 col-md-12">
                         <table class="table table-striped  table-hover">
                             <thead>
-                                <tr>
+                                <tr id="headeer">
                                     <th>#</th>
                                     <th>Nom</th>
                                     <th>Cognom</th>
                                     <th>Tutor</th>
                                     <th>Centre</th>
-                                    <th>Detalls</th>
+                                    <!-- <th>Detalls</th> -->
                                 </tr>
                             </thead>
                             <tbody>
@@ -124,7 +124,7 @@
 									<td><%=alumne.getCognom1()%></td>
 									<td><%=alumne.getTutor().getNom()%></td>
 									<td><%=alumne.getCentre().getNom()%></td>
-									<td><a href="#" class="btn btn-primary">Veure</a></td>
+									<!-- <td><a href="#" class="btn btn-primary">Veure</a></td> -->
 
 							
 								</tr>
