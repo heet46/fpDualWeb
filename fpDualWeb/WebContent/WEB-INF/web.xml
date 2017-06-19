@@ -53,6 +53,26 @@
 	
 	<servlet>
 		<description></description>
+		<servlet-name>EliminarActivitats</servlet-name>
+		<servlet-class>servlet.EliminarActivitats</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>EliminarActivitats</servlet-name>
+		<url-pattern>/EliminarActivitats</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<description></description>
+		<servlet-name>AfegirActivitats</servlet-name>
+		<servlet-class>servlet.AfegirActivitats</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>AfegirActivitats</servlet-name>
+		<url-pattern>/AfegirActivitats</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<description></description>
 		<servlet-name>ModificarActivitats</servlet-name>
 		<servlet-class>servlet.ModificarActivitats</servlet-class>
 	</servlet>
@@ -66,6 +86,5 @@
 	    <error-code>404</error-code>
 	    <location>/pages/login.jsp</location>
 	</error-page> 
-	
 </web-app>
 </element>
