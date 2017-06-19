@@ -17,17 +17,14 @@ public class UsuariDAO {
 		gestorDB = new GestorDB(Constants.SERVER, Constants.PORT, Constants.BD);
 	}
 	
-	public List<String> validarLogin(Usuari usuari){
+	public List<String> validarLogin(Usuari usuari) throws SQLException{
 		ResultSet rs = null;
 		List<String> llista = new ArrayList<String>();
-	    try {
-			rs = gestorDB.consultaRegistres("SELECT NIF, password FROM usuari WHERE NIF='"+usuari.getNIF()+"' AND password='"+usuari.getPasswd()+"'");
-			while(rs.next()){
-				llista.add(rs.getString("NIF"));
-				llista.add(rs.getString("password"));
-			}
-		} catch (SQLException e) {
-			System.out.println("error xsda");
+		
+		rs = gestorDB.consultaRegistres("SELECT NIF, password FROM usuari WHERE NIF='"+usuari.getNIF()+"' AND password='"+usuari.getPasswd()+"'");
+		while(rs.next()){
+			llista.add(rs.getString("NIF"));
+			llista.add(rs.getString("password"));
 		}
 		
 		return llista;

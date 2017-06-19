@@ -119,24 +119,29 @@
                 <form method="post" action="../AfegirAlumne" name="afgAlumne">
                 <div class="row">
                         <div class="col-md-6">
+                        	<h5>D.N.I.</h5>
                             <input type="text" class="form-control" placeholder="D.N.I." name="dni" id="dni" required/>
                         </div>
                         <div class="col-md-6">
-                            <input type="password" class="form-control" placeholder="Contrassenya" name="password" required/>
+                        	<h5>Contrasenya</h5>
+                            <input type="password" class="form-control" placeholder="Contrasenya" name="password" required/>
                         </div>
                 </div>
                 <br>
                 <div class="row">
                         <div class="col-md-6">
+                        	<h5>Nom</h5>
                             <input type="text" class="form-control" placeholder="Nom" name="nom" required/>
                         </div>
                         <div class="col-md-6">
+                        	<h5>Cognoms</h5>
                             <input type="text" class="form-control" placeholder="Cognoms" name="cognoms" required/>
                         </div>
                 </div>
                 <br>
                 <div class="row">
                         <div class="col-md-12">
+                        	<h5>Correu electrònic</h5>
                             <input type="email" class="form-control" placeholder="Correu electronic" name="email" required/>
                         </div>
                 </div>

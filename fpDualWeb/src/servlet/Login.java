@@ -35,23 +35,20 @@ public class Login extends HttpServlet {
 	        pass = request.getParameter("password");
 	        
 	        List<String> valors = new ArrayList<String>();
-	        try {
-				valors = uDAO.valorsUsuari(nif, pass);
-			} catch (SQLException e1) {
-				e1.printStackTrace();
-			}
-	        usu.setNom(valors.get(0));
-	        usu.setCognom1(valors.get(1));
-	        usu.setMail(valors.get(1));
-	       
+		        
 	        usu.setNIF(nif);
 	        usu.setPasswd(pass);
-	        List<String> llista = uDAO.validarLogin(usu);
-
+	        
 	        //deberíamos buscar el usuario en la base de datos, pero dado que se escapa de este tema, ponemos un ejemplo en el mismo código
 	        try{
-		        	if(nif.equals(llista.get(0)) && pass.equals(llista.get(1))){
-		            
+        		List<String> llista = uDAO.validarLogin(usu);
+	        	if(nif.equals(llista.get(0)) && pass.equals(llista.get(1))){
+	            
+	        		valors = uDAO.valorsUsuari(nif, pass);
+			        usu.setNom(valors.get(0));
+			        usu.setCognom1(valors.get(1));
+			        usu.setMail(valors.get(1));
+			        
 		        	session = request.getSession();
 		            session.setAttribute("nif", usu.getNIF());
 		            //Expirar en 30 min
@@ -75,15 +72,13 @@ public class Login extends HttpServlet {
 		            
 		            //redirijo a página con información de login exitoso	            
 		            response.sendRedirect("index.jsp");
-		      	        
-		        }
+			      	        
+	        	}
 	        }catch(Exception e){
-	        	//RequestDispatcher rd = getServletContext().getRequestDispatcher("/login.jsp");
-		        PrintWriter out = response.getWriter();
-		        out.println("<font color=red>Nif o contrassenya incorrectes</font>");
-	            response.sendRedirect("pages/login.jsp");
-		        //rd.include(request, response);
+	            response.sendRedirect("pages/badlogin.jsp");
 	        }
+		          
+	        
 	    }
 	 
 	}

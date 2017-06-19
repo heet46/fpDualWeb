@@ -125,8 +125,8 @@
                             <input type="text" class="form-control" name="dni" placeholder="D.N.I." value="${nif}" />
                         </div>
                         <div class="col-md-6">
-                        	<h5>Contrassenya</h5>
-                            <input type="password" class="form-control" name="password" placeholder="Contrassenya" value="${password}" />
+                        	<h5>Contrasenya</h5>
+                            <input type="password" class="form-control" name="password" placeholder="Contrasenya" value="${password}" />
                         </div>
                 </div>
                 <br>
@@ -162,8 +162,8 @@
                 <div class="row">
                         <div class="col-md-6">
                             <h5>Tutor</h5>
-                            <select class="form-control" name="tutor">
-                            	<option>Selecciona el tutor</option>
+                            <select class="form-control" name="tutor" required>
+                            	<option value="" selected hidden>Selecciona el tutor</option>
                             	<% 
 								for(int i=0; i<llistaTutors.size(); i++) { 
 	                                %>
@@ -178,7 +178,7 @@
                         <div class="col-md-6">
                             <h5>Centre</h5>
                             <select class="form-control" name="centre">
-                            	<option>Selecciona el tutor</option>
+                            	<option value="" selected hidden>Selecciona el tutor</option>
                             	<% 
 								for(int j=0; j<llistaCentres.size(); j++) { 
 	                     		%>

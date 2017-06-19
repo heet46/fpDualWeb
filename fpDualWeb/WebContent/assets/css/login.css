@@ -12,7 +12,7 @@ h2{
   z-index: 1;
   background: #FFFFFF;
   max-width: 360px;
-  margin: 0 auto 100px;
+  margin: 0 auto 0px;
   padding: 45px;
   text-align: center;
   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
@@ -90,6 +90,19 @@ h2{
 }
 .container .info span .fa {
   color: #EF3B3A;
+}
+#alerta {
+  	font-family: "Roboto", sans-serif;
+	background: #ED4337; 
+	box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+	border-radius: 0px 0px 5px 5px;
+	-moz-border-radius: 0px 0px 5px 5px;
+	-webkit-border-radius: 0px 0px 5px 5px;
+	border: 1px solid #9e332e;
+	color: white;
+	padding: 15px;
+	text-align: center;
+	
 }
 body {
   background: #214761; /* fallback for old browsers */

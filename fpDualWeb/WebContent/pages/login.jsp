@@ -13,11 +13,16 @@
   <h2>Sistema de registre d'hores</h2>
     <form class="login-form" method="Post" action="../Login" name="frmLogin">
       <input type="text" name="dni" placeholder="D.N.I."/>
-      <input type="password" name="password" placeholder="Contrassenya"/>
+      <input type="password" name="password" placeholder="Contrasenya"/>
       <input type="submit" value="Login" class="boto" />
     </form>
   </div>
 </div>
-<script src="assets/js/login.js"></script>
+
+	<script src="assets/js/login.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>    
+	<script src="../assets/js/bootstrap.min.js"></script>
+    <script src="../assets/js/custom.js"></script>
+    
 </body>
 </html>
