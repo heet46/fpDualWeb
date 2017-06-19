@@ -1,6 +1,8 @@
 package servlet;
 
 import java.io.IOException;
+import java.sql.SQLException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -26,7 +28,12 @@ public class EliminarAlumne extends HttpServlet {
 		int id = Integer.parseInt(sId);
 		
 		AlumneDAO aDAO = new AlumneDAO();
-		aDAO.baixaAlumne(id);
+		try {
+			aDAO.baixaAlumne(id);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		response.sendRedirect("pages/eliminarAlumne.jsp");
 	}
 

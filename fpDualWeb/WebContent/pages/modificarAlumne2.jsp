@@ -85,14 +85,14 @@
                         <a href="alumnes.html"><i class="fa fa-graduation-cap "></i>Alumnes</a>
                     </li>
                     <li>
-                        <a href="#"><i class="fa fa-book"></i>Tutors</a>
+                        <a href="tutors.jsp"><i class="fa fa-book"></i>Tutors</a>
                     </li>
 
                     <li>
                         <a href="centre.html"><i class="fa fa-university "></i>Centres </a>
                     </li>
                     <li>
-                        <a href="#"><i class="fa fa-list "></i>Activitats</a>
+                        <a href="activitats.jsp"><i class="fa fa-list "></i>Activitats</a>
                     </li>
                 </ul>
             </div>
@@ -144,7 +144,7 @@
                 <div class="row">
                         <div class="col-md-12">
                         	<h5>Correu electrònic</h5>
-                            <input type="text" class="form-control" name="mail" placeholder="Correu electrònic" value="${mail}" />
+                            <input type="email" class="form-control" name="email" placeholder="Correu electrònic" value="${mail}" />
                         </div>
                 </div>
                 <hr>

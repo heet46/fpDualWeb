@@ -39,13 +39,14 @@ public class AfegirAlumne extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String cognom1 = null;
-		String cognom2 = null;
+		String cognom1 = "";
+		String cognom2 = "";
 		String dni = request.getParameter("dni");
 		String password = request.getParameter("password");
 		String nom = request.getParameter("nom");
 		String cognoms = request.getParameter("cognoms");
 		String email = request.getParameter("email");
+		System.out.println("MAIL AFG: "+email);
 		String sTutor = request.getParameter("tutor");
 		String sCentre = request.getParameter("centre");
 		String sDataInici = request.getParameter("dataInici");
@@ -61,11 +62,11 @@ public class AfegirAlumne extends HttpServlet {
 		usuari.setNom(nom);
 		
 		StringTokenizer st = new StringTokenizer(cognoms);
-		int nt = st.countTokens();
-		if(nt > 1){
-			while(st.hasMoreTokens()){
+
+		if(st.countTokens() > 1){
 				cognom1 = st.nextToken();
-				cognom2 = st.nextToken();
+			while(st.hasMoreTokens()){
+				cognom2 += st.nextToken()+" ";
 			}
 			usuari.setCognom1(cognom1);
 			usuari.setCognom2(cognom2);
@@ -107,7 +108,11 @@ public class AfegirAlumne extends HttpServlet {
 		alumne.setCentre(centre);
 		alumne.setTutor(tutor);
 		
-		aDAO.altaAlumne(alumne);
+		try {
+			aDAO.altaAlumne(alumne);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
         response.sendRedirect("pages/alumnes.jsp");
 
 	}

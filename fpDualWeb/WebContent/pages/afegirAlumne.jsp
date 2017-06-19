@@ -80,7 +80,7 @@
                     </li>
 
                     <li class="active-link">
-                        <a href="#"><i class="fa fa-graduation-cap "></i>Alumnes</a>
+                        <a href="alumnes.jsp"><i class="fa fa-graduation-cap "></i>Alumnes</a>
                     </li>
                     <li>
                         <a href="tutors.jsp"><i class="fa fa-book"></i>Tutors</a>
@@ -153,8 +153,8 @@
                 <div class="row">
                         <div class="col-md-6">
                             <h5>Tutor</h5>
-                            <select class="form-control" name="tutor">
-                            	<option selected>Selecciona el tutor</option>
+                            <select class="form-control" name="tutor" required>
+                            	<option value="" selected hidden>Selecciona el tutor</option>
                             	<% 
                             	for(int i=0; i<llistaTutors.size(); i++) { 
                             	%>
@@ -169,7 +169,7 @@
                         <div class="col-md-6">
                             <h5>Centre</h5>
                             <select class="form-control" name="centre" required>
-                            	<option value="" selected>Selecciona el centre</option>
+                            	<option value="" selected hidden>Selecciona el centre</option>
                             	<% 
                             	for(int i=0; i<llistaCentres.size(); i++) { 
                             	%>
