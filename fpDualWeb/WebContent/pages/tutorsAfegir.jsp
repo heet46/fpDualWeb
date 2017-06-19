@@ -1,3 +1,4 @@
+<%@page import="model.UsuariDAO" %>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -25,6 +26,33 @@
 
 </head>
 <body>
+<script type="text/javascript">
+function nif(dni) {
+	  var numero
+	  var letr
+	  var letra
+	  var expresion_regular_dni
+	 
+	  expresion_regular_dni = /^\d{8}[a-zA-Z]$/;
+	 
+	  if(expresion_regular_dni.test (dni) == true){
+	     numero = dni.substr(0,dni.length-1);
+	     letr = dni.substr(dni.length-1,1);
+	     numero = numero % 23;
+	     letra='TRWAGMYFPDXBNJZSQVHLCKET';
+	     letra=letra.substring(numero,numero+1);
+	    if (letra!=letr.toUpperCase()) {
+	       alert('Error DNI, la lletra no li correspon');
+	    	document.getElementById("NIF").value = "";
+	     }else{
+	       alert('Dni correcte');
+	     }
+	  }else{
+	     alert('Error DNI, format no vàlid');
+		  document.getElementById("NIF").value = "";
+	   }
+	}
+</script>
 <script type="text/javascript">
 var restrict = function(tb) {
 	  tb.value = tb.value.replace(/[^a-zA-Zñç]/g, '');
@@ -127,8 +155,13 @@ var restrict = function(tb) {
                                     <table>
                                         <tr>
                                             <td>NIF: </td>
-                                            <td><input type="text" class="form-control" name="NIF" size="25" maxlength="9" required/></td>
+                                            <td><input type="text" class="form-control" id="NIF" name="NIF" size="25" maxlength="9" onblur="nif(this.value)" required/></td>
                                         </tr>
+                                        <%
+                                        	UsuariDAO uDAO=new UsuariDAO();
+                                        	String NIF=request.getParameter("NIF");
+                                        	uDAO.compararNIF(NIF);
+                                        %>
                                         <tr>
                                             <td>Password: </td>
                                             <td><input type="password" class="form-control" name="pass" size="25" required/></td>
@@ -153,7 +186,7 @@ var restrict = function(tb) {
                                         <td>Tecnologia: </td>
                                         <td>
                                             <select id="tec" name="tecno" class="form-control" required>
-                                                <option selected disabled value="selec">Selecciona una opció:</option>
+                                                <option selected hidden value="selec">Selecciona una opció:</option>
                                                 <option value="JAVA">JAVA</option>
                                                 <option value="SAP">SAP</option>
                                                 <option value="NET">NET</option>

@@ -127,6 +127,21 @@ public class UsuariDAO {
 		}
 		return llista;
 	}
+	
+	public boolean compararNIF(String NIF){
+		String consultaSQL="SELECT NIF FROM usuari WHERE NIF='"+NIF+"';";
+		boolean existeix=false;
+		ResultSet rs=null;
+		rs=gestorDB.consultaRegistres(consultaSQL);
+		try {
+			if(rs.isFirst()){
+				existeix=true;
+			}
+		} catch (SQLException e) {
+			System.out.println("Error comparar NIF");
+		}
+		return existeix;
+	}
 
 	public void tancarConn() {
 		gestorDB.tancarConnexio();
