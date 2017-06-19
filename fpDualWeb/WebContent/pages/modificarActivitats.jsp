@@ -118,7 +118,7 @@
                             <label class="control-label col-lg-2" for="codi">Codi:</label>
                             <div class="col-lg-4">
                                 <select class="form-control" id="codi" name="codi">
-                                    <option hidden selected>Select an option</option>
+                                    <option hidden selected>Selecciona una opció...</option>
                                     <option value="EXC">EXC (Excursió)</option>
                                     <option value="TLL">TLL (Taller)</option>
                                     <option value="TBL">TBL (Treball)</option>

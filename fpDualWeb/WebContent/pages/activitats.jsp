@@ -88,7 +88,7 @@
                     </div>
                   <!-- /. ROW  --> 
                             <div class="row text-center pad-top">
-                  <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
+                  <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
                       <div class="div-square">
                            <a href="afegirActivitats.jsp" >
                         <i class="fa fa-user-plus fa-5x" aria-hidden="true"></i>
@@ -100,7 +100,7 @@
                      
                   </div> 
                  
-                  <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
+                  <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
                       <div class="div-square">
                            <a href="modificarActivitatsTaula.jsp" >
                         <i class="fa fa-pencil fa-5x" aria-hidden="true"></i>
@@ -110,7 +110,7 @@
                      
                      
                   </div>
-                  <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
+                  <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
                       <div class="div-square">
                            <a href="llistatActivitats.jsp" >
                      <i class="fa fa-list fa-5x"></i>
@@ -119,7 +119,7 @@
                       </div>
                   </div>
                   
-                  <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
+                  <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
                       <div class="div-square">
                            <a href="eliminarActivitats.jsp">
                      <i class="fa fa-user-times fa-5x"></i>
@@ -128,15 +128,13 @@
                       </div>
                   </div>
                   
-                  <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
-                      <div class="div-square">
-                          <a href="../index.jsp">
-                     <i class="fa fa-arrow-left fa-5x"></i>
-                      <h4>Tornar</h4>
-                          </a>
-                      </div>
-                  </div>
-                  
+                <br><br><br><br><br><br><br>
+                   <div class="col-lg-11"></div>
+                <div class="col-lg-1">
+                    <a class="flotante" href="../index.jsp">
+                        <i class="fa fa-arrow-left fa-2x"></i>
+                    </a>
+                </div>
                   
               </div>
                  <!-- /. ROW  -->   
