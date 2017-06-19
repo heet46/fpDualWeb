@@ -32,7 +32,12 @@
 	<link rel="shortcut icon" type="image/ico" href="../assets/img/favicon-clock-o.ico" />
 </head>
 <body>
-<% 
+<%
+	HttpSession sesion=request.getSession(); 
+	String nif;
+	if(sesion.getAttribute("nif") == null){	
+		response.sendRedirect("login.jsp");
+	}
 	String id = (String) request.getSession().getAttribute("id");
 %>
     <div id="wrapper">
