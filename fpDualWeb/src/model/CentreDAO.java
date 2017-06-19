@@ -38,7 +38,7 @@ public class CentreDAO {
 		return dades;
 	}
 
-	public int altaCentreEntradaId(int idcentre, String nom, int codi, int telefon, String web) {
+	public int altaCentreEntradaId(int idcentre, String nom, int codi, int telefon, String web) throws SQLException {
 		int e = 0;
 		sentenciaSQL = "INSERT INTO centre (Id_centre, Nom, Codi, Telefon, Web) VALUES(" + idcentre + ", '" + nom
 				+ "', " + codi + ", " + telefon + ", '" + web + "');";
@@ -47,7 +47,7 @@ public class CentreDAO {
 
 	}
 
-	public void altaCentreAuto(String nom, int codi, int telefon, String web) {
+	public void altaCentreAuto(String nom, int codi, int telefon, String web) throws SQLException {
 		sentenciaSQL = "INSERT INTO centre (Nom, Codi, Telefon, Web) " + "VALUES('" + nom + "', " + codi + ", "
 				+ telefon + ", '" + web + "');";
 		gestorDB.modificarRegistre(sentenciaSQL);
@@ -96,7 +96,7 @@ public class CentreDAO {
 		return i;
 	}
 
-	public int donarBaixa(String id) {
+	public int donarBaixa(String id) throws SQLException {
 		int i = 0;
 		sentenciaSQL = "DELETE FROM centre WHERE id_centre LIKE '" + id + "';";
 		i = gestorDB.modificarRegistre(sentenciaSQL);
