@@ -174,7 +174,6 @@
         </div>
     <div class="footer">
       
-    
             <div class="row">
                 <div class="col-lg-12" >
                   &copy;  2017 yourdomain.com | Design by: Joan Espuñes, Sergi Fernández, Sisco Navarro, Thiago Hachikyan
