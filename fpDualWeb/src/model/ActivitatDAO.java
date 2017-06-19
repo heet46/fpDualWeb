@@ -15,21 +15,21 @@ public class ActivitatDAO {
 		gestorDB = new GestorDB(Constants.SERVER, Constants.PORT, Constants.BD);
 	}
 	
-	public void altaActivitat(Activitat activitat){
+	public void altaActivitat(Activitat activitat) throws SQLException{
 		String consultaSQL = "INSERT INTO ACTIVITAT(CODI, DESCRIPCIO) VALUES('"+activitat.getCodi()+"', '"+activitat.getDescripcio()+"')";
 		if(gestorDB.modificarRegistre(consultaSQL)!=0){
 			System.out.println("Alta realitzada amb èxit");
 		}
 	}
 	
-	public void altaActivitatManual(Activitat activitat) {
+	public void altaActivitatManual(Activitat activitat) throws SQLException {
 		String consultaSQL = "INSERT INTO ACTIVITAT(ID_ACTIVITAT, CODI, DESCRIPCIO) VALUES('"+activitat.getId()+"', '"+activitat.getCodi()+"', '"+activitat.getDescripcio()+"')";
 		if(gestorDB.modificarRegistre(consultaSQL)!=0){
 			System.out.println("Alta realitzada amb èxit");
 		}
 	}
 	
-	public void baixaActivitat(Activitat activitat){
+	public void baixaActivitat(Activitat activitat) throws SQLException{
 		String consultaSQL = "DELETE FROM ACTIVITAT WHERE ID_ACTIVITAT="+activitat.getId()+"";
 		if(gestorDB.modificarRegistre(consultaSQL)!=0){
 			System.out.println("Baixa realitzada amb èxit");
@@ -38,7 +38,7 @@ public class ActivitatDAO {
 		}
 	}
 	
-	public void modificarActivitat(Activitat activitat){
+	public void modificarActivitat(Activitat activitat) throws SQLException{
 		String consultaSQL = "UPDATE ACTIVITAT SET CODI='"+activitat.getCodi()+"', DESCRIPCIO='"+activitat.getDescripcio()+"' WHERE ID_ACTIVITAT="+activitat.getId()+"";
 		if(gestorDB.modificarRegistre(consultaSQL)!=0){
 			System.out.println("Modificació realitzada amb èxit");

@@ -1,6 +1,8 @@
 package servlet;
 
 import java.io.IOException;
+import java.sql.SQLException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -34,7 +36,11 @@ public class EliminarActivitats extends HttpServlet {
 		activitat.setId(sId);
 		
 		ActivitatDAO aDAO = new ActivitatDAO();
-		aDAO.baixaActivitat(activitat);
+		try {
+			aDAO.baixaActivitat(activitat);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 		
 		response.sendRedirect("pages/eliminarActivitats.jsp");
 		

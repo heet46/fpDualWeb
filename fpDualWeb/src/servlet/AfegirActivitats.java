@@ -1,6 +1,8 @@
 package servlet;
 
 import java.io.IOException;
+import java.sql.SQLException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -40,11 +42,19 @@ public class AfegirActivitats extends HttpServlet {
 		activitat.setId(id);
 		
 		if(auto == 1){
-			aDAO.altaActivitat(activitat);
+			try {
+				aDAO.altaActivitat(activitat);
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}else{
-			aDAO.altaActivitatManual(activitat);
+			try {
+				aDAO.altaActivitatManual(activitat);
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
-		
+		 
 		response.sendRedirect("pages/llistatActivitats.jsp");
 	}
 

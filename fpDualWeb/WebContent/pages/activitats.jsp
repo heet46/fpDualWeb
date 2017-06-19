@@ -22,7 +22,9 @@
     <link href="../assets/css/activitats.css" rel="stylesheet" />
      <!-- GOOGLE FONTS-->
     <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
-</head>
+    <!-- FAVICON -->
+	<link rel="shortcut icon" type="image/ico" href="../assets/img/favicon-clock-o.ico" />
+	</head>
 <body>
     <div id="wrapper">
          <div class="navbar navbar-inverse navbar-fixed-top">

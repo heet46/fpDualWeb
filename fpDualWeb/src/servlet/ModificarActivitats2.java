@@ -1,6 +1,8 @@
 package servlet;
 
 import java.io.IOException;
+import java.sql.SQLException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -39,7 +41,11 @@ public class ModificarActivitats2 extends HttpServlet {
 		activitat.setDescripcio(descripcio);
 		activitat.setId(id);
 		
-		aDAO.modificarActivitat(activitat);
+		try {
+			aDAO.modificarActivitat(activitat);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 		
 		response.sendRedirect("pages/llistatActivitats.jsp");
 	}
