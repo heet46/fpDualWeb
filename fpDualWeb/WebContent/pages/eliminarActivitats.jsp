@@ -103,7 +103,7 @@
                                 <table class="table table-striped  table-hover">
                             <thead>
                                 <tr>
-                                    <th>#ID</th>
+                                    <th>ID</th>
                                     <th>Codi</th>
                                     <th>Descripció</th>
                                     <th></th>

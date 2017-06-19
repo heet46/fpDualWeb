@@ -38,7 +38,6 @@ public class ModificarActivitats2 extends HttpServlet {
 		activitat.setCodi(codi);
 		activitat.setDescripcio(descripcio);
 		activitat.setId(id);
-		System.out.println(codi+", "+descripcio+", "+id);
 		
 		aDAO.modificarActivitat(activitat);
 		
