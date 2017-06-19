@@ -33,6 +33,8 @@ public class ActivitatDAO {
 		String consultaSQL = "DELETE FROM ACTIVITAT WHERE ID_ACTIVITAT="+activitat.getId()+"";
 		if(gestorDB.modificarRegistre(consultaSQL)!=0){
 			System.out.println("Baixa realitzada amb èxit");
+			consultaSQL = "ALTER TABLE ACTIVITAT AUTO_INCREMENT = 1";
+			gestorDB.modificarRegistre(consultaSQL);
 		}else{
 			System.out.println("No s'ha trobat l'ID");
 		}
