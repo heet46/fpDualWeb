@@ -32,6 +32,11 @@
 </head>
 <body>
 <%
+	HttpSession sesion=request.getSession(); 
+	String nif;
+	if(sesion.getAttribute("nif") == null){	
+		response.sendRedirect("login.jsp");
+	}
 	ActivitatDAO aDAO = new ActivitatDAO();
 	List<Activitat> llistaActivitats = aDAO.llistaTotesActivitats();
 %>    
