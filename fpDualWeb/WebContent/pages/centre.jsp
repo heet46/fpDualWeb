@@ -82,7 +82,7 @@
                  <!-- /. ROW  --> 
 
                  <div class="row text-center pad-top">
-                  <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
+                  <div class="col-lg-3 col-md-2 col-sm-2 col-xs-6">
                       <div class="div-square">
                            <a href="centreAfegirFINAL.jsp" >
                         <i class="fa fa-user-plus fa-5x" aria-hidden="true"></i>
@@ -91,7 +91,7 @@
                       </a>
                       </div>
                   </div>
-                  <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
+                  <div class="col-lg-3 col-md-2 col-sm-2 col-xs-6">
                       <div class="div-square">
                            <a href="centreModificar.jsp" >
                         <i class="fa fa-pencil fa-5x" aria-hidden="true"></i>
@@ -102,7 +102,7 @@
                      
                   </div>
 
-                  <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
+                  <div class="col-lg-3 col-md-2 col-sm-2 col-xs-6">
                       <div class="div-square">
                            <a href="centreConsultar.jsp" >
                      <i class="fa fa-list fa-5x"></i>
@@ -112,7 +112,7 @@
                   </div>
 
                   
-                  <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
+                  <div class="col-lg-3 col-md-2 col-sm-2 col-xs-6">
                       <div class="div-square">
                            <a href="centreEliminar.jsp" >
                         <i class="fa fa-user-times fa-5x" aria-hidden="true"></i>
@@ -122,7 +122,6 @@
                    
                     
                 <!-- /. ROW  -->
-                  <hr />
                  <!-- /. ROW  -->  
                 </div>
                  <!-- /. PAGE INNER  -->
@@ -131,12 +130,13 @@
 
          <!-- /. PAGE WRAPPER  -->
         </div>
+        </div>
     <div class="footer">
       
     
              <div class="row">
                <div class="col-lg-12" >
-                    &copy;  2017 yourdomain.com | Design by: Joan Espu√±es, Sergi Fern√†ndez, Sisco Navarro, Thiago Hachikyan
+                    &copy;  2017 Indra Software Labs | Design by: Joan EspuÒes, Sergi Fern·ndez, Sisco Navarro, Thiago Hachikyan
                 </div>
         </div>
         </div>
