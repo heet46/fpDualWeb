@@ -51,7 +51,7 @@ public class UsuariDAO {
 		}
 	}
 	
-	public void altaUsuari(Usuari usuari){
+	public void altaUsuari(Usuari usuari) throws SQLException{
 		String consultaSQL="INSERT INTO Usuari VALUES(id_usuari,'"+usuari.getNIF()+"','"+usuari.getPasswd()+"','"+usuari.getNom()+"','"+usuari.getCognom1()+"','"+usuari.getCognom2()+"',NOW(),'"+usuari.getMail()+"')";
 		System.out.println(consultaSQL);
 		gestorDB.modificarRegistre(consultaSQL);
@@ -87,7 +87,7 @@ public class UsuariDAO {
 		return u;
 	}
 	
-	public void modificarUsuari(String NIF,Usuari usu){
+	public void modificarUsuari(String NIF,Usuari usu) throws SQLException{
 		String consultaSQL="UPDATE usuari SET NIF='"+usu.getNIF()+"',"+
 		"password='"+usu.getPasswd()+"',"+"nom='"+usu.getNom()+"',"+"primer_cognom='"+usu.getCognom1()+"',"+
 		"segon_cognom='"+usu.getCognom2()+"',mail='"+usu.getMail()+"' "+

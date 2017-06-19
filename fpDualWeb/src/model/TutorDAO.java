@@ -19,13 +19,13 @@ public class TutorDAO {
 		g=new GestorDB(Constants.SERVER, Constants.PORT, Constants.BD);
 	}
 	
-	public void altaTutor(Tutor t){
+	public void altaTutor(Tutor t) throws SQLException{
 		consultaSQL="INSERT INTO tutor VALUES("+t.getId_usuari()+",'"+t.getTecnologia()+"');";
 		g.modificarRegistre(consultaSQL);
 		
 	}
 	
-	public void baixaTutor(int id){
+	public void baixaTutor(int id) throws SQLException{
 		
 		consultaSQL="DELETE FROM tutor WHERE id_usuari="+id+";";
 		g.modificarRegistre(consultaSQL);
@@ -34,7 +34,7 @@ public class TutorDAO {
 		
 	}
 	
-	public void modificarTutor(Tutor t){
+	public void modificarTutor(Tutor t) throws SQLException{
 		consultaSQL="UPDATE tutor SET tecnologia='"+t.getTecnologia()+"' WHERE id_usuari="+t.getId_usuari()+";";
 		g.modificarRegistre(consultaSQL);
 	}
