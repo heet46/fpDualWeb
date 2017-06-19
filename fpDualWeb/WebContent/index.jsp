@@ -28,6 +28,8 @@
 
      <!-- GOOGLE FONTS-->
    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
+   <!-- FAVICON -->
+	<link rel="shortcut icon" type="image/ico" href="assets/img/favicon-clock-o.ico" />
    
     <script src="assets/js/jquery-3.2.1.min.js"></script>
 
