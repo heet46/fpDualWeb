@@ -145,7 +145,7 @@
              	ResultSet rs;
              	CentreDAO cdao = new CentreDAO();
              	rs = cdao.consultarCentres();
-             	out.print("<option> Selecciona el Centre a eliminar. </option>");
+             	out.print("<option selected hidden> Selecciona el Centre a eliminar. </option>");
                	try { 
              		while (rs.next()) { 
              			

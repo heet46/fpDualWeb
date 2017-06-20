@@ -142,6 +142,9 @@
              	out.println("<input type='text' id='myInput' onkeyup='myFunction()' placeholder='Buscar per Nom...' title='Introdueix el Nom a Buscar.'>");
              	
              	
+             	out.println("<input type='text' id='myInput' onkeyup='myFunction()' placeholder='Buscar per Nom...' title='Introdueix el Nom a Buscar.'>");
+             	
+             	
              	out.println("<div class='row' class='col-lg-12 col-md-12'>");
              	out.println("<table id='myTable' class='table table-striped  table-hover' >");
              	out.println("<tr>");
