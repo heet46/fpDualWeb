@@ -106,16 +106,13 @@
  
                     </div>
                   <!-- /. ROW  --> 
-                         <div class="row text-center pad-top">
-                        <div class="container bootstrap snippet">
+                                        
                             <div class="row">
                                 <div class="col-lg-12">
-                                    <div class="main-box no-header clearfix">
-                                        <div class="main-box-body clearfix">
-                                            <div class="table-responsive">
-                                                <table class="table user-list">
-                                                    <thead>
-                                                        <tr>
+                                          
+	                                <table class="table table-hover table-inverse">
+	                                    <thead>
+	                                        <tr id="headeer">
                                                         <th><span>Usuari</span></th>
                                                         <th><span>NIF</span></th>
                                                         <th><span>Cognom</span></th>
@@ -163,15 +160,9 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                  </div>
-                  
-              </div>          
+                            </div>        
                   <!-- /. ROW  --> 
-    </div>
              <!-- /. PAGE INNER  -->
-            </div>
          <!-- /. PAGE WRAPPER  -->
     <div class="footer">
       
