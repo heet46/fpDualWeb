@@ -144,7 +144,7 @@
                   <div class="col-lg-3 col-md-2 col-sm-2 col-xs-6">
                       <div class="div-square">
                            <a href="llistatAlumnes.jsp" >
-                     <i class="fa fa-list fa-5x"></i>
+						<i class="fa fa-users fa-5x" aria-hidden="true"></i>
                       <h4>Llistat d'alumnes</h4>
                       </a>
                       </div>
