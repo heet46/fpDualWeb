@@ -143,7 +143,7 @@
                 <div class="row">
                     <div class="col-lg-12 ">
                         <div class="alert alert-info content" id="alerta">
-                             &nbsp;Benvingut <strong><%=usuNom %>! </strong>
+                             &nbsp;Benvingut <strong><%=usuNom%>! </strong>
                         </div>                     
                     </div>
                 </div>
