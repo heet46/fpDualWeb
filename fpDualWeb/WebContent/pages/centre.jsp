@@ -90,16 +90,16 @@
                   <hr />
                  <!-- /. ROW  --> 
 
-                 <div class="row text-center pad-top">
-                  <div class="col-lg-3 col-md-2 col-sm-2 col-xs-6">
-                      <div class="div-square">
+                 <div class="row text-center pad-top" >
+                   	<div class="col-lg-3 col-md-2 col-sm-2 col-xs-6">
+                      	<div class="div-square">
                            <a href="centreAfegirFINAL.jsp" >
-                        <i class="fa fa-user-plus fa-5x" aria-hidden="true"></i>
+                        		<i class="fa fa-user-plus fa-5x" aria-hidden="true"></i>
+								<h4>Afegir Centre</h4>
+                      		</a>
+                  		</div>
+					</div>
 
-                        <h4>Afegir Centre</h4>
-                      </a>
-                      </div>
-                  </div>
                   <div class="col-lg-3 col-md-2 col-sm-2 col-xs-6">
                       <div class="div-square">
                            <a href="centreModificar.jsp" >
