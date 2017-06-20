@@ -169,13 +169,16 @@
              	
              	out.println("<div class='row col-lg-12 col-md-12'>");
              	out.println("<table id='myTable' class='table table-striped  table-hover' >");
+             	out.println("<thead>");
              	out.println("<tr>");
-             	out.println("<td ><b>ID<b/></td>");
-             	out.println("<td ><b>Nom<b/></td>");
-             	out.println("<td ><b>Codi<b/></td>");
-             	out.println("<td ><b>Telefon<b/></td>");
-             	out.println("<td ><b>Web<b/></td>");
+             	out.println("<th ><b>ID<b/></th>");
+             	out.println("<th ><b>Nom<b/></th>");
+             	out.println("<th ><b>Codi<b/></th>");
+             	out.println("<th ><b>Telefon<b/></th>");
+             	out.println("<th ><b>Web<b/></th>");
              	out.println("</tr>");
+             	out.println("</thead>");
+
              	
              	
              	try { 
