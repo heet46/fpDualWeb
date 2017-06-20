@@ -43,21 +43,17 @@
           if(document.getElementById("checkNom").checked == true){
          	  document.getElementById("Nom").required = true;
               document.getElementById("Nom").disabled = false;
-              document.getElementById("Submit").disabled = false;
           }else{
         	  document.getElementById("Nom").required = false;
               document.getElementById("Nom").disabled = true;
-              document.getElementById("Submit").disabled = true;
               document.getElementById("Nom").value="";
           }
           
           if(document.getElementById("checkCog").checked == true){
          	  document.getElementById("Cognom").required = true;
               document.getElementById("Cognom").disabled = false;
-              document.getElementById("Submit").disabled = false;
           }else{
          	  document.getElementById("Cognom").required = false;
-           	  document.getElementById("Submit").disabled = true;
               document.getElementById("Cognom").disabled = true;
               document.getElementById("Cognom").value="";
           }
@@ -65,13 +61,16 @@
           if(document.getElementById("checkNIF").checked == true){
          	  document.getElementById("NIF").required = true;
               document.getElementById("NIF").disabled = false;
-              document.getElementById("Submit").disabled = false;
           }else{
          	  document.getElementById("NIF").required = false;
-         	  document.getElementById("Submit").disabled = true;
               document.getElementById("NIF").disabled = true;
               document.getElementById("NIF").value="";
-          }  
+          }
+          if(document.getElementById("checkNom").checked == true || document.getElementById("checkCog").checked == true || document.getElementById("checkNIF").checked == true){
+              document.getElementById("Submit").disabled = false;
+          }else{
+              document.getElementById("Submit").disabled = true;
+          }
      }  
      </script> 
 </head>

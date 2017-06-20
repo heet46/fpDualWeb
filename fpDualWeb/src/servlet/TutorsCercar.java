@@ -9,7 +9,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import model.TutorDAO;
 
 /**
  * Servlet implementation class CercarTutors
@@ -39,14 +38,11 @@ public class TutorsCercar extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String nom=(String)request.getParameter("Nom");
-		request.setAttribute("nom",nom);
-		RequestDispatcher rd=request.getRequestDispatcher("pages/llistaTutors.jsp");
+		request.getSession().setAttribute("nom",nom);
 		String cognom=(String)request.getParameter("Cognom");
-		request.setAttribute("cognom",cognom);
-		rd=request.getRequestDispatcher("pages/llistaTutors.jsp");
+		request.getSession().setAttribute("cognom",cognom);
 		String NIF=(String)request.getParameter("NIF");
-		request.setAttribute("NIF",NIF);
-		rd=request.getRequestDispatcher("pages/llistaTutors.jsp");
+		request.getSession().setAttribute("NIF",NIF);
 		response.sendRedirect("pages/llistaTutors.jsp");
      	System.out.println(NIF+","+nom+","+cognom);
 	}

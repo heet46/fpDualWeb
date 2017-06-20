@@ -4,7 +4,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 import controlador.Constants;
@@ -96,34 +95,26 @@ public class TutorDAO {
 		return id;
 	}
 	
-	public List<Usuari> cercarTutors(String NIF,String nom,String cognom) throws SQLException{
+	public List<Usuari> cercarTutors(Usuari u) throws SQLException{
 		List<Usuari> tutors=new ArrayList<Usuari>();
-		consultaSQL="SELECT ";
-		String consulta2=" FROM usuari,tutor WHERE usuari.Id_usuari=tutor.Id_usuari AND ";
-		System.out.printf(NIF,nom,cognom);
-		if(!NIF.equals("")){
-			consultaSQL+="usuari.NIF";
-			consulta2+="usuari.NIF='"+NIF+"' ";
+		consultaSQL="SELECT * FROM usuari,tutor WHERE usuari.Id_usuari=tutor.Id_usuari AND ";
+		if(u.getNIF()!=null){
+			consultaSQL+="usuari.NIF='"+u.getNIF()+"' ";
 		}
-		if(!nom.equals("")){
-			if(!NIF.equals("")){
-				consultaSQL+=",usuari.nom";
-				consulta2+="AND usuari.nom='"+nom+"' ";
+		if(u.getNom()!=null){
+			if(u.getNIF()!=null){
+				consultaSQL+="AND usuari.nom='"+u.getNom()+"' ";
 			}else{
-				consultaSQL+="usuari.nom";
-				consulta2+="usuari.nom='"+nom+"' ";
+				consultaSQL+="usuari.nom='"+u.getNom()+"' ";
 			}
 		}
-		if(!cognom.equals("")){
-			if(!NIF.equals("") || !nom.equals("")){
-				consultaSQL+=",usuari.primer_cognom";
-				consulta2+="AND usuari.primer_cognom='"+cognom+"';";
+		if(u.getCognom1()!=null){
+			if(u.getNIF()!=null || u.getNom()!=null){
+				consultaSQL+="AND usuari.primer_cognom='"+u.getCognom1()+"';";
 			}else{
-				consultaSQL+="usuari.primer_cognom";
-				consulta2+="usuari.primer_cognom='"+cognom+"';";
+				consultaSQL+="usuari.primer_cognom='"+u.getCognom1()+"';";
 			}
 		}
-		consultaSQL+=consulta2;
 		ResultSet rs=g.consultaRegistres(consultaSQL);
 		
 		while(rs.next()){

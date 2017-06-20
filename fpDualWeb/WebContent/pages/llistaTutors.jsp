@@ -146,8 +146,8 @@
 	                                    <thead>
 	                                        <tr id="headeer">
 	                                        <th><span>Usuari</span></th>
-	                                        <th><span>NIF</span></th>
 	                                        <th><span>Cognom</span></th>
+	                                        <th><span>NIF</span></th>
 	                                        <th><span>E-mail</span></th>
 	                                        <th>&nbsp;</th>
 	                                        </tr>
@@ -156,11 +156,12 @@
 	                                        <%
 	                                        	TutorDAO tDAO=new TutorDAO();
 	                                        	UsuariDAO uDAO=new UsuariDAO();
-	                                        	String NIF=(String)request.getAttribute("NIF");
-	                                        	String nom=(String)request.getAttribute("nom");
-	                                        	String cognom=(String)request.getAttribute("cognom");
+	                                        	String NIF=(String)session.getAttribute("NIF");
+	                                        	String nom=(String)session.getAttribute("nom");
+	                                        	String cognom=(String)session.getAttribute("cognom");
 	                                        	System.out.println(NIF+","+nom+","+cognom);
-	                                        	List<Usuari> usu=tDAO.cercarTutors(NIF,nom,cognom);
+	                                    		Usuari us=new Usuari(NIF, "", nom, cognom,"", "");
+	                                        	List<Usuari> usu=tDAO.cercarTutors(us);
 	                                        	for(Usuari u:usu){
 	                                        %>
 	                                        		<tr>
