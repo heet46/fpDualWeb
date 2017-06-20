@@ -138,7 +138,7 @@
              	ResultSet rs;
              	CentreDAO cdao = new CentreDAO();
              	rs = cdao.consultarCentres();
-             	out.print("<option> Selecciona un Centre. </option>");
+             	out.print("<option selected hidden> Selecciona un Centre. </option>");
                	try { 
              		while (rs.next()) { 
              			for (int i = 1; i <= 1; i++) { 

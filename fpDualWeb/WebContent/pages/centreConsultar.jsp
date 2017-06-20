@@ -66,9 +66,17 @@
     <link href="../assets/css/tutors.css" rel="stylesheet" />
      <!-- GOOGLE FONTS-->
     <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
+             <!-- FAVICON -->
+	<link rel="shortcut icon" type="image/ico" href="../assets/img/favicon-clock-o.ico" />
 </head>
 <body>
-
+<%
+	HttpSession sesion=request.getSession(); 
+	String nif;
+	if(sesion.getAttribute("nif") == null){	
+		response.sendRedirect("login.jsp");
+	}
+%>
     <div id="wrapper">
          <div class="navbar navbar-inverse navbar-fixed-top">
             <div class="adjust-nav">
@@ -94,7 +102,7 @@
             <div class="sidebar-collapse">
               <ul class="nav" id="main-menu">
                 <li >
-                    <a href="../index.jsp" ><i class="fa fa-desktop "></i>Panell de control <span class="badge">Included</span></a>
+                    <a href="../index.jsp" ><i class="fa fa-desktop "></i>Inici <span class="badge">Included</span></a>
                 </li>
                 <li>
                     <a href="alumnes.jsp"><i class="fa fa-graduation-cap "></i>Alumnes</a>
