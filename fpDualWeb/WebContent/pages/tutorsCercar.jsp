@@ -166,6 +166,7 @@
                         
                             <div class="row">
                                 <div class="col-lg-12">
+                                	<form action="CercarTutors" method="Post">
 	                               		<table class="table">
 	                               			<tr>
 	                               				<td>
@@ -183,10 +184,14 @@
 									  				<br/>
 									  				<input type="text" id="NIF" size="25" disabled/>
 	                               				</td>
+	                               			</tr>
+	                               			<tr>
 	                               				<td>
+	                               					<input type="submit" class="btn btn-primary" value="Cercar"/>
 	                               				</td>
 	                               			</tr>
 	                               		</table>
+	                               </form>
                                 </div>
                                </div>
                                    </div>
