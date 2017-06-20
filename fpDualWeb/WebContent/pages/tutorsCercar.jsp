@@ -40,23 +40,35 @@
 	<link rel="shortcut icon" type="image/ico" href="../assets/img/favicon-clock-o.ico" />
  <script type="text/javascript" >  
      function showText(){  
-          if(document.getElementById("checkNom").checked == true){  
-              document.getElementById("Nom").disabled = false;  
+          if(document.getElementById("checkNom").checked == true){
+         	  document.getElementById("Nom").required = true;
+              document.getElementById("Nom").disabled = false;
+              document.getElementById("Submit").disabled = false;
           }else{
+        	  document.getElementById("Nom").required = false;
               document.getElementById("Nom").disabled = true;
+              document.getElementById("Submit").disabled = true;
               document.getElementById("Nom").value="";
           }
           
-          if(document.getElementById("checkCog").checked == true){  
-              document.getElementById("Cognom").disabled = false;  
+          if(document.getElementById("checkCog").checked == true){
+         	  document.getElementById("Cognom").required = true;
+              document.getElementById("Cognom").disabled = false;
+              document.getElementById("Submit").disabled = false;
           }else{
+         	  document.getElementById("Cognom").required = false;
+           	  document.getElementById("Submit").disabled = true;
               document.getElementById("Cognom").disabled = true;
               document.getElementById("Cognom").value="";
           }
           
-          if(document.getElementById("checkNIF").checked == true){  
-              document.getElementById("NIF").disabled = false;  
+          if(document.getElementById("checkNIF").checked == true){
+         	  document.getElementById("NIF").required = true;
+              document.getElementById("NIF").disabled = false;
+              document.getElementById("Submit").disabled = false;
           }else{
+         	  document.getElementById("NIF").required = false;
+         	  document.getElementById("Submit").disabled = true;
               document.getElementById("NIF").disabled = true;
               document.getElementById("NIF").value="";
           }  
@@ -166,28 +178,28 @@
                         
                             <div class="row">
                                 <div class="col-lg-12">
-                                	<form action="CercarTutors" method="Post">
+                                	<form action="../TutorsCercar" method="Post">
 	                               		<table class="table">
 	                               			<tr>
 	                               				<td>
 	                               					<label><input type="checkbox" id="checkNom" onclick="showText()">&nbsp;Nom</label>
 	                               					<br/>
-									  				<input type="text" id="Nom" size="25" disabled/>
+									  				<input type="text" name="Nom" id="Nom" size="25" disabled/>
 	                               				</td>
 	                               				<td>
 	                               					<label><input type="checkbox" id="checkCog" onclick="showText()">&nbsp;Primer Cognom</label>
 									  				<br/>
-									  				<input type="text" id="Cognom" size="25" disabled/>
+									  				<input type="text" name="Cognom" id="Cognom" size="25" disabled/>
 	                               				</td>
 	                               				<td>
 	                               					<label><input type="checkbox" id="checkNIF" onclick="showText()">&nbsp;NIF</label>
 									  				<br/>
-									  				<input type="text" id="NIF" size="25" disabled/>
+									  				<input type="text" name="NIF" id="NIF" size="25" disabled/>
 	                               				</td>
 	                               			</tr>
 	                               			<tr>
 	                               				<td>
-	                               					<input type="submit" class="btn btn-primary" value="Cercar"/>
+	                               					<input type="submit" class="btn btn-primary" value="Cercar" id="Submit" disabled/>
 	                               				</td>
 	                               			</tr>
 	                               		</table>

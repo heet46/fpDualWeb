@@ -142,7 +142,6 @@
                         
                             <div class="row">
                                 <div class="col-lg-12">
-                                          
 	                                <table class="table table-hover table-inverse">
 	                                    <thead>
 	                                        <tr id="headeer">
@@ -157,7 +156,11 @@
 	                                        <%
 	                                        	TutorDAO tDAO=new TutorDAO();
 	                                        	UsuariDAO uDAO=new UsuariDAO();
-	                                        	List<Usuari> usu=tDAO.consultaTutor();
+	                                        	String NIF=(String)request.getAttribute("NIF");
+	                                        	String nom=(String)request.getAttribute("nom");
+	                                        	String cognom=(String)request.getAttribute("cognom");
+	                                        	System.out.println(NIF+","+nom+","+cognom);
+	                                        	List<Usuari> usu=tDAO.cercarTutors(NIF,nom,cognom);
 	                                        	for(Usuari u:usu){
 	                                        %>
 	                                        		<tr>
@@ -165,10 +168,10 @@
 	                                        				<%=u.getNom()%>
 	                                        			</td>
 	                                        			<td>
-	                                        				<%=u.getNIF()%>
+	                                        				<%=u.getCognom1()%>
 	                                        			</td>
 	                                        			<td>
-	                                        				<%=u.getCognom1()%>
+	                                        				<%=u.getNIF()%>
 	                                        			</td>
 	                                        			<td>
 	                                        				<%=u.getMail()%>
@@ -179,7 +182,7 @@
 	                                       	%>	
 	                                    </tbody>
 	                                </table>
-                                   </div>
+								 </div>
                                </div>
                                    </div>
                                </div>

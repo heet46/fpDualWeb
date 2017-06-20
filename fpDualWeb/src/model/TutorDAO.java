@@ -96,6 +96,41 @@ public class TutorDAO {
 		return id;
 	}
 	
+	public List<Usuari> cercarTutors(String NIF,String nom,String cognom) throws SQLException{
+		List<Usuari> tutors=new ArrayList<Usuari>();
+		consultaSQL="SELECT ";
+		String consulta2=" FROM usuari,tutor WHERE usuari.Id_usuari=tutor.Id_usuari AND ";
+		System.out.printf(NIF,nom,cognom);
+		if(!NIF.equals("")){
+			consultaSQL+="usuari.NIF";
+			consulta2+="usuari.NIF='"+NIF+"' ";
+		}
+		if(!nom.equals("")){
+			if(!NIF.equals("")){
+				consultaSQL+=",usuari.nom";
+				consulta2+="AND usuari.nom='"+nom+"' ";
+			}else{
+				consultaSQL+="usuari.nom";
+				consulta2+="usuari.nom='"+nom+"' ";
+			}
+		}
+		if(!cognom.equals("")){
+			if(!NIF.equals("") || !nom.equals("")){
+				consultaSQL+=",usuari.primer_cognom";
+				consulta2+="AND usuari.primer_cognom='"+cognom+"';";
+			}else{
+				consultaSQL+="usuari.primer_cognom";
+				consulta2+="usuari.primer_cognom='"+cognom+"';";
+			}
+		}
+		consultaSQL+=consulta2;
+		ResultSet rs=g.consultaRegistres(consultaSQL);
+		
+		while(rs.next()){
+			tutors.add(new Usuari(rs.getString("NIF"),rs.getString("password"),rs.getString("nom"),rs.getString("primer_cognom"),rs.getString("segon_cognom"),rs.getString("mail")));
+		}
+		return tutors;
+	}
 	public String consultaTecno(int id){
 		String tecno="";
 		consultaSQL="SELECT tecnologia FROM tutor WHERE Id_usuari="+id+";";
