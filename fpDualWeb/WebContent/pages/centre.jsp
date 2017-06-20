@@ -90,6 +90,7 @@
                   <hr />
                  <!-- /. ROW  --> 
 
+
                  <div class="row text-center pad-top" >
                    	<div class="col-lg-3 col-md-2 col-sm-2 col-xs-6">
                       	<div class="div-square">
