@@ -13,6 +13,7 @@
     pageEncoding="ISO-8859-1"%>
 
 
+
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -21,7 +22,6 @@
     <title>Registre d'hores</title>
 	<!-- Scripts de Control de entrada de datos -->
     <script>
-
 		function habilitar(value){ //Funcion que comprueba cual radius es marcado para anular o no el input.
 			if(value=="1")
 			{
@@ -32,7 +32,6 @@
 				document.getElementById("iddelcentre").disabled=true;
 			}
 		}
-
 		function valida(e){ // Funcion que delimita los caracteres que entremos a unicamente Enteros.
 		    tecla = (document.all) ? e.keyCode : e.which;
 		    //Tecla de retroceso para borrar, siempre la permite
@@ -139,10 +138,12 @@
              	ResultSet rs;
              	CentreDAO cdao = new CentreDAO();
              	rs = cdao.consultarCentres();
-
+             	
+             	out.println("<input type='text' id='myInput' onkeyup='myFunction()' placeholder='Buscar per Nom...' title='Introdueix el Nom a Buscar.'>");
+             	
              	
              	out.println("<div class='row' class='col-lg-12 col-md-12'>");
-             	out.println("<table class='table table-striped  table-hover' >");
+             	out.println("<table id='myTable' class='table table-striped  table-hover' >");
              	out.println("<tr>");
              	out.println("<td ><b>ID<b/></td>");
              	out.println("<td ><b>Nom<b/></td>");
@@ -168,6 +169,27 @@
              	out.println("</table>");
              	out.println("<div/>");
              %>
+             
+             
+            <script>
+				function myFunction() {
+				  var input, filter, table, tr, td, i;
+				  input = document.getElementById("myInput");
+				  filter = input.value.toUpperCase();
+				  table = document.getElementById("myTable");
+				  tr = table.getElementsByTagName("tr");
+				  for (i = 0; i < tr.length; i++) {
+				    td = tr[i].getElementsByTagName("td")[1];
+				    if (td) {
+				      if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+				        tr[i].style.display = "";
+				      } else {
+				        tr[i].style.display = "none";
+				      }
+				    }       
+				  }
+				}
+			</script>
                    <p/>  
                     
                 <!-- /. ROW  -->
