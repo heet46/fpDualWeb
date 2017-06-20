@@ -98,7 +98,6 @@
                     <li  class="active-link">
                         <a href="#"><i class="fa fa-book"></i>Tutors</a>
                     </li>
-
                     <li>
                         <a href="centre.jsp"><i class="fa fa-university "></i>Centres </a>
                     </li>
@@ -149,12 +148,24 @@
                       </div>
                      
                      
+                 <!--
                   </div>
                   <div class="col-lg-3 col-md-2 col-sm-2 col-xs-6">
                       <div class="div-square">
                            <a href="tutorsConsulta.jsp" >
                      <i class="fa fa-list fa-5x"></i>
                       <h4>Llistat de tutors</h4>
+                      </a>
+                      </div>
+                  </div>
+                   -->
+                  
+                  </div>
+                  <div class="col-lg-3 col-md-2 col-sm-2 col-xs-6">
+                      <div class="div-square">
+                           <a href="tutorsConsulta.jsp" >
+                     <i class="fa fa-search fa-5x"></i>
+                      <h4>Cercar tutors</h4>
                       </a>
                       </div>
                   </div>
