@@ -75,6 +75,24 @@
 	if(sesion.getAttribute("nif") == null){	
 		response.sendRedirect("login.jsp");
 	}
+	
+	String usuNif = null;
+	String sessionID = null;
+	String usuNom = null;
+	String usuCognom = null;
+	String usuMail = null;
+	Cookie[] cookies = request.getCookies();
+	if(cookies != null){
+		for(Cookie cookie : cookies){
+		
+			if(cookie.getName().equals("nif")) usuNif = cookie.getValue();
+			if(cookie.getName().equals("nom")) usuNom = cookie.getValue();
+			if(cookie.getName().equals("cognom")) usuCognom = cookie.getValue();
+			if(cookie.getName().equals("mail")) usuMail = cookie.getValue();
+			if(cookie.getName().equals("JSESSIONID")) sessionID = cookie.getValue();
+						
+		}
+	}
 %>
     <div id="wrapper">
          <div class="navbar navbar-inverse navbar-fixed-top">
@@ -90,9 +108,16 @@
                     </a>
                 </div>
               
-                 <span class="logout-spn" >
-                  <a href="#" style="color:#fff;">LOGOUT</a>  
-
+                 <span class="logout-spn" >                
+	                <form method="post" action="../Logout" name="logoutForm">
+						<a href="javascript: submitform()" style="color:#fff;">LOGOUT</a>
+					</form>
+					<p><strong><%=usuNom %></strong> | <%=usuNif%></p>					
+					<script type="text/javascript">
+						function submitform(){
+						  document.logoutForm.submit();
+						}
+					</script>
                 </span>
             </div>
         </div>
@@ -134,7 +159,7 @@
                  <!-- /. ROW  --> 
 				<br/>
 				<p>
-                <%		
+                <%
              	ResultSet rs;
              	CentreDAO cdao = new CentreDAO();
              	rs = cdao.consultarCentres();
@@ -142,10 +167,7 @@
              	out.println("<input type='text' id='myInput' onkeyup='myFunction()' placeholder='Buscar per Nom...' title='Introdueix el Nom a Buscar.'>");
              	
              	
-             	out.println("<input type='text' id='myInput' onkeyup='myFunction()' placeholder='Buscar per Nom...' title='Introdueix el Nom a Buscar.'>");
-             	
-             	
-             	out.println("<div class='row' class='col-lg-12 col-md-12'>");
+             	out.println("<div class='row col-lg-12 col-md-12'>");
              	out.println("<table id='myTable' class='table table-striped  table-hover' >");
              	out.println("<tr>");
              	out.println("<td ><b>ID<b/></td>");
