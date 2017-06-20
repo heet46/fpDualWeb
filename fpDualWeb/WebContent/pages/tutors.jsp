@@ -163,7 +163,7 @@
                   </div>
                   <div class="col-lg-3 col-md-2 col-sm-2 col-xs-6">
                       <div class="div-square">
-                           <a href="tutorsConsulta.jsp" >
+                           <a href="tutorsCercar.jsp" >
                      <i class="fa fa-search fa-5x"></i>
                       <h4>Cercar tutors</h4>
                       </a>
