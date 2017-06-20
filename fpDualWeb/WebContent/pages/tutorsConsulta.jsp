@@ -128,7 +128,6 @@
 	                                        <th><span>Usuari</span></th>
 	                                        <th><span>NIF</span></th>
 	                                        <th><span>Cognom</span></th>
-	                                        <th class="text-center"><span>Estat</span></th>
 	                                        <th><span>E-mail</span></th>
 	                                        <th>&nbsp;</th>
 	                                        </tr>
@@ -149,9 +148,6 @@
 	                                        			</td>
 	                                        			<td>
 	                                        				<%=u.getCognom1()%>
-	                                        			</td>
-	                                        			<td class="text-center">
-	                                        				<span class="label label-success">Actiu</span>
 	                                        			</td>
 	                                        			<td>
 	                                        				<%=u.getMail()%>
