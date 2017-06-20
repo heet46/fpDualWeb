@@ -1,3 +1,8 @@
+<%@ page import="controlador.*" %>
+<%@ page import="model.*" %>
+<%@ page import="servlet.*" %>
+<%@ page import="java.util.*" %>
+
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -9,6 +14,8 @@
      <!-- FONTAWESOME STYLES-->
     <link href="../assets/css/font-awesome.css" rel="stylesheet" />
         <!-- CUSTOM STYLES-->
+    <link rel="stylesheet" href="../assets/css/activitats.css">    
+    
     <link href="../assets/css/bootstrap-theme.css" rel="stylesheet" />
 
     <link href="../assets/css/bootstrap-theme.min.css" rel="stylesheet" />
@@ -18,13 +25,11 @@
     <link href="../assets/css/bootstrap-theme.min.css" rel="stylesheet" />
     
     <link href="../assets/css/custom.css" rel="stylesheet" />
-    
-    <link href="../assets/css/activitats.css" rel="stylesheet" />
      <!-- GOOGLE FONTS-->
     <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
     <!-- FAVICON -->
 	<link rel="shortcut icon" type="image/ico" href="../assets/img/favicon-clock-o.ico" />
-	</head>
+</head>
 <body>
 <%
 	HttpSession sesion=request.getSession(); 
@@ -51,7 +56,10 @@
 			
 		}
 	}
-%>
+	
+	ActivitatDAO aDAO = new ActivitatDAO();
+	List<Activitat> llistaActivitats = aDAO.llistaTotesActivitats();
+%>    
     <div id="wrapper">
          <div class="navbar navbar-inverse navbar-fixed-top">
             <div class="adjust-nav">
@@ -106,80 +114,60 @@
                 </ul>
             </div>
 
+
         </nav>
         <!-- /. NAV SIDE  -->
         <div id="page-wrapper" >
             <div id="page-inner">
                 <div class="row">
                     <div class="col-lg-12">
-                     <h2>Gestió d'activitats</h2>   
+                     <h2>Cerca d'activitats</h2>   
                     </div>
                 </div>              
                  <!-- /. ROW  -->
                   <hr />
-                <div class="row">
-                
+                  <h3>Llistat d'activitats</h3>
+                <div class="row col-lg-12">
+                    
  
-                    </div>
+                </div>
                   <!-- /. ROW  --> 
-                            <div class="row text-center pad-top">
-                  <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
-                      <div class="div-square">
-                           <a href="afegirActivitats.jsp" >
-                        <i class="fa fa-plus-square fa-5x" aria-hidden="true"></i>
+                            <div class="row">
+                                <div class="col-lg-12">
+                                <table class="table table-striped  table-hover">
+                            <thead>
+                                <tr id="headeer">
+                                    <th>ID</th>
+                                    <th>Codi</th>
+                                    <th>Descripció</th>
+                                </tr>
+                            </thead>
+                            <tbody> 
+                                <tr>
+									<%
+										for (Activitat activitat : llistaActivitats) {
+									%>
+									<td><%=activitat.getId()%></td>
+									<td><%=activitat.getCodi()%></td>
+									<td><%=activitat.getDescripcio()%></td>
 
-                        <h4>Afegir activitat</h4>
-                      </a>
-                      </div>
-                     
-                     
-                  </div> 
-                 
-                  <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
-                      <div class="div-square">
-                           <a href="modificarActivitatsTaula.jsp" >
-                        <i class="fa fa-pencil fa-5x" aria-hidden="true"></i>
-                      <h4>Modificar activitat</h4>
-                      </a>
-                      </div>
-                     
-                     
-                  </div>
-                  <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
-                      <div class="div-square">
-                           <a href="llistatActivitats.jsp" >
-                     <i class="fa fa-list fa-5x"></i>
-                      <h4>Llistat d'activitats</h4>
-                      </a>
-                      </div>
-                  </div>
+								</tr>
+								<%
+									}
+									
+								%>
+                                
+                            </tbody>
+                        </table>
                   
-                  <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
-                      <div class="div-square">
-                           <a href="eliminarActivitats.jsp">
-                     <i class="fa fa-trash fa-5x"></i>
-                      <h4>Eliminar activitat</h4>
-                      </a>
-                      </div>
-                  </div>
-                  
-                  <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
-                      <div class="div-square">
-                           <a href="cercarActivitats.jsp">
-                     <i class="fa fa-search fa-5x"></i>
-                      <h4>Cercar activitat</h4>
-                      </a>
-                      </div>
-                  </div>
-                  
-                <br><br><br><br><br><br><br>
-                   <div class="col-lg-11"></div>
+                <br><br><br><br><br><br><br><br><br>
+                <div class="col-lg-11"></div>
                 <div class="col-lg-1">
-                    <a class="flotante" href="../index.jsp">
+                    <a class="flotante" href="activitats.jsp">
                         <i class="fa fa-arrow-left fa-2x"></i>
                     </a>
                 </div>
-                  
+                
               </div>
                  <!-- /. ROW  -->   
 				 <!-- 
