@@ -32,6 +32,25 @@
 	if(sesion.getAttribute("nif") == null){	
 		response.sendRedirect("login.jsp");
 	}
+	
+	String usuNif = null;
+	String sessionID = null;
+	String usuNom = null;
+	String usuCognom = null;
+	String usuMail = null;
+	Cookie[] cookies = request.getCookies();
+	if(cookies != null){
+		for(Cookie cookie : cookies){
+		
+			if(cookie.getName().equals("nif")) usuNif = cookie.getValue();
+			if(cookie.getName().equals("nom")) usuNom = cookie.getValue();
+			if(cookie.getName().equals("cognom")) usuCognom = cookie.getValue();
+			if(cookie.getName().equals("mail")) usuMail = cookie.getValue();
+			if(cookie.getName().equals("JSESSIONID")) sessionID = cookie.getValue();
+			
+			
+		}
+	}
 %>
     <div id="wrapper">
          <div class="navbar navbar-inverse navbar-fixed-top">
@@ -49,9 +68,16 @@
                     
                 </div>
               
-                <span class="logout-spn" >
-                  <a href="login.jsp" style="color:#fff;">LOGOUT</a>  
-
+                <span class="logout-spn" >                
+	                <form method="post" action="../Logout" name="logoutForm">
+						<a href="javascript: submitform()" style="color:#fff;">LOGOUT</a>
+					</form>
+					<p><strong><%=usuNom %></strong> | <%=usuNif%></p>					
+					<script type="text/javascript">
+						function submitform(){
+						  document.logoutForm.submit();
+						}
+					</script>
                 </span>
             </div>
         </div>
@@ -100,7 +126,7 @@
                   <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
                       <div class="div-square">
                            <a href="afegirActivitats.jsp" >
-                        <i class="fa fa-user-plus fa-5x" aria-hidden="true"></i>
+                        <i class="fa fa-plus-square fa-5x" aria-hidden="true"></i>
 
                         <h4>Afegir activitat</h4>
                       </a>
@@ -131,7 +157,7 @@
                   <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
                       <div class="div-square">
                            <a href="eliminarActivitats.jsp">
-                     <i class="fa fa-user-times fa-5x"></i>
+                     <i class="fa fa-trash fa-5x"></i>
                       <h4>Eliminar activitat</h4>
                       </a>
                       </div>

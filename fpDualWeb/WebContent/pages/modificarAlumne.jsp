@@ -40,8 +40,26 @@
 	if(sesion.getAttribute("nif") == null){	
 		response.sendRedirect("pages/login.jsp");
 	}
-%>  
-<%
+
+	String usuNif = null;
+	String sessionID = null;
+	String usuNom = null;
+	String usuCognom = null;
+	String usuMail = null;
+	Cookie[] cookies = request.getCookies();
+	if(cookies != null){
+		for(Cookie cookie : cookies){
+		
+			if(cookie.getName().equals("nif")) usuNif = cookie.getValue();
+			if(cookie.getName().equals("nom")) usuNom = cookie.getValue();
+			if(cookie.getName().equals("cognom")) usuCognom = cookie.getValue();
+			if(cookie.getName().equals("mail")) usuMail = cookie.getValue();
+			if(cookie.getName().equals("JSESSIONID")) sessionID = cookie.getValue();
+			
+			
+		}
+	}
+	
 	AlumneDAO aDAO = new AlumneDAO();
 	List<Alumne> llistaAlumnes = aDAO.llistaTotsAlumnes();
 %>           
@@ -64,6 +82,7 @@
 	                <form method="post" action="../Logout" name="logoutForm">
 						<a href="javascript: submitform()" style="color:#fff;">LOGOUT</a>
 					</form>
+					<p><strong><%=usuNom %></strong> | <%=usuNif%></p>
 					<script type="text/javascript">
 						function submitform(){
 						  document.logoutForm.submit();

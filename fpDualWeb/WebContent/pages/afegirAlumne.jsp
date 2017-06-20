@@ -40,6 +40,25 @@
 		response.sendRedirect("login.jsp");
 	}
 	
+	String usuNif = null;
+	String sessionID = null;
+	String usuNom = null;
+	String usuCognom = null;
+	String usuMail = null;
+	Cookie[] cookies = request.getCookies();
+	if(cookies != null){
+		for(Cookie cookie : cookies){
+		
+			if(cookie.getName().equals("nif")) usuNif = cookie.getValue();
+			if(cookie.getName().equals("nom")) usuNom = cookie.getValue();
+			if(cookie.getName().equals("cognom")) usuCognom = cookie.getValue();
+			if(cookie.getName().equals("mail")) usuMail = cookie.getValue();
+			if(cookie.getName().equals("JSESSIONID")) sessionID = cookie.getValue();
+			
+			
+		}
+	}
+	
 	CentreDAO cDAO = new CentreDAO();
 	List<String> llistaCentres = cDAO.nomsCentres();
 	TutorDAO tDAO = new TutorDAO();
@@ -71,6 +90,8 @@
 	                <form method="post" action="../Logout" name="logoutForm">
 						<a href="javascript: submitform()" style="color:#fff;">LOGOUT</a>
 					</form>
+					<p><strong><%=usuNom %></strong> | <%=usuNif%></p>
+					
 					<script type="text/javascript">
 						function submitform(){
 						  document.logoutForm.submit();
@@ -225,15 +246,15 @@
             </div>
          <!-- /. PAGE WRAPPER  -->
         </div>
-    <div class="footer">
-      
-    
-             <div class="row">
-                <div class="col-lg-12" >
-                    &copy;  2017 Indra Software Labs | Design by: Joan Espuñes, Sergi Fernandez, Sisco Navarro, Thiago Hachikyan
-                </div>
-        </div>
-        </div>
+	    <div class="footer">
+			<div class="row">
+	        	<div class="col-lg-12" >
+	            	&copy;  2017 Indra Software Labs | Design by: Joan Espuñes, Sergi Fernandez, Sisco Navarro, Thiago Hachikyan
+	            </div>
+	       	</div>
+		</div>
+	</div>
+       
           
 
      <!-- /. WRAPPER  -->

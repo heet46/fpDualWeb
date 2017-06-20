@@ -50,7 +50,8 @@ public class Login extends HttpServlet {
 	        		valors = uDAO.valorsUsuari(nif, pass);
 			        usu.setNom(valors.get(0));
 			        usu.setCognom1(valors.get(1));
-			        usu.setMail(valors.get(1));
+			        usu.setCognom2(valors.get(2));
+			        usu.setMail(valors.get(3));
 			        
 		        	
 		            session.setAttribute("nif", usu.getNIF());
@@ -60,8 +61,13 @@ public class Login extends HttpServlet {
 		            Cookie userNif = new Cookie("nif", nif);
 		            userNif.setMaxAge(30*60);		            
 		            response.addCookie(userNif);
-		            
-		            Cookie userNom = new Cookie("nom", usu.getNom());
+		            String nomComplet;
+		            if(usu.getCognom2().equals(null)){
+		            	nomComplet = usu.getNom()+" "+usu.getCognom1();
+		            }else{
+		            	nomComplet = usu.getNom()+" "+usu.getCognom1()+" "+usu.getCognom2();
+		            }
+		            Cookie userNom = new Cookie("nom", nomComplet);
 		            userNom.setMaxAge(30*60);		            
 		            response.addCookie(userNom);
 		            

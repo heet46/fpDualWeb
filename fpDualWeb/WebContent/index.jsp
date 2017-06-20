@@ -89,15 +89,19 @@
               
                 <span class="logout-spn" >                
 	                <form method="post" action="Logout" name="logoutForm">
-						<a href="javascript: submitform()" style="color:#fff;">LOGOUT</a>
+						<a href="javascript: submitform()" style="color:#fff;">LOGOUT<br></a>
+						
 					</form>
+					<p><strong><%=usuNom %></strong> | <%=usuNif%></p>
 					<script type="text/javascript">
 						function submitform(){
 						  document.logoutForm.submit();
 						}
 					</script>
                 </span>
+               
             </div>
+
         </div>
         <!-- /. NAV TOP  -->
         <nav class="navbar-default navbar-side" role="navigation">
@@ -139,7 +143,7 @@
                 <div class="row">
                     <div class="col-lg-12 ">
                         <div class="alert alert-info content" id="alerta">
-                             &nbsp;Benvingut <strong><%=usuNom %>! </strong>
+                             &nbsp;Benvingut <strong><%=usuNom%>! </strong>
                         </div>                     
                     </div>
                 </div>
