@@ -100,7 +100,7 @@
                   <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
                       <div class="div-square">
                            <a href="afegirActivitats.jsp" >
-                        <i class="fa fa-user-plus fa-5x" aria-hidden="true"></i>
+                        <i class="fa fa-plus-square fa-5x" aria-hidden="true"></i>
 
                         <h4>Afegir activitat</h4>
                       </a>
@@ -131,7 +131,7 @@
                   <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
                       <div class="div-square">
                            <a href="eliminarActivitats.jsp">
-                     <i class="fa fa-user-times fa-5x"></i>
+                     <i class="fa fa-trash fa-5x"></i>
                       <h4>Eliminar activitat</h4>
                       </a>
                       </div>
