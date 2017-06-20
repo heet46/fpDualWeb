@@ -106,7 +106,7 @@
             <div class="sidebar-collapse">
               <ul class="nav" id="main-menu">
                 <li >
-                    <a href="../index.jsp" ><i class="fa fa-desktop "></i>Inici <span class="badge">Included</span></a>
+                    <a href="../index.jsp" ><i class="fa fa-desktop "></i>Inici</a>
                 </li>
                 <li>
                     <a href="alumnes.jsp"><i class="fa fa-graduation-cap "></i>Alumnes</a>
