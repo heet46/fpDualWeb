@@ -53,6 +53,8 @@
 			
 		}
 	}
+	
+	session.setAttribute("existeix", 0);
 %>
 
     <div id="wrapper">
@@ -138,7 +140,7 @@
                      
                      
                   </div> 
-                 
+                 <!--  -->
                   <div class="col-lg-3 col-md-2 col-sm-2 col-xs-6">
                       <div class="div-square">
                            <a href="tutorsModificar.jsp" >
@@ -152,8 +154,8 @@
                   <div class="col-lg-3 col-md-2 col-sm-2 col-xs-6">
                       <div class="div-square">
                            <a href="tutorsConsulta.jsp" >
-                     <i class="fa fa-users fa-5x"></i>
-                      <h4>Llistat de tutors</h4>
+                     <i class="fa fa-id-card fa-5x"></i>
+                      <h4>Gestió de tutors</h4>
                       </a>
                       </div>
                   </div>
@@ -168,7 +170,6 @@
 	                      </a>
 	                      </div>
 	                  </div>
-
 	                  <div class="col-lg-3 col-md-2 col-sm-2 col-xs-6">
 	                      <div class="div-square">
 	                           <a href="tutorsBaixa.jsp" >
@@ -177,16 +178,17 @@
 	                      </a>
 	                      </div>
                   </div>   
-                     
                   </div>
-                  
+                     <a href="tutors.jsp"  id="fletxa">
+               			<i class="fa fa-hand-o-left fa-4x" style='position:fixed; head:0; bottom:50px; right:35px;' width="50" height="50"></i>
+              		</a>
               </div>
                   <!-- /. ROW  --> 
+    
     </div>
              <!-- /. PAGE INNER  -->
             </div>
          <!-- /. PAGE WRAPPER  -->
-        </div>
     <div class="footer">
       
     

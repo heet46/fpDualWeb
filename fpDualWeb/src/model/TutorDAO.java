@@ -49,20 +49,19 @@ public class TutorDAO {
 			llista.add(new Usuari(rs.getString("NIF"),rs.getString("password"),rs.getString("nom"),rs.getString("primer_cognom"),rs.getString("segon_cognom"),rs.getString("mail")));
 			System.out.println(llista.get(0).getNIF());
 		}
+		rs.close();
 		return llista;
 	}
 	
-	public List<Integer> consultaIDTutor(){
+	public List<Integer> consultaIDTutor() throws SQLException{
 		consultaSQL="SELECT id_usuari FROM tutor;";
 		ResultSet rs;
 		List<Integer> dades = new ArrayList<Integer>();
-		try {
-			rs=g.consultaRegistres(consultaSQL);
-			while(rs.next()){
-				dades.add(rs.getInt("id_usuari"));			}
-		} catch (SQLException e) {
-			System.out.println("Error consulta id tutor "+e.toString());
+		rs=g.consultaRegistres(consultaSQL);
+		while(rs.next()){
+			dades.add(rs.getInt("id_usuari"));			
 		}
+		rs.close();
 		return dades;
 	}
 	
@@ -78,6 +77,7 @@ public class TutorDAO {
 		while(rs.next()){
 			tutors.add(rs.getString(1));
 		}
+		rs.close();
 		return tutors;
 	}
 	
@@ -92,6 +92,7 @@ public class TutorDAO {
 		while(rs.next()){
 			id = rs.getInt(1);
 		}
+		rs.close();
 		return id;
 	}
 	
@@ -120,6 +121,7 @@ public class TutorDAO {
 		while(rs.next()){
 			tutors.add(new Usuari(rs.getString("NIF"),rs.getString("password"),rs.getString("nom"),rs.getString("primer_cognom"),rs.getString("segon_cognom"),rs.getString("mail")));
 		}
+		rs.close();
 		return tutors;
 	}
 	
@@ -130,17 +132,15 @@ public class TutorDAO {
 		if(rs.first()){
 			existeix=true;
 		}
+		rs.close();
 		return existeix;
 	}
-	public String consultaTecno(int id){
+	public String consultaTecno(int id) throws SQLException{
 		String tecno="";
 		consultaSQL="SELECT tecnologia FROM tutor WHERE Id_usuari="+id+";";
 		ResultSet rs=g.consultaRegistres(consultaSQL);
-		try {
-			tecno=rs.getString(1);
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
+		tecno=rs.getString(1);
+		rs.close();
 		return tecno;
 	}
 	

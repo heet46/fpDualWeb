@@ -134,16 +134,17 @@
                                         
                             <div class="row">
                                 <div class="col-lg-12">
-                                
-                                  <input type="text" class="inputs" id="myNom" onkeyup="buscarNom()" placeholder="Buscar per nom...">
-                                  <input type="text" class="inputs" id="myNIF" onkeyup="buscarNIF()" placeholder="Buscar per NIF...">
-                                  <input type="text" class="inputs" id="myCog" onkeyup="buscarCog()" placeholder="Buscar per Cognom...">
 	                                <table class="table table-hover table-inverse" id="myTable">
 	                                    <thead>
+	                                    <tr>
+	                                         <th><input type="text" id="myNom" onkeyup="buscarNom()" placeholder="Buscar per Nom..."></th>
+                                 			 <th><input type="text" id="myCog" onkeyup="buscarCog()" placeholder="Buscar per Cognom..."></th>
+                                			 <th><input type="text" id="myNIF" onkeyup="buscarNIF()" placeholder="Buscar per NIF..."></th>
+	                                    </tr>
 	                                        <tr id="headeer">
-                                                        <th><span>Usuari</span></th>
-                                                        <th><span>NIF</span></th>
+                                                        <th><span>Nom</span></th>
                                                         <th><span>Cognom</span></th>
+                                                        <th><span>NIF</span></th>
                                                         <th><span>E-mail</span></th>
                                                         <th>&nbsp;</th>
                                                         </tr>
@@ -153,6 +154,8 @@
                                                         	TutorDAO tDAO=new TutorDAO();
                                                         	UsuariDAO uDAO=new UsuariDAO();
                                                         	List<Usuari> usu=tDAO.consultaTutor();
+                                                        	tDAO.tancarConn();
+                                                        	uDAO.tancarConn();
                                                         	for(Usuari u:usu){
                                                         %>
                                                         	<tr>
@@ -160,10 +163,10 @@
                                                         			<%=u.getNom()%>
                                                         		</td>
                                                         		<td>
-                                                        			<%=u.getNIF() %>
+                                                        			<%=u.getCognom1()%>
                                                         		</td>
                                                         		<td>
-                                                        			<%=u.getCognom1()%>
+                                                        			<%=u.getNIF() %>
                                                         		</td>	
                                                         		<td>
                                                         			<%=u.getMail()%>
@@ -184,6 +187,9 @@
                                         </div>
                                     </div>
                                 </div>
+                                                     <a href="tutors.jsp"  id="fletxa">
+               			<i class="fa fa-hand-o-left fa-4x" style='position:fixed; head:0; bottom:50px; right:35px;' width="50" height="50"></i>
+              		</a>
                             </div>        
                   <!-- /. ROW  --> 
              <!-- /. PAGE INNER  -->
@@ -204,7 +210,7 @@
   <%
   	int existeix=0;
   	try{
-	  existeix=Integer.parseInt(session.getAttribute("existeix").toString());
+	  	existeix=Integer.parseInt(session.getAttribute("existeix").toString());
   	}catch(Exception e){
   		existeix=0;  
 	}
@@ -218,7 +224,7 @@
 	console.log("Alert Callback");
 	});
 </script>
-<%} %>
+<%}existeix=0;%>
 <script>
 	function buscarNom() {
 	  // Declare variables 
@@ -253,7 +259,7 @@
 	
 	  // Loop through all table rows, and hide those who don't match the search query
 	  for (i = 0; i < tr.length; i++) {
-	    td = tr[i].getElementsByTagName("td")[1];
+	    td = tr[i].getElementsByTagName("td")[2];
 	    if (td) {
 	      if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
 	        tr[i].style.display = "";
@@ -276,7 +282,7 @@
 	
 	  // Loop through all table rows, and hide those who don't match the search query
 	  for (i = 0; i < tr.length; i++) {
-	    td = tr[i].getElementsByTagName("td")[2];
+	    td = tr[i].getElementsByTagName("td")[1];
 	    if (td) {
 	      if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
 	        tr[i].style.display = "";

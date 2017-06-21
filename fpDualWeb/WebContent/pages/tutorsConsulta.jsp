@@ -128,7 +128,7 @@
             <div id="page-inner">
                 <div class="row">
                     <div class="col-lg-12">
-                     <h2>Consultar tutors</h2>   
+                     <h2>Gestió tutors</h2>   
                     </div>
                 </div>              
                  <!-- /. ROW  -->
@@ -143,21 +143,32 @@
                             <div class="row">
                                 <div class="col-lg-12">
                                           
-	                                <table class="table table-hover table-inverse">
+	                                <table class="table table-hover table-inverse" id="myTable">
 	                                    <thead>
+	                                   		<tr>
+		                                    	<th><input type="text" id="myNom" onkeyup="buscarNom()" placeholder="Buscar per Nom..."></th>
+		                                    	<th><input type="text" id="myCog" onkeyup="buscarCog()" placeholder="Buscar per Cognom..."></th>
+		                                    	<th><input type="text" id="myNIF" onkeyup="buscarNIF()" placeholder="Buscar per NIF...">    </th>
+	                                    	</tr>
 	                                        <tr id="headeer">
-	                                        <th><span>Usuari</span></th>
-	                                        <th><span>NIF</span></th>
-	                                        <th><span>Cognom</span></th>
-	                                        <th><span>E-mail</span></th>
-	                                        <th>&nbsp;</th>
+		                                        <th><span>Nom</span></th>
+		                                        <th><span>Cognom</span></th>
+		                                        <th><span>NIF</span></th>
+		                                        <th><span>E-mail</span></th>
+		                                        <th>&nbsp;</th>
+		                                        <th>&nbsp;</th>
 	                                        </tr>
 	                                    </thead>
 	                                    <tbody>
 	                                        <%
 	                                        	TutorDAO tDAO=new TutorDAO();
 	                                        	UsuariDAO uDAO=new UsuariDAO();
-	                                        	List<Usuari> usu=tDAO.consultaTutor();
+	                                        	List<Usuari> usu=null;
+	                                        	try{	
+	                                        		usu=tDAO.consultaTutor();
+	                                        	}catch(Exception e){
+	                                        		
+	                                        	}
 	                                        	for(Usuari u:usu){
 	                                        %>
 	                                        		<tr>
@@ -165,14 +176,30 @@
 	                                        				<%=u.getNom()%>
 	                                        			</td>
 	                                        			<td>
-	                                        				<%=u.getNIF()%>
+	                                        				<%=u.getCognom1()%>
 	                                        			</td>
 	                                        			<td>
-	                                        				<%=u.getCognom1()%>
+	                                        				<%=u.getNIF()%>
 	                                        			</td>
 	                                        			<td>
 	                                        				<%=u.getMail()%>
 	                                        			</td>
+	                                        			<form name="form" method="Post" action="../baixaTutors" class="table-link" onsubmit="comprobarTutor()">
+	                                        				<td hidden>
+                                                        		<input type="hidden" name="NIF" id="NIF" value="<%=u.getNIF()%>" size="0">
+                                                        	</td>
+	                                        				<td style="width: 15%">
+                                                        		<input type="submit" class="btn btn-danger" value="Eliminar">
+                                                       	 	</td>
+                                                       	 </form>
+                                                       	 <form name="form" method="Post" action="../modificarTutor" class="table-link">
+                                                       	    <td hidden>
+                                                        		<input type="hidden" name="NIF" value="<%=u.getNIF()%>" size="0">
+	                                        				</td>
+                                                        	<td style="width: 15%">
+                                                        		<input type="submit" class="btn btn-warning" value="Modificar">
+                                                        	</td>
+														</form>
 	                                        		</tr>
 	                                        <% 
 	                                        	}
@@ -183,6 +210,9 @@
                                </div>
                                    </div>
                                </div>
+                                                    <a href="tutors.jsp"  id="fletxa">
+               			<i class="fa fa-hand-o-left fa-4x" style='position:fixed; head:0; bottom:50px; right:35px;' width="50" height="50"></i>
+              		</a>
                            </div>
                         
     <div class="footer">
@@ -199,6 +229,92 @@
     <!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
     <!-- JQUERY SCRIPTS -->
     <!-- CUSTOM SCRIPTS -->
+<%
+  	int existeix=0;
+  	try{
+	  existeix=Integer.parseInt(session.getAttribute("existeix").toString());
+  	}catch(Exception e){
+  		existeix=0;  
+	}
+	  if(existeix==1){
+%>
+	    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+	    <script src="../assets/js/bootstrap.min.js"></script>
+<script src="../assets/js/bootbox.min.js"></script>
+<script>		        
+	bootbox.alert("Error, aquest tutor està lligat a un alumne", function() {
+	console.log("Alert Callback");
+	});
+</script>
+<%} %>
+<script>
+	function buscarNom() {
+	  // Declare variables 
+	  var input, filter, table, tr, td, i;
+	  input = document.getElementById("myNom");
+	  filter = input.value.toUpperCase();
+	  table = document.getElementById("myTable");
+	  tr = table.getElementsByTagName("tr");
+	
+	  // Loop through all table rows, and hide those who don't match the search query
+	  for (i = 0; i < tr.length; i++) {
+	    td = tr[i].getElementsByTagName("td")[0];
+	    if (td) {
+	      if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+	        tr[i].style.display = "";
+	      } else {
+	        tr[i].style.display = "none";
+	      }
+	    } 
+	  }
+	}
+</script>
+
+<script>
+	function buscarNIF() {
+	  // Declare variables 
+	  var input, filter, table, tr, td, i;
+	  input = document.getElementById("myNIF");
+	  filter = input.value.toUpperCase();
+	  table = document.getElementById("myTable");
+	  tr = table.getElementsByTagName("tr");
+	
+	  // Loop through all table rows, and hide those who don't match the search query
+	  for (i = 0; i < tr.length; i++) {
+	    td = tr[i].getElementsByTagName("td")[2];
+	    if (td) {
+	      if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+	        tr[i].style.display = "";
+	      } else {
+	        tr[i].style.display = "none";
+	      }
+	    } 
+	  }
+	}
+</script>
+
+<script>
+	function buscarCog() {
+	  // Declare variables 
+	  var input, filter, table, tr, td, i;
+	  input = document.getElementById("myCog");
+	  filter = input.value.toUpperCase();
+	  table = document.getElementById("myTable");
+	  tr = table.getElementsByTagName("tr");
+	
+	  // Loop through all table rows, and hide those who don't match the search query
+	  for (i = 0; i < tr.length; i++) {
+	    td = tr[i].getElementsByTagName("td")[1];
+	    if (td) {
+	      if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+	        tr[i].style.display = "";
+	      } else {
+	        tr[i].style.display = "none";
+	      }
+	    } 
+	  }
+	}
+</script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="../assets/js/bootstrap.min.js"></script>
     <script src="../assets/js/custom.js"></script>

@@ -46,7 +46,15 @@ public class modificarTutor extends HttpServlet {
 		Usuari usu=new Usuari();
 		String NIF=(String)request.getParameter("NIF");
 		usu=uDAO.consultaUsuari(NIF);
-		String tecno=tDAO.consultaTecno(uDAO.consultaID(NIF));
+		String tecno = null;
+		try {
+			tecno = tDAO.consultaTecno(uDAO.consultaID(NIF));
+			tDAO.tancarConn();
+			uDAO.tancarConn();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		response.setContentType("text/html");
 		request.getSession().setAttribute("NIF", usu.getNIF());

@@ -54,11 +54,12 @@ public class baixaTutors extends HttpServlet {
 				request.getSession().setAttribute("existeix",existeix);
 				tDAO.baixaTutor(uDAO.consultaID(NIF));
 			}
+			tDAO.tancarConn();
+			uDAO.tancarConn();
 		} catch (SQLException e1) {
 			e1.printStackTrace();
 		}
-		System.out.println("tdao"+existeix);
-		response.sendRedirect("pages/llistaTutors.jsp");
+		response.sendRedirect("pages/tutorsConsulta.jsp");
 	}
 
 }

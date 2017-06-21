@@ -163,7 +163,7 @@
                                         <tr>
                                             <td>NIF: </td>
                                             <input type="hidden" name="IdVella" value="${NIF}">
-                                            <td><input type="text" class="form-control" name="NIF" size="25"  value="${NIF}" disabled/></td>
+                                            <td><input type="text" class="form-control" name="NIF" size="25"  value="${NIF}"/></td>
                                         </tr>
                                         <tr>
                                             <td>Password: </td>
@@ -206,7 +206,9 @@
                                 </form>
  
                   </div>
-                  
+                                       <a href="tutorsModificar.jsp"  id="fletxa">
+               			<i class="fa fa-hand-o-left fa-4x" style='position:fixed; head:0; bottom:50px; right:35px;' width="50" height="50"></i>
+              		</a>
               </div>
                   <!-- /. ROW  --> 
     </div>

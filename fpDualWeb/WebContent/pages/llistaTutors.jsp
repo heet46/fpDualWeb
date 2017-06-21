@@ -162,6 +162,8 @@
 	                                        	System.out.println(NIF+","+nom+","+cognom);
 	                                    		Usuari us=new Usuari(NIF, "", nom, cognom,"", "");
 	                                        	List<Usuari> usu=tDAO.cercarTutors(us);
+	                                        	tDAO.tancarConn();
+	                                        	uDAO.tancarConn();
 	                                        	for(Usuari u:usu){
 	                                        %>
 	                                        		<tr>
@@ -188,7 +190,9 @@
                                    </div>
                                </div>
                            </div>
-                        
+                     <a href="tutorsCercar.jsp"  id="fletxa">
+               			<i class="fa fa-hand-o-left fa-4x" style='position:fixed; head:0; bottom:50px; right:35px;' width="50" height="50"></i>
+              		</a>
     <div class="footer">
       
     
