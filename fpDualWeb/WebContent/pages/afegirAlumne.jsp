@@ -64,11 +64,14 @@
 	TutorDAO tDAO = new TutorDAO();
 	List<String> llistaTutors = tDAO.nomsTutors();
 	
-	int incorrecte = 0;
+	cDAO.tancarCon();
+	tDAO.tancarConn();
+	
+	int duplicat;
 	try{
-		incorrecte = Integer.parseInt(session.getAttribute("correcte").toString());
+		duplicat = Integer.parseInt(session.getAttribute("duplicat").toString());
 	}catch(Exception e){
-		incorrecte = 0;
+		duplicat = 0;
 	}
 %>
 
@@ -135,7 +138,7 @@
 	    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 	    <script src="../assets/js/bootstrap.min.js"></script>
         <%
-        if(incorrecte == 1){ %>
+        if(duplicat == 1){ %>
 	
 		    <!-- bootbox code -->
 		    <script src="../assets/js/bootbox.min.js"></script>

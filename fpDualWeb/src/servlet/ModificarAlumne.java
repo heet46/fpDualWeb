@@ -47,14 +47,16 @@ public class ModificarAlumne extends HttpServlet {
 			String cognoms = valorsAlumne.get(3)+" "+valorsAlumne.get(4);
 			request.getSession().setAttribute("cognoms", cognoms);
 			request.getSession().setAttribute("mail", valorsAlumne.get(5));
-			System.out.println("MAIL DB: "+valorsAlumne.get(5));
 			request.getSession().setAttribute("dataInici", valorsAlumne.get(6));
 			request.getSession().setAttribute("dataFinal", valorsAlumne.get(7));
 			request.getSession().setAttribute("tutor", valorsAlumne.get(8));
 			request.getSession().setAttribute("centre", valorsAlumne.get(9));
 			
+			aDAO.tancarConn();
+			
 			response.sendRedirect("pages/modificarAlumne2.jsp");
 		} catch (SQLException e) {
+			aDAO.tancarConn();
 			e.printStackTrace();
 		}
 	}
@@ -107,6 +109,7 @@ public class ModificarAlumne extends HttpServlet {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		tDAO.tancarConn();
 		
 		Centre centre = new Centre();
 		centre.setNom(sCentre);
@@ -118,6 +121,8 @@ public class ModificarAlumne extends HttpServlet {
 		}catch( SQLException e){
 			e.printStackTrace();
 		}
+		cDAO.tancarCon();
+		
 		Alumne alumne = new Alumne();
 		AlumneDAO aDAO = new AlumneDAO();
 		
@@ -129,11 +134,11 @@ public class ModificarAlumne extends HttpServlet {
 		
 		try {
 			aDAO.modificarAlumne(usuari, alumne);
+			aDAO.tancarConn();
+			response.sendRedirect("pages/llistatAlumnes.jsp");
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			aDAO.tancarConn();
 		}
-		response.sendRedirect("pages/llistatAlumnes.jsp");
 		
 	}
 

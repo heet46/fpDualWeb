@@ -74,9 +74,6 @@
 		llistaAlumnes = null;
 	}
 
-	//if(request.getAttribute("llista") != null){
-		//llistaAlumnes = (ArrayList<Alumne>) request.getAttribute("llista");
-	//}
 	
 %>    
     <div id="wrapper">

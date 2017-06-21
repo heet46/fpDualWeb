@@ -61,8 +61,6 @@ public class CercarAlumne extends HttpServlet {
 		stutor = request.getParameter("tutor");
 		scentre = request.getParameter("centre");
 		
-		//System.out.println("VALORS: "+nif+" "+nom+" "+cognom1+" "+cognom2+" "+mail+" "+stutor+" "+scentre);
-
 		tutor.setNom(stutor);
 		centre.setNom(scentre);
 		
@@ -77,17 +75,13 @@ public class CercarAlumne extends HttpServlet {
 		List<Alumne> llista;
 		try {
 			llista = aDAO.cercarAlumne(alumne);
-			request.setAttribute("llista", llista);
 			session.setAttribute("list", llista);
-			
+			aDAO.tancarConn();
 			response.sendRedirect("pages/cercarAlumne.jsp");
 		} catch (SQLException e) {
-			System.out.println("Error a la consulta soto");
 			e.printStackTrace();
 		}
 		
-		//session.setAttribute("llista", llista);
-
 	}
 
 }

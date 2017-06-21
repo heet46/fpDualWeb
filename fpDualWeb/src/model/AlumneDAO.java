@@ -36,23 +36,22 @@ public class AlumneDAO {
 		gestorDB.modificarRegistre(consultaSQL);
 	}
 	
-	public Object[] consultaAlumnes(){
+	public Object[] consultaAlumnes() throws SQLException{
 		ResultSet rs = null;
 		String consultaSQL = "SELECT u.id_usuari, u.nom, u.primer_cognom, a.data_inici, a.data_fi, c.NOM, a.id_tutor "
 				+ "FROM alumne AS a, usuari AS u, centre AS c "
 				+ "WHERE u.id_usuari=a.id_usuari AND a.id_centre=c.Id_centre";
-		ArrayList<Object> fila = new ArrayList<>();
+		ArrayList<Object> fila = new ArrayList<Object>();
 		int i = 0;
-		try{
-			rs = gestorDB.consultaRegistres(consultaSQL);
-			while(rs.next()){
-				for(i=0; i<7; i++){
-					fila.add(rs.getObject(i+1));
-				}
+
+		rs = gestorDB.consultaRegistres(consultaSQL);
+		while(rs.next()){
+			for(i=0; i<7; i++){
+				fila.add(rs.getObject(i+1));
 			}
-		}catch(SQLException e){
-			e.printStackTrace();
 		}
+		
+		rs.close();
 		return fila.toArray();
 	}
 	
@@ -66,22 +65,21 @@ public class AlumneDAO {
 		gestorDB.modificarRegistre(consultaSQL);
 	}
 	
-	public List<String> consultaIDAlumne(){
+	public List<String> consultaIDAlumne() throws SQLException{
 		String consultaSQL="SELECT u.id_usuari, u.nom, u.primer_cognom FROM usuari AS u, alumne AS a WHERE a.id_usuari=u.id_usuari";
 		ResultSet rs = null;
 		List<String> dades = new ArrayList<String>();
-		try {
-			rs = gestorDB.consultaRegistres(consultaSQL);
-			while (rs.next()) {
-				String strTmp = "";
-				strTmp += rs.getInt("id_usuari")+", ";
-				strTmp += rs.getString("nom")+" ";
-				strTmp += rs.getString("primer_cognom");
-				dades.add(strTmp);
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
+
+		rs = gestorDB.consultaRegistres(consultaSQL);
+		while (rs.next()) {
+			String strTmp = "";
+			strTmp += rs.getInt("id_usuari")+", ";
+			strTmp += rs.getString("nom")+" ";
+			strTmp += rs.getString("primer_cognom");
+			dades.add(strTmp);
 		}
+		
+		rs.close();
 		return dades;
 	}
 	
@@ -108,6 +106,8 @@ public class AlumneDAO {
 			alumnes.add(alumne);
 		}
 		
+		rs.close();
+		
 		return alumnes;
 	}
 	
@@ -123,6 +123,8 @@ public class AlumneDAO {
 		while(rs.next()){
 			tutors.add(rs.getString(1));
 		}
+		
+		rs.close();
 		return tutors;
 	}
 	
@@ -156,6 +158,8 @@ public class AlumneDAO {
 			valors.add(rs.getString(9)); //tutor
 			valors.add(rs.getString(10));//centre
 		}
+		
+		rs.close();
 		return valors;
 	}
 	
@@ -208,6 +212,7 @@ public class AlumneDAO {
 			valors.add(a);
 		}
 		
+		rs.close();
 		
 		return valors;
 	}

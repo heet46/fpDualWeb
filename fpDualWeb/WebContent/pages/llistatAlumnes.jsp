@@ -57,6 +57,7 @@
 	
 	AlumneDAO aDAO = new AlumneDAO();
 	List<Alumne> llistaAlumnes = aDAO.llistaTotsAlumnes();
+	aDAO.tancarConn();
 %>    
     <div id="wrapper">
          <div class="navbar navbar-inverse navbar-fixed-top">

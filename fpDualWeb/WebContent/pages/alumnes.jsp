@@ -47,9 +47,12 @@
 			if(cookie.getName().equals("mail")) usuMail = cookie.getValue();
 			if(cookie.getName().equals("JSESSIONID")) sessionID = cookie.getValue();
 			
-			
 		}
 	}
+	
+	try{
+		session.setAttribute("duplicat", 0);
+	}catch(Exception e){}
 %>
     <div id="wrapper">
          <div class="navbar navbar-inverse navbar-fixed-top">

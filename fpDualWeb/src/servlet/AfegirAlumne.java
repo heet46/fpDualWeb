@@ -54,7 +54,6 @@ public class AfegirAlumne extends HttpServlet {
 		int idTutor = 0;
 		int idCentre = 0;
 		
-		int incorrecte = 0;
 		HttpSession session = request.getSession();
 		
 		Usuari usuari = new Usuari();
@@ -80,12 +79,6 @@ public class AfegirAlumne extends HttpServlet {
 		
 		usuari.setMail(email);
 		
-		/*try {
-			uDAO.altaUsuari(usuari);
-		} catch (SQLException e1) {
-			e1.printStackTrace();
-		}		*/
-		
 		Tutor tutor = new Tutor();
 		tutor.setNom(sTutor);
 
@@ -96,7 +89,8 @@ public class AfegirAlumne extends HttpServlet {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		
+		tDAO.tancarConn();
+
 		Centre centre = new Centre();
 		centre.setNom(sCentre);
 		
@@ -106,7 +100,9 @@ public class AfegirAlumne extends HttpServlet {
 			centre.setIdCentre(idCentre);
 		}catch( SQLException e){
 			e.printStackTrace();
-		}
+		}			
+		cDAO.tancarCon();
+
 		Alumne alumne = new Alumne();
 		AlumneDAO aDAO = new AlumneDAO();
 		
@@ -119,12 +115,15 @@ public class AfegirAlumne extends HttpServlet {
 		try {
 			uDAO.altaUsuari(usuari);
 			aDAO.altaAlumne(alumne);
-			incorrecte = 0;
-			session.setAttribute("correcte", incorrecte);
+			
+			uDAO.tancarConn();
+			aDAO.tancarConn();
+			session.setAttribute("duplicat", 0);
 	        response.sendRedirect("pages/alumnes.jsp");
 		} catch (SQLException e) {
-			incorrecte = 1;
-			session.setAttribute("correcte", incorrecte);
+			uDAO.tancarConn();
+			aDAO.tancarConn();
+			session.setAttribute("duplicat", 1);
 			response.sendRedirect("pages/afegirAlumne.jsp");
 		}
 

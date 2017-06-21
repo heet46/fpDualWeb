@@ -33,6 +33,7 @@ public class EliminarAlumne extends HttpServlet {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		aDAO.tancarConn();
 		response.sendRedirect("pages/eliminarAlumne.jsp");
 	}
 

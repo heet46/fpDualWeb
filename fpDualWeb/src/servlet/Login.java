@@ -29,7 +29,6 @@ public class Login extends HttpServlet {
 	        UsuariDAO uDAO = new UsuariDAO();
 	        Usuari usu = new Usuari();
 	        
-	        int incorrecte = 0;
 	        String nif;
 	        String pass;
 	        nif = request.getParameter("dni");
@@ -79,13 +78,13 @@ public class Login extends HttpServlet {
 		            userMail.setMaxAge(30*60);		            
 		            response.addCookie(userMail);
 		            
+		            uDAO.tancarConn();
 		            //redirijo a página con información de login exitoso	            
 		            response.sendRedirect("index.jsp");
 			      	        
 	        	}
 	        }catch(Exception e){
-        		incorrecte = 1;
-        		session.setAttribute("correcte", incorrecte);
+        		session.setAttribute("correcte", 1);
 	            response.sendRedirect("pages/login.jsp");
 	        }
 		          
