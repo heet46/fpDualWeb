@@ -121,7 +121,9 @@
                 
                 <div class="row">
                     <div class="col-md-12">
-                     	<h2>Llistat d'alumnes </h2>                     
+                    	<br>
+                     	<h2 style="display:inline">Llistat d'alumnes </h2>  
+                     	<div style="float:right; font-size:16px" ><a href="alumnes.jsp"><strong>Torna enrere</strong></a></div>                   
                     </div>
                 </div>              
                  <!-- /. ROW  -->
@@ -133,11 +135,11 @@
                             
                             <thead>
 	                            <tr>
-									<th><input type="text" class="inputs" id="myId" onkeyup="buscarId()" placeholder="ID..." style="width:30px"></th>
-									<th><input type="text" class="inputs" id="myNom" onkeyup="buscarNom()" placeholder="Filtrar per nom..." style="width:100%"></th>
-									<th><input type="text" class="inputs" id="myCog" onkeyup="buscarCog()" placeholder="Filtrar per cognom..." style="width:100%"></th>
-									<th><input type="text" class="inputs" id="myTut" onkeyup="buscarTut()" placeholder="Filtrar per tutor..." style="width:100%"></th>
-									<th><input type="text" class="inputs" id="myCentre" onkeyup="buscarCentre()" placeholder="Filtrar per centre..." style="width:100%"></th>
+									<th><input type="text" id="myId" onkeyup="buscarId()" placeholder="ID..." style="width:30px"></th>
+									<th><input type="text" id="myNom" onkeyup="buscarNom()" placeholder="Filtrar per nom..." style="width:100%"></th>
+									<th><input type="text" id="myCog" onkeyup="buscarCog()" placeholder="Filtrar per cognom..." style="width:100%"></th>
+									<th><input type="text" id="myTut" onkeyup="buscarTut()" placeholder="Filtrar per tutor..." style="width:100%"></th>
+									<th><input type="text" id="myCentre" onkeyup="buscarCentre()" placeholder="Filtrar per centre..." style="width:100%"></th>
 								</tr>
                                 <tr id="headeer">
                                     <th>#</th>

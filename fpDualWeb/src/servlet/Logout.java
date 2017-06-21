@@ -9,10 +9,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import controlador.GestorDB;
+
 
 @WebServlet("/Logout")
 public class Logout extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	GestorDB g = new GestorDB();
        
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     	response.setContentType("text/html");
@@ -32,6 +35,7 @@ public class Logout extends HttpServlet {
     	System.out.println("User="+session.getAttribute("nif"));
     	if(session != null){
     		session.invalidate();
+    		g.tancarConnexio();
     	}
     	response.sendRedirect("pages/login.jsp");
     }

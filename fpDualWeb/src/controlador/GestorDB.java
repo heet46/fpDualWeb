@@ -24,6 +24,8 @@ public class GestorDB {
 		}
 	}
 	
+	public GestorDB(){}
+	
 	public int modificarRegistre(String consultaSQL) throws SQLException {
 		int numeroFilesAfectades = 0;
 			stmt = conn.createStatement(); // Statement permet executar la consulta SQL
@@ -51,4 +53,6 @@ public class GestorDB {
 			e.printStackTrace();
 		}
 	}
+
+	
 }
