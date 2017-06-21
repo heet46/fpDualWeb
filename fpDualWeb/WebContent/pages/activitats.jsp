@@ -163,6 +163,15 @@
                       </div>
                   </div>
                   
+                  <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
+                      <div class="div-square">
+                           <a href="cercarActivitats.jsp">
+                     <i class="fa fa-search fa-5x"></i>
+                      <h4>Cercar activitat</h4>
+                      </a>
+                      </div>
+                  </div>
+                  
                 <br><br><br><br><br><br><br>
                    <div class="col-lg-11"></div>
                 <div class="col-lg-1">

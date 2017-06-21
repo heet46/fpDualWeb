@@ -110,7 +110,7 @@
                     </li>
 
                     <li>
-                        <a href="centre.html"><i class="fa fa-university "></i>Centres </a>
+                        <a href="centre.jsp"><i class="fa fa-university "></i>Centres </a>
                     </li>
                     <li>
                         <a href="activitats.jsp"><i class="fa fa-list "></i>Activitats</a>
@@ -133,13 +133,13 @@
                     <div class="col-lg-12 col-md-12">
                         <table class="table table-striped  table-hover">
                             <thead>
-                                <tr>
+                                <tr id="headeer">
                                     <th>#</th>
                                     <th>Nom</th>
                                     <th>Cognom</th>
                                     <th>Tutor</th>
                                     <th>Centre</th>
-                                    <th></th>
+                                    <th hidden></th>
                                     <th>Modificar</th>
                                 </tr>
                             </thead>
@@ -155,7 +155,7 @@
 									<td><%=alumne.getTutor().getNom()%></td>
 									<td><%=alumne.getCentre().getNom()%></td>
 									<form action="../ModificarAlumne" method="Get">
-										<td><input type="hidden" name="idUsuari" value="<%=alumne.getIdUsuari()%>"></td>
+										<td hidden><input type="hidden" name="idUsuari" value="<%=alumne.getIdUsuari()%>"></td>
 	                                    <td>
 	                                    	<input type="Submit" value="Edita" class="btn btn-warning">
 	                             		</td>

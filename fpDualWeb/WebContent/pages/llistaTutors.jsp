@@ -142,13 +142,12 @@
                         
                             <div class="row">
                                 <div class="col-lg-12">
-                                          
 	                                <table class="table table-hover table-inverse">
 	                                    <thead>
 	                                        <tr id="headeer">
 	                                        <th><span>Usuari</span></th>
-	                                        <th><span>NIF</span></th>
 	                                        <th><span>Cognom</span></th>
+	                                        <th><span>NIF</span></th>
 	                                        <th><span>E-mail</span></th>
 	                                        <th>&nbsp;</th>
 	                                        </tr>
@@ -157,7 +156,12 @@
 	                                        <%
 	                                        	TutorDAO tDAO=new TutorDAO();
 	                                        	UsuariDAO uDAO=new UsuariDAO();
-	                                        	List<Usuari> usu=tDAO.consultaTutor();
+	                                        	String NIF=(String)session.getAttribute("NIF");
+	                                        	String nom=(String)session.getAttribute("nom");
+	                                        	String cognom=(String)session.getAttribute("cognom");
+	                                        	System.out.println(NIF+","+nom+","+cognom);
+	                                    		Usuari us=new Usuari(NIF, "", nom, cognom,"", "");
+	                                        	List<Usuari> usu=tDAO.cercarTutors(us);
 	                                        	for(Usuari u:usu){
 	                                        %>
 	                                        		<tr>
@@ -165,10 +169,10 @@
 	                                        				<%=u.getNom()%>
 	                                        			</td>
 	                                        			<td>
-	                                        				<%=u.getNIF()%>
+	                                        				<%=u.getCognom1()%>
 	                                        			</td>
 	                                        			<td>
-	                                        				<%=u.getCognom1()%>
+	                                        				<%=u.getNIF()%>
 	                                        			</td>
 	                                        			<td>
 	                                        				<%=u.getMail()%>
@@ -179,7 +183,7 @@
 	                                       	%>	
 	                                    </tbody>
 	                                </table>
-                                   </div>
+								 </div>
                                </div>
                                    </div>
                                </div>

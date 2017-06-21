@@ -1,29 +1,26 @@
 package servlet;
 
 import java.io.IOException;
-import java.sql.SQLException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import model.Tutor;
-import model.TutorDAO;
-import model.UsuariDAO;
 
 /**
- * Servlet implementation class baixaTutors
+ * Servlet implementation class CercarTutors
  */
-@WebServlet("/baixaTutors")
-public class baixaTutors extends HttpServlet {
+@WebServlet("/TutorsCercar")
+public class TutorsCercar extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public baixaTutors() {
+    public TutorsCercar() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -40,25 +37,14 @@ public class baixaTutors extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		TutorDAO tDAO=new TutorDAO();
-		UsuariDAO uDAO=new UsuariDAO();
-		String NIF=request.getParameter("NIF");
-		int existeix = 0;
-		try {
-			System.out.println(NIF);
-			if(tDAO.comprobarAlumnes(new Tutor(uDAO.consultaID(NIF),""))){
-				existeix=1;
-				request.getSession().setAttribute("existeix",existeix);
-			}else{
-				existeix=0;
-				request.getSession().setAttribute("existeix",existeix);
-				tDAO.baixaTutor(uDAO.consultaID(NIF));
-			}
-		} catch (SQLException e1) {
-			e1.printStackTrace();
-		}
-		System.out.println("tdao"+existeix);
+		String nom=(String)request.getParameter("Nom");
+		request.getSession().setAttribute("nom",nom);
+		String cognom=(String)request.getParameter("Cognom");
+		request.getSession().setAttribute("cognom",cognom);
+		String NIF=(String)request.getParameter("NIF");
+		request.getSession().setAttribute("NIF",NIF);
 		response.sendRedirect("pages/llistaTutors.jsp");
+     	System.out.println(NIF+","+nom+","+cognom);
 	}
 
 }

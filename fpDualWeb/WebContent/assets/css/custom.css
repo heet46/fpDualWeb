@@ -199,6 +199,21 @@ a .letstry{
 	background: #214761;
 	color: white;
 }
+
+.cbx{
+	width: 95%;
+	margin-bottom: 10px;
+}
+
+#soto{
+	width: 500px;
+	white-space: nowrap;
+}
+
+.inputs{
+	margin-bottom: 20px;
+	margin-right: 10px;
+}
 /*==============================================
     MEDIA QUERIES     
     =============================================*/

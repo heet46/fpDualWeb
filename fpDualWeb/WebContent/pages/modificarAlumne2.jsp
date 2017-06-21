@@ -102,14 +102,14 @@
                     </li>
 
                     <li class="active-link">
-                        <a href="alumnes.html"><i class="fa fa-graduation-cap "></i>Alumnes</a>
+                        <a href="alumnes.jsp"><i class="fa fa-graduation-cap "></i>Alumnes</a>
                     </li>
                     <li>
                         <a href="tutors.jsp"><i class="fa fa-book"></i>Tutors</a>
                     </li>
 
                     <li>
-                        <a href="centre.html"><i class="fa fa-university "></i>Centres </a>
+                        <a href="centre.jsp"><i class="fa fa-university "></i>Centres </a>
                     </li>
                     <li>
                         <a href="activitats.jsp"><i class="fa fa-list "></i>Activitats</a>

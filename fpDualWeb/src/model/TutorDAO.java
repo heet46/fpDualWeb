@@ -4,7 +4,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 import controlador.Constants;
@@ -96,12 +95,49 @@ public class TutorDAO {
 		return id;
 	}
 	
+	public List<Usuari> cercarTutors(Usuari u) throws SQLException{
+		List<Usuari> tutors=new ArrayList<Usuari>();
+		consultaSQL="SELECT * FROM usuari,tutor WHERE usuari.Id_usuari=tutor.Id_usuari AND ";
+		if(u.getNIF()!=null){
+			consultaSQL+="usuari.NIF='"+u.getNIF()+"' ";
+		}
+		if(u.getNom()!=null){
+			if(u.getNIF()!=null){
+				consultaSQL+="AND usuari.nom='"+u.getNom()+"' ";
+			}else{
+				consultaSQL+="usuari.nom='"+u.getNom()+"' ";
+			}
+		}
+		if(u.getCognom1()!=null){
+			if(u.getNIF()!=null || u.getNom()!=null){
+				consultaSQL+="AND usuari.primer_cognom='"+u.getCognom1()+"';";
+			}else{
+				consultaSQL+="usuari.primer_cognom='"+u.getCognom1()+"';";
+			}
+		}
+		ResultSet rs=g.consultaRegistres(consultaSQL);
+		
+		while(rs.next()){
+			tutors.add(new Usuari(rs.getString("NIF"),rs.getString("password"),rs.getString("nom"),rs.getString("primer_cognom"),rs.getString("segon_cognom"),rs.getString("mail")));
+		}
+		return tutors;
+	}
+	
+	public boolean comprobarAlumnes(Tutor t) throws SQLException{
+		consultaSQL="SELECT alumne.Id_usuari FROM alumne,tutor WHERE tutor.Id_usuari=alumne.id_tutor AND tutor.Id_usuari='"+t.getId_usuari()+"';";
+		boolean existeix=false;
+		ResultSet rs=g.consultaRegistres(consultaSQL);
+		if(rs.first()){
+			existeix=true;
+		}
+		return existeix;
+	}
 	public String consultaTecno(int id){
 		String tecno="";
 		consultaSQL="SELECT tecnologia FROM tutor WHERE Id_usuari="+id+";";
 		ResultSet rs=g.consultaRegistres(consultaSQL);
 		try {
-			tecno=rs.getString("tecnologia");
+			tecno=rs.getString(1);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

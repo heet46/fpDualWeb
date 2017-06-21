@@ -148,37 +148,35 @@
                       </div>
                      
                      
-                 <!--
                   </div>
                   <div class="col-lg-3 col-md-2 col-sm-2 col-xs-6">
                       <div class="div-square">
                            <a href="tutorsConsulta.jsp" >
-                     <i class="fa fa-list fa-5x"></i>
+                     <i class="fa fa-users fa-5x"></i>
                       <h4>Llistat de tutors</h4>
                       </a>
                       </div>
                   </div>
-                   -->
                   
                   </div>
-                  <div class="col-lg-3 col-md-2 col-sm-2 col-xs-6">
-                      <div class="div-square">
-                           <a href="tutorsConsulta.jsp" >
-                     <i class="fa fa-search fa-5x"></i>
-                      <h4>Cercar tutors</h4>
-                      </a>
-                      </div>
-                  </div>
+                  <div  class="row text-center pad-top">
+	                  <div class="col-lg-3 col-md-2 col-sm-2 col-xs-6">
+	                      <div class="div-square">
+	                           <a href="tutorsCercar.jsp" >
+	                     <i class="fa fa-search fa-5x"></i>
+	                      <h4>Cercar tutors</h4>
+	                      </a>
+	                      </div>
+	                  </div>
 
-                  
-                  <div class="col-lg-3 col-md-2 col-sm-2 col-xs-6">
-                      <div class="div-square">
-                           <a href="tutorsBaixa.jsp" >
-                        <i class="fa fa-user-times fa-5x" aria-hidden="true"></i>
-                      <h4>Eliminar tutors</h4>
-                      </a>
-                      </div>
-                     
+	                  <div class="col-lg-3 col-md-2 col-sm-2 col-xs-6">
+	                      <div class="div-square">
+	                           <a href="tutorsBaixa.jsp" >
+	                        <i class="fa fa-user-times fa-5x" aria-hidden="true"></i>
+	                      <h4>Eliminar tutors</h4>
+	                      </a>
+	                      </div>
+                  </div>   
                      
                   </div>
                   

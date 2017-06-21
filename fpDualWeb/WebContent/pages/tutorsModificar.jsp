@@ -135,8 +135,10 @@
                  
                             <div class="row">
                                 <div class="col-lg-12">
-                                          
-	                                <table class="table table-hover table-inverse">
+                                  <input type="text" class="inputs" id="myNom" onkeyup="buscarNom()" placeholder="Buscar per nom...">
+                                  <input type="text" class="inputs" id="myNIF" onkeyup="buscarNIF()" placeholder="Buscar per NIF...">
+                                  <input type="text" class="inputs" id="myCog" onkeyup="buscarCog()" placeholder="Buscar per Cognom...">    
+	                                <table class="table table-hover table-inverse" id="myTable">
 	                                    <thead>
 	                                        <tr id="headeer">
                                                         <th><span>Usuari</span></th>
@@ -150,7 +152,12 @@
                                                         <%
                                                         	TutorDAO tDAO=new TutorDAO();
                                                         	UsuariDAO uDAO=new UsuariDAO();
-                                                        	List<Usuari> usu=tDAO.consultaTutor();
+                                                        	List<Usuari> usu=null;
+                                                        	try{
+                                                        		usu=tDAO.consultaTutor();
+                                                        	}catch(Exception e){
+                                                        		System.out.println("modificarTutors");
+                                                        	}
                                                         	for(Usuari u:usu){
                                                         %>
                                                         	<tr>
@@ -200,6 +207,74 @@
     <!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
     <!-- JQUERY SCRIPTS -->
     <!-- CUSTOM SCRIPTS -->
+    <script>
+	function buscarNom() {
+	  // Declare variables 
+	  var input, filter, table, tr, td, i;
+	  input = document.getElementById("myNom");
+	  filter = input.value.toUpperCase();
+	  table = document.getElementById("myTable");
+	  tr = table.getElementsByTagName("tr");
+	
+	  // Loop through all table rows, and hide those who don't match the search query
+	  for (i = 0; i < tr.length; i++) {
+	    td = tr[i].getElementsByTagName("td")[0];
+	    if (td) {
+	      if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+	        tr[i].style.display = "";
+	      } else {
+	        tr[i].style.display = "none";
+	      }
+	    } 
+	  }
+	}
+</script>
+
+<script>
+	function buscarNIF() {
+	  // Declare variables 
+	  var input, filter, table, tr, td, i;
+	  input = document.getElementById("myNIF");
+	  filter = input.value.toUpperCase();
+	  table = document.getElementById("myTable");
+	  tr = table.getElementsByTagName("tr");
+	
+	  // Loop through all table rows, and hide those who don't match the search query
+	  for (i = 0; i < tr.length; i++) {
+	    td = tr[i].getElementsByTagName("td")[1];
+	    if (td) {
+	      if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+	        tr[i].style.display = "";
+	      } else {
+	        tr[i].style.display = "none";
+	      }
+	    } 
+	  }
+	}
+</script>
+
+<script>
+	function buscarCog() {
+	  // Declare variables 
+	  var input, filter, table, tr, td, i;
+	  input = document.getElementById("myCog");
+	  filter = input.value.toUpperCase();
+	  table = document.getElementById("myTable");
+	  tr = table.getElementsByTagName("tr");
+	
+	  // Loop through all table rows, and hide those who don't match the search query
+	  for (i = 0; i < tr.length; i++) {
+	    td = tr[i].getElementsByTagName("td")[2];
+	    if (td) {
+	      if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+	        tr[i].style.display = "";
+	      } else {
+	        tr[i].style.display = "none";
+	      }
+	    } 
+	  }
+	}
+</script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="../assets/js/bootstrap.min.js"></script>
     <script src="../assets/js/custom.js"></script>

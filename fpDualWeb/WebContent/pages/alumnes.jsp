@@ -90,7 +90,7 @@
                     </li>
 
                     <li class="active-link">
-                        <a href="#"><i class="fa fa-graduation-cap "></i>Alumnes</a>
+                        <a href="alumnes.jsp"><i class="fa fa-graduation-cap "></i>Alumnes</a>
                     </li>
                     <li>
                         <a href="tutors.jsp"><i class="fa fa-book"></i>Tutors</a>
@@ -170,6 +170,16 @@
                       </div>
                   </div>
                    -->
+              </div>
+              <div class="row text-center pad-top">
+              	<div class="col-lg-3 col-md-2 col-sm-2 col-xs-6">
+                    <div class="div-square">
+						<a href="cercarAlumne.jsp" >
+	                    	<i class="fa fa-search fa-5x" aria-hidden="true"></i>
+	                     	<h4>Cercar alumne</h4>
+                     	</a>
+                     </div>
+				</div>
               </div>
               
               

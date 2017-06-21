@@ -21,6 +21,12 @@ public class Alumne extends Usuari {
 		this.centre = centre;
 		this.tutor = tutor;
 	}
+	
+	@Override
+	public String toString() {
+		return "Alumne [NIF="+super.getNIF()+", Nom="+super.getNom()+", dataInici=" + dataInici + ", dataFi=" + dataFi + ", centre=" + centre + ", tutor=" + tutor
+				+ "]";
+	}
 
 	public int getIdUsuariAlumne(){
 		return getIdUsuari();

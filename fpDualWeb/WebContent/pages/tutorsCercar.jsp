@@ -38,6 +38,41 @@
     <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
          <!-- FAVICON -->
 	<link rel="shortcut icon" type="image/ico" href="../assets/img/favicon-clock-o.ico" />
+ <script type="text/javascript" >  
+     function showText(){  
+          if(document.getElementById("checkNom").checked == true){
+         	  document.getElementById("Nom").required = true;
+              document.getElementById("Nom").disabled = false;
+          }else{
+        	  document.getElementById("Nom").required = false;
+              document.getElementById("Nom").disabled = true;
+              document.getElementById("Nom").value="";
+          }
+          
+          if(document.getElementById("checkCog").checked == true){
+         	  document.getElementById("Cognom").required = true;
+              document.getElementById("Cognom").disabled = false;
+          }else{
+         	  document.getElementById("Cognom").required = false;
+              document.getElementById("Cognom").disabled = true;
+              document.getElementById("Cognom").value="";
+          }
+          
+          if(document.getElementById("checkNIF").checked == true){
+         	  document.getElementById("NIF").required = true;
+              document.getElementById("NIF").disabled = false;
+          }else{
+         	  document.getElementById("NIF").required = false;
+              document.getElementById("NIF").disabled = true;
+              document.getElementById("NIF").value="";
+          }
+          if(document.getElementById("checkNom").checked == true || document.getElementById("checkCog").checked == true || document.getElementById("checkNIF").checked == true){
+              document.getElementById("Submit").disabled = false;
+          }else{
+              document.getElementById("Submit").disabled = true;
+          }
+     }  
+     </script> 
 </head>
 <body>
 <%
@@ -128,7 +163,7 @@
             <div id="page-inner">
                 <div class="row">
                     <div class="col-lg-12">
-                     <h2>Consultar tutors</h2>   
+                     <h2>Cercar tutors</h2>   
                     </div>
                 </div>              
                  <!-- /. ROW  -->
@@ -142,44 +177,33 @@
                         
                             <div class="row">
                                 <div class="col-lg-12">
-                                          
-	                                <table class="table table-hover table-inverse">
-	                                    <thead>
-	                                        <tr id="headeer">
-	                                        <th><span>Usuari</span></th>
-	                                        <th><span>NIF</span></th>
-	                                        <th><span>Cognom</span></th>
-	                                        <th><span>E-mail</span></th>
-	                                        <th>&nbsp;</th>
-	                                        </tr>
-	                                    </thead>
-	                                    <tbody>
-	                                        <%
-	                                        	TutorDAO tDAO=new TutorDAO();
-	                                        	UsuariDAO uDAO=new UsuariDAO();
-	                                        	List<Usuari> usu=tDAO.consultaTutor();
-	                                        	for(Usuari u:usu){
-	                                        %>
-	                                        		<tr>
-	                                        			<td>
-	                                        				<%=u.getNom()%>
-	                                        			</td>
-	                                        			<td>
-	                                        				<%=u.getNIF()%>
-	                                        			</td>
-	                                        			<td>
-	                                        				<%=u.getCognom1()%>
-	                                        			</td>
-	                                        			<td>
-	                                        				<%=u.getMail()%>
-	                                        			</td>
-	                                        		</tr>
-	                                        <% 
-	                                        	}
-	                                       	%>	
-	                                    </tbody>
-	                                </table>
-                                   </div>
+                                	<form action="../TutorsCercar" method="Post">
+	                               		<table class="table">
+	                               			<tr>
+	                               				<td>
+	                               					<label><input type="checkbox" id="checkNom" onclick="showText()">&nbsp;Nom</label>
+	                               					<br/>
+									  				<input type="text" name="Nom" id="Nom" size="25" disabled/>
+	                               				</td>
+	                               				<td>
+	                               					<label><input type="checkbox" id="checkCog" onclick="showText()">&nbsp;Primer Cognom</label>
+									  				<br/>
+									  				<input type="text" name="Cognom" id="Cognom" size="25" disabled/>
+	                               				</td>
+	                               				<td>
+	                               					<label><input type="checkbox" id="checkNIF" onclick="showText()">&nbsp;NIF</label>
+									  				<br/>
+									  				<input type="text" name="NIF" id="NIF" size="25" disabled/>
+	                               				</td>
+	                               			</tr>
+	                               			<tr>
+	                               				<td>
+	                               					<input type="submit" class="btn btn-primary" value="Cercar" id="Submit" disabled/>
+	                               				</td>
+	                               			</tr>
+	                               		</table>
+	                               </form>
+                                </div>
                                </div>
                                    </div>
                                </div>
