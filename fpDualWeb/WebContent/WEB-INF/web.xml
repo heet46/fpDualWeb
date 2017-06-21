@@ -113,7 +113,8 @@
   	<servlet-mapping>
   		<servlet-name>CentreFormulariModificar</servlet-name>
   		<url-pattern>/CentreFormulariModificar</url-pattern>
- 	 </servlet-mapping>
+ 	 </servlet-mapping>	 
+ 	 
  	 
 	<error-page>
 	    <exception-type>404</exception-type>

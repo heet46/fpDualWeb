@@ -156,6 +156,9 @@
                 
                 <div class="row">
                     <div class="col-md-12">
+                    <a title="Manteniment Centres" href="../pages/centre.jsp">
+                    	<img border='0' src='../assets/img/BackArrow.ico' style='position:fixed; head:0; right:0;' width="50" height="50" />
+                    </a>
                      <h2>Afegir Centres</h2>
                     </div>
                 </div>

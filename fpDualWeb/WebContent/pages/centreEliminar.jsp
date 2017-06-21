@@ -126,6 +126,9 @@
                 
                 <div class="row">
                     <div class="col-md-12" align="center">
+                    <a title="Manteniment Centres" href="../pages/centre.jsp">
+                    	<img border='0' src='../assets/img/BackArrow.ico' style='position:fixed; head:0; right:0;' width="50" height="50" />
+                    </a>
                      <h2>Eliminar un Centre</h2>
                     </div>
                 </div>
@@ -138,7 +141,10 @@
 
                 
                 <form name="vinelimform" action=""> 
-				<select name="customers" onchange="sendInfo()">
+		        	<td>
+                		<input type="Submit" name="customers" value="Eliminar" class="btn btn-danger" onclick="sendInfo()">
+                	</td>
+                </form>
 				
 				
                 <%		

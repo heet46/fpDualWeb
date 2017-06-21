@@ -110,6 +110,14 @@ public class CentreDAO {
 		return retorn;
 	}
 
+	public ResultSet realitzaConsulta(String consulta) {
+		// System.out.println("consulta interna -> " + consulta);
+		ResultSet retorn;
+		String consultaSQL = consulta;
+		retorn = gestorDB.consultaRegistres(consultaSQL);
+		return retorn;
+	}
+
 	public int consultarRegID(String id) {
 		ResultSet retorn;
 		int i = 0;

@@ -153,6 +153,9 @@
                 
                 <div class="row">
                     <div class="col-md-12" align="center">
+                    <a title="Manteniment Centres" href="../pages/centre.jsp">
+                    	<img border='0' src='../assets/img/BackArrow.ico' style='position:fixed; head:0; right:0;' width="50" height="50" />
+                    </a>
                      <h2>Modificar un Centre</h2>
                     </div>
                 </div>
@@ -192,37 +195,37 @@
 				</form>
 			<br>
 			<span id="resultattxt"></span>
-<script>
-	var request;
-	function sendInfo() {
-		var v=document.vinform.customers.value;
-		var url="centreModificar2.jsp?val="+v;
-
-		if(window.XMLHttpRequest){
-			request=new XMLHttpRequest();
-		}
-		else if(window.ActiveXObject){
-			request=new ActiveXObject("Microsoft.XMLHTTP");
-		}
-
-		try {
-			request.onreadystatechange=getInfo;
-			request.open("GET",url,true);
-			request.send();
-		}
-		catch(e) {
-			alert("Unable to connect to server");
-		}
-	}
-
-	function getInfo(){
-		if(request.readyState==4){
-			var val=request.responseText;
-			document.getElementById('resultattxt').innerHTML=val;
-	}
-}
-
-</script>
+			<script>
+				var request;
+				function sendInfo() {
+					var v=document.vinform.customers.value;
+					var url="centreModificar2.jsp?val="+v;
+			
+					if(window.XMLHttpRequest){
+						request=new XMLHttpRequest();
+					}
+					else if(window.ActiveXObject){
+						request=new ActiveXObject("Microsoft.XMLHTTP");
+					}
+			
+					try {
+						request.onreadystatechange=getInfo;
+						request.open("GET",url,true);
+						request.send();
+					}
+					catch(e) {
+						alert("Unable to connect to server");
+					}
+				}
+			
+				function getInfo(){
+					if(request.readyState==4){
+						var val=request.responseText;
+						document.getElementById('resultattxt').innerHTML=val;
+				}
+			}
+			
+			</script>
 			
 
                 
