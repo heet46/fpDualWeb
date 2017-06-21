@@ -114,10 +114,12 @@
         <div id="page-wrapper" >
             <div id="page-inner">
                 <div class="row">
-                    <div class="col-lg-12">
-                     <h2>Gestió d'alumnes</h2>   
+                    <div class="col-md-12">
+                    	<br>
+                     	<h2 style="display:inline">Gestió d'alumnes </h2>  
+                     	<div style="float:right; font-size:16px" ><a href="../index.jsp"><strong>Torna enrere</strong></a></div>                   
                     </div>
-                </div>              
+                </div>               
                  <!-- /. ROW  -->
                   <hr />
               
