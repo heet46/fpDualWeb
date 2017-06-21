@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import model.Tutor;
 import model.TutorDAO;
 import model.UsuariDAO;
 
@@ -42,13 +43,21 @@ public class baixaTutors extends HttpServlet {
 		TutorDAO tDAO=new TutorDAO();
 		UsuariDAO uDAO=new UsuariDAO();
 		String NIF=request.getParameter("NIF");
+		int existeix = 0;
 		try {
-			tDAO.baixaTutor(uDAO.consultaID(NIF));
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			if(tDAO.comprobarAlumnes(new Tutor(uDAO.consultaID(NIF),""))){
+				existeix=1;
+				request.getSession().setAttribute("existeix",existeix);
+			}else{
+				existeix=0;
+				request.getSession().setAttribute("existeix",existeix);
+				tDAO.baixaTutor(uDAO.consultaID(NIF));
+			}
+		} catch (SQLException e1) {
+			e1.printStackTrace();
 		}
-		response.sendRedirect("/fpDualWeb/pages/tutors.jsp");
+		System.out.println("tdao"+existeix);
+		response.sendRedirect("pages/tutorsBaixa.jsp");
 	}
 
 }

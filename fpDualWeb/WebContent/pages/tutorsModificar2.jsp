@@ -163,7 +163,7 @@
                                         <tr>
                                             <td>NIF: </td>
                                             <input type="hidden" name="IdVella" value="${NIF}">
-                                            <td><input type="text" class="form-control" name="NIF" size="25"  value="${NIF}"/></td>
+                                            <td><input type="text" class="form-control" name="NIF" size="25"  value="${NIF}" disabled/></td>
                                         </tr>
                                         <tr>
                                             <td>Password: </td>

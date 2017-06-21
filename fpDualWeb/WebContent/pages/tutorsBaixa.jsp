@@ -30,6 +30,12 @@
     <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
          <!-- FAVICON -->
 	<link rel="shortcut icon" type="image/ico" href="../assets/img/favicon-clock-o.ico" />
+<script type="text/javascript">
+	function comprobarTutor(){
+		var nifTutor=document.getElementById("NIF");
+		if()
+	}
+</script>
 </head>
 <body>
 <%
@@ -38,7 +44,6 @@
 	if(sesion.getAttribute("nif") == null){
 	
 		response.sendRedirect("login.jsp");
-
 	}
 	
 	String usuNif = null;
@@ -170,8 +175,8 @@
                                                         			<%=u.getMail()%>
                                                         		</td>
                                                         		<td style="width: 25%">
-                                                        			<form name="form" method="Post" action="../baixaTutors" class="table-link">
-                                                        				<input type="hidden" name="NIF" value="<%=u.getNIF()%>">
+                                                        			<form name="form" method="Post" action="../baixaTutors" class="table-link" onsubmit="comprobarTutor()">
+                                                        				<input type="hidden" name="NIF" id="NIF" value="<%=u.getNIF()%>">
                                                         				<input type="submit" class="btn btn-danger" value="Eliminar">
                                                         			</form>
                                                         		</td>
@@ -202,6 +207,25 @@
     <!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
     <!-- JQUERY SCRIPTS -->
     <!-- CUSTOM SCRIPTS -->
+  <%
+  	int existeix=0;
+  	try{
+	  existeix=Integer.parseInt(session.getAttribute("existeix").toString());
+  	}catch(Exception e){
+		  
+	}
+  	System.out.println(existeix);
+	  if(existeix==1){
+%>
+	    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+	    <script src="../assets/js/bootstrap.min.js"></script>
+<script src="../assets/js/bootbox.min.js"></script>
+<script>		        
+	bootbox.alert("Error, aquest tutor està lligat a un alumne", function() {
+	console.log("Alert Callback");
+	});
+</script>
+<%} %>
 <script>
 	function buscarNom() {
 	  // Declare variables 

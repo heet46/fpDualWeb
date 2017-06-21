@@ -122,6 +122,16 @@ public class TutorDAO {
 		}
 		return tutors;
 	}
+	
+	public boolean comprobarAlumnes(Tutor t) throws SQLException{
+		consultaSQL="SELECT alumne.Id_usuari FROM alumne,tutor WHERE tutor.Id_usuari=alumne.id_tutor AND tutor.Id_usuari='"+t.getId_usuari()+"';";
+		boolean existeix=false;
+		ResultSet rs=g.consultaRegistres(consultaSQL);
+		if(rs.first()){
+			existeix=true;
+		}
+		return existeix;
+	}
 	public String consultaTecno(int id){
 		String tecno="";
 		consultaSQL="SELECT tecnologia FROM tutor WHERE Id_usuari="+id+";";
