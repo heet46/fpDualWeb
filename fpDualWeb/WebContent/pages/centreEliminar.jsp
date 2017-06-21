@@ -140,11 +140,7 @@
                 <small>*'CC' Codi del Centre.</small>
 
                 
-                <form name="vinelimform" action=""> 
-		        	<td>
-                		<input type="Submit" name="customers" value="Eliminar" class="btn btn-danger" onclick="sendInfo()">
-                	</td>
-                </form>
+                
 				
 				
                 <%		
