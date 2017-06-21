@@ -159,6 +159,29 @@ public class AlumneDAO {
 		return valors;
 	}
 	
+	public List<String> cercarAlumne(Alumne alumne){
+		List<String> valors = new ArrayList<String>();
+		ResultSet rs = null;
+		String consultaSQL = "SELECT u.id_usuari, u.nom AS nom_alumne, u.primer_cognom, c.Nom AS nom_centre, u2.nom AS nom_tutor "
+				+ "FROM usuari AS u, usuari AS u2, alumne AS a, centre AS c "
+				+ "WHERE u2.id_usuari=a.id_tutor AND u.id_usuari=a.id_usuari AND c.Id_centre=a.id_centre";
+		if(alumne.getNIF() != ""){
+			consultaSQL += " AND u.NIF LIKE '%"+alumne.getNIF()+"%'";
+		}
+		if(alumne.getNom() != ""){
+			consultaSQL += " AND u.nom LIKE '%"+alumne.getNom()+"%'";
+		}
+		if(alumne.getTutor().getNom() != ""){
+			consultaSQL += " AND u2.nom LIKE '%"+alumne.getTutor().getNom()+"%'";
+		}
+		if(alumne.getCentre().getNom() != ""){
+			consultaSQL += " AND u2.nom LIKE '%"+alumne.getCentre().getNom()+"%'";
+		}
+		
+		System.out.println(consultaSQL);
+		return valors;
+	}
+	
 	public void tancarConn(){
 		gestorDB.tancarConnexio();
 	}

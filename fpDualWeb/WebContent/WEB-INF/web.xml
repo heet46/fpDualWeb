@@ -115,6 +115,15 @@
   		<url-pattern>/CentreFormulariModificar</url-pattern>
  	 </servlet-mapping>
  	 
+ 	 <servlet>
+  		<servlet-name>CercarAlumne</servlet-name>
+  		<servlet-class>CercarAlumne</servlet-class>
+  	</servlet>
+  	<servlet-mapping>
+  		<servlet-name>CercarAlumne</servlet-name>
+  		<url-pattern>/CercarAlumne</url-pattern>
+ 	 </servlet-mapping>
+ 	 
 	<error-page>
 	    <exception-type>404</exception-type>
 	    <error-code>404</error-code>
