@@ -121,12 +121,7 @@
                 </div>              
                  <!-- /. ROW  -->
                   <hr />
-                <div class="row">
-                    <div class="col-lg-12 ">
-                       
-                    </div>
- 
-                    </div>
+                
                   <!-- /. ROW  --> 
                             <div class="row text-center pad-top">
                   <div class="col-lg-3 col-md-2 col-sm-2 col-xs-6">
@@ -160,6 +155,14 @@
                       </div>
                   </div>
                   
+                  <div class="col-lg-3 col-md-2 col-sm-2 col-xs-6">
+	                      <div class="div-square">
+	                           <a href="tutorsBaixa.jsp" >
+	                        <i class="fa fa-user-times fa-5x" aria-hidden="true"></i>
+	                      <h4>Eliminar tutors</h4>
+	                      </a>
+	                      </div>
+                  </div>
                   </div>
                   <div  class="row text-center pad-top">
 	                  <div class="col-lg-3 col-md-2 col-sm-2 col-xs-6">
@@ -170,16 +173,9 @@
 	                      </a>
 	                      </div>
 	                  </div>
-	                  <div class="col-lg-3 col-md-2 col-sm-2 col-xs-6">
-	                      <div class="div-square">
-	                           <a href="tutorsBaixa.jsp" >
-	                        <i class="fa fa-user-times fa-5x" aria-hidden="true"></i>
-	                      <h4>Eliminar tutors</h4>
-	                      </a>
-	                      </div>
-                  </div>   
+	                  
                   </div>
-                     <a href="tutors.jsp"  id="fletxa">
+                     <a href="../index.jsp"  id="fletxa">
                			<i class="fa fa-hand-o-left fa-4x" style='position:fixed; head:0; bottom:50px; right:35px;' width="50" height="50"></i>
               		</a>
               </div>
