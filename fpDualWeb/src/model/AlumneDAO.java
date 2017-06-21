@@ -159,26 +159,56 @@ public class AlumneDAO {
 		return valors;
 	}
 	
-	public List<String> cercarAlumne(Alumne alumne){
-		List<String> valors = new ArrayList<String>();
+	public List<Alumne> cercarAlumne(Alumne alumne) throws SQLException{
+		List<Alumne> valors = new ArrayList<Alumne>();
 		ResultSet rs = null;
-		String consultaSQL = "SELECT u.id_usuari, u.nom AS nom_alumne, u.primer_cognom, c.Nom AS nom_centre, u2.nom AS nom_tutor "
+		String consultaSQL = "SELECT u.id_usuari, u.NIF, u.nom AS nom_alumne, u.primer_cognom, u.segon_cognom, u.mail, u2.nom AS nom_tutor, c.Nom AS nom_centre "
 				+ "FROM usuari AS u, usuari AS u2, alumne AS a, centre AS c "
 				+ "WHERE u2.id_usuari=a.id_tutor AND u.id_usuari=a.id_usuari AND c.Id_centre=a.id_centre";
-		if(alumne.getNIF() != ""){
+		if(alumne.getNIF() != "" && alumne.getNIF() != null){
 			consultaSQL += " AND u.NIF LIKE '%"+alumne.getNIF()+"%'";
 		}
-		if(alumne.getNom() != ""){
+		if(alumne.getNom() != "" && alumne.getNom() != null){
 			consultaSQL += " AND u.nom LIKE '%"+alumne.getNom()+"%'";
 		}
-		if(alumne.getTutor().getNom() != ""){
+		if(alumne.getCognom1() != "" && alumne.getCognom1() != null){
+			consultaSQL += " AND u.primer_cognom LIKE '%"+alumne.getCognom1()+"%'";
+		}
+		if(alumne.getCognom2() != "" && alumne.getCognom2() != null){
+			consultaSQL += " AND u.segon_cognom LIKE '%"+alumne.getCognom2()+"%'";
+		}
+		if(alumne.getMail() != "" && alumne.getMail() != null){
+			consultaSQL += " AND u.mail LIKE '%"+alumne.getMail()+"%'";
+		}
+		if(alumne.getTutor().getNom() != "" && alumne.getTutor().getNom() != null){
 			consultaSQL += " AND u2.nom LIKE '%"+alumne.getTutor().getNom()+"%'";
 		}
-		if(alumne.getCentre().getNom() != ""){
-			consultaSQL += " AND u2.nom LIKE '%"+alumne.getCentre().getNom()+"%'";
+		if(alumne.getCentre().getNom() != "" && alumne.getCentre().getNom() != null){
+			consultaSQL += " AND c.nom LIKE '%"+alumne.getCentre().getNom()+"%'";
 		}
 		
 		System.out.println(consultaSQL);
+		
+		rs = gestorDB.consultaRegistres(consultaSQL);
+		
+		while(rs.next()){
+			Alumne a = new Alumne();
+			Centre c = new Centre();
+			Tutor t = new Tutor();
+			a.setIdUsuari(rs.getInt(1));
+			a.setNIF(rs.getString(2));
+			a.setNom(rs.getString(3));
+			a.setCognom1(rs.getString(4));
+			a.setCognom2(rs.getString(5));
+			a.setMail(rs.getString(6));
+			t.setNom(rs.getString(7));
+			a.setTutor(t);
+			c.setNom(rs.getString(8));
+			a.setCentre(c);
+			valors.add(a);
+		}
+		
+		
 		return valors;
 	}
 	

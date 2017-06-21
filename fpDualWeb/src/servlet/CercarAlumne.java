@@ -1,11 +1,15 @@
 package servlet;
 
 import java.io.IOException;
+import java.sql.SQLException;
+import java.util.List;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import model.Alumne;
 import model.AlumneDAO;
@@ -35,22 +39,55 @@ public class CercarAlumne extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		HttpSession session = request.getSession();
 		Alumne alumne = new Alumne();
 		AlumneDAO aDAO = new AlumneDAO();
 		Tutor tutor = new Tutor();
 		Centre centre = new Centre();
-
-		tutor.setNom(request.getParameter("tutor"));
-		centre.setNom(request.getParameter("centre"));
 		
-		alumne.setNIF(request.getParameter("nif"));
-		alumne.setNom(request.getParameter("nom"));
+		String nif;
+		String nom;
+		String cognom1;
+		String cognom2;
+		String mail;
+		String stutor;
+		String scentre;
+		
+		nif = request.getParameter("dni");
+		nom = request.getParameter("nom");
+		cognom1 = request.getParameter("cognom1");
+		cognom2 = request.getParameter("cognom2");
+		mail = request.getParameter("mail");
+		stutor = request.getParameter("tutor");
+		scentre = request.getParameter("centre");
+		
+		//System.out.println("VALORS: "+nif+" "+nom+" "+cognom1+" "+cognom2+" "+mail+" "+stutor+" "+scentre);
+
+		tutor.setNom(stutor);
+		centre.setNom(scentre);
+		
+		alumne.setNIF(nif);
+		alumne.setNom(nom);
+		alumne.setCognom1(cognom1);
+		alumne.setCognom2(cognom2);
+		alumne.setMail(mail);
 		alumne.setTutor(tutor);
 		alumne.setCentre(centre);
+				
+		List<Alumne> llista;
+		try {
+			llista = aDAO.cercarAlumne(alumne);
+			request.setAttribute("llista", llista);
+			session.setAttribute("list", llista);
+			
+			response.sendRedirect("pages/cercarAlumne.jsp");
+		} catch (SQLException e) {
+			System.out.println("Error a la consulta soto");
+			e.printStackTrace();
+		}
 		
-		aDAO.cercarAlumne(alumne);
-		
-		System.out.println(alumne);
+		//session.setAttribute("llista", llista);
+
 	}
 
 }

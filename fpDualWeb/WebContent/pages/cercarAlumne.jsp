@@ -34,55 +34,6 @@
    	<!-- FAVICON -->
 	<link rel="shortcut icon" type="image/ico" href="../assets/img/favicon-clock-o.ico" />
 	
-	<script type="text/javascript" >  
-     function showInputs(){  
-          if(document.getElementById("cknif").checked == true){  
-              document.getElementById("cb1").hidden = false;
-              document.getElementById("cb1").required = true;
-          }else if(document.getElementById("cknif").checked == false){  
-              document.getElementById("cb1").hidden = true; 
-              document.getElementById("cb1").required = false;
-          }
-          
-          if(document.getElementById("cknom").checked == true){
-              document.getElementById("cb2").hidden = false;
-              document.getElementById("cb2").required = true;
-          }else if(document.getElementById("cknom").checked == false){
-              document.getElementById("cb2").hidden = true;
-              document.getElementById("cb2").required = false;
-          }
-          
-          if(document.getElementById("cktutor").checked == true){  
-              document.getElementById("cb3").hidden = false;  
-              document.getElementById("cb3").required = true;
-          }else if(document.getElementById("cktutor").checked == false){  
-              document.getElementById("cb3").hidden = true;  
-              document.getElementById("cb3").required = false;
-          }
-          
-          if(document.getElementById("ckcentre").checked == true){
-              document.getElementById("cb4").hidden = false;
-              document.getElementById("cb4").required = true;
-          }else if(document.getElementById("ckcentre").checked == false){
-              document.getElementById("cb4").hidden = true;
-              document.getElementById("cb4").required = false;
-          }
-          
-          if(document.getElementById("cknif").checked == true ||
-        	 document.getElementById("cknom").checked == true || 
-        	 document.getElementById("cktutor").checked == true || 
-       		 document.getElementById("ckcentre").checked == true){
-              document.getElementById("btnsub").disabled = false;
-          }
-          
-          if(document.getElementById("cknif").checked == false &&
-             document.getElementById("cknom").checked == false && 
-             document.getElementById("cktutor").checked == false &&
-             document.getElementById("ckcentre").checked == false){
-             document.getElementById("btnsub").disabled = true;
-          }
-     }  
-     </script> 
 </head>
 <body>
 <%
@@ -107,12 +58,29 @@
 			if(cookie.getName().equals("mail")) usuMail = cookie.getValue();
 			if(cookie.getName().equals("JSESSIONID")) sessionID = cookie.getValue();
 			
-			
 		}
 	}
+	
+	CentreDAO cDAO = new CentreDAO();
+	List<String> llistaCentres = cDAO.nomsCentres();
+	TutorDAO tDAO = new TutorDAO();
+	List<String> llistaTutors = tDAO.nomsTutors();
+	List<Alumne> llistaAlumnes;
+	
+	try{
+		llistaAlumnes = (ArrayList<Alumne>) session.getAttribute("list");
+		System.out.println("Llista: "+llistaAlumnes.toString());
+	}catch(Exception e){
+		llistaAlumnes = null;
+	}
+
+	//if(request.getAttribute("llista") != null){
+		//llistaAlumnes = (ArrayList<Alumne>) request.getAttribute("llista");
+	//}
+	
 %>    
     <div id="wrapper">
-         <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="navbar navbar-inverse navbar-fixed-top">
             <div class="adjust-nav">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse">
@@ -125,17 +93,17 @@
                     </a>
                 </div>
            
+           		<form method="post" action="../Logout" name="logoutForm">
                 <span class="logout-spn" >                
-	                <form method="post" action="../Logout" name="logoutForm">
 						<a href="javascript: submitform()" style="color:#fff;">LOGOUT</a>
-					</form>
-					<p><strong><%=usuNom %></strong> | <%=usuNif%></p>
-					<script type="text/javascript">
+						<p><strong><%=usuNom %></strong> | <%=usuNif%></p>
+						<script type="text/javascript">
 						function submitform(){
 						  document.logoutForm.submit();
 						}
 					</script>
                 </span>
+                </form>
             </div>
         </div>
         <!-- /. NAV TOP  -->
@@ -167,45 +135,146 @@
         <div id="page-wrapper" >
             <div id="page-inner">
                 
-                <div class="row">
+				<div class="row">
                     <div class="col-md-12">
                      <h2>Cerca d'alumnes </h2>
                     </div>
                 </div>              
-                 <!-- /. ROW  -->
+               
                <hr/>
+               <form action="../CercarAlumne" method="Post">
+               
+               	<div class="row">
+               	<div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
+					<a href="#filtre" data-toggle="collapse" class="btn btn-info" style="margin-bottom:10px">Filtre</a>
+				</div>
+				<div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
+                	<input type="submit" class="btn btn-success" value="Cercar" >
+				</div>
+               	</div>
+               
+               <div id="filtre" class="collapse">
+				                         
+					<div class="row">
+					<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+						<h5><strong>D.N.I.</strong></h5>
+  						<input type="text" class="form-control" placeholder="D.N.I." name="dni"/>
+					</div>
+					
+					<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+						<h5><strong>Nom</strong></h5>
+  						<input type="text" class="form-control" placeholder="Nom" name="nom"/>
+					</div>
+					
+					<br>
+					
+					<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+						<h5><strong>Primer cognom</strong></h5>
+  						<input type="text" class="form-control" placeholder="Primer cognom" name="cognom1"/>
+					</div>
+					
+					<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+						<h5><strong>Segon cognom</strong></h5>
+  						<input type="text" class="form-control" placeholder="Segon cognom" name="cognom2"/>
+					</div>
+					
+					<br>										
+					
+					<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+						<h5><strong>Correu electrònic</strong></h5>
+  						<input type="text" class="form-control" placeholder="Correu electrònic" name="mail"/>
+					</div>
+															
+					</div>
+					<div class="row">
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                            <h5><strong>Tutor</strong></h5>
+                            <select class="form-control" name="tutor">
+                            	<option value="" selected hidden="true">Selecciona el tutor</option>
+                            	<% 
+                            	for(int i=0; i<llistaTutors.size(); i++) { 
+                            	%>
+	                                <option value="<%=llistaTutors.get(i) %>">
+	                                	<%=llistaTutors.get(i) %>
+	                                </option>
+                            <% 
+                            	} 
+                            %>
+                            </select>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                            <h5><strong>Centre</strong></h5>
+                            <select class="form-control" name="centre">
+                            	<option value="" selected hidden="true">Selecciona el centre</option>
+                            	<% 
+                            	for(int i=0; i<llistaCentres.size(); i++) { 
+                            	%>
+	                                <option value="<%=llistaCentres.get(i) %>">
+	                                	<%=llistaCentres.get(i) %>
+	                                </option>
+                            <% 
+                            	} 
+                            %>
+                            </select>
+                        </div>
+                	</div>
+                </div>
+                <!-- END COLLAPSE -->
+				</form>
+				<hr>
+				
+				<%if(llistaAlumnes != null){ %>
+				<div class="row">
+					<div class="col-md-12">
+						<h2>Resultats</h2>
+					</div>
+				</div>
+				
 				<div class="row">
                     <div class="col-lg-12 col-md-12">
-                    
-                        <form action="../CercarAlumne" method="Post">
-                        <table id="taula">
-	                        <tr valign="middle">
-	                        	<td width="15px"><input id="cknif" type="checkbox" onclick="showInputs()"></td>
-	                        	<td id="soto"><label for="cknif">&nbsp;&nbsp;D.N.I</label></td>
-	                        	<td width="15px"><input id="cknom" type="checkbox" onclick="showInputs()"></td>
-	                        	<td id="soto"><label for="cknom">&nbsp;&nbsp;Nom</label></td>
-	                        	<td width="15px"><input id="cktutor" type="checkbox" onclick="showInputs()"></td>
-	                        	<td id="soto"><label for="cktutor">&nbsp;&nbsp;Tutor</label></td>
-	                        	<td width="15px"><input id="ckcentre" type="checkbox" onclick="showInputs()"></td>
-	                        	<td id="soto"><label for="ckcentre">&nbsp;&nbsp;Centre</label></td>
-	                        </tr>
-	                        <tr>
-	                        	<td colspan=2><input type="text" class="cbx" id="cb1" name="nif" hidden></td>
-	                        	<td colspan=2><input type="text" class="cbx" id="cb2" name="nom" hidden></td>
-	                        	<td colspan=2><input type="text" class="cbx" id="cb3" name="tutor" hidden></td>
-	                        	<td colspan=2><input type="text" class="cbx" id="cb4" name="centre" hidden></td>
-	                        </tr>
-                        </table>
-                        
-                        <input type="submit" class="btn btn-primary" value="Cercar" id="btnsub" disabled>
-                        </form>
+                        <table class="table table-striped  table-hover">
+                            <thead>
+                                <tr id="headeer">
+                                    <th>#</th>
+                                    <th>NIF</th>
+                                    <th>Nom</th>
+                                    <th>Cognoms</th>
+                                    <th>eMail</th>                                    
+                                    <th>Tutor</th>
+                                    <th>Centre</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+									<%
+										for (Alumne alumne : llistaAlumnes) {
+									%>
+									<td><%=alumne.getIdUsuari()%></td>
+									<td><%=alumne.getNIF()%></td>
+									<td><%=alumne.getNom()%></td>
+									<td><%=alumne.getCognom1()%>&nbsp;<%=alumne.getCognom2() %></td>
+									<td><%=alumne.getMail()%></td>
+									<td><%=alumne.getTutor().getNom()%></td>
+									<td><%=alumne.getCentre().getNom()%></td>
 
-                    </div>
+							
+								</tr>
+								<%
+									}
+								%>
+                                
+                            </tbody>
+                        </table>
+                    </div>           
+    			</div>
+				
+				<%} %>
+				
 				</div>
+				<!-- END PAGE INNER -->
 				<hr/>
-            <!-- /. PAGE INNER  -->
             </div>
-        <!-- /. PAGE WRAPPER  -->
+        	<!-- /. PAGE WRAPPER  -->
 		</div>
     <div class="footer">
       
@@ -214,7 +283,7 @@
                 <div class="col-lg-12" >
                     &copy;  2017 Indra Software Labs | Design by: Joan Espuñes, Sergi Fernandez, Sisco Navarro, Thiago Hachikyan
                 </div>
-        </div>
+        	</div>
         </div>
           
 
