@@ -150,8 +150,8 @@
                         <div class="form-group">
                             <label class="control-label col-lg-2" for="codi">Codi:</label>
                             <div class="col-lg-4">
-                                <select class="form-control" id="codi" name="codi">
-                                    <option hidden selected>Selecciona una opció...</option>
+                                <select class="form-control" id="codi" name="codi" required>
+                                    <option hidden selected value="">Selecciona una opció...</option>
                                     <option value="EXC">EXC (Excursió)</option>
                                     <option value="TLL">TLL (Taller)</option>
                                     <option value="TBL">TBL (Treball)</option>
@@ -164,7 +164,7 @@
                         <div class="form-group">
                             <label class="control-label col-lg-2" for="desc">Descripció:</label>
                             <div class="col-lg-4">
-                                <textarea class="form-control" rows="5" id="desc" name="descripcio"></textarea>
+                                <textarea class="form-control" rows="5" id="desc" name="descripcio" required></textarea>
                             </div>
                         </div>
                         <div class="col-lg-7"></div>

@@ -4,3 +4,11 @@
         bottom:20px;
         right:50px;
 }
+.cercar{
+	height: 23px;
+	font-size: 14pt;
+	float: right;
+}
+hr{
+	margin-bottom: 0.1em;
+}
