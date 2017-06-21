@@ -45,6 +45,7 @@ public class baixaTutors extends HttpServlet {
 		String NIF=request.getParameter("NIF");
 		int existeix = 0;
 		try {
+			System.out.println(NIF);
 			if(tDAO.comprobarAlumnes(new Tutor(uDAO.consultaID(NIF),""))){
 				existeix=1;
 				request.getSession().setAttribute("existeix",existeix);
@@ -57,7 +58,7 @@ public class baixaTutors extends HttpServlet {
 			e1.printStackTrace();
 		}
 		System.out.println("tdao"+existeix);
-		response.sendRedirect("pages/tutorsBaixa.jsp");
+		response.sendRedirect("pages/llistaTutors.jsp");
 	}
 
 }

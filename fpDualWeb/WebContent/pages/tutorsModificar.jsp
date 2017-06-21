@@ -137,8 +137,8 @@
                                 <div class="col-lg-12">
                                   <input type="text" class="inputs" id="myNom" onkeyup="buscarNom()" placeholder="Buscar per nom...">
                                   <input type="text" class="inputs" id="myNIF" onkeyup="buscarNIF()" placeholder="Buscar per NIF...">
-                                  <input type="text" class="inputs" id="myCog" onkeyup="buscarCog()" placeholder="Buscar per Cognom...">      
-	                                <table class="table table-hover table-inverse">
+                                  <input type="text" class="inputs" id="myCog" onkeyup="buscarCog()" placeholder="Buscar per Cognom...">    
+	                                <table class="table table-hover table-inverse" id="myTable">
 	                                    <thead>
 	                                        <tr id="headeer">
                                                         <th><span>Usuari</span></th>
@@ -152,7 +152,12 @@
                                                         <%
                                                         	TutorDAO tDAO=new TutorDAO();
                                                         	UsuariDAO uDAO=new UsuariDAO();
-                                                        	List<Usuari> usu=tDAO.consultaTutor();
+                                                        	List<Usuari> usu=null;
+                                                        	try{
+                                                        		usu=tDAO.consultaTutor();
+                                                        	}catch(Exception e){
+                                                        		System.out.println("modificarTutors");
+                                                        	}
                                                         	for(Usuari u:usu){
                                                         %>
                                                         	<tr>

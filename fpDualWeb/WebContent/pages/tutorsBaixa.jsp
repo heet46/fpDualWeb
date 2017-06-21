@@ -30,12 +30,6 @@
     <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
          <!-- FAVICON -->
 	<link rel="shortcut icon" type="image/ico" href="../assets/img/favicon-clock-o.ico" />
-<script type="text/javascript">
-	function comprobarTutor(){
-		var nifTutor=document.getElementById("NIF");
-		if()
-	}
-</script>
 </head>
 <body>
 <%
@@ -212,9 +206,8 @@
   	try{
 	  existeix=Integer.parseInt(session.getAttribute("existeix").toString());
   	}catch(Exception e){
-		  
+  		existeix=0;  
 	}
-  	System.out.println(existeix);
 	  if(existeix==1){
 %>
 	    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>

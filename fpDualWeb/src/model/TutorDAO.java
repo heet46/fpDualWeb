@@ -137,7 +137,7 @@ public class TutorDAO {
 		consultaSQL="SELECT tecnologia FROM tutor WHERE Id_usuari="+id+";";
 		ResultSet rs=g.consultaRegistres(consultaSQL);
 		try {
-			tecno=rs.getString("tecnologia");
+			tecno=rs.getString(1);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
