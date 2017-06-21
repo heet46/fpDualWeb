@@ -210,6 +210,10 @@ a .letstry{
 	white-space: nowrap;
 }
 
+.inputs{
+	margin-bottom: 20px;
+	margin-right: 10px;
+}
 /*==============================================
     MEDIA QUERIES     
     =============================================*/
