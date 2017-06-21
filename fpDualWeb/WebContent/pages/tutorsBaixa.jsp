@@ -224,7 +224,7 @@
 	console.log("Alert Callback");
 	});
 </script>
-<%}existeix=0;%>
+<%}%>
 <script>
 	function buscarNom() {
 	  // Declare variables 

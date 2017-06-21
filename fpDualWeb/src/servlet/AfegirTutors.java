@@ -36,6 +36,7 @@ public class AfegirTutors extends HttpServlet {
 		UsuariDAO uDAO=new UsuariDAO();
 		TutorDAO tDAO=new TutorDAO();
 		Usuari u=new Usuari();
+		int existeix=0;
 		String NIF=(String)request.getParameter("NIF");
 		String pass=(String)request.getParameter("pass");
 		String nom=(String)request.getParameter("nom");
@@ -43,17 +44,18 @@ public class AfegirTutors extends HttpServlet {
 		String sCog=(String)request.getParameter("Scognom");
 		String mail=(String)request.getParameter("mail");
 		String tecno=(String)request.getParameter("tecno");
-		
+
 		try {
 			uDAO.altaUsuari(new Usuari(NIF,pass,nom,pCog,sCog,mail));
 			tDAO.altaTutor(new Tutor(uDAO.consultaID(NIF),tecno));
+			request.getSession().setAttribute("existeix", existeix);
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			existeix=1;
+			request.getSession().setAttribute("existeix", existeix);
 		}
 
 		
-		response.sendRedirect("/fpDualWeb/pages/tutors.jsp");
+		response.sendRedirect("/fpDualWeb/pages/tutorsAfegir.jsp");
 	}
 
 }
