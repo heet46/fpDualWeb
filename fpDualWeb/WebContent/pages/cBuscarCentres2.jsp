@@ -18,7 +18,7 @@
 		String codiCentre = "";
 		String telCentre = "";
 		String webCentre = "";
-
+  
 	    if(request.getParameter("val") != null && request.getParameter("val") != ""){
 	    	idCentre = request.getParameter("val");
 			 System.out.println("cent: " + idCentre);
@@ -48,7 +48,7 @@
 		outt.println("<th ><b>Codi<b/></th>");
 		outt.println("<th ><b>Telefon<b/></th>");
 		outt.println("<th ><b>Web<b/></th>");
-		outt.println("<th ><b>Modificar<b/></th>");
+		//outt.println("<th ><b>Modificar<b/></th>");
 		outt.println("<th ><b>Eliminar<b/></th>");
 		outt.println("<th ><b><b/></th>");
 		outt.println("</tr>");
@@ -152,7 +152,7 @@
 					
 					//runs
 					
-					outt.println("<td><input type='Submit' style='width:50px; height:25px; color:#ed9e2e' name='nidmcentre' value='" + nid + "' class='btn btn-warning' form='formmodificar'></td>");
+					//outt.println("<td><input type='Submit' style='width:50px; height:25px; color:#ed9e2e' name='nidmcentre' value='" + nid + "' class='btn btn-warning' form='formmodificar'></td>");
 
 					
 					
@@ -163,7 +163,7 @@
 					
 				}
 		}
-		outt.println("<form id='formmodificar' action='../centreModificarCentress' method='POST'></form>");
+		//outt.println("<form id='formmodificar' action='../centreModificarCentress' method='POST'></form>");
 		outt.println("<form id='formeliminar' action='../centreEliminarCentress' method='POST'></form>");
 	%>
 	
