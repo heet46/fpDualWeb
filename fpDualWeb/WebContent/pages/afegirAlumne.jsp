@@ -37,27 +37,22 @@
 	HttpSession sesion=request.getSession(); 
 	String nif;
 	if(sesion.getAttribute("nif") == null){	
+		session.invalidate();
 		response.sendRedirect("login.jsp");
 	}
 	
-	String usuNif = null;
+	String usuNif = sesion.getAttribute("nif").toString();
+	String usuNom = sesion.getAttribute("nomComplet").toString();
+	String usuCognom = sesion.getAttribute("cognom1Login").toString();
+	String usuMail = sesion.getAttribute("mailLogin").toString();
+	
 	String sessionID = null;
-	String usuNom = null;
-	String usuCognom = null;
-	String usuMail = null;
 	Cookie[] cookies = request.getCookies();
 	if(cookies != null){
 		for(Cookie cookie : cookies){
-		
-			if(cookie.getName().equals("nif")) usuNif = cookie.getValue();
-			if(cookie.getName().equals("nom")) usuNom = cookie.getValue();
-			if(cookie.getName().equals("cognom")) usuCognom = cookie.getValue();
-			if(cookie.getName().equals("mail")) usuMail = cookie.getValue();
-			if(cookie.getName().equals("JSESSIONID")) sessionID = cookie.getValue();
-			
-			
+			if(cookie.getName().equals("JSESSIONID")) sessionID = cookie.getValue();			
 		}
-	}
+	}	
 	
 	CentreDAO cDAO = new CentreDAO();
 	List<String> llistaCentres = cDAO.nomsCentres();
@@ -73,6 +68,34 @@
 	}catch(Exception e){
 		duplicat = 0;
 	}
+	
+	String dni;
+	String password;
+	String nom;
+	String cognoms;
+	String mail;
+	String dataInici;
+	String dataFinal;
+	
+	try{
+		 dni 		= session.getAttribute("dni2").toString();
+		 password 	= session.getAttribute("password2").toString();
+		 nom 		= session.getAttribute("nom2").toString();
+		 cognoms 	= session.getAttribute("cognoms2").toString();
+		 mail 		= session.getAttribute("email2").toString();
+		 dataInici 	= session.getAttribute("dataInici2").toString();
+		 dataFinal 	= session.getAttribute("dataFinal2").toString();
+
+	}catch(Exception e){
+		 dni 		= "";
+		 password 	= "";
+		 nom 		= "";
+		 cognoms 	= "";
+		 mail 		= "";
+		 dataInici 	= "";
+		 dataFinal 	= "";
+	}
+	
 %>
 
     <div id="wrapper">
@@ -170,40 +193,40 @@
                 <div class="row">
                         <div class="col-md-6">
                         	<h5>D.N.I.</h5>
-                            <input type="text" class="form-control" placeholder="D.N.I." name="dni" id="dni" required/>
+                            <input type="text" class="form-control" placeholder="D.N.I." name="dni" id="dni" value="<%=dni %>" required/>
                         </div>
                         <div class="col-md-6">
                         	<h5>Contrasenya</h5>
-                            <input type="password" class="form-control" placeholder="Contrasenya" name="password" required/>
+                            <input type="password" class="form-control" placeholder="Contrasenya" name="password" value="<%=password %>" required/>
                         </div>
                 </div>
                 <br>
                 <div class="row">
                         <div class="col-md-6">
                         	<h5>Nom</h5>
-                            <input type="text" class="form-control" placeholder="Nom" name="nom" required/>
+                            <input type="text" class="form-control" placeholder="Nom" name="nom" value="<%=nom %>" required/>
                         </div>
                         <div class="col-md-6">
                         	<h5>Cognoms</h5>
-                            <input type="text" class="form-control" placeholder="Cognoms" name="cognoms" required/>
+                            <input type="text" class="form-control" placeholder="Cognoms" name="cognoms" value="<%=cognoms %>" required/>
                         </div>
                 </div>
                 <br>
                 <div class="row">
                         <div class="col-md-12">
                         	<h5>Correu electrònic</h5>
-                            <input type="email" class="form-control" placeholder="Correu electronic" name="email" required/>
+                            <input type="email" class="form-control" placeholder="Correu electronic" name="email" value="<%=mail %>" required/>
                         </div>
                 </div>
                 <hr>
                 <div class="row">
                         <div class="col-md-6">
                             <h5>Data inicial</h5>
-                            <input type="date" class="form-control" name="dataInici" required/>
+                            <input type="date" class="form-control" name="dataInici" value="<%=dataInici %>" required/>
                         </div>
                         <div class="col-md-6">
                             <h5>Data finalitzacio</h5>
-                            <input type="date" class="form-control"  name="dataFinal" required/>
+                            <input type="date" class="form-control"  name="dataFinal" value="<%=dataFinal %>" required/>
                         </div>
                 </div>
                 <hr>

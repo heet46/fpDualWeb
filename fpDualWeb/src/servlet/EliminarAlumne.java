@@ -25,6 +25,12 @@ public class EliminarAlumne extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String sId = request.getParameter("idUsuari");
+		int veDeGestio;
+		try{
+			veDeGestio = Integer.parseInt(request.getParameter("veDeGestio"));
+		}catch(Exception e){
+			veDeGestio = 0;
+		}
 		int id = Integer.parseInt(sId);
 		
 		AlumneDAO aDAO = new AlumneDAO();
@@ -34,7 +40,11 @@ public class EliminarAlumne extends HttpServlet {
 			e.printStackTrace();
 		}
 		aDAO.tancarConn();
-		response.sendRedirect("pages/eliminarAlumne.jsp");
+		if(0 == veDeGestio){
+			response.sendRedirect("pages/eliminarAlumne.jsp");
+		}else{
+			response.sendRedirect("pages/llistatAlumnes.jsp");
+		}
 	}
 
 }

@@ -44,31 +44,37 @@ $(document).ready(function()
 	HttpSession sesion=request.getSession(); 
 	String nif;
 	if(sesion.getAttribute("nif") == null){	
+		session.invalidate();
 		response.sendRedirect("login.jsp");
 	}
-
-	String usuNif = null;
+	
+	String usuNif = sesion.getAttribute("nif").toString();
+	String usuNom = sesion.getAttribute("nomComplet").toString();
+	String usuCognom = sesion.getAttribute("cognom1Login").toString();
+	String usuMail = sesion.getAttribute("mailLogin").toString();
+	
 	String sessionID = null;
-	String usuNom = null;
-	String usuCognom = null;
-	String usuMail = null;
 	Cookie[] cookies = request.getCookies();
 	if(cookies != null){
 		for(Cookie cookie : cookies){
-		
-			if(cookie.getName().equals("nif")) usuNif = cookie.getValue();
-			if(cookie.getName().equals("nom")) usuNom = cookie.getValue();
-			if(cookie.getName().equals("cognom")) usuCognom = cookie.getValue();
-			if(cookie.getName().equals("mail")) usuMail = cookie.getValue();
-			if(cookie.getName().equals("JSESSIONID")) sessionID = cookie.getValue();
-			
-			
+			if(cookie.getName().equals("JSESSIONID")) sessionID = cookie.getValue();			
 		}
-	}
+	}	
 	
 	AlumneDAO aDAO = new AlumneDAO();
 	List<Alumne> llistaAlumnes = aDAO.llistaTotsAlumnes();
 	aDAO.tancarConn();
+	
+	try{
+		session.setAttribute("duplicat", 0);
+		session.removeAttribute("dni2");
+		session.removeAttribute("password2");
+		session.removeAttribute("nom2");
+		session.removeAttribute("cognoms2");
+		session.removeAttribute("email2");
+		session.removeAttribute("dataInici2");
+		session.removeAttribute("dataFinal2");
+	}catch(Exception e){}
 %>    
 
     <div id="wrapper">
@@ -156,7 +162,7 @@ $(document).ready(function()
                                     <th>Cognoms</th>
                                     <th>Tutor</th>
                                     <th>Centre</th>
-                                    <!-- <th>Detalls</th> -->
+                                    <th colspan="2" style="text-align: center;">Opcions</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -169,8 +175,12 @@ $(document).ready(function()
 									<td><%=alumne.getCognom1()%>&nbsp;<%=alumne.getCognom2()%></td>
 									<td><%=alumne.getTutor().getNom()%>&nbsp;<%=alumne.getTutor().getCognom1() %></td>
 									<td><%=alumne.getCentre().getNom()%></td>
-									<!-- <td><a href="#" class="btn btn-primary">Veure</a></td> -->
-
+									<form>
+									<td hidden><input type="hidden" name="idUsuari" value="<%=alumne.getIdUsuari()%>"></td>
+									<td hidden><input type="hidden" name="veDeGestio" value="1"></td>
+									<td><input type="submit" class="btn btn-warning" value="Editar" onclick="form.action='../ModificarAlumne'; form.method='Get';"> 
+									<input type="submit" class="btn btn-danger" value="Eliminar" onclick="form.action='../EliminarAlumne'; form.method='Post';"></td>
+									</form>
 							
 								</tr>
 								<%

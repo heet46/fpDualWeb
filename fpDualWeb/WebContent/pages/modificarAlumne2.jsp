@@ -34,35 +34,62 @@
 	HttpSession sesion=request.getSession(); 
 	String nif;
 	if(sesion.getAttribute("nif") == null){	
+		session.invalidate();
 		response.sendRedirect("login.jsp");
 	}
 
-	String usuNif = null;
+	String usuNif = sesion.getAttribute("nif").toString();
+	String usuNom = sesion.getAttribute("nomComplet").toString();
+	String usuCognom = sesion.getAttribute("cognom1Login").toString();
+	String usuMail = sesion.getAttribute("mailLogin").toString();
+	
 	String sessionID = null;
-	String usuNom = null;
-	String usuCognom = null;
-	String usuMail = null;
 	Cookie[] cookies = request.getCookies();
 	if(cookies != null){
 		for(Cookie cookie : cookies){
-		
-			if(cookie.getName().equals("nif")) usuNif = cookie.getValue();
-			if(cookie.getName().equals("nom")) usuNom = cookie.getValue();
-			if(cookie.getName().equals("cognom")) usuCognom = cookie.getValue();
-			if(cookie.getName().equals("mail")) usuMail = cookie.getValue();
-			if(cookie.getName().equals("JSESSIONID")) sessionID = cookie.getValue();
-			
-			
+			if(cookie.getName().equals("JSESSIONID")) sessionID = cookie.getValue();			
 		}
-	}
+	}	
 	
 	CentreDAO cDAO = new CentreDAO();
 	List<String> llistaCentres = cDAO.nomsCentres();
 	TutorDAO tDAO = new TutorDAO();
 	List<String> llistaTutors = tDAO.nomsTutors();
-	String tutor = session.getAttribute("tutor").toString();
-	String centre= session.getAttribute("centre").toString();
-	int id = Integer.parseInt(session.getAttribute("id").toString());
+
+	
+	int duplicat;
+	try{
+		duplicat = Integer.parseInt(session.getAttribute("duplicat").toString());
+	}catch(Exception e){
+		duplicat = 0;
+	}
+	
+	String dni;
+	String password;
+	String nom;
+	String cognoms;
+	String mail;
+	String dataInici;
+	String dataFinal;
+	
+	try{
+		 dni 		= session.getAttribute("dni2").toString();
+		 password 	= session.getAttribute("password2").toString();
+		 nom 		= session.getAttribute("nom2").toString();
+		 cognoms 	= session.getAttribute("cognoms2").toString();
+		 mail 		= session.getAttribute("email2").toString();
+		 dataInici 	= session.getAttribute("dataInici2").toString();
+		 dataFinal 	= session.getAttribute("dataFinal2").toString();
+
+	}catch(Exception e){
+		 dni 		= session.getAttribute("nifMod").toString();
+		 password 	= session.getAttribute("passwordMod").toString();
+		 nom 		= session.getAttribute("nomMod").toString();
+		 cognoms 	= session.getAttribute("cognomsMod").toString();
+		 mail 		= session.getAttribute("mailMod").toString();
+		 dataInici 	= session.getAttribute("dataIniciMod").toString();
+		 dataFinal 	= session.getAttribute("dataFinalMod").toString();
+	}
 %>          
     <div id="wrapper">
          <div class="navbar navbar-inverse navbar-fixed-top">
@@ -122,7 +149,22 @@
         <!-- /. NAV SIDE  -->
         <div id="page-wrapper" >
             <div id="page-inner">
-                
+                <!-- JS dependencies -->
+			    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+			    <script src="../assets/js/bootstrap.min.js"></script>
+		        <%
+		        if(duplicat == 1){ %>
+			
+				    <!-- bootbox code -->
+				    <script src="../assets/js/bootbox.min.js"></script>
+				    <script>		        
+				            bootbox.alert("Error, aquest NIF ja està introduit", function() {
+				                console.log("Alert Callback");
+				            });
+				    </script>
+		        <%
+		        }        
+		        %>        
                 <div class="row">
                     <div class="col-md-12">
                     <br>
@@ -140,44 +182,44 @@
                 </div>  
                 <form method="Post" action="../ModificarAlumne">
                 <div class="row">
-                                        	<input type="hidden" name="idUsuari" value="<%=id%>">
+                        <input type="hidden" name="idUsuari" value="${id}">
                 
                         <div class="col-md-6">
                         	<h5>D.N.I.</h5>
-                            <input type="text" class="form-control" name="dni" placeholder="D.N.I." value="${nif}" />
+                            <input type="text" class="form-control" name="dni" placeholder="D.N.I." value="<%=dni%>" />
                         </div>
                         <div class="col-md-6">
                         	<h5>Contrasenya</h5>
-                            <input type="password" class="form-control" name="password" placeholder="Contrasenya" value="${password}" />
+                            <input type="password" class="form-control" name="password" placeholder="Contrasenya" value="<%=password%>" />
                         </div>
                 </div>
                 <br>
                 <div class="row">
                         <div class="col-md-6">
                         	<h5>Nom</h5>
-                            <input type="text" class="form-control" name="nom" placeholder="Nom" value="${nom}" />
+                            <input type="text" class="form-control" name="nom" placeholder="Nom" value="<%=nom%>" />
                         </div>
                         <div class="col-md-6">
                         	<h5>Cognoms</h5>
-                            <input type="text" class="form-control" name="cognoms" placeholder="Cognoms" value="${cognoms}" />
+                            <input type="text" class="form-control" name="cognoms" placeholder="Cognoms" value="<%=cognoms%>" />
                         </div>
                 </div>
                 <br>
                 <div class="row">
                         <div class="col-md-12">
                         	<h5>Correu electrònic</h5>
-                            <input type="email" class="form-control" name="email" placeholder="Correu electrònic" value="${mail}" />
+                            <input type="email" class="form-control" name="email" placeholder="Correu electrònic" value="<%=mail%>" />
                         </div>
                 </div>
                 <hr>
                 <div class="row">
                         <div class="col-md-6">
                             <h5>Data inicial</h5>
-                            <input type="date" class="form-control" name="dataInici" value="${dataInici}"/>
+                            <input type="date" class="form-control" name="dataInici" value="<%=dataInici%>"/>
                         </div>
                         <div class="col-md-6">
                             <h5>Data finalització</h5>
-                            <input type="date" class="form-control" name="dataFinal" value="${dataFinal}"/>
+                            <input type="date" class="form-control" name="dataFinal" value="<%=dataFinal%>"/>
                         </div>
                 </div>
                 <hr>

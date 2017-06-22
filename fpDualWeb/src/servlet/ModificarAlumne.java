@@ -41,16 +41,16 @@ public class ModificarAlumne extends HttpServlet {
 			System.out.println(valorsAlumne.toString());
 			
 			request.getSession().setAttribute("id", id);
-			request.getSession().setAttribute("nif", valorsAlumne.get(0));
-			request.getSession().setAttribute("password", valorsAlumne.get(1));
-			request.getSession().setAttribute("nom", valorsAlumne.get(2));
+			request.getSession().setAttribute("nifMod", valorsAlumne.get(0));
+			request.getSession().setAttribute("passwordMod", valorsAlumne.get(1));
+			request.getSession().setAttribute("nomMod", valorsAlumne.get(2));
 			String cognoms = valorsAlumne.get(3)+" "+valorsAlumne.get(4);
-			request.getSession().setAttribute("cognoms", cognoms);
-			request.getSession().setAttribute("mail", valorsAlumne.get(5));
-			request.getSession().setAttribute("dataInici", valorsAlumne.get(6));
-			request.getSession().setAttribute("dataFinal", valorsAlumne.get(7));
-			request.getSession().setAttribute("tutor", valorsAlumne.get(8));
-			request.getSession().setAttribute("centre", valorsAlumne.get(9));
+			request.getSession().setAttribute("cognomsMod", cognoms);
+			request.getSession().setAttribute("mailMod", valorsAlumne.get(5));
+			request.getSession().setAttribute("dataIniciMod", valorsAlumne.get(6));
+			request.getSession().setAttribute("dataFinalMod", valorsAlumne.get(7));
+			request.getSession().setAttribute("tutorMod", valorsAlumne.get(8));
+			request.getSession().setAttribute("centreMod", valorsAlumne.get(9));
 			
 			aDAO.tancarConn();
 			
@@ -70,13 +70,22 @@ public class ModificarAlumne extends HttpServlet {
 		String nom = request.getParameter("nom");
 		String cognoms = request.getParameter("cognoms");
 		String email = request.getParameter("email");
-		System.out.println("MAIL BO: "+email);
 		String sTutor = request.getParameter("tutor");
 		String sCentre = request.getParameter("centre");
 		String sDataInici = request.getParameter("dataInici");
 		String sDataFinal = request.getParameter("dataFinal");
 		int idTutor = 0;
 		int idCentre = 0;
+		
+		request.getSession().setAttribute("dni2", dni);
+		request.getSession().setAttribute("password2", password);
+		request.getSession().setAttribute("nom2", nom);
+		request.getSession().setAttribute("cognoms2", cognoms);
+		request.getSession().setAttribute("email2", email);
+		request.getSession().setAttribute("tutor2", sTutor);
+		request.getSession().setAttribute("centre2", sCentre);
+		request.getSession().setAttribute("dataInici2", sDataInici);
+		request.getSession().setAttribute("dataFinal2", sDataFinal);
 		
 		Usuari usuari = new Usuari();
 		
@@ -136,9 +145,12 @@ public class ModificarAlumne extends HttpServlet {
 		try {
 			aDAO.modificarAlumne(usuari, alumne);
 			aDAO.tancarConn();
+			request.getSession().setAttribute("duplicat", 0);
 			response.sendRedirect("pages/llistatAlumnes.jsp");
 		} catch (SQLException e) {
 			aDAO.tancarConn();
+			request.getSession().setAttribute("duplicat", 1);
+			response.sendRedirect("pages/modificarAlumne2.jsp");
 		}
 		
 	}

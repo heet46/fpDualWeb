@@ -51,6 +51,18 @@ public class AfegirAlumne extends HttpServlet {
 		String sCentre = request.getParameter("centre");
 		String sDataInici = request.getParameter("dataInici");
 		String sDataFinal = request.getParameter("dataFinal");
+		
+		request.getSession().setAttribute("dni2", dni);
+		request.getSession().setAttribute("password2", password);
+		request.getSession().setAttribute("nom2", nom);
+		request.getSession().setAttribute("cognoms2", cognoms);
+		request.getSession().setAttribute("email2", email);
+		request.getSession().setAttribute("tutor2", sTutor);
+		request.getSession().setAttribute("centre2", sCentre);
+		request.getSession().setAttribute("dataInici2", sDataInici);
+		request.getSession().setAttribute("dataFinal2", sDataFinal);
+
+
 		int idTutor = 0;
 		int idCentre = 0;
 		

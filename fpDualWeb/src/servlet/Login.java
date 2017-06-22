@@ -53,30 +53,22 @@ public class Login extends HttpServlet {
 			        usu.setMail(valors.get(3));
 			        
 		        	
-		            session.setAttribute("nif", usu.getNIF());
 		            //Expirar en 30 min
 		            session.setMaxInactiveInterval(30*60);
 		            
-		            Cookie userNif = new Cookie("nif", nif);
-		            userNif.setMaxAge(30*60);		            
-		            response.addCookie(userNif);
 		            String nomComplet;
 		            if(usu.getCognom2().equals(null)){
 		            	nomComplet = usu.getNom()+" "+usu.getCognom1();
 		            }else{
 		            	nomComplet = usu.getNom()+" "+usu.getCognom1()+" "+usu.getCognom2();
 		            }
-		            Cookie userNom = new Cookie("nom", nomComplet);
-		            userNom.setMaxAge(30*60);		            
-		            response.addCookie(userNom);
 		            
-		            Cookie userCognom = new Cookie("cognom", usu.getCognom1());
-		            userCognom.setMaxAge(30*60);		            
-		            response.addCookie(userCognom);
-		            
-		            Cookie userMail = new Cookie("mail", usu.getMail());
-		            userMail.setMaxAge(30*60);		            
-		            response.addCookie(userMail);
+		            session.setAttribute("nif", usu.getNIF());
+		            session.setAttribute("nomLogin", usu.getNom());
+		            session.setAttribute("cognom1Login", usu.getCognom1());
+		            session.setAttribute("cognom2Login", usu.getCognom2());
+		            session.setAttribute("mailLogin", usu.getMail());
+		            session.setAttribute("nomComplet", nomComplet);
 		            
 		            uDAO.tancarConn();
 		            //redirijo a página con información de login exitoso	            
