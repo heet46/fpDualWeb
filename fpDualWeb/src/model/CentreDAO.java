@@ -138,7 +138,8 @@ public class CentreDAO {
 
 	public int donarBaixa(String id) throws SQLException {
 		int i = 0;
-		sentenciaSQL = "DELETE FROM centre WHERE id_centre LIKE '" + id + "';";
+		sentenciaSQL = "DELETE FROM centre WHERE Id_centre LIKE '" + id + "';";
+		System.out.println("sentenciaSQL donarBaixa --> " + sentenciaSQL);
 		i = gestorDB.modificarRegistre(sentenciaSQL);
 		return i;
 	}

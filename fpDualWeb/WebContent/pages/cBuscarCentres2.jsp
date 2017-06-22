@@ -6,7 +6,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 
-<span id="resEliminar"></span>
+
 	
 	<%
 		response.setContentType("text/html");
@@ -48,6 +48,9 @@
 		outt.println("<th ><b>Codi<b/></th>");
 		outt.println("<th ><b>Telefon<b/></th>");
 		outt.println("<th ><b>Web<b/></th>");
+		outt.println("<th ><b>Modificar<b/></th>");
+		outt.println("<th ><b>Eliminar<b/></th>");
+		outt.println("<th ><b><b/></th>");
 		outt.println("</tr>");
 		outt.println("</thead>");
 
@@ -125,26 +128,49 @@
 		} else {
 			rs = cdao.realitzaConsulta(ConsultaSQL);
 			
-
-			try {
+			String nid = "";
+			
 				while (rs.next()) {
 					outt.println("<tr>");
 					for (int i = 1; i <= 5; i++) {
-						if (i > 1)
-							out.print(" \t\t");
+
 						String columnValue = rs.getString(i);
-						
+						if(i == 1){
+							nid = rs.getString(i);
+						}
+             			
 						outt.println("<td>" + columnValue + "</td>");
-					}
-					outt.println("</tr>");
+					} 
+					
+					//old
+					//outt.println("<td>");
+					//	outt.println("<form action=\"../centreModificarCentress\" method=\"Post\">");
+					//		outt.println("<td hidden><input type=\"hidden\" name=\"nidmcentre\" value=\"" + nid + "\"></td>");
+					//		outt.println("<td><input type=\"Submit\" value=\"Modificar\" class=\"btn btn-warning\"></td>");
+					//	outt.println("</form>"); 
+					
+					
+					//runs
+					
+					outt.println("<td><input type='Submit' style='width:50px; height:25px; color:#ed9e2e' name='nidmcentre' value='" + nid + "' class='btn btn-warning' form='formmodificar'></td>");
+
+					
+					
+					
+					outt.println("<td><input type='Submit' style='width:50px; height:25px; color:#d04541' name='nidecentre' value='" + nid + "' class='btn btn-danger' form='formeliminar'></td>");
+					
+				outt.println("</tr>");
+					
 				}
-			} catch (SQLException e) {
-				e.printStackTrace();
-			} finally {
-			}
-			;
 		}
+		outt.println("<form id='formmodificar' action='../centreModificarCentress' method='POST'></form>");
+		outt.println("<form id='formeliminar' action='../centreEliminarCentress' method='POST'></form>");
 	%>
+	
+
 	</table>
+	
+			
+			
 <div/>
 
