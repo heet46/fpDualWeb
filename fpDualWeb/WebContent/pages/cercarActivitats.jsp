@@ -127,7 +127,32 @@
                      
                     </div>
                     <div class="col-lg-12"><hr></div>
-                    <div class="col-lg-12"><h3>Llistat d'activitats <input class="cercar" type=text placeholder="Cercar..." size="12"></h3></div>
+                    <div class="col-lg-12">
+                    	<h3>Llistat d'activitats</h3>
+                    </div>
+                    <div class="col-lg-12">
+                    
+                    	<form class="form-inline" action="../AfegirActivitats" method="Post">
+                    		<div class="input-group input">
+                    			<input class="cercar form-control" type=text placeholder="Cercar..." size="12">
+                    			<div class="input-group-btn">
+                    				<button type=Submit class="btn btn-primary fa fa-search cercarb"></button>
+                    			</div>
+                    		</div>
+                    		
+                    	<div class="dropdown">
+  						<button class="btn btn-primary dropdown-toggle dropbutton" type="button" data-toggle="dropdown">Filtre
+  						<span class="caret"></span></button>
+  						<ul class="dropdown-menu dropmenu">
+  							<li class="dropdown-header">Filtrar per Codi</li>
+    						<li><div class="checkbox dropmenu2"><input type="checkbox" value=""><label>EXC (Excursió)</label></div></li>
+    						<li><div class="checkbox dropmenu2"><input type="checkbox" value=""><label>TLL (Taller)</label></div></li>
+							<li><div class="checkbox dropmenu2"><input type="checkbox" value=""><label>TBL (Treball)</label></div></li>
+						</ul>
+					</div>
+                    	</form>
+                    </div>
+                    
                 </div>              
                  <!-- /. ROW  -->
                 <div class="row col-lg-12">
