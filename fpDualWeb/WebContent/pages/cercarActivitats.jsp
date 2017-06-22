@@ -25,6 +25,8 @@
     <link href="../assets/css/bootstrap-theme.min.css" rel="stylesheet" />
     
     <link href="../assets/css/custom.css" rel="stylesheet" />
+    
+    <link href="../assets/css/activitats.css" rel="stylesheet" />
      <!-- GOOGLE FONTS-->
     <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
     <!-- FAVICON -->
@@ -121,12 +123,13 @@
             <div id="page-inner">
                 <div class="row">
                     <div class="col-lg-12">
-                     <h2>Cerca d'activitats</h2>   
+                     <h2>Cerca d'activitats</h2>
+                     
                     </div>
+                    <div class="col-lg-12"><hr></div>
+                    <div class="col-lg-12"><h3>Llistat d'activitats <input class="cercar" type=text placeholder="Cercar..." size="12"></h3></div>
                 </div>              
                  <!-- /. ROW  -->
-                  <hr />
-                  <h3>Llistat d'activitats</h3>
                 <div class="row col-lg-12">
                     
  

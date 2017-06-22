@@ -201,7 +201,7 @@ var restrict = function(tb) {
                                         </tr>
                                         <tr>
                                             <td>Segon cognom: </td>
-                                            <td><input type="text" class="form-control" onpaste="restrict(this);" onkeypress="restrict(this);" onkeyup="restrict(this);" name="Scognom" size="25" required/></td>
+                                            <td><input type="text" class="form-control" onpaste="restrict(this);" onkeypress="restrict(this);" onkeyup="restrict(this);" name="Scognom" size="25"/></td>
                                         </tr>
                                         <tr>
                                             <td>Mail: </td>
@@ -252,6 +252,24 @@ var restrict = function(tb) {
     <!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
     <!-- JQUERY SCRIPTS -->
     <!-- CUSTOM SCRIPTS -->
+<%
+  	int existeix=0;
+  	try{
+	  	existeix=Integer.parseInt(session.getAttribute("existeix").toString());
+  	}catch(Exception e){
+  		existeix=0;  
+	}
+	  if(existeix==1){
+%>
+	    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+	    <script src="../assets/js/bootstrap.min.js"></script>
+<script src="../assets/js/bootbox.min.js"></script>
+<script type="text/javascript">		        
+	bootbox.alert("Error, aquest tutor ja està creat", function() {
+	console.log("Alert Callback");
+	});
+</script>
+<%}%>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="../assets/js/bootstrap.min.js"></script>
     <script src="../assets/js/custom.js"></script>
