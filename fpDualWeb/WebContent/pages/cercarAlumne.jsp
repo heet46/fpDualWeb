@@ -34,6 +34,16 @@
    	<!-- FAVICON -->
 	<link rel="shortcut icon" type="image/ico" href="../assets/img/favicon-clock-o.ico" />
 	
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+	<script type="text/javascript" src="../assets/js/jquery.tablesorter.js"></script>
+	<script type="text/javascript">
+	$(document).ready(function() 
+		    { 
+		        $("#myTable").tablesorter(); 
+		    } 
+		);
+	</script>
+	
 </head>
 <body>
 <%
@@ -231,7 +241,7 @@
 				
 				<div class="row">
                     <div class="col-lg-12 col-md-12">
-                        <table class="table table-striped  table-hover">
+                        <table class="table table-striped  table-hover" id="myTable">
                             <thead>
                                 <tr id="headeer">
                                     <th>#</th>
@@ -287,7 +297,6 @@
           
 
      <!-- /. WRAPPER  -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="../assets/js/bootstrap.min.js"></script>
     <script src="../assets/js/custom.js"></script>
     

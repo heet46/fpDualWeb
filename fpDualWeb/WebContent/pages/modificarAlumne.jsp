@@ -32,6 +32,15 @@
     <!-- FAVICON -->
 	<link rel="shortcut icon" type="image/ico" href="../assets/img/favicon-clock-o.ico" />
 
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+	<script type="text/javascript" src="../assets/js/jquery.tablesorter.js"></script>
+	<script type="text/javascript">
+	$(document).ready(function() 
+		    { 
+		        $("#myTable").tablesorter();
+		    } 
+		);
+	</script>
 </head>
 <body> 
 <%
@@ -125,7 +134,7 @@
                 <div class="row">
                     <div class="col-md-12">
                     <br>
-                     <h2 style="display:inline">Llistat d'alumnes </h2>
+                     <h2 style="display:inline">Modificació d'alumnes</h2>
                      <div style="float:right; font-size:16px" ><a href="alumnes.jsp"><strong>Torna enrere</strong></a></div>
                     </div>
                 </div>              
@@ -145,7 +154,7 @@
                                 <tr id="headeer">
                                     <th>#</th>
                                     <th>Nom</th>
-                                    <th>Cognom</th>
+                                    <th>Cognoms</th>
                                     <th>Tutor</th>
                                     <th>Centre</th>
                                     <th hidden></th>
@@ -160,9 +169,8 @@
 									%>
 									<td><%=alumne.getIdUsuari()%></td>
 									<td><%=alumne.getNom()%></td>
-									<td><%=alumne.getCognom1()%></td>
-									<td><%=alumne.getTutor().getNom()%></td>
-									<td><%=alumne.getCentre().getNom()%></td>
+									<td><%=alumne.getCognom1()%>&nbsp;<%=alumne.getCognom2()%></td>
+									<td><%=alumne.getTutor().getNom()%>&nbsp;<%=alumne.getTutor().getCognom1() %></td>									<td><%=alumne.getCentre().getNom()%></td>
 									<form action="../ModificarAlumne" method="Get">
 										<td hidden><input type="hidden" name="idUsuari" value="<%=alumne.getIdUsuari()%>"></td>
 	                                    <td>
@@ -198,7 +206,6 @@
           
 
      <!-- /. WRAPPER  -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="../assets/js/bootstrap.min.js"></script>
     <script src="../assets/js/custom.js"></script>
     

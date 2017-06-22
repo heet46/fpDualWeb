@@ -11,7 +11,7 @@
     <title>Registre d'hores</title>
     <!-- FONTAWESOME STYLES-->
     <link href="../assets/css/font-awesome.css" rel="stylesheet" />
-    <!-- BOOTSTRAP STYLES-->    
+    
     <link href="../assets/css/bootstrap-theme.css" rel="stylesheet" />
 
     <link href="../assets/css/bootstrap-theme.min.css" rel="stylesheet" />
@@ -21,12 +21,23 @@
     <link href="../assets/css/bootstrap-theme.min.css" rel="stylesheet" />
     
     <link href="../assets/css/bootstrap.css" rel="stylesheet" />
-    <!-- CUSTOM STYLES-->
+
     <link href="../assets/css/custom.css" rel="stylesheet" />
-     <!-- GOOGLE FONTS-->
+
    	<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
    	<!-- FAVICON -->
 	<link rel="shortcut icon" type="image/ico" href="../assets/img/favicon-clock-o.ico" />
+	
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script type="text/javascript" src="../assets/js/jquery.tablesorter.js"></script>
+<script type="text/javascript">
+$(document).ready(function() 
+	    { 
+	        $("#myTable").tablesorter(); 
+	    } 
+	);
+</script>
+	
 </head>
 <body>
 <%
@@ -59,6 +70,7 @@
 	List<Alumne> llistaAlumnes = aDAO.llistaTotsAlumnes();
 	aDAO.tancarConn();
 %>    
+
     <div id="wrapper">
          <div class="navbar navbar-inverse navbar-fixed-top">
             <div class="adjust-nav">
@@ -124,9 +136,12 @@
                 </div>               
                  <!-- /. ROW  -->
                   <hr />
+                  	
               <div class="row">
                     <div class="col-lg-12 col-md-12">
-                        <table class="table table-striped  table-hover" id="myTable">
+                    
+                    
+                        <table class="table table-striped table-hover tablesorter" id="myTable">
                             <thead>
                             	<tr>
 									<th><input type="text" id="myId" onkeyup="buscarId()" placeholder="ID..." style="width:30px"></th>
@@ -138,7 +153,7 @@
                                 <tr id="headeer">
                                     <th>#</th>
                                     <th>Nom</th>
-                                    <th>Cognom</th>
+                                    <th>Cognoms</th>
                                     <th>Tutor</th>
                                     <th>Centre</th>
                                     <!-- <th>Detalls</th> -->
@@ -151,8 +166,8 @@
 									%>
 									<td><%=alumne.getIdUsuari()%></td>
 									<td><%=alumne.getNom()%></td>
-									<td><%=alumne.getCognom1()%></td>
-									<td><%=alumne.getTutor().getNom()%></td>
+									<td><%=alumne.getCognom1()%>&nbsp;<%=alumne.getCognom2()%></td>
+									<td><%=alumne.getTutor().getNom()%>&nbsp;<%=alumne.getTutor().getCognom1() %></td>
 									<td><%=alumne.getCentre().getNom()%></td>
 									<!-- <td><a href="#" class="btn btn-primary">Veure</a></td> -->
 
@@ -184,7 +199,6 @@
           
 
      <!-- /. WRAPPER  -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="../assets/js/bootstrap.min.js"></script>
     <script src="../assets/js/custom.js"></script>
     

@@ -90,6 +90,7 @@ public class ModificarAlumne extends HttpServlet {
 			usuari.setCognom2(cognom2);
 		}else{
 			usuari.setCognom1(cognoms);
+			usuari.setCognom2("");
 		}
 		
 		usuari.setIdUsuari(id);

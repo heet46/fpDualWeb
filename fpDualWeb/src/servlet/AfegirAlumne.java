@@ -66,7 +66,7 @@ public class AfegirAlumne extends HttpServlet {
 		StringTokenizer st = new StringTokenizer(cognoms);
 
 		if(st.countTokens() > 1){
-				cognom1 = st.nextToken();
+			cognom1 = st.nextToken();
 			while(st.hasMoreTokens()){
 				cognom2 += st.nextToken()+" ";
 			}
