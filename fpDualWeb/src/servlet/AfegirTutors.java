@@ -60,8 +60,11 @@ public class AfegirTutors extends HttpServlet {
 			request.getSession().setAttribute("mail2",mail);
 		}
 
-		
-		response.sendRedirect("/fpDualWeb/pages/tutorsAfegir.jsp");
+		if(existeix==1){
+			response.sendRedirect("/fpDualWeb/pages/tutorsAfegir.jsp");
+		}else{
+			response.sendRedirect("/fpDualWeb/pages/tutorsConsultar.jsp");
+		}
 	}
 
 }

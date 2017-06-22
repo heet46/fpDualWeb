@@ -188,7 +188,7 @@
 	                                        				<td hidden>
                                                         		<input type="hidden" name="NIF" id="NIF" value="<%=u.getNIF()%>" size="0">
                                                         	</td>
-	                                        				<td style="width: 15%">
+	                                        				<td style="width: 5%">
                                                         		<input type="submit" class="btn btn-danger" value="Eliminar">
                                                        	 	</td>
                                                        	 </form>
@@ -196,7 +196,7 @@
                                                        	    <td hidden>
                                                         		<input type="hidden" name="NIF" value="<%=u.getNIF()%>" size="0">
 	                                        				</td>
-                                                        	<td style="width: 15%">
+                                                        	<td style="width: 5%">
                                                         		<input type="submit" class="btn btn-warning" value="Modificar">
                                                         	</td>
 														</form>
@@ -204,6 +204,11 @@
 	                                        <% 
 	                                        	}
 	                                       	%>	
+	                                       		    <tr>
+	                                        			<td>
+	                                        				<a href="tutorsAfegir.jsp"><button  class="btn btn-primary">Afegir Tutor</button></a> 
+	                                        			</td>
+	                                        		</tr>
 	                                    </tbody>
 	                                </table>
                                    </div>

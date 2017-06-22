@@ -57,7 +57,7 @@ public class modificarTutors2 extends HttpServlet {
 			e.printStackTrace();
 		}
 		doGet(request, response);
-		response.sendRedirect("pages/tutors.jsp");
+		response.sendRedirect("pages/tutorsConsulta.jsp");
 	}
 
 }

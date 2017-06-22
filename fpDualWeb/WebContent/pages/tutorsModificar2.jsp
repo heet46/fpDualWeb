@@ -31,20 +31,15 @@
    };
 </script>
 <script type="text/javascript">
-    function validateForm()
-    {
-    var a=document.forms["Form"]["NIF"].value;
-    var b=document.forms["Form"]["pass"].value;
-    var c=document.forms["Form"]["nom"].value;
-    var d=document.forms["Form"]["Pcognom"].value;
-    var f=document.forms["Form"]["mail"].value;
-    var g=document.getElementById("tec");
-    if (a==null || a=="",b==null || b=="",c==null || c=="",d==null || d=="" || e==null || f==null || f=="" || g.selectedIndex==0)
-      {
-      alert("Introdueix tots els camps.");
-      return false;
-      }
-    }
+function validateForm()
+{
+var g=document.getElementById("tec");
+if (g.selectedIndex==0)
+  {
+  alert("No s'ha seleccionat una tecnologia.");
+  return false;
+  }
+}
     </script>
 </head>
 <body>
@@ -162,19 +157,19 @@
                                         <tr>
                                             <td>NIF: </td>
                                             <input type="hidden" name="IdVella" value="${NIF}">
-                                            <td><input type="text" class="form-control" name="NIF" size="25"  value="${NIF}"/></td>
+                                            <td><input type="text" class="form-control" name="NIF" size="25"  value="${NIF}" required/></td>
                                         </tr>
                                         <tr>
                                             <td>Password: </td>
-                                            <td><input type="password" class="form-control" name="pass" value="${password}" size="25"/></td>
+                                            <td><input type="password" class="form-control" name="pass" value="${password}" size="25" required/></td>
                                         </tr>
                                         <tr>
                                             <td>Nom: </td>
-                                            <td><input type="text" class="form-control" onpaste="restrict(this);" onkeypress="restrict(this);" onkeyup="restrict(this);" name="nom" size="25"  value="${nom}" /></td>
+                                            <td><input type="text" class="form-control" onpaste="restrict(this);" onkeypress="restrict(this);" onkeyup="restrict(this);" name="nom" size="25"  value="${nom}" required/></td>
                                         </tr>
                                         <tr>
                                             <td>Primer cognom: </td>
-                                            <td><input type="text" class="form-control" onpaste="restrict(this);" onkeypress="restrict(this);" onkeyup="restrict(this);" name="Pcognom" value="${Pcognom}" size="25"/></td>
+                                            <td><input type="text" class="form-control" onpaste="restrict(this);" onkeypress="restrict(this);" onkeyup="restrict(this);" name="Pcognom" value="${Pcognom}" size="25" required/></td>
                                         </tr>
                                         <tr>
                                             <td>Segon cognom: </td>
@@ -182,13 +177,13 @@
                                         </tr>
                                         <tr>
                                             <td>Mail: </td>
-                                            <td><input type="email" class="form-control" name="mail" value="${mail}" size="25"/></td>
+                                            <td><input type="email" class="form-control" name="mail" value="${mail}" size="25" required/></td>
                                         </tr>
                                         <tr>
                                         <td>Tecnologia: </td>
                                         <td>
-                                            <select name="tecno" id="tec" class="form-control">
-                                                <option selected hidden value="selec">Selecciona una opció:</option>
+                                            <select name="tecno" id="tec" class="form-control" required>
+                                                <option selected disabled value="selec">Selecciona una opció:</option>
                                                 <option value="JAVA">JAVA</option>
                                                 <option value="SAP">SAP</option>
                                                 <option value="NET">NET</option>
