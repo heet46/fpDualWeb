@@ -37,10 +37,9 @@
     var b=document.forms["Form"]["pass"].value;
     var c=document.forms["Form"]["nom"].value;
     var d=document.forms["Form"]["Pcognom"].value;
-    var e=document.forms["Form"]["Scognom"].value;
     var f=document.forms["Form"]["mail"].value;
     var g=document.getElementById("tec");
-    if (a==null || a=="",b==null || b=="",c==null || c=="",d==null || d=="" || e==null || e=="" || f==null || f=="" || g.selectedIndex==0)
+    if (a==null || a=="",b==null || b=="",c==null || c=="",d==null || d=="" || e==null || f==null || f=="" || g.selectedIndex==0)
       {
       alert("Introdueix tots els camps.");
       return false;

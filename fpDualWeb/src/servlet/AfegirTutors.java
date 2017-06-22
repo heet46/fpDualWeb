@@ -52,6 +52,12 @@ public class AfegirTutors extends HttpServlet {
 		} catch (SQLException e) {
 			existeix=1;
 			request.getSession().setAttribute("existeix", existeix);
+			request.getSession().setAttribute("NIF2",NIF);
+			request.getSession().setAttribute("pass2",pass);
+			request.getSession().setAttribute("nom2",nom);
+			request.getSession().setAttribute("Pcognom2",pCog);
+			request.getSession().setAttribute("Scognom2",sCog);
+			request.getSession().setAttribute("mail2",mail);
 		}
 
 		

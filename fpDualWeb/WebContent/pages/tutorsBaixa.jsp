@@ -30,6 +30,15 @@
     <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
          <!-- FAVICON -->
 	<link rel="shortcut icon" type="image/ico" href="../assets/img/favicon-clock-o.ico" />
+
+<script type="text/javascript">
+function marcarTot(source) {
+	  checkboxes = document.getElementsByName('NIF');
+	  for(var i=0, n=checkboxes.length;i<n;i++) {
+		    checkboxes[i].checked = source.checked;
+		}
+	}
+</script>
 </head>
 <body>
 <%
@@ -134,6 +143,7 @@
                                         
                             <div class="row">
                                 <div class="col-lg-12">
+                                <form name="form" method="Post" action="../TutorsBaixaMultiple" class="table-link" onsubmit="comprobarTutor()">
 	                                <table class="table table-hover table-inverse" id="myTable">
 	                                    <thead>
 	                                    <tr>
@@ -146,7 +156,7 @@
                                                         <th><span>Cognom</span></th>
                                                         <th><span>NIF</span></th>
                                                         <th><span>E-mail</span></th>
-                                                        <th>&nbsp;</th>
+                                                        <th><input type="checkbox" onclick="marcarTot(this)"><span style="margin:10px;">Sel·leccionar-ho tot</span></th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
@@ -171,11 +181,9 @@
                                                         		<td>
                                                         			<%=u.getMail()%>
                                                         		</td>
-                                                        		<td style="width: 25%">
-                                                        			<form name="form" method="Post" action="../baixaTutors" class="table-link" onsubmit="comprobarTutor()">
-                                                        				<input type="hidden" name="NIF" id="NIF" value="<%=u.getNIF()%>">
-                                                        				<input type="submit" class="btn btn-danger" value="Eliminar">
-                                                        			</form>
+                                                        		<td width="20%">
+                                                        				<input style="float:center;" type="checkbox" name="NIF" id="nSel" value="<%=u.getNIF()%>">
+                                                        				<label style="color:red;">Eliminar</label>
                                                         		</td>
                                                         	</tr>
                                                         <% 	
@@ -183,6 +191,8 @@
                                                         %>
                                                     </tbody>
                                                 </table>
+                                                <input type="submit" class="btn btn-danger" value="Eliminar Sel·lecció">
+                                              </form>
                                             </div>
                                         </div>
                                     </div>
@@ -240,6 +250,7 @@
 	    if (td) {
 	      if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
 	        tr[i].style.display = "";
+	        
 	      } else {
 	        tr[i].style.display = "none";
 	      }

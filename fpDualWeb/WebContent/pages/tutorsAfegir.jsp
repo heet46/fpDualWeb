@@ -124,6 +124,8 @@ var restrict = function(tb) {
                 </span>
             </div>
         </div>
+        
+        
         <!-- /. NAV TOP  -->
         <nav class="navbar-default navbar-side" role="navigation">
             <div class="sidebar-collapse">
@@ -171,6 +173,41 @@ var restrict = function(tb) {
                     </div>
  
                     </div>
+                    <%
+				  	int existeix=0;
+				  	try{
+					  	existeix=Integer.parseInt(session.getAttribute("existeix").toString());
+				  	}catch(Exception e){
+				  		existeix=0;  
+					}
+					  if(existeix==1){
+				%>
+					    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+					    <script src="../assets/js/bootstrap.min.js"></script>
+				<script src="../assets/js/bootbox.min.js"></script>
+				<script type="text/javascript">		        
+					bootbox.alert("Error, aquest tutor ja està creat", function() {
+					console.log("Alert Callback");
+					})
+				</script>
+				<%
+					String NIF2=session.getAttribute("NIF2").toString();
+					String pass2=session.getAttribute("pass2").toString();
+					String nom2=session.getAttribute("nom2").toString();
+					String Pcognom=session.getAttribute("Pcognom2").toString();
+					String Scognom=session.getAttribute("Scognom2").toString();
+					String mail=session.getAttribute("mail2").toString();
+				%>
+				<%}else{ %>
+				<%
+					session.setAttribute("NIF2","");
+					session.setAttribute("pass2","");
+					session.setAttribute("nom2","");
+					session.setAttribute("Pcognom2","");
+					session.setAttribute("Scognom2","");
+					session.setAttribute("mail2","");
+				%>
+				<%} %>
                   <!-- /. ROW  --> 
                             <div class="row text-center pad-top">
                                 <form method="post" name="Form" onsubmit="return validateForm()" action="/fpDualWeb/afegirTutors">
@@ -178,7 +215,7 @@ var restrict = function(tb) {
                                     <table>
                                         <tr>
                                             <td>NIF: </td>
-                                            <td><input type="text" class="form-control" id="NIF" name="NIF" size="25" maxlength="9" onblur="nif(this.value)" required/></td>
+                                            <td><input type="text" class="form-control" value="${NIF2}" name="NIF" size="25" maxlength="9" onblur="nif(this.value)" required/></td>
                                         </tr>
                                         <%
                                         	UsuariDAO uDAO=new UsuariDAO();
@@ -189,23 +226,23 @@ var restrict = function(tb) {
                                         %>
                                         <tr>
                                             <td>Password: </td>
-                                            <td><input type="password" class="form-control" name="pass" size="25" required/></td>
+                                            <td><input type="password" class="form-control" name="pass" value="${pass2}" size="25" required/></td>
                                         </tr>
                                         <tr>
                                             <td>Nom: </td>
-                                            <td><input type="text" class="form-control" onpaste="restrict(this);" onkeypress="restrict(this);" onkeyup="restrict(this);" name="nom" size="25" required/></td>
+                                            <td><input type="text" class="form-control" onpaste="restrict(this);" onkeypress="restrict(this);" onkeyup="restrict(this);" name="nom" value="${nom2}" size="25" required/></td>
                                         </tr>
                                         <tr>
                                             <td>Primer cognom: </td>
-                                            <td><input type="text" class="form-control" onpaste="restrict(this);" onkeypress="restrict(this);" onkeyup="restrict(this);" name="Pcognom" size="25" required/></td>
+                                            <td><input type="text" class="form-control" onpaste="restrict(this);" onkeypress="restrict(this);" onkeyup="restrict(this);" name="Pcognom" value="${Pcognom2}"  size="25" required/></td>
                                         </tr>
                                         <tr>
                                             <td>Segon cognom: </td>
-                                            <td><input type="text" class="form-control" onpaste="restrict(this);" onkeypress="restrict(this);" onkeyup="restrict(this);" name="Scognom" size="25"/></td>
+                                            <td><input type="text" class="form-control" onpaste="restrict(this);" onkeypress="restrict(this);" onkeyup="restrict(this);" name="Scognom" value="${Scognom2}" size="25"/></td>
                                         </tr>
                                         <tr>
                                             <td>Mail: </td>
-                                            <td><input type="email" class="form-control" name="mail" size="25" required/></td>
+                                            <td><input type="email" class="form-control" name="mail" value="${mail2}" size="25" required/></td>
                                         </tr>
                                         <tr>
                                         <td>Tecnologia: </td>
@@ -252,24 +289,6 @@ var restrict = function(tb) {
     <!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
     <!-- JQUERY SCRIPTS -->
     <!-- CUSTOM SCRIPTS -->
-<%
-  	int existeix=0;
-  	try{
-	  	existeix=Integer.parseInt(session.getAttribute("existeix").toString());
-  	}catch(Exception e){
-  		existeix=0;  
-	}
-	  if(existeix==1){
-%>
-	    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-	    <script src="../assets/js/bootstrap.min.js"></script>
-<script src="../assets/js/bootbox.min.js"></script>
-<script type="text/javascript">		        
-	bootbox.alert("Error, aquest tutor ja està creat", function() {
-	console.log("Alert Callback");
-	});
-</script>
-<%}%>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="../assets/js/bootstrap.min.js"></script>
     <script src="../assets/js/custom.js"></script>
