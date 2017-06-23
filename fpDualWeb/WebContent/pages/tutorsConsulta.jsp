@@ -167,7 +167,7 @@
 	                                        	try{	
 	                                        		usu=tDAO.consultaTutor();
 	                                        	}catch(Exception e){
-	                                        		
+	                                        		e.printStackTrace();
 	                                        	}
 	                                        	for(Usuari u:usu){
 	                                        %>
