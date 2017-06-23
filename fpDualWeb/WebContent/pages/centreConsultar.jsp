@@ -67,32 +67,39 @@
     <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
              <!-- FAVICON -->
 	<link rel="shortcut icon" type="image/ico" href="../assets/img/favicon-clock-o.ico" />
+    <script src="assets/js/jquery-3.2.1.min.js"></script>
+
+	<script type="text/javascript">
+		$(document).ready(function() {
+    		setTimeout(function() {
+        	$(".content").fadeOut(1500);
+    		},1500);
+		});
+	</script>
 </head>
 <body>
+
+<!-- Permetre acces nomes si hi ha una sessio -->
 <%
 	HttpSession sesion=request.getSession(); 
 	String nif;
 	if(sesion.getAttribute("nif") == null){	
+		session.invalidate();
 		response.sendRedirect("login.jsp");
 	}
 	
-	String usuNif = null;
+	String usuNif = sesion.getAttribute("nif").toString();
+	String usuNom = sesion.getAttribute("nomComplet").toString();
+	String usuCognom = sesion.getAttribute("cognom1Login").toString();
+	String usuMail = sesion.getAttribute("mailLogin").toString();
+	
 	String sessionID = null;
-	String usuNom = null;
-	String usuCognom = null;
-	String usuMail = null;
 	Cookie[] cookies = request.getCookies();
 	if(cookies != null){
 		for(Cookie cookie : cookies){
-		
-			if(cookie.getName().equals("nif")) usuNif = cookie.getValue();
-			if(cookie.getName().equals("nom")) usuNom = cookie.getValue();
-			if(cookie.getName().equals("cognom")) usuCognom = cookie.getValue();
-			if(cookie.getName().equals("mail")) usuMail = cookie.getValue();
-			if(cookie.getName().equals("JSESSIONID")) sessionID = cookie.getValue();
-						
+			if(cookie.getName().equals("JSESSIONID")) sessionID = cookie.getValue();			
 		}
-	}
+	}	
 %>
     <div id="wrapper">
          <div class="navbar navbar-inverse navbar-fixed-top">

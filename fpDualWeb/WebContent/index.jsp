@@ -116,6 +116,9 @@
                     <li>
                         <a href="pages/activitats.jsp"><i class="fa fa-list "></i>Activitats</a>
                     </li>
+                    <li>
+                        <a href="pages/administrador.jsp"><i class="fa fa-university "></i>Administrador </a>
+                    </li>
                 </ul>
             </div>
 
@@ -179,6 +182,17 @@
                            <a href="pages/activitats.jsp" >
  <i class="fa fa-list fa-5x"></i>
                       <h4>Activitats</h4>
+                      </a>
+                      </div>
+                     
+                     
+                  </div>
+                  
+                  <div class="col-lg-3 col-md-2 col-sm-2 col-xs-6">
+                      <div class="div-square">
+                           <a href="pages/administrador.jsp" >
+<i class="fa fa-university fa-5x" aria-hidden="true"></i>
+                      <h4>Administrador</h4>
                       </a>
                       </div>
                      

@@ -98,12 +98,15 @@
                     <a href="tutors.jsp"><i class="fa fa-book"></i>Tutors</a>
                 </li>
 
-                <li class="active-link">
+                <li>
                     <a href="centre.jsp"><i class="fa fa-university "></i>Centres </a>
                 </li>
                 <li>
                     <a href="activitats.jsp"><i class="fa fa-list "></i>Activitats</a>
                 </li>
+                <li class="active-link">
+                    <a href="administrador.jsp"><i class="fa fa-university "></i>Administrador </a>
+                 </li>
               </ul>
           </div>
 
@@ -119,11 +122,11 @@
                  
                     <div class="col-md-12">
                     
-                    <a title="Manteniment Centres" href="../index.jsp">
+                    <a title="Manteniment Administradors" href="../index.jsp">
                     	<img border='0' src='../assets/img/BackArrow.ico' style='position:fixed; head:0; right:0;' width="50" height="50" />
                     </a>
                     
-                     <h2>Manteniment Centres</h2>
+                     <h2>Manteniment Administradors</h2>
                      
                     </div>
                 </div>
@@ -135,18 +138,18 @@
                  <div class="row text-center pad-top" >
                    	<div class="col-lg-3 col-md-2 col-sm-2 col-xs-6">
                       	<div class="div-square">
-                           <a href="centreAfegirFINAL.jsp" >
+                           <a href="administradorAlta.jsp" >
                         		<i class="fa fa-user-plus fa-5x" aria-hidden="true"></i>
-								<h4>Afegir Centre</h4>
+								<h4>Afegir Administrador</h4>
                       		</a>
                   		</div>
 					</div>
 
                   <div class="col-lg-3 col-md-2 col-sm-2 col-xs-6">
                       <div class="div-square">
-                           <a href="centreModificar.jsp" >
+                           <a href="administradorBaixa.jsp" >
                         <i class="fa fa-pencil fa-5x" aria-hidden="true"></i>
-                      <h4>Modificar Centre</h4>
+                      <h4>Modificar Administrador</h4>
                       </a>
                       </div>
                      
@@ -155,29 +158,20 @@
 
                   <div class="col-lg-3 col-md-2 col-sm-2 col-xs-6">
                       <div class="div-square">
-                           <a href="centreConsultar.jsp" >
+                           <a href="administradorConsulta.jsp" >
                      <i class="fa fa-list fa-5x"></i>
-                      <h4>Llistat de Centres</h4>
+                      <h4>Llistat de Administrador</h4>
                       </a>
                       </div>
                   </div>
 
-
-				<div class="col-lg-3 col-md-2 col-sm-2 col-xs-6">
-                      <div class="div-square">
-                           <a href="cBuscarCentres.jsp" >
-                     <i class="fa fa-list fa-5x"></i>
-                      <h4>Buscar Centres</h4>
-                      </a>
-                      </div>
-                  </div>
                   
                   
                   <div class="col-lg-3 col-md-2 col-sm-2 col-xs-6">
                       <div class="div-square">
-                           <a href="centreEliminar.jsp" >
+                           <a href="administradorEliminar.jsp" >
                         <i class="fa fa-user-times fa-5x" aria-hidden="true"></i>
-                      <h4>Eliminar Centres</h4>
+                      <h4>Eliminar Administrador</h4>
                       </a>
                   </div>
                    
