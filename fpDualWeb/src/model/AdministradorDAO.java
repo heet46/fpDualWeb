@@ -1,7 +1,6 @@
 package model;
 
 import java.sql.ResultSet;
-import java.sql.SQLException;
 
 import controlador.Constants;
 import controlador.GestorDB;
@@ -15,11 +14,8 @@ public class AdministradorDAO {
 	}
 
 	// Basics
-	public int alta(String idUsuari) throws SQLException {
+	public void alta() {
 
-		String consultaSQL = "UPDATE usuari SET permisos=4 WHERE id_usuari LIKE " + idUsuari + ";";
-		System.out.println(consultaSQL);
-		return gestorDB.modificarRegistre(consultaSQL);
 	}
 
 	public void baixa() {
@@ -41,4 +37,13 @@ public class AdministradorDAO {
 		String consultaSQL = "SELECT * FROM usuari WHERE permisos NOT LIKE 4";
 		return gestorDB.consultaRegistres(consultaSQL);
 	}
+
+	/*
+	 * public int canviaPERMISuser(String idUsuari) throws SQLException {
+	 * 
+	 * String consultaSQL = "UPDATE usuari SET permisos=4 WHERE id_usuari LIKE "
+	 * + idUsuari + ";"; System.out.println(consultaSQL); return
+	 * gestorDB.modificarRegistre(consultaSQL); }
+	 */
+
 }

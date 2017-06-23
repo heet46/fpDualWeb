@@ -9,7 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import model.AdministradorDAO;
+import model.Usuari;
+import model.UsuariDAO;
 
 /**
  * Servlet implementation class AdminAfegir
@@ -32,17 +33,35 @@ public class AdminAfegir extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		AdministradorDAO adao = new AdministradorDAO();
-		String idUsuari = request.getParameter("customers");
+		UsuariDAO uDAO = new UsuariDAO();
+		Usuari u = new Usuari();
+		int existeix = 0;
+		String NIF = (String) request.getParameter("NIF");
+		String pass = (String) request.getParameter("pass");
+		String nom = (String) request.getParameter("nom");
+		String pCog = (String) request.getParameter("Pcognom");
+		String sCog = (String) request.getParameter("Scognom");
+		String mail = (String) request.getParameter("mail");
 
 		try {
-			adao.alta(idUsuari);
+			uDAO.altaUsuari(new Usuari(NIF, pass, nom, pCog, sCog, mail, 2));
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			existeix = 1;
+			request.getSession().setAttribute("NIF2", NIF);
+			request.getSession().setAttribute("pass2", pass);
+			request.getSession().setAttribute("nom2", nom);
+			request.getSession().setAttribute("Pcognom2", pCog);
+			request.getSession().setAttribute("Scognom2", sCog);
+			request.getSession().setAttribute("mail2", mail);
 		}
 
-		response.sendRedirect("pages/administradorConsultar.jsp");
+		if (existeix == 1) {
+			request.getSession().setAttribute("existeix", existeix);
+			response.sendRedirect("/fpDualWeb/pages/administradorAlta.jsp");
+		} else {
+			request.getSession().setAttribute("existeix", existeix);
+			response.sendRedirect("/fpDualWeb/pages/administradorConsulta.jsp");
+		}
 	}
+
 }
