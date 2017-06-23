@@ -123,6 +123,11 @@
                     <li>
                     	<a href="pages/responsables.jsp"><i class="fa fa-street-view"></i>Responsables</a>
                     </li>
+                    <%if(permis == 1){ %>
+                    <li>
+                    	<a href="pages/dadesUsuari.jsp"><i class="fa fa-id-card"></i>Dades d'usuari</a>
+                    </li>
+                    <%} %>
                 </ul>
             </div>
 
@@ -213,7 +218,7 @@
 	                      <div class="div-square">
 	                           <a href="pages/dadesUsuari.jsp" >
 	                    <i class="fa fa-id-card fa-5x"></i>
-	                      <h4>Dades d'usuaris</h4>
+	                      <h4>Dades d'usuari</h4>
 	                      </a>
 	                      </div>
 						</div>
