@@ -47,7 +47,7 @@
 	}	
 	
 	try{
-		session.setAttribute("duplicat", 0);
+		session.removeAttribute("duplicat");
 		session.setAttribute("dni2","");
 		session.setAttribute("password2",""); 
 		session.setAttribute("nom2","");      

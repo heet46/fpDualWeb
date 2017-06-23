@@ -49,7 +49,12 @@ public class UsuariDAO {
 	}
 	
 	public void altaUsuari(Usuari usuari) throws SQLException{
-		String consultaSQL="INSERT INTO Usuari VALUES(id_usuari,'"+usuari.getNIF()+"','"+usuari.getPasswd()+"','"+usuari.getNom()+"','"+usuari.getCognom1()+"','"+usuari.getCognom2()+"',NOW(),'"+usuari.getMail()+"')";
+		String consultaSQL = null;
+		if(usuari.getIdCentre() == 0){
+			consultaSQL="INSERT INTO Usuari VALUES(id_usuari,'"+usuari.getNIF()+"','"+usuari.getPasswd()+"','"+usuari.getNom()+"','"+usuari.getCognom1()+"','"+usuari.getCognom2()+"',NOW(),'"+usuari.getMail()+"',"+usuari.getPermis()+",null)";
+		}else{
+			consultaSQL="INSERT INTO Usuari VALUES(id_usuari,'"+usuari.getNIF()+"','"+usuari.getPasswd()+"','"+usuari.getNom()+"','"+usuari.getCognom1()+"','"+usuari.getCognom2()+"',NOW(),'"+usuari.getMail()+"',"+usuari.getPermis()+","+usuari.getIdCentre()+")";
+		}
 		System.out.println(consultaSQL);
 		gestorDB.modificarRegistre(consultaSQL);
 		

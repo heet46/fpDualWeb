@@ -74,6 +74,7 @@ public class AfegirAlumne extends HttpServlet {
 		usuari.setNIF(dni);
 		usuari.setPasswd(password);
 		usuari.setNom(nom);
+		usuari.setPermis(1);
 		
 		StringTokenizer st = new StringTokenizer(cognoms);
 
@@ -109,6 +110,7 @@ public class AfegirAlumne extends HttpServlet {
 		CentreDAO cDAO = new CentreDAO();
 		try{
 			idCentre = cDAO.idCentre(sCentre);
+			usuari.setIdCentre(idCentre);
 			centre.setIdCentre(idCentre);
 		}catch( SQLException e){
 			e.printStackTrace();

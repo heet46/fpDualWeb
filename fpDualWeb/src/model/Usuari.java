@@ -12,6 +12,8 @@ public class Usuari {
 	private String cognom2;
 	private Date dataAlta;
 	private String mail;
+	private int permis;
+	private int idCentre;
 	
 	public Usuari() {}
 	
@@ -76,6 +78,20 @@ public class Usuari {
 	public void setMail(String mail) {
 		this.mail = mail;
 	}
+	public int getPermis() {
+		return permis;
+	}
+	public void setPermis(int permis) {
+		this.permis = permis;
+	}
+	public int getIdCentre() {
+		return idCentre;
+	}
+	public void setIdCentre(int idCentre) {
+		this.idCentre = idCentre;
+	}
+	
+	
 	
 	
 }

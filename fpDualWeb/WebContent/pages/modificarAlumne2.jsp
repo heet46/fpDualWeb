@@ -125,7 +125,7 @@
                 <ul class="nav" id="main-menu">
                  
                     <li>
-                        <a href="../index.html" ><i class="fa fa-desktop "></i>Panell de control </a>
+                        <a href="../index.jsp" ><i class="fa fa-desktop "></i>Panell de control </a>
                     </li>
 
                     <li class="active-link">
