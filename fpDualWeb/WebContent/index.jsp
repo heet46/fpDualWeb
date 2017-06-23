@@ -55,6 +55,7 @@
 	String usuNom = sesion.getAttribute("nomComplet").toString();
 	String usuCognom = sesion.getAttribute("cognom1Login").toString();
 	String usuMail = sesion.getAttribute("mailLogin").toString();
+	int permis = Integer.parseInt(sesion.getAttribute("permis").toString());
 	
 	String sessionID = null;
 	Cookie[] cookies = request.getCookies();
@@ -194,8 +195,8 @@
                   <div class="col-lg-3 col-md-2 col-sm-2 col-xs-6">
                       <div class="div-square">
                            <a href="pages/administrador.jsp" >
-<i class="fa fa-university fa-5x" aria-hidden="true"></i>
-                      <h4>Administrador</h4>
+						<i class="fa fa-university fa-5x" aria-hidden="true"></i>
+                        <h4>Administrador</h4>
                       </a>
                       </div>
                   </div>  
@@ -207,6 +208,16 @@
                       </a>
                       </div>
 					</div>
+					<%if(permis == 1){ %>
+						<div class="col-lg-3 col-md-2 col-sm-2 col-xs-6">
+	                      <div class="div-square">
+	                           <a href="pages/dadesUsuari.jsp" >
+	                    <i class="fa fa-id-card fa-5x"></i>
+	                      <h4>Dades d'usuaris</h4>
+	                      </a>
+	                      </div>
+						</div>
+					<%} %>
                   </div>
                   
               </div>
