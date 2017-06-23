@@ -81,7 +81,7 @@ public class UsuariDAO {
 		Usuari u = null;
 		try {
 			while(rs.next()){
-				u=new Usuari(rs.getString("NIF"),rs.getString("password"),rs.getString("nom"),rs.getString("primer_cognom"),rs.getString("segon_cognom"),rs.getString("mail"),rs.getInt("permis"));
+				u=new Usuari(rs.getString("NIF"),rs.getString("password"),rs.getString("nom"),rs.getString("primer_cognom"),rs.getString("segon_cognom"),rs.getString("mail"),rs.getInt("permisos"));
 			}
 		}catch (SQLException e) {
 			e.printStackTrace();

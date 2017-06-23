@@ -48,10 +48,8 @@ public class AfegirTutors extends HttpServlet {
 		try {
 			uDAO.altaUsuari(new Usuari(NIF,pass,nom,pCog,sCog,mail,2));
 			tDAO.altaTutor(new Tutor(uDAO.consultaID(NIF),tecno));
-			request.getSession().setAttribute("existeix", existeix);
 		} catch (SQLException e) {
 			existeix=1;
-			request.getSession().setAttribute("existeix", existeix);
 			request.getSession().setAttribute("NIF2",NIF);
 			request.getSession().setAttribute("pass2",pass);
 			request.getSession().setAttribute("nom2",nom);
@@ -61,8 +59,10 @@ public class AfegirTutors extends HttpServlet {
 		}
 
 		if(existeix==1){
+			request.getSession().setAttribute("existeix", existeix);
 			response.sendRedirect("/fpDualWeb/pages/tutorsAfegir.jsp");
 		}else{
+			request.getSession().setAttribute("existeix", existeix);
 			response.sendRedirect("/fpDualWeb/pages/tutorsConsulta.jsp");
 		}
 	}

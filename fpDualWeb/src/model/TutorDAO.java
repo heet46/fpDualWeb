@@ -38,7 +38,7 @@ public class TutorDAO {
 	}
 	
 	public List<Usuari> consultaTutor() throws SQLException{
-		consultaSQL="SELECT u.id_usuari,u.NIF,u.password,u.nom,u.primer_cognom,u.segon_cognom,u.mail "
+		consultaSQL="SELECT * "
 				+ "FROM usuari AS u,tutor AS t "
 				+ "WHERE t.id_usuari=u.id_usuari;";
 		ResultSet rs=null;

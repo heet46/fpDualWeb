@@ -234,6 +234,7 @@
     <!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
     <!-- JQUERY SCRIPTS -->
     <!-- CUSTOM SCRIPTS -->
+
 <%
   	int existeix=0;
   	try{
@@ -252,6 +253,7 @@
 	});
 </script>
 <%} %>
+ 
 <script>
 	function buscarNom() {
 	  // Declare variables 
