@@ -143,8 +143,8 @@
                     <a href="activitats.jsp"><i class="fa fa-list "></i>Activitats</a>
                 </li>
                 <li class="active-link">
-                        <a href="administrador.jsp"><i class="fa fa-university "></i>Administrador </a>
-                    </li>
+				    <a href="administrador.jsp"><i class="fa fa-university "></i>Administrador </a>
+				</li>
               </ul>
           </div>
 
@@ -154,7 +154,7 @@
                 
                 <div class="row">
                     <div class="col-md-12">
-                    <a title="Manteniment Centres" href="../pages/centre.jsp">
+                    <a title="Manteniment Administradors" href="../pages/administrador.jsp">
                     	<img border='0' src='../assets/img/BackArrow.ico' style='position:fixed; head:0; right:0;' width="50" height="50" />
                     </a>
                      <h2>Afegir Administrador</h2>
