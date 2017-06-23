@@ -26,8 +26,9 @@ public class AdministradorDAO {
 
 	}
 
-	public void llistar() {
-
+	public ResultSet llistar() {
+		String consultaSQL = "SELECT * FROM usuari WHERE permisos LIKE 4";
+		return gestorDB.consultaRegistres(consultaSQL);
 	}
 
 	public void modificar() {

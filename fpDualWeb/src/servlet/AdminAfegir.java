@@ -43,6 +43,6 @@ public class AdminAfegir extends HttpServlet {
 			e.printStackTrace();
 		}
 
-		response.sendRedirect("pages/administradorAlta.jsp");
+		response.sendRedirect("pages/administradorConsultar.jsp");
 	}
 }
