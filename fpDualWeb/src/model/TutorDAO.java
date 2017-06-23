@@ -21,8 +21,6 @@ public class TutorDAO {
 	public void altaTutor(Tutor t) throws SQLException{
 		consultaSQL="INSERT INTO tutor VALUES("+t.getId_usuari()+",'"+t.getTecnologia()+"');";
 		g.modificarRegistre(consultaSQL);
-		consultaSQL="UPADTE FROM usuari SET permisos=2,id_centre=null WHERE Id_usuari="+t.getId_usuari()+";";
-		g.modificarRegistre(consultaSQL);
 	}
 	
 	public void baixaTutor(int id) throws SQLException{
@@ -47,7 +45,7 @@ public class TutorDAO {
 		List<Usuari> llista=new ArrayList<Usuari>();
 		rs=g.consultaRegistres(consultaSQL);
 		while(rs.next()){
-			llista.add(new Usuari(rs.getString("NIF"),rs.getString("password"),rs.getString("nom"),rs.getString("primer_cognom"),rs.getString("segon_cognom"),rs.getString("mail"),rs.getInt("permis")));
+			llista.add(new Usuari(rs.getString("NIF"),rs.getString("password"),rs.getString("nom"),rs.getString("primer_cognom"),rs.getString("segon_cognom"),rs.getString("mail"),rs.getInt("permisos")));
 			System.out.println(llista.get(0).getNIF());
 		}
 		rs.close();

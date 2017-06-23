@@ -63,7 +63,7 @@ public class AfegirTutors extends HttpServlet {
 		if(existeix==1){
 			response.sendRedirect("/fpDualWeb/pages/tutorsAfegir.jsp");
 		}else{
-			response.sendRedirect("/fpDualWeb/pages/tutorsConsultar.jsp");
+			response.sendRedirect("/fpDualWeb/pages/tutorsConsulta.jsp");
 		}
 	}
 

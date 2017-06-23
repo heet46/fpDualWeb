@@ -26,6 +26,7 @@ public class Usuari {
 		this.cognom1 = cognom1;
 		this.cognom2 = cognom2;
 		this.mail = mail;
+		this.permis = permis;
 	}
 	
 	// GETTERS & SETTERS
