@@ -51,7 +51,7 @@ public class Login extends HttpServlet {
 			        usu.setCognom1(valors.get(1));
 			        usu.setCognom2(valors.get(2));
 			        usu.setMail(valors.get(3));
-			        
+			        usu.setPermis(Integer.parseInt(valors.get(4)));			        
 		        	
 		            //Expirar en 30 min
 		            session.setMaxInactiveInterval(30*60);
@@ -68,6 +68,7 @@ public class Login extends HttpServlet {
 		            session.setAttribute("cognom1Login", usu.getCognom1());
 		            session.setAttribute("cognom2Login", usu.getCognom2());
 		            session.setAttribute("mailLogin", usu.getMail());
+		            session.setAttribute("permis", usu.getPermis());
 		            session.setAttribute("nomComplet", nomComplet);
 		            
 		            uDAO.tancarConn();

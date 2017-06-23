@@ -119,7 +119,7 @@ public class UsuariDAO {
 	public List<String> valorsUsuari(String nif, String passwd) throws SQLException{
 		List<String> llista = new ArrayList<String>();
 		ResultSet rs = null;
-		String consultaSQL = "SELECT u.nom, u.primer_cognom, u.segon_cognom, u.mail "
+		String consultaSQL = "SELECT u.nom, u.primer_cognom, u.segon_cognom, u.mail, u.permisos "
 				+ "FROM usuari AS u "
 				+ "WHERE u.NIF='"+nif+"' AND u.password='"+passwd+"'";
 		rs = gestorDB.consultaRegistres(consultaSQL);
@@ -128,6 +128,7 @@ public class UsuariDAO {
 			llista.add(rs.getString("primer_cognom"));
 			llista.add(rs.getString("segon_cognom"));
 			llista.add(rs.getString("mail"));
+			llista.add(""+rs.getInt("permisos"));
 		}
 		return llista;
 	}
