@@ -18,7 +18,7 @@ public class Usuari {
 	public Usuari() {}
 	
 	public Usuari(String NIF, String passwd, String nom, String cognom1, String cognom2,
-			String mail) {
+			String mail,int permis) {
 		super();
 		this.NIF = NIF;
 		this.passwd = passwd;
@@ -26,6 +26,7 @@ public class Usuari {
 		this.cognom1 = cognom1;
 		this.cognom2 = cognom2;
 		this.mail = mail;
+		this.permis = permis;
 	}
 	
 	// GETTERS & SETTERS
