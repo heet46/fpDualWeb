@@ -109,6 +109,27 @@ public class ActivitatDAO {
 		}
 		return activitats;
 	}
+	
+	public List<Activitat> cercarActivitat(Activitat activitat) throws SQLException{
+		ResultSet rs;
+		List<Activitat> activitats = new ArrayList<Activitat>();
+		String sentencia = "SELECT A.ID_ACTIVITAT, A.CODI, A.DESCRIPCIO FROM ACTIVITAT AS A WHERE A.CODI IN"+activitat.getCodi()+" AND A.DESCRIPCIO LIKE"+activitat.getDescripcio()+"";
+		rs = gestorDB.consultaRegistres(sentencia);
+		while(rs.next()){
+			Activitat act = new Activitat();
+			act.setId(rs.getString(1));
+			act.setCodi(rs.getString(2));
+			act.setDescripcio(rs.getString(3));
+			activitats.add(act);
+		}
+		rs.close();
+		
+		return activitats;
+	}
+	
+	public void tancarConn(){
+		gestorDB.tancarConnexio();
+	}
 
 	
 }

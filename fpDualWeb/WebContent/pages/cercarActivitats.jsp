@@ -60,7 +60,14 @@
 	}
 	
 	ActivitatDAO aDAO = new ActivitatDAO();
-	List<Activitat> llistaActivitats = aDAO.llistaTotesActivitats();
+	List<Activitat> llistaActivitats;
+	
+	try{
+		llistaActivitats = (ArrayList<Activitat>) session.getAttribute("list");
+		System.out.println("Llista: "+llistaActivitats.toString());
+	}catch(Exception e){
+		llistaActivitats = null;
+	}
 %>    
     <div id="wrapper">
          <div class="navbar navbar-inverse navbar-fixed-top">
@@ -132,9 +139,9 @@
                     </div>
                     <div class="col-lg-12">
                     
-                    	<form class="form-inline" action="../AfegirActivitats" method="Post">
+                    	<form class="form-inline" action="../CercarActivitats" method="Post">
                     		<div class="input-group input">
-                    			<input class="cercar form-control" type=text placeholder="Cercar..." size="12">
+                    			<input class="cercar form-control" name="descripcio" type=text placeholder="Cercar..." size="12">
                     			<div class="input-group-btn">
                     				<button type=Submit class="btn btn-primary fa fa-search cercarb"></button>
                     			</div>
@@ -145,9 +152,9 @@
   						<span class="caret"></span></button>
   						<ul class="dropdown-menu dropmenu">
   							<li class="dropdown-header">Filtrar per Codi</li>
-    						<li><div class="checkbox dropmenu2"><input type="checkbox" value=""><label>EXC (Excursió)</label></div></li>
-    						<li><div class="checkbox dropmenu2"><input type="checkbox" value=""><label>TLL (Taller)</label></div></li>
-							<li><div class="checkbox dropmenu2"><input type="checkbox" value=""><label>TBL (Treball)</label></div></li>
+  							<li><a href="#" class="small" data-value="'EXC'" tabIndex="-1"><input type="checkbox" value="'EXC'" name="codi1"/>&nbsp;EXC (Excursió)</a></li>
+    						<li><a href="#" class="small" data-value="'TLL'" tabIndex="-1"><input type="checkbox" value="'TLL'" name="codi2"/>&nbsp;TLL (Taller)</a></li>
+							<li><a href="#" class="small" data-value="'TBL'" tabIndex="-1"><input type="checkbox" value="'TBL'" name="codi3"/>&nbsp;TBL (Treball)</a></li>
 						</ul>
 					</div>
                     	</form>
@@ -159,7 +166,8 @@
                     
  
                 </div>
-                  <!-- /. ROW  --> 
+                  <!-- /. ROW  -->
+                  <%if(llistaActivitats != null){ %> 
                             <div class="row">
                                 <div class="col-lg-12">
                                 <table class="table table-striped  table-hover">
@@ -175,9 +183,9 @@
 									<%
 										for (Activitat activitat : llistaActivitats) {
 									%>
-									<td><%=activitat.getId()%></td>
-									<td><%=activitat.getCodi()%></td>
-									<td><%=activitat.getDescripcio()%></td>
+									<td width="20%"><%=activitat.getId()%></td>
+									<td width="30%"><%=activitat.getCodi()%></td>
+									<td width="50%"><%=activitat.getDescripcio()%></td>
 
 								</tr>
 								<%
@@ -197,6 +205,7 @@
                 </div>
                 
               </div>
+              <%} %>
                  <!-- /. ROW  -->   
 				 <!-- 
 				 <div class="row">
@@ -233,6 +242,30 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="../assets/js/bootstrap.min.js"></script>
     <script src="../assets/js/custom.js"></script>
+    <script>
+    var options = [];
+
+    $( '.dropdown-menu a' ).on( 'click', function( event ) {
+
+       var $target = $( event.currentTarget ),
+           val = $target.attr( 'data-value' ),
+           $inp = $target.find( 'input' ),
+           idx;
+
+       if ( ( idx = options.indexOf( val ) ) > -1 ) {
+          options.splice( idx, 1 );
+          setTimeout( function() { $inp.prop( 'checked', false ) }, 0);
+       } else {
+          options.push( val );
+          setTimeout( function() { $inp.prop( 'checked', true ) }, 0);
+       }
+
+       $( event.target ).blur();
+          
+       console.log( options );
+       return false;
+    });
+    </script>
 
     
    
