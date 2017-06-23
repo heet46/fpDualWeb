@@ -4,10 +4,36 @@
         bottom:20px;
         right:50px;
 }
+.dropbutton{
+	margin-right: 5px;
+}
+.dropbutton{
+	height: 23px;
+	float: right;
+	padding-top: 0px;
+}
+.dropmenu{
+	margin-top: 1.8em;
+	margin-left: 969px;
+}
+.dropmenu2{
+	padding-left: 10px;
+}
+.input{
+	float: right;
+}
 .cercar{
 	height: 23px;
 	font-size: 14pt;
 	float: right;
+	margin-bottom: 0.5em;
+}
+.cercarb{
+	height: 23px;
+	float: right;
+	margin-bottom: 0.5em;
+	padding-top: 4px;
+	font-size: 8pt;
 }
 hr{
 	margin-bottom: 0.1em;
