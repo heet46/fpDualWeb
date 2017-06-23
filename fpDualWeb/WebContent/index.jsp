@@ -198,8 +198,15 @@
                       <h4>Administrador</h4>
                       </a>
                       </div>
-                     
-                     
+                  </div>  
+                  <div class="col-lg-3 col-md-2 col-sm-2 col-xs-6">
+                      <div class="div-square">
+                           <a href="pages/responsables.jsp" >
+                    <i class="fa fa-street-view fa-5x"></i>
+                      <h4>Responsables</h4>
+                      </a>
+                      </div>
+					</div>
                   </div>
                   
               </div>

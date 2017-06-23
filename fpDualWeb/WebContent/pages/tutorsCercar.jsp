@@ -146,6 +146,12 @@ if(cookies != null){
                     <li>
                         <a href="activitats.jsp"><i class="fa fa-list "></i>Activitats</a>
                     </li>
+                    <li>
+                        <a href="administrador.jsp"><i class="fa fa-university "></i>Administrador </a>
+                    </li>
+                    <li>
+                    	<a href="responsables.jsp"><i class="fa fa-street-view"></i>Responsables</a>
+                    </li>
                 </ul>
             </div>
 
