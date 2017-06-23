@@ -42,31 +42,25 @@ function marcarTot(source) {
 </head>
 <body>
 <%
-	HttpSession sesion=request.getSession(); 
-	String nif;
-	if(sesion.getAttribute("nif") == null){
-	
-		response.sendRedirect("login.jsp");
+HttpSession sesion=request.getSession(); 
+String nif;
+if(sesion.getAttribute("nif") == null){	
+	session.invalidate();
+	response.sendRedirect("login.jsp");
+}
+
+String usuNif = sesion.getAttribute("nif").toString();
+String usuNom = sesion.getAttribute("nomComplet").toString();
+String usuCognom = sesion.getAttribute("cognom1Login").toString();
+String usuMail = sesion.getAttribute("mailLogin").toString();
+
+String sessionID = null;
+Cookie[] cookies = request.getCookies();
+if(cookies != null){
+	for(Cookie cookie : cookies){
+		if(cookie.getName().equals("JSESSIONID")) sessionID = cookie.getValue();			
 	}
-	
-	String usuNif = null;
-	String sessionID = null;
-	String usuNom = null;
-	String usuCognom = null;
-	String usuMail = null;
-	Cookie[] cookies = request.getCookies();
-	if(cookies != null){
-		for(Cookie cookie : cookies){
-		
-			if(cookie.getName().equals("nif")) usuNif = cookie.getValue();
-			if(cookie.getName().equals("nom")) usuNom = cookie.getValue();
-			if(cookie.getName().equals("cognom")) usuCognom = cookie.getValue();
-			if(cookie.getName().equals("mail")) usuMail = cookie.getValue();
-			if(cookie.getName().equals("JSESSIONID")) sessionID = cookie.getValue();
-			
-			
-		}
-	}
+}	
 %>
     <div id="wrapper">
          <div class="navbar navbar-inverse navbar-fixed-top">

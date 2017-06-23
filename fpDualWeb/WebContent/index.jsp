@@ -119,6 +119,9 @@
                     <li>
                         <a href="pages/administrador.jsp"><i class="fa fa-university "></i>Administrador </a>
                     </li>
+                    <li>
+                    	<a href="pages/responsables.jsp"><i class="fa fa-street-view"></i>Responsables</a>
+                    </li>
                 </ul>
             </div>
 

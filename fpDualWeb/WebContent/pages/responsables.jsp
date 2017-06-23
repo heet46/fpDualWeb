@@ -17,30 +17,13 @@
 
     <link href="../assets/css/bootstrap-theme.min.css" rel="stylesheet" />
     
-    <link href="../assets/css/tutors.css" rel="stylesheet" />
-    
     <link href="../assets/css/custom.css" rel="stylesheet" />
+    
+    <link href="../assets/css/tutors.css" rel="stylesheet" />
      <!-- GOOGLE FONTS-->
     <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
-     <!-- FAVICON -->
+         <!-- FAVICON -->
 	<link rel="shortcut icon" type="image/ico" href="../assets/img/favicon-clock-o.ico" />
-      
-<script type="text/javascript">
-   var restrict = function(tb) {
-     tb.value = tb.value.replace(/[^a-zA-Zñç]/g, '');
-   };
-</script>
-<script type="text/javascript">
-function validateForm()
-{
-var g=document.getElementById("tec");
-if (g.selectedIndex==0)
-  {
-  alert("No s'ha seleccionat una tecnologia.");
-  return false;
-  }
-}
-    </script>
 </head>
 <body>
 <%
@@ -63,6 +46,8 @@ if(cookies != null){
 		if(cookie.getName().equals("JSESSIONID")) sessionID = cookie.getValue();			
 	}
 }	
+	
+	session.setAttribute("existeix", 0);
 %>
 
     <div id="wrapper">
@@ -98,7 +83,6 @@ if(cookies != null){
         <nav class="navbar-default navbar-side" role="navigation">
             <div class="sidebar-collapse">
                 <ul class="nav" id="main-menu">
-                 
                     <li>
                         <a href="../index.jsp" ><i class="fa fa-desktop "></i>Inici </a>
                     </li>
@@ -106,15 +90,17 @@ if(cookies != null){
                     <li>
                         <a href="alumnes.jsp"><i class="fa fa-graduation-cap "></i>Alumnes</a>
                     </li>
-                    <li  class="active-link">
-                        <a href="tutors.jsp"><i class="fa fa-book"></i>Tutors</a>
+                    <li>
+                        <a href="#"><i class="fa fa-book"></i>Tutors</a>
                     </li>
-
                     <li>
                         <a href="centre.jsp"><i class="fa fa-university "></i>Centres </a>
                     </li>
                     <li>
                         <a href="activitats.jsp"><i class="fa fa-list "></i>Activitats</a>
+                    </li>
+                    <li class="active-link">
+                    	<a href="responsables.jsp"><i class="fa fa-street-view"></i>Responsables</a>
                     </li>
                 </ul>
             </div>
@@ -126,78 +112,71 @@ if(cookies != null){
             <div id="page-inner">
                 <div class="row">
                     <div class="col-lg-12">
-                     <h2>Modificar tutors</h2>   
+                     <h2>Gestió Responsables</h2>   
                     </div>
                 </div>              
                  <!-- /. ROW  -->
                   <hr />
-                <div class="row">
-                    <div class="col-lg-12 ">
-                        <!--
-                        <div class="alert alert-info">
-                             <strong>Benvingut (usuari)! </strong>
-                        </div>
-                       -->
-                    </div>
- 
-                    </div>
+                
                   <!-- /. ROW  --> 
                             <div class="row text-center pad-top">
-                                <form method="Post" name="Form" onsubmit="return validateForm()" action="../modificarTutors2">
-                                
-                                <%String nifVell=request.getParameter("NIF"); %>
-                                    <table>
-                                        <tr>
-                                            <td>NIF: </td>
-                                            <input type="hidden" name="IdVella" value="${NIF}">
-                                            <td><input type="text" class="form-control" name="NIF" size="25"  value="${NIF}" required/></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Password: </td>
-                                            <td><input type="password" class="form-control" name="pass" value="${password}" size="25" required/></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Nom: </td>
-                                            <td><input type="text" class="form-control" onpaste="restrict(this);" onkeypress="restrict(this);" onkeyup="restrict(this);" name="nom" size="25"  value="${nom}" required/></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Primer cognom: </td>
-                                            <td><input type="text" class="form-control" onpaste="restrict(this);" onkeypress="restrict(this);" onkeyup="restrict(this);" name="Pcognom" value="${Pcognom}" size="25" required/></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Segon cognom: </td>
-                                            <td><input type="text" class="form-control" onpaste="restrict(this);" onkeypress="restrict(this);" onkeyup="restrict(this);" name="Scognom" value="${Scognom}" size="25"/></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Mail: </td>
-                                            <td><input type="email" class="form-control" name="mail" value="${mail}" size="25" required/></td>
-                                        </tr>
-                                        <tr>
-                                        <td>Tecnologia: </td>
-                                        <td>
-                                            <select name="tecno" id="tec" class="form-control" required>
-                                                <option selected disabled value="selec">Selecciona una opció:</option>
-                                                <option value="JAVA">JAVA</option>
-                                                <option value="SAP">SAP</option>
-                                                <option value="NET">NET</option>
-                                             </select>
-                                        </td>
-                                        </tr>
-                                        <tr>
-                                            <td><br></td>
-                                        </tr>
-                                        <tr>
-                                            <th><input type="submit" name="Modificar" class="btn btn-warning"  value="Modificar"/></th>
-                                        </tr>
-                                    </table>
-                                </form>
- 
+                  <div class="col-lg-3 col-md-2 col-sm-2 col-xs-6">
+                      <div class="div-square">
+                           <a href="tutorsAfegir.jsp" >
+                        <i class="fa fa-user-plus fa-5x" aria-hidden="true"></i>
+
+                        <h4>Afegir responsables</h4>
+                      </a>
+                      </div>
+                     
+                     
+                  </div> 
+                 <!--  -->
+                  <div class="col-lg-3 col-md-2 col-sm-2 col-xs-6">
+                      <div class="div-square">
+                           <a href="tutorsModificar.jsp" >
+                        <i class="fa fa-pencil fa-5x" aria-hidden="true"></i>
+                      <h4>Modificar responsables</h4>
+                      </a>
+                      </div>
+                     
+                     
                   </div>
-                                       <a href="tutorsModificar.jsp"  id="fletxa">
+                  <div class="col-lg-3 col-md-2 col-sm-2 col-xs-6">
+                      <div class="div-square">
+                           <a href="tutorsConsulta.jsp" >
+                     <i class="fa fa-id-card fa-5x"></i>
+                      <h4>Gestió de responsables</h4>
+                      </a>
+                      </div>
+                  </div>
+                  
+                  <div class="col-lg-3 col-md-2 col-sm-2 col-xs-6">
+	                      <div class="div-square">
+	                           <a href="tutorsBaixa.jsp" >
+	                        <i class="fa fa-user-times fa-5x" aria-hidden="true"></i>
+	                      <h4>Eliminar responsables</h4>
+	                      </a>
+	                      </div>
+                  </div>
+                  </div>
+                  <div  class="row text-center pad-top">
+	                  <div class="col-lg-3 col-md-2 col-sm-2 col-xs-6">
+	                      <div class="div-square">
+	                           <a href="tutorsCercar.jsp" >
+	                     <i class="fa fa-search fa-5x"></i>
+	                      <h4>Cercar responsables</h4>
+	                      </a>
+	                      </div>
+	                  </div>
+	                  
+                  </div>
+                     <a href="../index.jsp"  id="fletxa">
                			<i class="fa fa-hand-o-left fa-4x" style='position:fixed; head:0; bottom:50px; right:35px;' width="50" height="50"></i>
               		</a>
               </div>
                   <!-- /. ROW  --> 
+    
     </div>
              <!-- /. PAGE INNER  -->
             </div>
