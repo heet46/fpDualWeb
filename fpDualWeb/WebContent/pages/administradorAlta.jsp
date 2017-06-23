@@ -12,33 +12,7 @@
 <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Registre d'hores</title>
-	<!-- Scripts de Control de entrada de datos -->
-    <script>
-    
-		function habilitar(value){ //Funcion que comprueba cual radius es marcado para anular o no el input.
-			if(value=="1")
-			{
-				// habilitamos
-				document.getElementById("iddelususari").disabled=false;
-				document.getElementById("iddelususari").focus();
-			}else if(value=="2"){
-				// deshabilitamos
-				document.getElementById("iddelususari").disabled=true;
-			}
-		}
-
-		function valida(e){ // Funcion que delimita los caracteres que entremos a unicamente Enteros.
-		    tecla = (document.all) ? e.keyCode : e.which;
-		    //Tecla de retroceso para borrar, siempre la permite
-		    if (tecla==8){
-		        return true;
-		    }
-		    // Patron de entrada, en este caso solo acepta numeros
-		    patron =/[0-9]/;
-		    tecla_final = String.fromCharCode(tecla);
-		    return patron.test(tecla_final);
-		}
-</script>
+		
 	 <script src="https://use.fontawesome.com/d43d49ce33.js"></script>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -145,6 +119,9 @@
                 <li class="active-link">
 				    <a href="administrador.jsp"><i class="fa fa-university "></i>Administrador </a>
 				</li>
+				<li>
+                	<a href="responsables.jsp"><i class="fa fa-street-view"></i>Responsables</a>
+                </li>
               </ul>
           </div>
 
@@ -161,65 +138,105 @@
                     </div>
                 </div>
                  <!-- /. ROW  -->
+                 <%
+				  	int existeix=0;
+				  	try{
+					  	existeix=Integer.parseInt(session.getAttribute("existeix").toString());
+				  	}catch(Exception e){
+				  		existeix=0;  
+					}
+					  if(existeix==1){
+				%>
+					    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+					    <script src="../assets/js/bootstrap.min.js"></script>
+				<script src="../assets/js/bootbox.min.js"></script>
+				<script type="text/javascript">		        
+					bootbox.alert("Error, aquest Administrador ja està creat", function() {
+					console.log("Alert Callback");
+					})
+				</script>
+				<%
+					String NIF2=session.getAttribute("NIF2").toString();
+					String pass2=session.getAttribute("pass2").toString();
+					String nom2=session.getAttribute("nom2").toString();
+					String Pcognom=session.getAttribute("Pcognom2").toString();
+					String Scognom=session.getAttribute("Scognom2").toString();
+					String mail=session.getAttribute("mail2").toString();
+				%>
+				<%}else{ %>
+				<%
+					session.setAttribute("NIF2","");
+					session.setAttribute("pass2","");
+					session.setAttribute("nom2","");
+					session.setAttribute("Pcognom2","");
+					session.setAttribute("Scognom2","");
+					session.setAttribute("mail2","");
+				%>
+				<%} %>
                   <hr />
                  <!-- /. ROW  --> 
-
-<form name="vinform" action="../AdminAfegir" method="post">
-
-  <p>
-  <table border="0" class="tablaAgregar">
-      
-     <form name="vinform" action=""> 
-				<select name="customers">
-				
-      <%		String userNIF = "";
-             	ResultSet rs;
-             	AdministradorDAO adao = new AdministradorDAO();
-             	rs = adao.consultarUsuarisNoAdmins();
-             	out.print("<option value='' selected hidden> Selecciona un Usuari. </option>");
-             	
-               	try { 
-             		while (rs.next()) { 
-             			for (int i = 1; i <= 1; i++) { 
-							out.print("<option value=" + rs.getString(i) + ">");
-             				String columnValue = rs.getString(2) + " | " + rs.getString(4); 
-             				out.print(columnValue);
-             			} 
-             			out.print("</option>");
-             			out.println("");
-             		}	
-             	} catch (SQLException e) { 
-             		  e.printStackTrace(); 
-             	}finally{};
-             %>
-            </select>
-
-
-        </td>
-      </tr>
-    </table>
-    <br><br>
+<div class="row text-center pad-top">
+                                <form method="post" name="Form" onsubmit="return validateForm()" action="/fpDualWeb/afegirTutors">
+                                
+                                    <table>
+                                        <tr>
+                                            <td>NIF: </td>
+                                            <td><input type="text" class="form-control" value="${NIF2}" name="NIF" size="25" maxlength="9" onblur="nif(this.value)" required/></td>
+                                        </tr>
+                                        <%
+                                        	UsuariDAO uDAO=new UsuariDAO();
+                                        	String NIF=request.getParameter("NIF");
+                                        	if(uDAO.compararNIF(NIF)){
+                                        		request.setAttribute("NIF", "");
+                                        	}
+                                        %>
+                                        <tr>
+                                            <td>Password: </td>
+                                            <td><input type="password" class="form-control" name="pass" value="${pass2}" size="25" required/></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Nom: </td>
+                                            <td><input type="text" class="form-control" onpaste="restrict(this);" onkeypress="restrict(this);" onkeyup="restrict(this);" name="nom" value="${nom2}" size="25" required/></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Primer cognom: </td>
+                                            <td><input type="text" class="form-control" onpaste="restrict(this);" onkeypress="restrict(this);" onkeyup="restrict(this);" name="Pcognom" value="${Pcognom2}"  size="25" required/></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Segon cognom: </td>
+                                            <td><input type="text" class="form-control" onpaste="restrict(this);" onkeypress="restrict(this);" onkeyup="restrict(this);" name="Scognom" value="${Scognom2}" size="25"/></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Mail: </td>
+                                            <td><input type="email" class="form-control" name="mail" value="${mail2}" size="25" required/></td>
+                                        </tr>
+                                        
+                                        <tr>
+                                            <td><br></td>
+                                        </tr>
+                                        <tr>
+                                            <th><input type="submit" value="Afegir" class="btn btn-primary"/></th>
+                                            <th><input type="reset" value="Reset" class="btn btn-danger"/></th>
+                                        </tr>
+                                    </table>
+                                </form>
  
-    <table border="0">
-      <tr>
-        <td>
+                  </div>
+                                    
+              </div>
+					
 
-          <input type="submit" value="Afegir" id="enFor" class="btn btn-success" onclick="ok()"/>
-          </td>
-      </tr>
-    </table>
-    <script>
-    function ok(){
-    	var dialog = bootbox.dialog({
-    	    message: '<p class="text-center">Usuari Afegit a la llista d´administradors...</p>',
-    	    closeButton: false
-    	});
-    	// do something in the background
-    	dialog.modal('hide');
-    }
-    </script>
-    </p>
-</form>
+
+
+
+
+
+
+
+
+
+
+
 <!-- /. ROW  -->
 <hr />
 <!-- /. ROW  -->  
