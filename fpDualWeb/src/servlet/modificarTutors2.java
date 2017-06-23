@@ -50,7 +50,7 @@ public class modificarTutors2 extends HttpServlet {
 			uDAO.modificarUsuari(idVella, new Usuari(request.getParameter("NIF"),
 					request.getParameter("pass"),request.getParameter("nom"),
 					request.getParameter("Pcognom"),request.getParameter("Scognom"),
-					request.getParameter("mail")));
+					request.getParameter("mail"),2));
 			tDAO.modificarTutor(new Tutor(uDAO.consultaID(request.getParameter("NIF")),request.getParameter("tecno")));
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

@@ -46,7 +46,7 @@ public class AfegirTutors extends HttpServlet {
 		String tecno=(String)request.getParameter("tecno");
 
 		try {
-			uDAO.altaUsuari(new Usuari(NIF,pass,nom,pCog,sCog,mail));
+			uDAO.altaUsuari(new Usuari(NIF,pass,nom,pCog,sCog,mail,2));
 			tDAO.altaTutor(new Tutor(uDAO.consultaID(NIF),tecno));
 			request.getSession().setAttribute("existeix", existeix);
 		} catch (SQLException e) {
