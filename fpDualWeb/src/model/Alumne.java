@@ -1,7 +1,5 @@
 package model;
 
-import java.util.Date;
-
 public class Alumne extends Usuari {
 
 	private String dataInici;
@@ -14,7 +12,7 @@ public class Alumne extends Usuari {
 	}
 	
 	public Alumne(Usuari u, String dataInici, String dataFi, Centre centre, Tutor tutor) {
-		super(u.getNIF(), u.getPasswd(), u.getNom(), u.getCognom1(), u.getCognom2(), u.getMail());
+		super(u.getNIF(), u.getPasswd(), u.getNom(), u.getCognom1(), u.getCognom2(), u.getMail(), u.getPermis());
 
 		this.dataInici = dataInici;
 		this.dataFi = dataFi;

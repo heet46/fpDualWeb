@@ -178,7 +178,7 @@ $(document).ready(function()
 									<form>
 									<td hidden><input type="hidden" name="idUsuari" value="<%=alumne.getIdUsuari()%>"></td>
 									<td hidden><input type="hidden" name="veDeGestio" value="1"></td>
-									<td><input type="submit" class="btn btn-warning" value="Editar" onclick="form.action='../ModificarAlumne'; form.method='Get';"> 
+									<td width="20%"><input type="submit" class="btn btn-warning" value="Editar" onclick="form.action='../ModificarAlumne'; form.method='Get';"> 
 									<input type="submit" class="btn btn-danger" value="Eliminar" onclick="form.action='../EliminarAlumne'; form.method='Post';"></td>
 									</form>
 							

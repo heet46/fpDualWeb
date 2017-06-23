@@ -123,7 +123,6 @@ public class AfegirAlumne extends HttpServlet {
 		alumne.setNIF(dni);
 		alumne.setDataInici(sDataInici);
 		alumne.setDataFi(sDataFinal);
-		alumne.setCentre(centre);
 		alumne.setTutor(tutor);
 		
 		try {

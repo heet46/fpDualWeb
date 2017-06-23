@@ -21,8 +21,8 @@ public class AlumneDAO {
 	public void altaAlumne(Alumne alumne) throws SQLException{
 
 		
-		String consultaSQL = "INSERT INTO alumne(id_usuari,data_inici,data_fi,id_centre,id_tutor) "
-				+ "SELECT id_usuari, '"+alumne.getDataInici()+"','"+alumne.getDataFi()+"', "+alumne.centre.getIdCentre()+", "+alumne.tutor.id_usuari+" "
+		String consultaSQL = "INSERT INTO alumne(id_usuari,data_inici,data_fi,id_tutor) "
+				+ "SELECT id_usuari, '"+alumne.getDataInici()+"','"+alumne.getDataFi()+"', "+alumne.tutor.id_usuari+" "
 				+ "FROM usuari WHERE NIF LIKE '"+alumne.getNIF()+"'";
 		System.out.println(consultaSQL);
 		gestorDB.modificarRegistre(consultaSQL);
@@ -40,7 +40,7 @@ public class AlumneDAO {
 		ResultSet rs = null;
 		String consultaSQL = "SELECT u.id_usuari, u.nom, u.primer_cognom, a.data_inici, a.data_fi, c.NOM, a.id_tutor "
 				+ "FROM alumne AS a, usuari AS u, centre AS c "
-				+ "WHERE u.id_usuari=a.id_usuari AND a.id_centre=c.Id_centre";
+				+ "WHERE u.id_usuari=a.id_usuari AND u.id_centre=c.Id_centre";
 		ArrayList<Object> fila = new ArrayList<Object>();
 		int i = 0;
 
@@ -88,7 +88,7 @@ public class AlumneDAO {
 		ResultSet rs = null;
 		String consultaSQL = "SELECT u.id_usuari, u.nom AS nom_alumne, u.primer_cognom, u.segon_cognom, c.Nom AS nom_centre, u2.nom AS nom_tutor, u2.primer_cognom "
 				+ "FROM usuari AS u, usuari AS u2, alumne AS a, centre AS c "
-				+ "WHERE u2.id_usuari=a.id_tutor AND u.id_usuari=a.id_usuari AND c.Id_centre=a.id_centre";
+				+ "WHERE u2.id_usuari=a.id_tutor AND u.id_usuari=a.id_usuari AND c.Id_centre=u.id_centre";
 		
 		rs = gestorDB.consultaRegistres(consultaSQL);
 		
@@ -135,8 +135,9 @@ public class AlumneDAO {
 		ResultSet rs = null;
 		String consultaSQL = "SELECT u.NIF, u.password, u.nom, u.primer_cognom, u.segon_cognom, u.mail, a.data_inici, a.data_fi, u2.nom, c.Nom "
 				+ "FROM usuari AS u, usuari AS u2, alumne AS a, centre AS c "
-				+ "WHERE u2.id_usuari=a.id_tutor AND u.id_usuari=a.id_usuari AND c.Id_centre=a.id_centre AND u.id_usuari="+id;
-		
+				+ "WHERE u2.id_usuari=a.id_tutor AND u.id_usuari=a.id_usuari AND c.Id_centre=u.id_centre AND u.id_usuari="+id;
+		System.out.println("VALORS ALUMNE: "+consultaSQL);
+
 		rs = gestorDB.consultaRegistres(consultaSQL);
 		
 		DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
@@ -147,7 +148,6 @@ public class AlumneDAO {
 			valors.add(rs.getString(4)); //cognom1			 
 			valors.add(rs.getString(5)); //cognom2
 			valors.add(rs.getString(6)); //mail
-			System.out.println(rs.getString(6));
 			
 			Date dIn = rs.getDate(7);
 			String dataInici = df.format(dIn);
@@ -170,7 +170,7 @@ public class AlumneDAO {
 		ResultSet rs = null;
 		String consultaSQL = "SELECT u.id_usuari, u.NIF, u.nom AS nom_alumne, u.primer_cognom, u.segon_cognom, u.mail, u2.nom AS nom_tutor, c.Nom AS nom_centre "
 				+ "FROM usuari AS u, usuari AS u2, alumne AS a, centre AS c "
-				+ "WHERE u2.id_usuari=a.id_tutor AND u.id_usuari=a.id_usuari AND c.Id_centre=a.id_centre";
+				+ "WHERE u2.id_usuari=a.id_tutor AND u.id_usuari=a.id_usuari AND c.Id_centre=u.id_centre";
 		if(alumne.getNIF() != "" && alumne.getNIF() != null){
 			consultaSQL += " AND u.NIF LIKE '%"+alumne.getNIF()+"%'";
 		}
