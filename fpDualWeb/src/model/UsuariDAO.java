@@ -92,7 +92,7 @@ public class UsuariDAO {
 	public void modificarUsuari(String NIF,Usuari usu) throws SQLException{
 		String consultaSQL="UPDATE usuari SET NIF='"+usu.getNIF()+"',"+
 		"password='"+usu.getPasswd()+"',"+"nom='"+usu.getNom()+"',"+"primer_cognom='"+usu.getCognom1()+"',"+
-		"segon_cognom='"+usu.getCognom2()+"',mail='"+usu.getMail()+"',permisos="+usu.getPermis()+" "+
+		"segon_cognom='"+usu.getCognom2()+"',mail='"+usu.getMail()+"',permisos="+usu.getPermis()+",id_centre="+usu.getIdCentre()+" "+
 		"WHERE nif='"+NIF+"';";
 		gestorDB.modificarRegistre(consultaSQL);
 	}

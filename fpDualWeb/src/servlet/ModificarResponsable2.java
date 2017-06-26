@@ -9,22 +9,23 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import model.CentreDAO;
 import model.Tutor;
 import model.TutorDAO;
 import model.Usuari;
 import model.UsuariDAO;
 
 /**
- * Servlet implementation class modificarTutor
+ * Servlet implementation class ModificarResponsable2
  */
-@WebServlet("/modificarTutor")
-public class modificarTutor extends HttpServlet {
+@WebServlet("/ModificarResponsable2")
+public class ModificarResponsable2 extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public modificarTutor() {
+    public ModificarResponsable2() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -42,24 +43,26 @@ public class modificarTutor extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		UsuariDAO uDAO=new UsuariDAO();
-		TutorDAO tDAO=new TutorDAO();
-		Usuari usu=new Usuari();
-		String NIF=(String)request.getParameter("NIF");
-		usu=uDAO.consultaUsuari(NIF);
-		String tecno = null;
-		tDAO.tancarConn();
-		uDAO.tancarConn();
-		
-		response.setContentType("text/html");
-		request.getSession().setAttribute("NIF", usu.getNIF());
-		request.getSession().setAttribute("password", usu.getPasswd());
-		request.getSession().setAttribute("nom", usu.getNom());
-		request.getSession().setAttribute("Pcognom", usu.getCognom1());
-		request.getSession().setAttribute("Scognom", usu.getCognom2());
-		request.getSession().setAttribute("mail", usu.getMail());
-		request.getSession().setAttribute("tecno", tecno);
-		
-		response.sendRedirect("/fpDualWeb/pages/responsablesModificar2.jsp");
+		CentreDAO cDAO=new CentreDAO();
+		String idVella=request.getParameter("nifVell");
+		Usuari u=new Usuari();
+		u.setNIF(request.getParameter("NIF"));
+		u.setPasswd(request.getParameter("pass"));
+		u.setNom(request.getParameter("nom"));
+		u.setCognom1(request.getParameter("Pcognom"));
+		u.setCognom2(request.getParameter("Scognom"));
+		u.setMail(request.getParameter("mail"));
+		u.setPermis(3);
+		try {
+			u.setIdCentre(cDAO.idCentre(request.getParameter("centre")));
+			System.out.println(cDAO.idCentre(request.getParameter("centre")));
+			uDAO.modificarUsuari(idVella, u);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		doGet(request, response);
+		response.sendRedirect("pages/responsablesModificar.jsp");
 	}
 
 }
