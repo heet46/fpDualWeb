@@ -1,8 +1,3 @@
-<%@ page import="controlador.*" %>
-<%@ page import="model.*" %>
-<%@ page import="servlet.*" %>
-<%@ page import="java.util.*" %>
-
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -14,8 +9,6 @@
      <!-- FONTAWESOME STYLES-->
     <link href="../assets/css/font-awesome.css" rel="stylesheet" />
         <!-- CUSTOM STYLES-->
-    <link rel="stylesheet" href="../assets/css/activitats.css">    
-    
     <link href="../assets/css/bootstrap-theme.css" rel="stylesheet" />
 
     <link href="../assets/css/bootstrap-theme.min.css" rel="stylesheet" />
@@ -31,7 +24,7 @@
     <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
     <!-- FAVICON -->
 	<link rel="shortcut icon" type="image/ico" href="../assets/img/favicon-clock-o.ico" />
-</head>
+	</head>
 <body>
 <%
 HttpSession sesion=request.getSession(); 
@@ -63,17 +56,7 @@ try{
 	}
 	
 }catch(Exception e){}
-	
-	ActivitatDAO aDAO = new ActivitatDAO();
-	List<Activitat> llistaActivitats;
-	
-	try{
-		llistaActivitats = (ArrayList<Activitat>) session.getAttribute("list");
-		System.out.println("Llista: "+llistaActivitats.toString());
-	}catch(Exception e){
-		llistaActivitats = null;
-	}
-%>    
+%>
     <div id="wrapper">
          <div class="navbar navbar-inverse navbar-fixed-top">
             <div class="adjust-nav">
@@ -122,6 +105,7 @@ try{
                     <li>
                         <a href="centre.jsp"><i class="fa fa-university "></i>Centres </a>
                     </li>
+                    
                     <li class="active-link">
                         <a href="activitats.jsp"><i class="fa fa-list "></i>Activitats</a>
                     </li>
@@ -134,93 +118,81 @@ try{
                 </ul>
             </div>
 
-
         </nav>
         <!-- /. NAV SIDE  -->
         <div id="page-wrapper" >
             <div id="page-inner">
                 <div class="row">
                     <div class="col-lg-12">
-                     <h2>Cerca d'activitats</h2>
-                     
+                     <h2>Gestió d'activitats</h2>   
                     </div>
-                    <div class="col-lg-12"><hr></div>
-                    <div class="col-lg-12">
-                    	<h3>Llistat d'activitats</h3>
-                    </div>
-                    <div class="col-lg-12">
-                    
-                    	<form class="form-inline" action="../CercarActivitats" method="Post">
-                    		<div class="input-group input">
-                    			<input class="cercar form-control" name="descripcio" type=text placeholder="Cercar..." size="12">
-                    			<div class="input-group-btn">
-                    				<button type=Submit class="btn btn-primary fa fa-search cercarb"></button>
-                    			</div>
-                    		</div>
-                    		
-                    	<div class="dropdown">
-  						<button class="btn btn-primary dropdown-toggle dropbutton" type="button" data-toggle="dropdown">Filtre
-  						<span class="caret"></span></button>
-  						<ul class="dropdown-menu dropmenu">
-  							<li class="dropdown-header">Filtrar per Codi</li>
-  							<li><a href="#" class="small" data-value="'SQL'" tabIndex="-1"><input type="checkbox" value="'SQL'" name="codi1"/>&nbsp;SQL (Consulta de dades)</a></li>
-    						<li><a href="#" class="small" data-value="'JAV'" tabIndex="-1"><input type="checkbox" value="'JAV'" name="codi2"/>&nbsp;JAV (Programació amb Java)</a></li>
-							<li><a href="#" class="small" data-value="'C++'" tabIndex="-1"><input type="checkbox" value="'C++'" name="codi3"/>&nbsp;C++ (Programació amb C++)</a></li>
-							<li><a href="#" class="small" data-value="'NET'" tabIndex="-1"><input type="checkbox" value="'NET'" name="codi4"/>&nbsp;NET (Programació amb .NET)</a></li>
-							<li><a href="#" class="small" data-value="'SAP'" tabIndex="-1"><input type="checkbox" value="'SAP'" name="codi5"/>&nbsp;SAP (Programació amb SAP)</a></li>
-							
-						</ul>
-					</div>
-                    	</form>
-                    </div>
-                    
                 </div>              
                  <!-- /. ROW  -->
-                <div class="row col-lg-12">
-                    
+                  <hr />
+                <div class="row">
+                
  
-                </div>
-                  <!-- /. ROW  -->
-                  
-                            <div class="row">
-                                <div class="col-lg-12">
-                                <table class="table table-striped  table-hover">
-                            <thead>
-                                <tr id="headeer">
-                                    <th>ID</th>
-                                    <th>Codi</th>
-                                    <th>Descripció</th>
-                                </tr>
-                            </thead>
-                            <%if(llistaActivitats != null){ %> 
-                            <tbody> 
-                                <tr>
-									<%
-										for (Activitat activitat : llistaActivitats) {
-									%>
-									<td width="20%"><%=activitat.getId()%></td>
-									<td width="30%"><%=activitat.getCodi()%></td>
-									<td width="50%"><%=activitat.getDescripcio()%></td>
+                    </div>
+                  <!-- /. ROW  --> 
+                            <div class="row text-center pad-top">
+                  <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
+                      <div class="div-square">
+                           <a href="afegirActivitats.jsp" >
+                        <i class="fa fa-plus-square fa-5x" aria-hidden="true"></i>
 
-								</tr>
-								<%
-									}
-									
-								%>
-                                
-                            </tbody>
-                        </table>
+                        <h4>Afegir activitat</h4>
+                      </a>
+                      </div>
+                     
+                     
+                  </div> 
+                 
+                  <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
+                      <div class="div-square">
+                           <a href="modificarActivitatsTaula.jsp" >
+                        <i class="fa fa-pencil fa-5x" aria-hidden="true"></i>
+                      <h4>Modificar activitat</h4>
+                      </a>
+                      </div>
+                     
+                     
+                  </div>
+                  <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
+                      <div class="div-square">
+                           <a href="llistatActivitats.jsp" >
+                     <i class="fa fa-list fa-5x"></i>
+                      <h4>Llistat d'activitats</h4>
+                      </a>
+                      </div>
+                  </div>
                   
-                <br><br><br><br><br><br><br><br><br>
-                <div class="col-lg-11"></div>
+                  <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
+                      <div class="div-square">
+                           <a href="eliminarActivitats.jsp">
+                     <i class="fa fa-trash fa-5x"></i>
+                      <h4>Eliminar activitat</h4>
+                      </a>
+                      </div>
+                  </div>
+                  
+                  <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
+                      <div class="div-square">
+                           <a href="cercarActivitats.jsp">
+                     <i class="fa fa-search fa-5x"></i>
+                      <h4>Cercar activitat</h4>
+                      </a>
+                      </div>
+                  </div>
+                  
+                <br><br><br><br><br><br><br>
+                   <div class="col-lg-11"></div>
                 <div class="col-lg-1">
-                    <a class="flotante" href="activitats.jsp">
+                    <a class="flotante" href="../index.jsp">
                         <i class="fa fa-arrow-left fa-2x"></i>
                     </a>
                 </div>
-                
+                  
               </div>
-              <%} %>
                  <!-- /. ROW  -->   
 				 <!-- 
 				 <div class="row">
@@ -257,30 +229,6 @@ try{
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="../assets/js/bootstrap.min.js"></script>
     <script src="../assets/js/custom.js"></script>
-    <script>
-    var options = [];
-
-    $( '.dropdown-menu a' ).on( 'click', function( event ) {
-
-       var $target = $( event.currentTarget ),
-           val = $target.attr( 'data-value' ),
-           $inp = $target.find( 'input' ),
-           idx;
-
-       if ( ( idx = options.indexOf( val ) ) > -1 ) {
-          options.splice( idx, 1 );
-          setTimeout( function() { $inp.prop( 'checked', false ) }, 0);
-       } else {
-          options.push( val );
-          setTimeout( function() { $inp.prop( 'checked', true ) }, 0);
-       }
-
-       $( event.target ).blur();
-          
-       console.log( options );
-       return false;
-    });
-    </script>
 
     
    

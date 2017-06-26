@@ -128,6 +128,9 @@
                         <a href="pages/activitats.jsp"><i class="fa fa-list "></i>Activitats</a>
                     </li>
                     <li>
+                    	<a href="pages/registre.jsp"><i class="fa fa-clock-o"></i>Registre d'hores</a>
+                    </li>
+                    <li>
                         <a href="pages/administrador.jsp"><i class="fa fa-university "></i>Administrador </a>
                     </li>
                     <li>
@@ -201,6 +204,17 @@
                            <a href="pages/activitats.jsp" >
  <i class="fa fa-list fa-5x"></i>
                       <h4>Activitats</h4>
+                      </a>
+                      </div>
+                     
+                     
+                  </div>
+                  
+                  <div class="col-lg-3 col-md-2 col-sm-2 col-xs-6">
+                      <div class="div-square">
+                           <a href="pages/registre.jsp" >
+ <i class="fa fa-clock-o fa-5x"></i>
+                      <h4>Registre d'hores</h4>
                       </a>
                       </div>
                      
