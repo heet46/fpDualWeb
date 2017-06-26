@@ -94,7 +94,7 @@ if(cookies != null){
                     <li>
                         <a href="alumnes.jsp"><i class="fa fa-graduation-cap "></i>Alumnes</a>
                     </li>
-                    <li  class="active-link">
+                    <li>
                         <a href="tutors.jsp"><i class="fa fa-book"></i>Tutors</a>
                     </li>
 
@@ -104,7 +104,7 @@ if(cookies != null){
                     <li>
                         <a href="activitats.jsp"><i class="fa fa-list "></i>Activitats</a>
                     </li>
-                    <li>
+                    <li  class="active-link">
                         <a href="administrador.jsp"><i class="fa fa-user-o"></i>Administrador </a>
                     </li>
                     <li>

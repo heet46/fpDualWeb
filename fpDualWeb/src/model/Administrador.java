@@ -1,50 +1,122 @@
 package model;
 
-public class Administrador extends Usuari {
-	int id_usuari;
-	Usuari u = new Usuari();
+import java.util.Date;
 
-	public Administrador(int id_usuari, String tecnologia) {
-		this.id_usuari = id_usuari;
-	}
+public class Administrador {
+
+	private int idUsuari;
+	private String NIF;
+	private String passwd;
+	private String nom;
+	private String cognom1;
+	private String cognom2;
+	private Date dataAlta;
+	private String mail;
+	private int permis;
+	private int idCentre;
+	private Centre centre;
 
 	public Administrador() {
+	}
+
+	public Administrador(String NIF, String passwd, String nom, String cognom1, String cognom2, String mail) {
 		super();
+		this.NIF = NIF;
+		this.passwd = passwd;
+		this.nom = nom;
+		this.cognom1 = cognom1;
+		this.cognom2 = cognom2;
+		this.mail = mail;
+
 	}
 
-	@Override
-	public String toString() {
-		return "Tutor [id_usuari=" + id_usuari + "]";
+	// GETTERS & SETTERS
+	public int getIdUsuari() {
+		return idUsuari;
 	}
 
-	public int getId_usuari() {
-		return id_usuari;
+	public void setIdUsuari(int idUsuari) {
+		this.idUsuari = idUsuari;
 	}
 
-	public void setId_usuari(int id_usuari) {
-		this.id_usuari = id_usuari;
+	public String getNIF() {
+		return NIF;
 	}
 
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + id_usuari;
-		return result;
+	public void setNIF(String NIF) {
+		this.NIF = NIF;
 	}
 
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Administrador other = (Administrador) obj;
-		if (id_usuari != other.id_usuari)
-			return false;
-		return true;
+	public String getPasswd() {
+		return passwd;
+	}
+
+	public void setPasswd(String passwd) {
+		this.passwd = passwd;
+	}
+
+	public String getNom() {
+		return nom;
+	}
+
+	public void setNom(String nom) {
+		this.nom = nom;
+	}
+
+	public String getCognom1() {
+		return cognom1;
+	}
+
+	public void setCognom1(String cognom1) {
+		this.cognom1 = cognom1;
+	}
+
+	public String getCognom2() {
+		return cognom2;
+	}
+
+	public void setCognom2(String cognom2) {
+		this.cognom2 = cognom2;
+	}
+
+	public Date getDataAlta() {
+		return dataAlta;
+	}
+
+	public void setDataAlta(Date dataAlta) {
+		this.dataAlta = dataAlta;
+	}
+
+	public String getMail() {
+		return mail;
+	}
+
+	public void setMail(String mail) {
+		this.mail = mail;
+	}
+
+	public int getPermis() {
+		return permis;
+	}
+
+	public void setPermis(int permis) {
+		this.permis = permis;
+	}
+
+	public int getIdCentre() {
+		return idCentre;
+	}
+
+	public void setIdCentre(int idCentre) {
+		this.idCentre = idCentre;
+	}
+
+	public Centre getCentre() {
+		return centre;
+	}
+
+	public void setCentre(Centre centre) {
+		this.centre = centre;
 	}
 
 }

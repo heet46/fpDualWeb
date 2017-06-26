@@ -63,12 +63,14 @@ public class AdministradorDAO {
 		gestorDB.tancarConnexio();
 	}
 
-	/*
-	 * public int canviaPERMISuser(String idUsuari) throws SQLException {
-	 * 
-	 * String consultaSQL = "UPDATE usuari SET permisos=4 WHERE id_usuari LIKE "
-	 * + idUsuari + ";"; System.out.println(consultaSQL); return
-	 * gestorDB.modificarRegistre(consultaSQL); }
-	 */
+	public void modificarAdmin(String NIF, Administrador administrador) throws SQLException {
+		String consultaSQL = "UPDATE usuari SET NIF='" + administrador.getNIF() + "'," + "password='"
+				+ administrador.getPasswd() + "'," + "nom='" + administrador.getNom() + "'," + "primer_cognom='"
+				+ administrador.getCognom1() + "'," + "segon_cognom='" + administrador.getCognom2() + "',mail='"
+				+ administrador.getMail() + "',permisos=4" + ",id_centre=" + null + " WHERE nif='" + NIF + "';";
+		System.out.println(administrador.getIdCentre());
+		System.out.println("La consulta de Modificar Admin ->" + consultaSQL);
+		gestorDB.modificarRegistre(consultaSQL);
+	}
 
 }

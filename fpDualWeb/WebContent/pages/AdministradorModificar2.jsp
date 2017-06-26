@@ -1,4 +1,7 @@
 <!DOCTYPE html>
+<%@page import="java.sql.SQLException"%>
+<%@page import="model.CentreDAO"%>
+<%@page import="java.sql.ResultSet"%>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <script src="https://use.fontawesome.com/d43d49ce33.js"></script>
@@ -180,10 +183,6 @@ if(cookies != null){
                                         <tr>
                                             <td>Mail: </td>
                                             <td><input type="email" class="form-control" name="mail" value="${mail}" size="25" required/></td>
-                                        </tr>
-                                        
-                                        <tr>
-                                            <td><br></td>
                                         </tr>
                                         <tr>
                                             <th><input type="submit" name="Modificar" class="btn btn-warning"  value="Modificar"/></th>

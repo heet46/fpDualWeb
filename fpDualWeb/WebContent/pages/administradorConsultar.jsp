@@ -166,16 +166,14 @@
              	<table id='myTable' class='table table-striped  table-hover' >
 	             	<thead>
 		             	<tr>
-			             	<th ><b>ID Usuari<b/></th>
-			             	<th ><b>NIF<b/></th>
-			             	<th ><b>Passw<b/></th>
-			             	<th ><b>Nom<b/></th>
-			             	<th ><b>Cognom1<b/></th>
-			             	<th ><b>Cognom2<b/></th>
-			             	<th ><b>Data-Alta<b/></th>
-			             	<th ><b>E-Mail<b/></th>
-			             	<th ><b>Permisos<b/></th>
-			             	<th ><b>Id_Centre<b/></th>
+			             	<th ><b><u>ID Usuari</u><b/></th>
+			             	<th ><b><u>NIF</u><b/></th>
+			             	<th ><b><u>Passw</u><b/></th>
+			             	<th ><b><u>Nom</u><b/></th>
+			             	<th ><b><u>Cognom1</u><b/></th>
+			             	<th ><b><u>Cognom2</u><b/></th>
+			             	<th ><b><u>Data-Alta</u><b/></th>
+			             	<th ><b><u>E-Mail</u><b/></th>
 		             	</tr>
 	             	</thead>
                 
@@ -193,7 +191,7 @@
              	try { 
              		while (rs.next()) { 
              			out.println("<tr>");
-             			for (int i = 1; i <= 10; i++) { 
+             			for (int i = 1; i <= 8; i++) { 
              				if (i > 1) out.print(" \t\t"); 
              				String columnValue = rs.getString(i); 
              				out.println("<td>" + columnValue + "</td>");

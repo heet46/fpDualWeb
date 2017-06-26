@@ -9,8 +9,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import model.Usuari;
-import model.UsuariDAO;
+import model.Administrador;
+import model.AdministradorDAO;
+import model.CentreDAO;
 
 /**
  * Servlet implementation class modificarTutors2
@@ -43,21 +44,30 @@ public class AdminModificar2 extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		UsuariDAO uDAO = new UsuariDAO();
-		String idVella = request.getParameter("IdVella");
-		System.out.println(idVella);
+
+		AdministradorDAO uDAO = null;
 		try {
-			uDAO.modificarUsuari(idVella,
-					new Usuari(request.getParameter("NIF"), request.getParameter("pass"), request.getParameter("nom"),
-							request.getParameter("Pcognom"), request.getParameter("Scognom"),
-							request.getParameter("mail"), 4));
-			// tDAO.modificarTutor(new
-			// Tutor(uDAO.consultaID(request.getParameter("NIF")),
-			// request.getParameter("tecno")));
-		} catch (SQLException e) {
+			uDAO = new AdministradorDAO();
+		} catch (SQLException e1) {
 			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		CentreDAO cDAO = new CentreDAO();
+		String idVella = (String) request.getParameter("IdVella");
+		Administrador u = new Administrador();
+		u.setNIF(request.getParameter("NIF"));
+		u.setPasswd(request.getParameter("pass"));
+		u.setNom(request.getParameter("nom"));
+		u.setCognom1(request.getParameter("Pcognom"));
+		u.setCognom2(request.getParameter("Scognom"));
+		u.setMail(request.getParameter("mail"));
+		try {
+			uDAO.modificarAdmin(idVella, u);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch blocks
 			e.printStackTrace();
 		}
+
 		doGet(request, response);
 		response.sendRedirect("pages/administradorConsultar.jsp");
 	}
