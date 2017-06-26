@@ -61,8 +61,10 @@
 	
 	CentreDAO cDAO = new CentreDAO();
 	List<String> llistaCentres = cDAO.nomsCentres();
+	cDAO.tancarCon();
 	TutorDAO tDAO = new TutorDAO();
 	List<String> llistaTutors = tDAO.nomsTutors();
+	tDAO.tancarConn();
 
 	
 	int duplicat;

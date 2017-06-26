@@ -14,6 +14,7 @@ public class Usuari {
 	private String mail;
 	private int permis;
 	private int idCentre;
+	private Centre centre;
 	
 	public Usuari() {}
 	
@@ -91,6 +92,15 @@ public class Usuari {
 	public void setIdCentre(int idCentre) {
 		this.idCentre = idCentre;
 	}
+
+	public Centre getCentre() {
+		return centre;
+	}
+
+	public void setCentre(Centre centre) {
+		this.centre = centre;
+	}
+	
 	
 	
 	

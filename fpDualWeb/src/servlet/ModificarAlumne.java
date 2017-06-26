@@ -62,8 +62,8 @@ public class ModificarAlumne extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String cognom1 = null;
-		String cognom2 = null;
+		String cognom1 = "";
+		String cognom2 = "";
 		int id = Integer.parseInt(request.getParameter("idUsuari"));
 		String dni = request.getParameter("dni");
 		String password = request.getParameter("password");

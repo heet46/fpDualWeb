@@ -1,9 +1,16 @@
+<%@ page import="controlador.*" %>
+<%@ page import="model.*" %>
+<%@ page import="servlet.*" %>
+<%@ page import="java.util.*" %>
+
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Registre d'hores</title>
+    <script src="https://use.fontawesome.com/d43d49ce33.js"></script>
+    
     <!-- FONTAWESOME STYLES-->
     <link href="../assets/css/font-awesome.css" rel="stylesheet" />
     
@@ -62,7 +69,17 @@
 				if(cookie.getName().equals("JSESSIONID")) sessionID = cookie.getValue();			
 			}
 		}
-	}catch(Exception e){}	
+	}catch(Exception e){}
+	
+	Alumne a = new Alumne();
+	a.setNIF(usuNif);
+	AlumneDAO aDAO = new AlumneDAO();
+	List<Alumne> valorsAlumne = aDAO.dadesAlumne(a);
+	List<Tutor> valorsTutor = aDAO.dadesTutor(a);
+	List<Centre> valorsCentre = aDAO.dadesCentre(a);
+	List<Usuari> valorsResponsable = aDAO.dadesResponsable(a);
+	aDAO.tancarConn();
+	
 %>
     <div id="wrapper">
          <div class="navbar navbar-inverse navbar-fixed-top">
@@ -142,7 +159,7 @@
 	                                	<label>NIF</label>
 	                                </div>
 	                                <div class="col-lg-10 col-md-10">
-	                                	<% %>
+	                                	<%=valorsAlumne.get(0).getNIF() %>
 	                                </div>
                                 </div>
                                 <div class="row">
@@ -150,7 +167,7 @@
 	                                	<label>Nom</label>
 	                                </div>
 	                                <div class="col-lg-10 col-md-10">
-	                                	<% %>
+	                                	<%=valorsAlumne.get(0).getNom() %>
 	                                </div>
                                 </div>
                                 <div class="row">
@@ -158,7 +175,7 @@
 	                                	<label>Cognoms</label>
 	                                </div>
 	                                <div class="col-lg-10 col-md-10">
-	                                	<% %>
+	                                	<%=valorsAlumne.get(0).getCognom1()%> <%=valorsAlumne.get(0).getCognom2() %>
 	                                </div>
                                 </div>
                                 <div class="row">
@@ -166,7 +183,7 @@
 	                                	<label>Correu electrònic</label>
 	                                </div>
 	                                <div class="col-lg-10 col-md-10">
-	                                	<% %>
+	                                	<%=valorsAlumne.get(0).getMail() %>
 	                                </div>
                                 </div>
                                 <hr style="margin:5px">
@@ -175,7 +192,7 @@
 	                                	<label>Data inici</label>
 	                                </div>
 	                                <div class="col-lg-10 col-md-10">
-	                                	<% %>
+	                                	<%=valorsAlumne.get(0).getDataInici() %>
 	                                </div>
                                 </div>
                                 <div class="row">
@@ -183,7 +200,7 @@
 	                                	<label>Data finalització</label>
 	                                </div>
 	                                <div class="col-lg-10 col-md-10">
-	                                	<% %>
+	                                	<%=valorsAlumne.get(0).getDataFi() %>
 	                                </div>
                                 </div>
                                 <hr style="margin:5px">
@@ -192,7 +209,7 @@
 	                                	<label>Tutor</label>
 	                                </div>
 	                                <div class="col-lg-10 col-md-10">
-	                                	<a href="#Tutor"><% %></a>
+	                                	<a href="#Tutor" data-toggle="tab"><%=valorsAlumne.get(0).getTutor().getNom() %></a>
 	                                </div>
                                 </div>
                                 <div class="row">
@@ -200,16 +217,19 @@
 	                                	<label>Centre</label>
 	                                </div>
 	                                <div class="col-lg-10 col-md-10">
-	                                	<a href="#Centre"><% %></a>
+	                                	<a href="#Centre" data-toggle="tab"><%=valorsAlumne.get(0).getCentre().getNom() %></a>
 	                                </div>
                                 </div>  
+                                <hr>
                                 <div class="row">
-	                                <div class="col-lg-2 col-md-2">
-	                                	
-	                                </div>
-	                                <div class="col-lg-10 col-md-10">
-	                                	<a href=""><strong>Edita</strong></a>
-	                                </div>
+	                                <form action="../ModificarAlumne" method="Get">
+		                                <div class="col-lg-2 col-md-2">
+		                                	<input type="hidden" value="<%=valorsAlumne.get(0).getIdUsuari() %>" name="idUsuari">
+		                                </div>
+		                                <div class="col-lg-10 col-md-10">
+		                                	<input type="submit" value="Editar dades">
+		                                </div>
+		                            </form>
                                 </div>                              
                             </div>
                             
@@ -220,7 +240,7 @@
 	                                	<label>NIF</label>
 	                                </div>
 	                                <div class="col-lg-10 col-md-10">
-	                                	<% %>
+	                                	<%=valorsTutor.get(0).getNIF() %>
 	                                </div>
                                 </div>
                                 <div class="row">
@@ -228,7 +248,7 @@
 	                                	<label>Nom</label>
 	                                </div>
 	                                <div class="col-lg-10 col-md-10">
-	                                	<% %>
+	                                	<%=valorsTutor.get(0).getNom() %>
 	                                </div>
                                 </div>
                                 <div class="row">
@@ -236,7 +256,7 @@
 	                                	<label>Cognoms</label>
 	                                </div>
 	                                <div class="col-lg-10 col-md-10">
-	                                	<% %>
+	                                	<%=valorsTutor.get(0).getCognom1()%> <%=valorsTutor.get(0).getCognom2()%>
 	                                </div>
                                 </div>
                                 <div class="row">
@@ -244,7 +264,7 @@
 	                                	<label>Correu electrònic</label>
 	                                </div>
 	                                <div class="col-lg-10 col-md-10">
-	                                	<% %>
+	                                	<%=valorsTutor.get(0).getMail() %>
 	                                </div>
                                 </div>
                                 <hr style="margin:5px">
@@ -254,7 +274,7 @@
 	                                	<label>Tecnología</label>
 	                                </div>
 	                                <div class="col-lg-10 col-md-10">
-	                                	<% %>
+	                                	<%=valorsTutor.get(0).getTecnologia() %>
 	                                </div>
 	                            </div>                                 
 							</div>
@@ -266,7 +286,7 @@
 	                                	<label>Codi</label>
 	                                </div>
 	                                <div class="col-lg-10 col-md-10">
-	                                	<% %>
+	                                	<%=valorsCentre.get(0).getCodi() %>
 	                                </div>
                                 </div>
                                 <div class="row">
@@ -274,7 +294,7 @@
 	                                	<label>Nom</label>
 	                                </div>
 	                                <div class="col-lg-10 col-md-10">
-	                                	<% %>
+	                                	<%=valorsCentre.get(0).getNom() %>
 	                                </div>
                                 </div>
                                 <div class="row">
@@ -282,7 +302,7 @@
 	                                	<label>Telèfon</label>
 	                                </div>
 	                                <div class="col-lg-10 col-md-10">
-	                                	<% %>
+	                                	<%=valorsCentre.get(0).getTlf() %>
 	                                </div>
                                 </div>
                                 <div class="row">
@@ -290,7 +310,7 @@
 	                                	<label>Direcció web</label>
 	                                </div>
 	                                <div class="col-lg-10 col-md-10">
-	                                	<% %>
+	                                	<%=valorsCentre.get(0).getWeb() %>
 	                                </div>
                                 </div>
                                 <hr style="margin:5px">
@@ -299,7 +319,7 @@
 	                                	<label>Responsable</label>
 	                                </div>
 	                                <div class="col-lg-10 col-md-10">
-	                                	<% %>
+	                                	<%=valorsResponsable.get(0).getNom() %>
 	                                </div>
                                 </div>
                             </div>
@@ -311,7 +331,7 @@
 	                                	<label>NIF</label>
 	                                </div>
 	                                <div class="col-lg-10 col-md-10">
-	                                	<% %>
+	                                	<%=valorsResponsable.get(0).getNIF() %>
 	                                </div>
                                 </div>
                                 <div class="row">
@@ -319,7 +339,7 @@
 	                                	<label>Nom</label>
 	                                </div>
 	                                <div class="col-lg-10 col-md-10">
-	                                	<% %>
+	                                	<%=valorsResponsable.get(0).getNom() %>
 	                                </div>
                                 </div>
                                 <div class="row">
@@ -327,7 +347,7 @@
 	                                	<label>Cognoms</label>
 	                                </div>
 	                                <div class="col-lg-10 col-md-10">
-	                                	<% %>
+	                                	<%=valorsResponsable.get(0).getCognom1()%> <%=valorsResponsable.get(0).getCognom2()%>
 	                                </div>
                                 </div>
                                 <div class="row">
@@ -335,7 +355,7 @@
 	                                	<label>Correu electrònic</label>
 	                                </div>
 	                                <div class="col-lg-10 col-md-10">
-	                                	<% %>
+	                                	<%=valorsResponsable.get(0).getMail() %>
 	                                </div>
                                 </div>
                                 <hr style="margin:5px">
@@ -345,7 +365,7 @@
 	                                	<label>Centre</label>
 	                                </div>
 	                                <div class="col-lg-10 col-md-10">
-	                                	<% %>
+	                                	<%=valorsCentre.get(0).getNom() %>
 	                                </div>
 	                            </div>
                             </div>
