@@ -49,6 +49,10 @@ public class CercarActivitats extends HttpServlet {
 			codi3 += ",";
 		}
 		String codi = "("+codi1+codi2+codi3;
+		
+		if(codi1=="" && codi2=="" && codi3==""){
+			codi = "('EXC','TBL','TLL')";
+		}
 		codi = codi.substring(0, codi.length()-1);
 		codi += ")";
 		System.out.println(codi);
@@ -63,9 +67,7 @@ public class CercarActivitats extends HttpServlet {
 		activitat.setDescripcio(descripcio);
 		
 		List<Activitat> llista;
-		if(codi1=="" && codi2=="" && codi3==""){
-			codi = "('EXC','TBL','TLL')";
-		}
+		System.out.println(codi);
 			
 			try {
 				llista = aDAO.cercarActivitat(activitat);
