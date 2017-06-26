@@ -105,16 +105,18 @@ try{
                     <li>
                         <a href="activitats.jsp"><i class="fa fa-list "></i>Activitats</a>
                     </li>
+                    <%if(permis == 4){ %>
                     <li>
                         <a href="administrador.jsp"><i class="fa fa-university "></i>Administrador </a>
                     </li>
+                    <%} %>
+                    <%if(permis == 3 || permis == 4){ %>
                     <li>
                     	<a href="responsables.jsp"><i class="fa fa-street-view"></i>Responsables</a>
                     </li>
+                    <%} %>
                 </ul>
             </div>
-
-
         </nav>
         <!-- /. NAV SIDE  -->
         <div id="page-wrapper" >
@@ -128,6 +130,7 @@ try{
                   <hr />
                 
                   <!-- /. ROW  --> 
+		<%if(permis==4){%>
                             <div class="row text-center pad-top">
                   <div class="col-lg-3 col-md-2 col-sm-2 col-xs-6">
                       <div class="div-square">
@@ -178,8 +181,43 @@ try{
 	                      </a>
 	                      </div>
 	                  </div>
-	                  
-                  </div>
+	              </div>
+            <%}else if(permis==3){ %>
+                  <div  class="row text-center pad-top">
+	                  <div class="col-lg-3 col-md-2 col-sm-2 col-xs-6">
+	                      <div class="div-square">
+	                           <a href="llistaTutors.jsp" >
+	                     <i class="fa fa-search fa-5x"></i>
+	                      <h4>Llista tutors</h4>
+	                      </a>
+	                      </div>
+	                  </div>
+				</div>
+            <%}else if(permis==2){%>
+                      <div class="col-lg-3 col-md-2 col-sm-2 col-xs-6">
+                      <div class="div-square">
+                           <a href="tutorsModificar.jsp" >
+                        <i class="fa fa-pencil fa-5x" aria-hidden="true"></i>
+                      <h4>Modificar tutors</h4>
+                      </a>
+                      </div>
+            	             
+            	             
+            <%}else if(permis==1){%>
+            		  <div  class="row text-center pad-top">
+	                  <div class="col-lg-3 col-md-2 col-sm-2 col-xs-6">
+	                      <div class="div-square">
+	                           <a href="llistaTutors.jsp" >
+	                     <i class="fa fa-search fa-5x"></i>
+	                      <h4>Dades tutor</h4>
+	                      </a>
+	                      </div>
+	                  </div>
+	                 </div>
+            
+            
+            <%} %>	
+            			</div>                  
                      <a href="../index.jsp"  id="fletxa">
                			<i class="fa fa-hand-o-left fa-4x" style='position:fixed; head:0; bottom:50px; right:35px;' width="50" height="50"></i>
               		</a>

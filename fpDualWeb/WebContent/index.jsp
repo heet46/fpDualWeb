@@ -124,18 +124,24 @@
                     <li>
                         <a href="pages/centre.jsp"><i class="fa fa-university "></i>Centres </a>
                     </li>
+                    <%if(permis == 2 || permis == 3 || permis == 4){%>
                     <li>
                         <a href="pages/activitats.jsp"><i class="fa fa-list "></i>Activitats</a>
                     </li>
+                    <%} %>
                     <li>
                     	<a href="pages/registre.jsp"><i class="fa fa-clock-o"></i>Registre d'hores</a>
                     </li>
+                    <%if(permis == 4){ %>
                     <li>
                         <a href="pages/administrador.jsp"><i class="fa fa-university "></i>Administrador </a>
                     </li>
+                    <%} %>
+                    <%if(permis == 3 || permis == 4){ %>
                     <li>
                     	<a href="pages/responsables.jsp"><i class="fa fa-street-view"></i>Responsables</a>
                     </li>
+                    <%} %>
                     <%if(permis == 1){ %>
                     <li>
                     	<a href="pages/dadesUsuari.jsp"><i class="fa fa-id-card"></i>Dades d'usuari</a>
@@ -143,7 +149,7 @@
                     <%} %>
                 </ul>
             </div>
-
+            
 
         </nav>
         <!-- /. NAV SIDE  -->
@@ -197,7 +203,7 @@
                       </a>
                       </div>
                      
-                     
+                  <%if(permis == 2 || permis == 3 || permis == 4){%>
                   </div>
                   <div class="col-lg-3 col-md-2 col-sm-2 col-xs-6">
                       <div class="div-square">
@@ -206,7 +212,7 @@
                       <h4>Activitats</h4>
                       </a>
                       </div>
-                     
+                  <%} %> 
                      
                   </div>
                   
@@ -217,10 +223,8 @@
                       <h4>Registre d'hores</h4>
                       </a>
                       </div>
-                     
-                     
                   </div>
-                  
+                  <%if(permis == 4){%>
                   <div class="col-lg-3 col-md-2 col-sm-2 col-xs-6">
                       <div class="div-square">
                            <a href="pages/administrador.jsp" >
@@ -228,7 +232,9 @@
                         <h4>Administrador</h4>
                       </a>
                       </div>
-                  </div>  
+                  </div>
+                  <%} %>
+                  <%if(permis == 3 || permis == 4){%>
                   <div class="col-lg-3 col-md-2 col-sm-2 col-xs-6">
                       <div class="div-square">
                            <a href="pages/responsables.jsp" >
@@ -237,6 +243,7 @@
                       </a>
                       </div>
 					</div>
+					<%} %>
 					<%if(permis == 1){ %>
 						<div class="col-lg-3 col-md-2 col-sm-2 col-xs-6">
 	                      <div class="div-square">
