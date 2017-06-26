@@ -1,3 +1,4 @@
+<%@page import="java.io.PrintWriter"%>
 <%@ page import="controlador.*" %>
 <%@ page import="model.*" %>
 <%@ page import="servlet.*" %>
@@ -286,7 +287,9 @@
 	                                	<label>Codi</label>
 	                                </div>
 	                                <div class="col-lg-10 col-md-10">
-	                                	<%=valorsCentre.get(0).getCodi() %>
+	                                	<%if(!valorsCentre.isEmpty() && valorsCentre != null){%>
+											<%=valorsCentre.get(0).getCodi() %>
+										<%}%>
 	                                </div>
                                 </div>
                                 <div class="row">
@@ -294,7 +297,9 @@
 	                                	<label>Nom</label>
 	                                </div>
 	                                <div class="col-lg-10 col-md-10">
-	                                	<%=valorsCentre.get(0).getNom() %>
+	                                	<%if(!valorsCentre.isEmpty() && valorsCentre != null){%>
+											<%=valorsCentre.get(0).getNom() %>
+										<%}%>
 	                                </div>
                                 </div>
                                 <div class="row">
@@ -302,7 +307,9 @@
 	                                	<label>Telèfon</label>
 	                                </div>
 	                                <div class="col-lg-10 col-md-10">
-	                                	<%=valorsCentre.get(0).getTlf() %>
+	                                	<%if(!valorsCentre.isEmpty() && valorsCentre != null){%>
+											<%=valorsCentre.get(0).getTlf() %>
+										<%}%>
 	                                </div>
                                 </div>
                                 <div class="row">
@@ -310,7 +317,9 @@
 	                                	<label>Direcció web</label>
 	                                </div>
 	                                <div class="col-lg-10 col-md-10">
-	                                	<%=valorsCentre.get(0).getWeb() %>
+	                                	<%if(!valorsCentre.isEmpty() && valorsCentre != null){%>
+											<%=valorsCentre.get(0).getWeb() %>
+										<%}%>
 	                                </div>
                                 </div>
                                 <hr style="margin:5px">
@@ -319,7 +328,9 @@
 	                                	<label>Responsable</label>
 	                                </div>
 	                                <div class="col-lg-10 col-md-10">
-	                                	<%=valorsResponsable.get(0).getNom() %>
+	                                	<%if(!valorsResponsable.isEmpty() && valorsResponsable != null){%>
+											<%=valorsResponsable.get(0).getNom() %>
+										<%}%>
 	                                </div>
                                 </div>
                             </div>
@@ -331,7 +342,9 @@
 	                                	<label>NIF</label>
 	                                </div>
 	                                <div class="col-lg-10 col-md-10">
-	                                	<%=valorsResponsable.get(0).getNIF() %>
+	                                	<%if(!valorsResponsable.isEmpty() && valorsResponsable != null){%>
+											<%=valorsResponsable.get(0).getNIF() %>
+										<%}%>
 	                                </div>
                                 </div>
                                 <div class="row">
@@ -339,7 +352,9 @@
 	                                	<label>Nom</label>
 	                                </div>
 	                                <div class="col-lg-10 col-md-10">
-	                                	<%=valorsResponsable.get(0).getNom() %>
+	                                	<%if(!valorsResponsable.isEmpty() && valorsResponsable != null){%>
+											<%=valorsResponsable.get(0).getNom() %>
+										<%}%>
 	                                </div>
                                 </div>
                                 <div class="row">
@@ -347,7 +362,9 @@
 	                                	<label>Cognoms</label>
 	                                </div>
 	                                <div class="col-lg-10 col-md-10">
-	                                	<%=valorsResponsable.get(0).getCognom1()%> <%=valorsResponsable.get(0).getCognom2()%>
+	                                	<%if(!valorsResponsable.isEmpty() && valorsResponsable != null){%>
+											<%=valorsResponsable.get(0).getCognom1() %> <%=valorsResponsable.get(0).getCognom2() %>
+										<%}%>
 	                                </div>
                                 </div>
                                 <div class="row">
@@ -355,7 +372,9 @@
 	                                	<label>Correu electrònic</label>
 	                                </div>
 	                                <div class="col-lg-10 col-md-10">
-	                                	<%=valorsResponsable.get(0).getMail() %>
+	                                	<%if(!valorsResponsable.isEmpty() && valorsResponsable != null){%>
+											<%=valorsResponsable.get(0).getMail() %>
+										<%}%>
 	                                </div>
                                 </div>
                                 <hr style="margin:5px">
@@ -365,7 +384,9 @@
 	                                	<label>Centre</label>
 	                                </div>
 	                                <div class="col-lg-10 col-md-10">
-	                                	<%=valorsCentre.get(0).getNom() %>
+										<%if(!valorsCentre.isEmpty() && valorsCentre != null){%>
+											<%=valorsCentre.get(0).getNom() %>
+										<%}%>
 	                                </div>
 	                            </div>
                             </div>
