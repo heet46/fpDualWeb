@@ -31,15 +31,6 @@
     <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
          <!-- FAVICON -->
 	<link rel="shortcut icon" type="image/ico" href="../assets/img/favicon-clock-o.ico" />
-
-<script type="text/javascript">
-function marcarTot(source) {
-	  checkboxes = document.getElementsByName('NIF');
-	  for(var i=0, n=checkboxes.length;i<n;i++) {
-		    checkboxes[i].checked = source.checked;
-		}
-	}
-</script>
 </head>
 <body>
 <%
@@ -132,7 +123,7 @@ if(cookies != null){
                     <a title="Manteniment Administradors" href="../pages/administrador.jsp">
                     	<img border='0' src='../assets/img/BackArrow.ico' style='position:fixed; head:0; right:0;' width="50" height="50" />
                     </a>
-                     <h2>Baixa Admin</h2>   
+                     <h2>Modificar admins</h2>   
                     </div>
                 </div>              
                  <!-- /. ROW  -->
@@ -144,30 +135,34 @@ if(cookies != null){
  
                     </div>
                   <!-- /. ROW  --> 
-                                        
+                 
                             <div class="row">
                                 <div class="col-lg-12">
-                                <form name="form" method="Post" action="../AdminBaixaMultiple" class="table-link" onsubmit="comprobarUsuari()">
 	                                <table class="table table-hover table-inverse" id="myTable">
 	                                    <thead>
-	                                    <tr>
-	                                         <th><input type="text" id="myNom" onkeyup="buscarNom()" placeholder="Buscar per Nom..."></th>
-                                 			 <th><input type="text" id="myCog" onkeyup="buscarCog()" placeholder="Buscar per Cognom..."></th>
-                                			 <th><input type="text" id="myNIF" onkeyup="buscarNIF()" placeholder="Buscar per NIF..."></th>
-	                                    </tr>
+	                                    	<tr>
+	                                    	<th><input type="text" id="myNom" onkeyup="buscarNom()" placeholder="Buscar per Nom..."></th>
+	                                    	<th><input type="text" id="myCog" onkeyup="buscarCog()" placeholder="Buscar per Cognom..."></th>
+	                                    	<th><input type="text" id="myNIF" onkeyup="buscarNIF()" placeholder="Buscar per NIF...">    </th>
+	                                    	</tr>
 	                                        <tr id="headeer">
                                                         <th><span>Nom</span></th>
                                                         <th><span>Cognom</span></th>
                                                         <th><span>NIF</span></th>
                                                         <th><span>E-mail</span></th>
-                                                        <th><input type="checkbox" onclick="marcarTot(this)"><span style="margin:10px;">Sel·leccionar-ho tot</span></th>
+                                                        <th>&nbsp;</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
                                                         <%
                                                         	AdministradorDAO adao=new AdministradorDAO();
-                                                        	List<Usuari> usu=adao.LlistarAdmins();
-                                                        	adao.tancarCon();
+                                                        	UsuariDAO uDAO=new UsuariDAO();
+                                                        	List<Usuari> usu=null;
+                                                        	try{
+                                                        		usu=adao.LlistarAdmins();
+                                                        	}catch(Exception e){
+                                                        		System.out.println("modificarAdmin");
+                                                        	}
                                                         	for(Usuari u:usu){
                                                         %>
                                                         	<tr>
@@ -183,9 +178,11 @@ if(cookies != null){
                                                         		<td>
                                                         			<%=u.getMail()%>
                                                         		</td>
-                                                        		<td width="20%">
-                                                        				<input style="float:center;" type="checkbox" name="NIF" id="nSel" value="<%=u.getNIF()%>">
-                                                        				<label style="color:red;">Eliminar</label>
+                                                        		<td style="width: 27%">
+                                                        			<form name="form" method="Post" action="../AdminModificar" class="table-link">
+                                                        				<input type="hidden" name="NIF" value="<%=u.getNIF()%>">
+                                                        				<input type="submit" class="btn btn-warning" value="Modificar">
+                                                        			</form>
                                                         		</td>
                                                         	</tr>
                                                         <% 	
@@ -193,21 +190,18 @@ if(cookies != null){
                                                         %>
                                                     </tbody>
                                                 </table>
-                                                <input type="submit" class="btn btn-danger" value="Eliminar Sel·lecció">
-                                              </form>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            <a title="Manteniment Centres" href="../pages/administrador.jsp">
-                    	<img border='0' src='../assets/img/BackArrow.ico' style='position:fixed; head:0; right:0;' width="50" height="50" />
-                    </a>
+                                              
                             </div>        
                   <!-- /. ROW  --> 
              <!-- /. PAGE INNER  -->
          <!-- /. PAGE WRAPPER  -->
     <div class="footer">
       
+    
             <div class="row">
                 <div class="col-lg-12" >
                     &copy;  2017 Indra Software Labs | Design by: Joan Espuñes, Sergi Fernández, Sisco Navarro, Thiago Hachikyan
@@ -219,25 +213,7 @@ if(cookies != null){
     <!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
     <!-- JQUERY SCRIPTS -->
     <!-- CUSTOM SCRIPTS -->
-  <%
-  	int existeix=0;
-  	try{
-	  	existeix=Integer.parseInt(session.getAttribute("existeix").toString());
-  	}catch(Exception e){
-  		existeix=0;  
-	}
-	  if(existeix==1){
-%>
-	    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-	    <script src="../assets/js/bootstrap.min.js"></script>
-<script src="../assets/js/bootbox.min.js"></script>
-<script>		        
-	bootbox.alert("Error, aquest Usuari està lligat", function() {
-	console.log("Alert Callback");
-	});
-</script>
-<%}%>
-<script>
+    <script>
 	function buscarNom() {
 	  // Declare variables 
 	  var input, filter, table, tr, td, i;
@@ -252,7 +228,6 @@ if(cookies != null){
 	    if (td) {
 	      if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
 	        tr[i].style.display = "";
-	        
 	      } else {
 	        tr[i].style.display = "none";
 	      }

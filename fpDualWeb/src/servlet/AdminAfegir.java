@@ -44,7 +44,7 @@ public class AdminAfegir extends HttpServlet {
 		String mail = (String) request.getParameter("mail");
 
 		try {
-			uDAO.altaUsuari(new Usuari(NIF, pass, nom, pCog, sCog, mail, 2));
+			uDAO.altaUsuari(new Usuari(NIF, pass, nom, pCog, sCog, mail, 4));
 		} catch (SQLException e) {
 			existeix = 1;
 			request.getSession().setAttribute("NIF2", NIF);
@@ -60,7 +60,7 @@ public class AdminAfegir extends HttpServlet {
 			response.sendRedirect("/fpDualWeb/pages/administradorAlta.jsp");
 		} else {
 			request.getSession().setAttribute("existeix", existeix);
-			response.sendRedirect("/fpDualWeb/pages/administradorConsulta.jsp");
+			response.sendRedirect("/fpDualWeb/pages/administradorConsultar.jsp");
 		}
 	}
 

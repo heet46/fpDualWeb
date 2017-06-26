@@ -136,6 +136,38 @@
  	 </servlet-mapping>
  	 
  	 
+ 	 <servlet>
+  		<servlet-name>AdminBaixa</servlet-name>
+  		<servlet-class>AdminBaixa</servlet-class>
+  	</servlet>
+  	<servlet-mapping>
+  		<servlet-name>AdminBaixa</servlet-name>
+  		<url-pattern>/AdminBaixa</url-pattern>
+ 	 </servlet-mapping>
+ 	 
+ 	 
+ 	 <servlet>
+  		<servlet-name>AdminBaixaMultiple</servlet-name>
+  		<servlet-class>AdminBaixaMultiple</servlet-class>
+  	</servlet>
+  	<servlet-mapping>
+  		<servlet-name>AdminBaixaMultiple</servlet-name>
+  		<url-pattern>/AdminBaixaMultiple</url-pattern>
+ 	 </servlet-mapping>
+ 	 
+ 	 <servlet>
+  		<servlet-name>AdminModificar</servlet-name>
+  		<servlet-class>AdminModificar</servlet-class>
+  	</servlet>
+  	<servlet-mapping>
+  		<servlet-name>AdminModificar</servlet-name>
+  		<url-pattern>/AdminModificar</url-pattern>
+ 	 </servlet-mapping>
+ 	 
+ 	 
+ 	 
+ 	 
+ 	 
 	<error-page>
 	    <exception-type>404</exception-type>
 	    <error-code>404</error-code>

@@ -176,7 +176,7 @@
                   <hr />
                  <!-- /. ROW  --> 
 <div class="row text-center pad-top">
-                                <form method="post" name="Form" onsubmit="return validateForm()" action="/fpDualWeb/afegirTutors">
+                                <form method="post" name="Form" onsubmit="return validateForm()" action="/fpDualWeb/AdminAfegir">
                                 
                                     <table>
                                         <tr>

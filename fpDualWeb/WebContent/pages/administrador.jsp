@@ -107,6 +107,9 @@
                 <li class="active-link">
                     <a href="administrador.jsp"><i class="fa fa-university "></i>Administrador </a>
                  </li>
+                 <li>
+                	<a href="responsables.jsp"><i class="fa fa-street-view"></i>Responsables</a>
+                </li>
               </ul>
           </div>
 
@@ -147,7 +150,7 @@
 
                   <div class="col-lg-3 col-md-2 col-sm-2 col-xs-6">
                       <div class="div-square">
-                           <a href="administradorBaixa.jsp" >
+                           <a href="administradorModificar.jsp" >
                         <i class="fa fa-pencil fa-5x" aria-hidden="true"></i>
                       <h4>Modificar Administrador</h4>
                       </a>
@@ -169,7 +172,7 @@
                   
                   <div class="col-lg-3 col-md-2 col-sm-2 col-xs-6">
                       <div class="div-square">
-                           <a href="administradorEliminar.jsp" >
+                           <a href="administradorBaixa.jsp" >
                         <i class="fa fa-user-times fa-5x" aria-hidden="true"></i>
                       <h4>Eliminar Administrador</h4>
                       </a>
