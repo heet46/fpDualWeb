@@ -42,24 +42,32 @@
 <body>
 <%
 HttpSession sesion=request.getSession(); 
-String nif;
-if(sesion.getAttribute("nif") == null){	
-	session.invalidate();
-	response.sendRedirect("login.jsp");
-}
-
-String usuNif = sesion.getAttribute("nif").toString();
-String usuNom = sesion.getAttribute("nomComplet").toString();
-String usuCognom = sesion.getAttribute("cognom1Login").toString();
-String usuMail = sesion.getAttribute("mailLogin").toString();
-
-String sessionID = null;
-Cookie[] cookies = request.getCookies();
-if(cookies != null){
-	for(Cookie cookie : cookies){
-		if(cookie.getName().equals("JSESSIONID")) sessionID = cookie.getValue();			
+String nif=null;
+String usuNif=null;
+String usuNom=null;
+String usuCognom=null;
+String usuMail=null;
+int permis=0;
+try{
+	if(sesion.getAttribute("nif") == null){	
+		session.invalidate();
+		response.sendRedirect("login.jsp");
 	}
-}	
+
+	usuNif = sesion.getAttribute("nif").toString();
+	usuNom = sesion.getAttribute("nomComplet").toString();
+	usuCognom = sesion.getAttribute("cognom1Login").toString();
+	usuMail = sesion.getAttribute("mailLogin").toString();
+	permis = Integer.parseInt(sesion.getAttribute("permis").toString());
+	
+	String sessionID = null;
+	Cookie[] cookies = request.getCookies();
+	if(cookies != null){
+		for(Cookie cookie : cookies){
+			if(cookie.getName().equals("JSESSIONID")) sessionID = cookie.getValue();			
+		}
+	}
+}catch(Exception e){}	
 %>
     <div id="wrapper">
          <div class="navbar navbar-inverse navbar-fixed-top">

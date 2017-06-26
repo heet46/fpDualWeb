@@ -1,3 +1,6 @@
+<%@page import="model.UsuariDAO" %>
+<%@page import="model.CentreDAO" %>
+<%@page import="java.util.*" %>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -22,27 +25,49 @@
     <link href="../assets/css/custom.css" rel="stylesheet" />
      <!-- GOOGLE FONTS-->
     <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
-     <!-- FAVICON -->
+         <!-- FAVICON -->
 	<link rel="shortcut icon" type="image/ico" href="../assets/img/favicon-clock-o.ico" />
-      
-<script type="text/javascript">
-   var restrict = function(tb) {
-     tb.value = tb.value.replace(/[^a-zA-Zñç]/g, '');
-   };
-</script>
-<script type="text/javascript">
-function validateForm()
-{
-var g=document.getElementById("tec");
-if (g.selectedIndex==0)
-  {
-  alert("No s'ha seleccionat una tecnologia.");
-  return false;
-  }
-}
-    </script>
+
 </head>
 <body>
+<script type="text/javascript">
+function nif(dni) {
+	  var numero
+	  var letr
+	  var letra
+	  var expresion_regular_dni
+	 
+	  expresion_regular_dni = /^\d{8}[a-zA-Z]$/;
+	 
+	  if(expresion_regular_dni.test (dni) == true){
+	     numero = dni.substr(0,dni.length-1);
+	     letr = dni.substr(dni.length-1,1);
+	     numero = numero % 23;
+	     letra='TRWAGMYFPDXBNJZSQVHLCKET';
+	     letra=letra.substring(numero,numero+1);
+	    if (letra!=letr.toUpperCase()) {
+	    	document.getElementById("NIF").value = "";
+	  }else{
+		  document.getElementById("NIF").value = "";
+	   }
+	}
+</script>
+<script type="text/javascript">
+var restrict = function(tb) {
+	  tb.value = tb.value.replace(/[^a-zA-Zñç]/g, '');
+	};
+</script>
+<script type="text/javascript">
+    function validateForm()
+    {
+    var g=document.getElementById("tec");
+    if (g.selectedIndex==0)
+      {
+      alert("No s'ha seleccionat un centre.");
+      return false;
+      }
+    }
+    </script>
 <%
 HttpSession sesion=request.getSession(); 
 String nif=null;
@@ -70,7 +95,7 @@ try{
 			if(cookie.getName().equals("JSESSIONID")) sessionID = cookie.getValue();			
 		}
 	}
-}catch(Exception e){}
+}catch(Exception e){}	
 %>
 
     <div id="wrapper">
@@ -102,6 +127,8 @@ try{
                 </span>
             </div>
         </div>
+        
+        
         <!-- /. NAV TOP  -->
         <nav class="navbar-default navbar-side" role="navigation">
             <div class="sidebar-collapse">
@@ -114,7 +141,7 @@ try{
                     <li>
                         <a href="alumnes.jsp"><i class="fa fa-graduation-cap "></i>Alumnes</a>
                     </li>
-                    <li  class="active-link">
+                    <li>
                         <a href="tutors.jsp"><i class="fa fa-book"></i>Tutors</a>
                     </li>
 
@@ -127,7 +154,7 @@ try{
                     <li>
                         <a href="administrador.jsp"><i class="fa fa-university "></i>Administrador </a>
                     </li>
-                    <li>
+                    <li  class="active-link">
                     	<a href="responsables.jsp"><i class="fa fa-street-view"></i>Responsables</a>
                     </li>
                 </ul>
@@ -140,7 +167,7 @@ try{
             <div id="page-inner">
                 <div class="row">
                     <div class="col-lg-12">
-                     <h2>Modificar tutors</h2>   
+                     <h2>Afegir responsables</h2>   
                     </div>
                 </div>              
                  <!-- /. ROW  -->
@@ -155,45 +182,89 @@ try{
                     </div>
  
                     </div>
+                    <%
+				  	int existeix=0;
+				  	try{
+					  	existeix=Integer.parseInt(session.getAttribute("existeix").toString());
+				  	}catch(Exception e){
+				  		existeix=0;  
+					}
+					  if(existeix==1){
+				%>
+					    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+					    <script src="../assets/js/bootstrap.min.js"></script>
+				<script src="../assets/js/bootbox.min.js"></script>
+				<script type="text/javascript">		        
+					bootbox.alert("Ja existeix un usuari amb aquest NIF", function() {
+					console.log("Alert Callback");
+					})
+				</script>
+				<%
+					String NIF2=session.getAttribute("NIF2").toString();
+					String pass2=session.getAttribute("pass2").toString();
+					String nom2=session.getAttribute("nom2").toString();
+					String Pcognom=session.getAttribute("Pcognom2").toString();
+					String Scognom=session.getAttribute("Scognom2").toString();
+					String mail=session.getAttribute("mail2").toString();
+				%>
+				<%}else{ %>
+				<%
+					session.setAttribute("NIF2","");
+					session.setAttribute("pass2","");
+					session.setAttribute("nom2","");
+					session.setAttribute("Pcognom2","");
+					session.setAttribute("Scognom2","");
+					session.setAttribute("mail2","");
+				%>
+				<%} %>
                   <!-- /. ROW  --> 
                             <div class="row text-center pad-top">
-                                <form method="Post" name="Form" onsubmit="return validateForm()" action="../modificarTutors2">
+                                <form method="post" name="Form" onsubmit="return validateForm()" action="/fpDualWeb/AfegirResponsable">
                                 
-                                <%String nifVell=request.getParameter("NIF"); %>
                                     <table>
                                         <tr>
                                             <td>NIF: </td>
-                                            <input type="hidden" name="IdVella" value="${NIF}">
-                                            <td><input type="text" class="form-control" name="NIF" size="25"  value="${NIF}" required/></td>
+                                            <td><input type="text" class="form-control" value="${NIF2}" name="NIF" size="25" maxlength="9" onblur="nif(this.value)" required/></td>
                                         </tr>
+                                        <%
+                                        	UsuariDAO uDAO=new UsuariDAO();
+                                        	CentreDAO cDAO=new CentreDAO();
+                                        	String NIF=request.getParameter("NIF");
+                                        	if(uDAO.compararNIF(NIF)){
+                                        		request.setAttribute("NIF", "");
+                                        	}
+                                        %>
                                         <tr>
                                             <td>Password: </td>
-                                            <td><input type="password" class="form-control" name="pass" value="${password}" size="25" required/></td>
+                                            <td><input type="password" class="form-control" name="pass" value="${pass2}" size="25" required/></td>
                                         </tr>
                                         <tr>
                                             <td>Nom: </td>
-                                            <td><input type="text" class="form-control" onpaste="restrict(this);" onkeypress="restrict(this);" onkeyup="restrict(this);" name="nom" size="25"  value="${nom}" required/></td>
+                                            <td><input type="text" class="form-control" onpaste="restrict(this);" onkeypress="restrict(this);" onkeyup="restrict(this);" name="nom" value="${nom2}" size="25" required/></td>
                                         </tr>
                                         <tr>
                                             <td>Primer cognom: </td>
-                                            <td><input type="text" class="form-control" onpaste="restrict(this);" onkeypress="restrict(this);" onkeyup="restrict(this);" name="Pcognom" value="${Pcognom}" size="25" required/></td>
+                                            <td><input type="text" class="form-control" onpaste="restrict(this);" onkeypress="restrict(this);" onkeyup="restrict(this);" name="Pcognom" value="${Pcognom2}"  size="25" required/></td>
                                         </tr>
                                         <tr>
                                             <td>Segon cognom: </td>
-                                            <td><input type="text" class="form-control" onpaste="restrict(this);" onkeypress="restrict(this);" onkeyup="restrict(this);" name="Scognom" value="${Scognom}" size="25"/></td>
+                                            <td><input type="text" class="form-control" onpaste="restrict(this);" onkeypress="restrict(this);" onkeyup="restrict(this);" name="Scognom" value="${Scognom2}" size="25"/></td>
                                         </tr>
                                         <tr>
                                             <td>Mail: </td>
-                                            <td><input type="email" class="form-control" name="mail" value="${mail}" size="25" required/></td>
+                                            <td><input type="email" class="form-control" name="mail" value="${mail2}" size="25" required/></td>
                                         </tr>
                                         <tr>
-                                        <td>Tecnologia: </td>
+                                        <td>Centre: </td>
                                         <td>
-                                            <select name="tecno" id="tec" class="form-control" required>
-                                                <option selected disabled value="selec">Selecciona una opció:</option>
-                                                <option value="JAVA">JAVA</option>
-                                                <option value="SAP">SAP</option>
-                                                <option value="NET">NET</option>
+                                            <select id="tec" name="centre" class="form-control" required>
+                                                <option selected hidden value="selec">Selecciona una opció:</option>
+                                                <%List<String> centres=cDAO.nomsCentres();
+                                                for(int i=0;i<centres.size();i++){%>
+                                                	<option value="<%=centres.get(i)%>"> <%=centres.get(i)%></option>
+                                                <%
+                                                }
+                                                %>
                                              </select>
                                         </td>
                                         </tr>
@@ -201,13 +272,14 @@ try{
                                             <td><br></td>
                                         </tr>
                                         <tr>
-                                            <th><input type="submit" name="Modificar" class="btn btn-warning"  value="Modificar"/></th>
+                                            <th><input type="submit" value="Afegir" class="btn btn-primary"/></th>
+                                            <th><input type="reset" value="Reset" class="btn btn-danger"/></th>
                                         </tr>
                                     </table>
                                 </form>
  
                   </div>
-                                       <a href="tutorsModificar.jsp"  id="fletxa">
+                                       <a href="responsables.jsp"  id="fletxa">
                			<i class="fa fa-hand-o-left fa-4x" style='position:fixed; head:0; bottom:50px; right:35px;' width="50" height="50"></i>
               		</a>
               </div>

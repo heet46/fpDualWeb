@@ -28,26 +28,32 @@
 <body>
 <%
 HttpSession sesion=request.getSession(); 
-String nif;
-if(sesion.getAttribute("nif") == null){	
-	session.invalidate();
-	response.sendRedirect("login.jsp");
-}
-
-String usuNif = sesion.getAttribute("nif").toString();
-String usuNom = sesion.getAttribute("nomComplet").toString();
-String usuCognom = sesion.getAttribute("cognom1Login").toString();
-String usuMail = sesion.getAttribute("mailLogin").toString();
-
-String sessionID = null;
-Cookie[] cookies = request.getCookies();
-if(cookies != null){
-	for(Cookie cookie : cookies){
-		if(cookie.getName().equals("JSESSIONID")) sessionID = cookie.getValue();			
+String nif=null;
+String usuNif=null;
+String usuNom=null;
+String usuCognom=null;
+String usuMail=null;
+int permis=0;
+try{
+	if(sesion.getAttribute("nif") == null){	
+		session.invalidate();
+		response.sendRedirect("login.jsp");
 	}
-}	
+
+	usuNif = sesion.getAttribute("nif").toString();
+	usuNom = sesion.getAttribute("nomComplet").toString();
+	usuCognom = sesion.getAttribute("cognom1Login").toString();
+	usuMail = sesion.getAttribute("mailLogin").toString();
+	permis = Integer.parseInt(sesion.getAttribute("permis").toString());
 	
-	session.setAttribute("existeix", 0);
+	String sessionID = null;
+	Cookie[] cookies = request.getCookies();
+	if(cookies != null){
+		for(Cookie cookie : cookies){
+			if(cookie.getName().equals("JSESSIONID")) sessionID = cookie.getValue();			
+		}
+	}
+}catch(Exception e){}
 %>
 
     <div id="wrapper">
@@ -125,7 +131,7 @@ if(cookies != null){
                             <div class="row text-center pad-top">
                   <div class="col-lg-3 col-md-2 col-sm-2 col-xs-6">
                       <div class="div-square">
-                           <a href="tutorsAfegir.jsp" >
+                           <a href="responsablesAfegir.jsp" >
                         <i class="fa fa-user-plus fa-5x" aria-hidden="true"></i>
 
                         <h4>Afegir responsables</h4>
@@ -137,7 +143,7 @@ if(cookies != null){
                  <!--  -->
                   <div class="col-lg-3 col-md-2 col-sm-2 col-xs-6">
                       <div class="div-square">
-                           <a href="tutorsModificar.jsp" >
+                           <a href="responsablesModificar.jsp" >
                         <i class="fa fa-pencil fa-5x" aria-hidden="true"></i>
                       <h4>Modificar responsables</h4>
                       </a>
@@ -147,7 +153,7 @@ if(cookies != null){
                   </div>
                   <div class="col-lg-3 col-md-2 col-sm-2 col-xs-6">
                       <div class="div-square">
-                           <a href="tutorsConsulta.jsp" >
+                           <a href="responsablesGestio.jsp" >
                      <i class="fa fa-id-card fa-5x"></i>
                       <h4>Gestió de responsables</h4>
                       </a>
