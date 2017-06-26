@@ -76,7 +76,7 @@ public class AfegirResponsable extends HttpServlet {
 			response.sendRedirect("/fpDualWeb/pages/responsablesAfegir.jsp");
 		}else{
 			request.getSession().setAttribute("existeix", existeix);
-			response.sendRedirect("/fpDualWeb/pages/tutorsConsulta.jsp");
+			response.sendRedirect("/fpDualWeb/pages/responsablesGestio.jsp");
 		}
 	}
 

@@ -62,7 +62,7 @@ public class ModificarResponsable2 extends HttpServlet {
 			e.printStackTrace();
 		}
 		doGet(request, response);
-		response.sendRedirect("pages/responsablesModificar.jsp");
+		response.sendRedirect("pages/responsablesGestio.jsp");
 	}
 
 }

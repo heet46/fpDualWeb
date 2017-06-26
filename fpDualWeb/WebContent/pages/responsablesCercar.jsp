@@ -1,8 +1,14 @@
+<%@page import="model.UsuariDAO" %>
+<%@page import="model.Usuari" %>
+<%@page import="model.TutorDAO" %>
+<%@page import="java.util.List" %>
+<%@page import="java.sql.Date" %>
+<%@page import="java.text.*" %>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <script src="https://use.fontawesome.com/d43d49ce33.js"></script>
-    <meta charset="utf-8" />
+    <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Registre d'hores</title>
 	<!-- BOOTSTRAP STYLES-->
@@ -17,13 +23,56 @@
 
     <link href="../assets/css/bootstrap-theme.min.css" rel="stylesheet" />
     
-    <link href="../assets/css/custom.css" rel="stylesheet" />
+     <link href="../assets/css/bootstrap-X.X.css" rel="stylesheet" />
+     
+     <link href="../assets/css/bootstrap-X.X-flex.css" rel="stylesheet" />
+     
+     <link href="../assets/css/bootstrap.js" rel="stylesheet" />
+    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.‌​2/css/bootstrap.min.‌​css">
     
     <link href="../assets/css/tutors.css" rel="stylesheet" />
+    
+    <link href="../assets/css/custom.css" rel="stylesheet" />
      <!-- GOOGLE FONTS-->
     <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
          <!-- FAVICON -->
 	<link rel="shortcut icon" type="image/ico" href="../assets/img/favicon-clock-o.ico" />
+ <script type="text/javascript" >  
+     function showText(){  
+          if(document.getElementById("checkNom").checked == true){
+         	  document.getElementById("Nom").required = true;
+              document.getElementById("Nom").disabled = false;
+          }else{
+        	  document.getElementById("Nom").required = false;
+              document.getElementById("Nom").disabled = true;
+              document.getElementById("Nom").value="";
+          }
+          
+          if(document.getElementById("checkCog").checked == true){
+         	  document.getElementById("Cognom").required = true;
+              document.getElementById("Cognom").disabled = false;
+          }else{
+         	  document.getElementById("Cognom").required = false;
+              document.getElementById("Cognom").disabled = true;
+              document.getElementById("Cognom").value="";
+          }
+          
+          if(document.getElementById("checkNIF").checked == true){
+         	  document.getElementById("NIF").required = true;
+              document.getElementById("NIF").disabled = false;
+          }else{
+         	  document.getElementById("NIF").required = false;
+              document.getElementById("NIF").disabled = true;
+              document.getElementById("NIF").value="";
+          }
+          if(document.getElementById("checkNom").checked == true || document.getElementById("checkCog").checked == true || document.getElementById("checkNIF").checked == true){
+              document.getElementById("Submit").disabled = false;
+          }else{
+              document.getElementById("Submit").disabled = true;
+          }
+     }  
+     </script> 
 </head>
 <body>
 <%
@@ -55,7 +104,6 @@ try{
 	}
 }catch(Exception e){}
 %>
-
     <div id="wrapper">
          <div class="navbar navbar-inverse navbar-fixed-top">
             <div class="adjust-nav">
@@ -99,6 +147,7 @@ try{
                     <li>
                         <a href="tutors.jsp"><i class="fa fa-book"></i>Tutors</a>
                     </li>
+
                     <li>
                         <a href="centre.jsp"><i class="fa fa-university "></i>Centres </a>
                     </li>
@@ -109,7 +158,7 @@ try{
                         <a href="administrador.jsp"><i class="fa fa-university "></i>Administrador </a>
                     </li>
                     <li class="active-link">
-                    	<a href="#"><i class="fa fa-street-view"></i>Responsables</a>
+                    	<a href="responsables.jsp"><i class="fa fa-street-view"></i>Responsables</a>
                     </li>
                 </ul>
             </div>
@@ -121,75 +170,55 @@ try{
             <div id="page-inner">
                 <div class="row">
                     <div class="col-lg-12">
-                     <h2>Gesti� Responsables</h2>   
+                     <h2>Cercar responsables</h2>   
                     </div>
                 </div>              
                  <!-- /. ROW  -->
                   <hr />
-                
+                <div class="row">
+                    <div class="col-lg-12 ">
+                    </div>
+ 
+                    </div>
                   <!-- /. ROW  --> 
-                            <div class="row text-center pad-top">
-                  <div class="col-lg-3 col-md-2 col-sm-2 col-xs-6">
-                      <div class="div-square">
-                           <a href="responsablesAfegir.jsp" >
-                        <i class="fa fa-user-plus fa-5x" aria-hidden="true"></i>
-
-                        <h4>Afegir responsables</h4>
-                      </a> 
-                      </div>
-                     
-                     
-                  </div> 
-                 <!--  -->
-                  <div class="col-lg-3 col-md-2 col-sm-2 col-xs-6">
-                      <div class="div-square">
-                           <a href="responsablesModificar.jsp" >
-                        <i class="fa fa-pencil fa-5x" aria-hidden="true"></i>
-                      <h4>Modificar responsables</h4>
-                      </a>
-                      </div>
-                     
-                     
-                  </div>
-                  <div class="col-lg-3 col-md-2 col-sm-2 col-xs-6">
-                      <div class="div-square">
-                           <a href="responsablesGestio.jsp" >
-                     <i class="fa fa-id-card fa-5x"></i>
-                      <h4>Gesti� de responsables</h4>
-                      </a>
-                      </div>
-                  </div>
-                  
-                  <div class="col-lg-3 col-md-2 col-sm-2 col-xs-6">
-	                      <div class="div-square">
-	                           <a href="responsablesBaixa.jsp" >
-	                        <i class="fa fa-user-times fa-5x" aria-hidden="true"></i>
-	                      <h4>Eliminar  responsables</h4>
-	                      </a>
-	                      </div>
-                  </div>
-                  </div>
-                  <div  class="row text-center pad-top">
-	                  <div class="col-lg-3 col-md-2 col-sm-2 col-xs-6">
-	                      <div class="div-square">
-	                           <a href="responsablesCercar.jsp" >
-	                     <i class="fa fa-search fa-5x"></i>
-	                      <h4>Cercar  responsables</h4>
-	                      </a>
-	                      </div>
-	                  </div>
-	                  
-                  </div>
-                     <a href="../index.jsp"  id="fletxa">
+                        
+                            <div class="row">
+                                <div class="col-lg-12">
+                                	<form action="../CercarResponsables" method="Post">
+	                               		<table class="table">
+	                               			<tr>
+	                               				<td>
+	                               					<label><input type="checkbox" id="checkNom" onclick="showText()">&nbsp;Nom</label>
+	                               					<br/>
+									  				<input type="text" name="Nom" id="Nom" size="25" disabled/>
+	                               				</td>
+	                               				<td>
+	                               					<label><input type="checkbox" id="checkCog" onclick="showText()">&nbsp;Primer Cognom</label>
+									  				<br/>
+									  				<input type="text" name="Cognom" id="Cognom" size="25" disabled/>
+	                               				</td>
+	                               				<td>
+	                               					<label><input type="checkbox" id="checkNIF" onclick="showText()">&nbsp;NIF</label>
+									  				<br/>
+									  				<input type="text" name="NIF" id="NIF" size="25" disabled/>
+	                               				</td>
+	                               			</tr>
+	                               			<tr>
+	                               				<td>
+	                               					<input type="submit" class="btn btn-primary" value="Cercar" id="Submit" disabled/>
+	                               				</td>
+	                               			</tr>
+	                               		</table>
+	                               </form>
+                                </div>
+                               </div>
+                                   </div>
+                               </div>
+                                                    <a href="responsables.jsp"  id="fletxa">
                			<i class="fa fa-hand-o-left fa-4x" style='position:fixed; head:0; bottom:50px; right:35px;' width="50" height="50"></i>
               		</a>
-              </div>
-                  <!-- /. ROW  --> 
-    
-    </div>
-             <!-- /. PAGE INNER  -->
-            </div>
-         <!-- /. PAGE WRAPPER  -->
+                           </div>
+                        
     <div class="footer">
       
     
