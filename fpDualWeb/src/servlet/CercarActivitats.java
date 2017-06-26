@@ -48,10 +48,23 @@ public class CercarActivitats extends HttpServlet {
 		}else{
 			codi3 += ",";
 		}
-		String codi = "("+codi1+codi2+codi3;
+		String codi4 = request.getParameter("codi4");
+		if(codi4 == null){
+			codi4="";
+		}else{
+			codi4 += ",";
+		}
+		String codi5 = request.getParameter("codi5");
+		if(codi5 == null){
+			codi5="";
+		}else{
+			codi5 += ",";
+		}
 		
-		if(codi1=="" && codi2=="" && codi3==""){
-			codi = "('EXC','TBL','TLL')";
+		String codi = "("+codi1+codi2+codi3+codi4+codi5;
+		
+		if(codi1=="" && codi2=="" && codi3=="" && codi4=="" && codi5==""){
+			codi = "('SQL','JAV','C++','NET','SAP')";
 		}
 		codi = codi.substring(0, codi.length()-1);
 		codi += ")";
