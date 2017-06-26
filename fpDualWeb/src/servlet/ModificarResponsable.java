@@ -1,30 +1,26 @@
 package servlet;
 
 import java.io.IOException;
-import java.sql.SQLException;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import model.Tutor;
-import model.TutorDAO;
 import model.Usuari;
 import model.UsuariDAO;
 
 /**
- * Servlet implementation class modificarTutor
+ * Servlet implementation class ModificarResponsable
  */
-@WebServlet("/modificarTutor")
-public class modificarTutor extends HttpServlet {
+@WebServlet("/ModificarResponsable")
+public class ModificarResponsable extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public modificarTutor() {
+    public ModificarResponsable() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -42,13 +38,10 @@ public class modificarTutor extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		UsuariDAO uDAO=new UsuariDAO();
-		TutorDAO tDAO=new TutorDAO();
-		Usuari usu=new Usuari();
-		String NIF=(String)request.getParameter("NIF");
-		usu=uDAO.consultaUsuari(NIF);
-		String tecno = null;
-		tDAO.tancarConn();
+		String NIF=request.getParameter("NIF").toString();
+		Usuari usu=uDAO.consultaUsuari(NIF);
 		uDAO.tancarConn();
+		
 		
 		response.setContentType("text/html");
 		request.getSession().setAttribute("NIF", usu.getNIF());
@@ -57,9 +50,9 @@ public class modificarTutor extends HttpServlet {
 		request.getSession().setAttribute("Pcognom", usu.getCognom1());
 		request.getSession().setAttribute("Scognom", usu.getCognom2());
 		request.getSession().setAttribute("mail", usu.getMail());
-		request.getSession().setAttribute("tecno", tecno);
-		
-		response.sendRedirect("/fpDualWeb/pages/responsablesModificar2.jsp");
+	
+		response.sendRedirect("pages/responsablesModificar2.jsp");
 	}
+	
 
 }

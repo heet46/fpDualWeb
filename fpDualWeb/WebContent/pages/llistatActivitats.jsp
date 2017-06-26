@@ -32,30 +32,35 @@
 </head>
 <body>
 <%
-	HttpSession sesion=request.getSession(); 
-	String nif;
+HttpSession sesion=request.getSession(); 
+String nif=null;
+String usuNif=null;
+String usuNom=null;
+String usuCognom=null;
+String usuMail=null;
+int permis=0;
+try{
 	if(sesion.getAttribute("nif") == null){	
+		session.invalidate();
 		response.sendRedirect("login.jsp");
 	}
+
+	usuNif = sesion.getAttribute("nif").toString();
+	usuNom = sesion.getAttribute("nomComplet").toString();
+	usuCognom = sesion.getAttribute("cognom1Login").toString();
+	usuMail = sesion.getAttribute("mailLogin").toString();
+	permis = Integer.parseInt(sesion.getAttribute("permis").toString());
+
 	
-	String usuNif = null;
 	String sessionID = null;
-	String usuNom = null;
-	String usuCognom = null;
-	String usuMail = null;
 	Cookie[] cookies = request.getCookies();
 	if(cookies != null){
 		for(Cookie cookie : cookies){
-		
-			if(cookie.getName().equals("nif")) usuNif = cookie.getValue();
-			if(cookie.getName().equals("nom")) usuNom = cookie.getValue();
-			if(cookie.getName().equals("cognom")) usuCognom = cookie.getValue();
-			if(cookie.getName().equals("mail")) usuMail = cookie.getValue();
-			if(cookie.getName().equals("JSESSIONID")) sessionID = cookie.getValue();
-			
-			
+			if(cookie.getName().equals("JSESSIONID")) sessionID = cookie.getValue();			
 		}
 	}
+	
+}catch(Exception e){}
 	
 	ActivitatDAO aDAO = new ActivitatDAO();
 	List<Activitat> llistaActivitats = aDAO.llistaTotesActivitats();
@@ -110,6 +115,12 @@
                     </li>
                     <li class="active-link">
                         <a href="activitats.jsp"><i class="fa fa-list "></i>Activitats</a>
+                    </li>
+                    <li>
+                        <a href="administrador.jsp"><i class="fa fa-university "></i>Administrador </a>
+                    </li>
+                    <li>
+                    	<a href="responsables.jsp"><i class="fa fa-street-view"></i>Responsables</a>
                     </li>
                 </ul>
             </div>

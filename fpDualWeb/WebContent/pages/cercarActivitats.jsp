@@ -34,30 +34,35 @@
 </head>
 <body>
 <%
-	HttpSession sesion=request.getSession(); 
-	String nif;
+HttpSession sesion=request.getSession(); 
+String nif=null;
+String usuNif=null;
+String usuNom=null;
+String usuCognom=null;
+String usuMail=null;
+int permis=0;
+try{
 	if(sesion.getAttribute("nif") == null){	
+		session.invalidate();
 		response.sendRedirect("login.jsp");
 	}
+
+	usuNif = sesion.getAttribute("nif").toString();
+	usuNom = sesion.getAttribute("nomComplet").toString();
+	usuCognom = sesion.getAttribute("cognom1Login").toString();
+	usuMail = sesion.getAttribute("mailLogin").toString();
+	permis = Integer.parseInt(sesion.getAttribute("permis").toString());
+
 	
-	String usuNif = null;
 	String sessionID = null;
-	String usuNom = null;
-	String usuCognom = null;
-	String usuMail = null;
 	Cookie[] cookies = request.getCookies();
 	if(cookies != null){
 		for(Cookie cookie : cookies){
-		
-			if(cookie.getName().equals("nif")) usuNif = cookie.getValue();
-			if(cookie.getName().equals("nom")) usuNom = cookie.getValue();
-			if(cookie.getName().equals("cognom")) usuCognom = cookie.getValue();
-			if(cookie.getName().equals("mail")) usuMail = cookie.getValue();
-			if(cookie.getName().equals("JSESSIONID")) sessionID = cookie.getValue();
-			
-			
+			if(cookie.getName().equals("JSESSIONID")) sessionID = cookie.getValue();			
 		}
 	}
+	
+}catch(Exception e){}
 	
 	ActivitatDAO aDAO = new ActivitatDAO();
 	List<Activitat> llistaActivitats;
@@ -120,6 +125,12 @@
                     <li class="active-link">
                         <a href="activitats.jsp"><i class="fa fa-list "></i>Activitats</a>
                     </li>
+                    <li>
+                        <a href="administrador.jsp"><i class="fa fa-university "></i>Administrador </a>
+                    </li>
+                    <li>
+                    	<a href="responsables.jsp"><i class="fa fa-street-view"></i>Responsables</a>
+                    </li>
                 </ul>
             </div>
 
@@ -152,9 +163,12 @@
   						<span class="caret"></span></button>
   						<ul class="dropdown-menu dropmenu">
   							<li class="dropdown-header">Filtrar per Codi</li>
-  							<li><a href="#" class="small" data-value="'EXC'" tabIndex="-1"><input type="checkbox" value="'EXC'" name="codi1"/>&nbsp;EXC (Excursió)</a></li>
-    						<li><a href="#" class="small" data-value="'TLL'" tabIndex="-1"><input type="checkbox" value="'TLL'" name="codi2"/>&nbsp;TLL (Taller)</a></li>
-							<li><a href="#" class="small" data-value="'TBL'" tabIndex="-1"><input type="checkbox" value="'TBL'" name="codi3"/>&nbsp;TBL (Treball)</a></li>
+  							<li><a href="#" class="small" data-value="'SQL'" tabIndex="-1"><input type="checkbox" value="'SQL'" name="codi1"/>&nbsp;SQL (Consulta de dades)</a></li>
+    						<li><a href="#" class="small" data-value="'JAV'" tabIndex="-1"><input type="checkbox" value="'JAV'" name="codi2"/>&nbsp;JAV (Programació amb Java)</a></li>
+							<li><a href="#" class="small" data-value="'C++'" tabIndex="-1"><input type="checkbox" value="'C++'" name="codi3"/>&nbsp;C++ (Programació amb C++)</a></li>
+							<li><a href="#" class="small" data-value="'NET'" tabIndex="-1"><input type="checkbox" value="'NET'" name="codi4"/>&nbsp;NET (Programació amb .NET)</a></li>
+							<li><a href="#" class="small" data-value="'SAP'" tabIndex="-1"><input type="checkbox" value="'SAP'" name="codi5"/>&nbsp;SAP (Programació amb SAP)</a></li>
+							
 						</ul>
 					</div>
                     	</form>
