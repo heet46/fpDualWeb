@@ -9,23 +9,21 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import model.CentreDAO;
+import model.ResponsableDAO;
 import model.Tutor;
-import model.TutorDAO;
-import model.Usuari;
 import model.UsuariDAO;
 
 /**
- * Servlet implementation class ModificarResponsable2
+ * Servlet implementation class EliminarResponsable
  */
-@WebServlet("/ModificarResponsable2")
-public class ModificarResponsable2 extends HttpServlet {
+@WebServlet("/EliminarResponsable")
+public class EliminarResponsable extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ModificarResponsable2() {
+    public EliminarResponsable() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -43,26 +41,14 @@ public class ModificarResponsable2 extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		UsuariDAO uDAO=new UsuariDAO();
-		CentreDAO cDAO=new CentreDAO();
-		String idVella=(String)request.getParameter("IdVella");
-		Usuari u=new Usuari();
-		u.setNIF(request.getParameter("NIF"));
-		u.setPasswd(request.getParameter("pass"));
-		u.setNom(request.getParameter("nom"));
-		u.setCognom1(request.getParameter("Pcognom"));
-		u.setCognom2(request.getParameter("Scognom"));
-		u.setMail(request.getParameter("mail"));
-		u.setPermis(3);
+		ResponsableDAO rDAO=new ResponsableDAO();
+		String NIF=(String)request.getParameter("NIF");
 		try {
-			u.setIdCentre(cDAO.idCentre(request.getParameter("centre")));
-			System.out.println(idVella);
-			uDAO.modificarUsuari(idVella, u);
+			rDAO.baixaResponsable(NIF);
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		doGet(request, response);
-		response.sendRedirect("pages/responsablesModificar.jsp");
+		response.sendRedirect("pages/responsablesBaixa.jsp");
 	}
 
 }

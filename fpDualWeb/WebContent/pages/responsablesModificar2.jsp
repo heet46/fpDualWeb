@@ -156,8 +156,6 @@ try{
                   <!-- /. ROW  --> 
                             <div class="row text-center pad-top">
                                 <form method="Post" name="Form" onsubmit="return validateForm()" action="../ModificarResponsable2">
-                                
-                                <%String nifVell=request.getParameter("NIF"); %>
                                     <table>
                                         <tr>
                                             <td>NIF: </td>

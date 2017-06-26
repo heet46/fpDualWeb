@@ -22,20 +22,20 @@ public class ResponsableDAO {
 		consultaSQL="SELECT * FROM usuari WHERE permisos=3";
 		ResultSet rs=null;
 		List<Responsable> llista=new ArrayList<Responsable>();
-		Responsable r = new Responsable();
+		Responsable r = null;
 		rs=g.consultaRegistres(consultaSQL);
 		while(rs.next()){
-			r.setNIF(rs.getString("NIF"));
-			r.setNom(rs.getString("nom"));
-			r.setPasswd(rs.getString("password"));
-			r.setCognom1(rs.getString("primer_cognom"));
-			r.setCognom2(rs.getString("segon_cognom"));
-			r.setDataAlta(rs.getDate("data_alta"));
-			r.setMail(rs.getString("mail"));
-			r.setPermis(rs.getInt("permisos"));
+			r=new Responsable(rs.getString("NIF"),rs.getString("nom"),rs.getString("password"),
+					rs.getString("primer_cognom"),rs.getString("segon_cognom"),rs.getString("mail"),
+					rs.getInt("permisos"));
 			r.setIdCentre(rs.getInt("id_centre"));
 			llista.add(r);
 		}
 		return llista;
+	}
+	
+	public void baixaResponsable(String NIF) throws SQLException{
+		consultaSQL="DELETE FROM usuari WHERE NIF='"+NIF+"';";
+		g.modificarRegistre(consultaSQL);
 	}
 }
