@@ -20,7 +20,13 @@
     <link href="../assets/css/custom.css" rel="stylesheet" />
     
     <link href="../assets/css/activitats.css" rel="stylesheet" />
-     <!-- GOOGLE FONTS-->
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    
+    <script src="../assets/js/bootstrap.min.js"></script>
+    
+    <script src="../assets/js/custom.js"></script>
+    <!-- GOOGLE FONTS-->
     <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
     <!-- FAVICON -->
 	<link rel="shortcut icon" type="image/ico" href="../assets/img/favicon-clock-o.ico" />
@@ -68,9 +74,7 @@ try{
                     </button>
                     <a class="navbar-brand" href="../index.jsp">
                         <img src="../assets/img/logo.png" height="50px"/>
-
                     </a>
-                    
                 </div>
               
                 <span class="logout-spn" >                
@@ -117,90 +121,49 @@ try{
                     </li>
                 </ul>
             </div>
-
         </nav>
         <!-- /. NAV SIDE  -->
         <div id="page-wrapper" >
             <div id="page-inner">
                 <div class="row">
                     <div class="col-lg-12">
-                     <h2>Registre d'hores</h2>   
+                     <h2>Introduir hores</h2>   
                     </div>
                 </div>              
                  <!-- /. ROW  -->
-                  <hr />
-                <div class="row">
-                
- 
-                    </div>
-                  <!-- /. ROW  --> 
-                            <div class="row text-center pad-top">
-                  <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                      <div class="div-square">
-                           <a href="afegirHores.jsp" >
-                        <i class="fa fa-plus-square fa-5x" aria-hidden="true"></i>
-
-                        <h4>Registrar hores</h4>
-                      </a>
-                      </div>
-                     
-                     
-                  </div> 
-                 
-                  <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                      <div class="div-square">
-                           <a href="modificarActivitatsTaula.jsp" >
-                        <i class="fa fa-calendar fa-5x" aria-hidden="true"></i>
-                      <h4>Consultar hores</h4>
-                      </a>
-                      </div>
-                  </div>
-                  
-                <br><br><br><br><br><br><br>
-                   <div class="col-lg-11"></div>
-                <div class="col-lg-1">
-                    <a class="flotante" href="../index.jsp">
-                        <i class="fa fa-arrow-left fa-2x"></i>
-                    </a>
-                </div>
-                  
-              </div>
-                 <!-- /. ROW  -->   
-				 <!-- 
-				 <div class="row">
-                    <div class="col-lg-12 ">
-					<br/>
-                        <div class="alert alert-danger">
-                             <strong>Want More Icons Free ? </strong> Checkout fontawesome website and use any icon <a target="_blank" href="http://fortawesome.github.io/Font-Awesome/icons/">Click Here</a>.
-                        </div>
-                       
-                    </div>
-                    </div>
-                  <!-- /. ROW  --> 
-    </div>
-             <!-- /. PAGE INNER  -->
-            </div>
-         <!-- /. PAGE WRAPPER  -->
-        </div>
-    <div class="footer">
-      
+                <hr />
+                <form action="" method="">
+	                <div class="row">
+	                	<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+	                		<h4>Data</h4>
+	                		<input type="date" class="form-control">
+	                	</div>
+	 				</div>
+	 				<hr>
+	                <!-- ROW -->
+				</form>
+    		
+    		</div> <!-- PAGE-INNER -->
+		
+		</div> <!-- PAGE-WRAPPER -->
+	
+	</div> <!-- WRAPPER -->
     
-            <div class="row">
-                <div class="col-lg-12" >
-                    &copy;  2017 Indra Software Labs | Design by: Joan Espuñes, Sergi Fernández, Sisco Navarro, Thiago Hachikyan
-                </div>
-            </div>
+    <div class="footer">
+		<div class="row">
+			<div class="col-lg-12" >
+			    &copy;  2017 Indra Software Labs | Design by: Joan Espuñes, Sergi Fernández, Sisco Navarro, Thiago Hachikyan
+			</div>
         </div>
+	</div>
           
 
-     <!-- /. WRAPPER  -->
+    <!-- /. WRAPPER  -->
     <!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
     <!-- JQUERY SCRIPTS -->
     <!-- CUSTOM SCRIPTS -->
     
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script src="../assets/js/bootstrap.min.js"></script>
-    <script src="../assets/js/custom.js"></script>
+
 
     
    

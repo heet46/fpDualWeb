@@ -91,7 +91,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="#">
+                    <a class="navbar-brand" href="../index.jsp">
                         <img src="../assets/img/logo.png" height="50px" />
                     </a>
                 </div>
@@ -134,7 +134,7 @@
                     <div class="col-md-12">
 						<br>
                      	<h2 style="display:inline">Dades d'usuari </h2>
-                     	<div style="float:right; font-size:16px" ><a href="alumnes.jsp"><strong>Torna enrere</strong></a></div>   
+                     	<div style="float:right; font-size:16px" ><a href="../index.jsp"><strong>Torna enrere</strong></a></div>   
 					</div>
                 </div>              
                  <!-- /. ROW  -->
@@ -401,14 +401,12 @@
          <!-- /. PAGE WRAPPER  -->
         </div>
     <div class="footer">
-      
-    
-             <div class="row">
-                <div class="col-lg-12" >
-                    &copy;  2014 yourdomain.com | Design by: <a href="http://binarytheme.com" style="color:#fff;"  target="_blank">www.binarytheme.com</a>
-                </div>
+		<div class="row">
+	        <div class="col-lg-12" >
+	            &copy;  2017 Indra Software Labs | Design by: Joan Espuñes, Sergi Fernández, Sisco Navarro, Thiago Hachikyan
+	        </div>
         </div>
-        </div>
+	</div>
           
 
      <!-- /. WRAPPER  -->

@@ -146,7 +146,7 @@ public class ModificarAlumne extends HttpServlet {
 			aDAO.modificarAlumne(usuari, alumne);
 			aDAO.tancarConn();
 			request.getSession().setAttribute("duplicat", 0);
-			response.sendRedirect("pages/llistatAlumnes.jsp");
+			response.sendRedirect("pages/index.jsp");
 		} catch (SQLException e) {
 			aDAO.tancarConn();
 			request.getSession().setAttribute("duplicat", 1);
