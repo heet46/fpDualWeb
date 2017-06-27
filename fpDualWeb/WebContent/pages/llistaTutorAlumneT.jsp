@@ -110,18 +110,22 @@ try{
                         <a href="alumnes.jsp"><i class="fa fa-graduation-cap "></i>Alumnes</a>
                     </li>
                     <li  class="active-link">
-                        <a href="tutors.jsp"><i class="fa fa-book"></i>Tutors</a>
+                        <a href="#"><i class="fa fa-book"></i>Tutors</a>
                     </li>
-
                     <li>
                         <a href="centre.jsp"><i class="fa fa-university "></i>Centres </a>
                     </li>
                     <li>
                         <a href="activitats.jsp"><i class="fa fa-list "></i>Activitats</a>
                     </li>
+                    
+                    <!-- Administradors -->
+                    <%if(permis == 4){ %>
                     <li>
                         <a href="administrador.jsp"><i class="fa fa-university "></i>Administrador </a>
                     </li>
+                    <%} %>
+                    
                     <li>
                     	<a href="responsables.jsp"><i class="fa fa-street-view"></i>Responsables</a>
                     </li>
@@ -135,7 +139,7 @@ try{
             <div id="page-inner">
                 <div class="row">
                     <div class="col-lg-12">
-                     <h2>Llista tutors</h2>   
+                     <h2>Dades tutor</h2>   
                     </div>
                 </div>              
                  <!-- /. ROW  -->

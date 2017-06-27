@@ -105,11 +105,15 @@ try{
                     <li>
                         <a href="activitats.jsp"><i class="fa fa-list "></i>Activitats</a>
                     </li>
+                    
+                    <!-- Administradors -->
                     <%if(permis == 4){ %>
                     <li>
                         <a href="administrador.jsp"><i class="fa fa-university "></i>Administrador </a>
                     </li>
                     <%} %>
+                    
+                    <!-- Responsables o Administradors -->
                     <%if(permis == 3 || permis == 4){ %>
                     <li>
                     	<a href="responsables.jsp"><i class="fa fa-street-view"></i>Responsables</a>
@@ -131,8 +135,9 @@ try{
                 
                   <!-- /. ROW  --> 
                   <div class="row text-center pad-top">
-		<%if(permis==4){%>
-                            
+                
+                <!-- Administradors -->
+				<%if(permis==4){%>    
                   <div class="col-lg-3 col-md-2 col-sm-2 col-xs-6">
                       <div class="div-square">
                            <a href="tutorsAfegir.jsp" >
@@ -183,7 +188,9 @@ try{
 	                      </div>
 	                  </div>
 	              </div>
-            <%}else if(permis==3){ %>
+	              
+	         	<!-- Responsables -->
+            	<%}else if(permis==3){ %>
                   <div  class="row text-center pad-top">
 	                  <div class="col-lg-3 col-md-2 col-sm-2 col-xs-6">
 	                      <div class="div-square">
@@ -197,20 +204,22 @@ try{
 	                      </div>
 	                  </div>
 				</div>
-            <%}else if(permis==2){%>
+				
+				<!-- Tutors -->
+            	<%}else if(permis==2){%>
                       <div class="col-lg-3 col-md-2 col-sm-2 col-xs-6">
                       <div class="div-square">
                       <form action="../DadesTutorModificar" method="Post" name="form">
                            <a href="#" onclick="$(this).closest('form').submit()">
                         <i class="fa fa-pencil fa-5x" aria-hidden="true"></i>
-                      <h4>Modificar tutors</h4>
+                      <h4>Modificar Dades</h4>
                       </a>
                       <input hidden value="<%=usuNif %>" name="NIF">
                       </form>
                       </div>
             	             
-            	             
-            <%}else if(permis==1){%>
+            	<!-- Alumnes -->             
+            	<%}else if(permis==1){%>
             		  <div  class="row text-center pad-top">
 	                  <div class="col-lg-3 col-md-2 col-sm-2 col-xs-6">
 	                      <div class="div-square">
@@ -255,8 +264,5 @@ try{
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="../assets/js/bootstrap.min.js"></script>
     <script src="../assets/js/custom.js"></script>
-
-    
-   
 </body>
 </html>
