@@ -210,7 +210,7 @@
 	                                	<label>Tutor</label>
 	                                </div>
 	                                <div class="col-lg-10 col-md-10">
-	                                	<a href="#Tutor" data-toggle="tab"><%=valorsAlumne.get(0).getTutor().getNom() %></a>
+	                                	<%=valorsAlumne.get(0).getTutor().getNom() %>
 	                                </div>
                                 </div>
                                 <div class="row">
@@ -218,7 +218,7 @@
 	                                	<label>Centre</label>
 	                                </div>
 	                                <div class="col-lg-10 col-md-10">
-	                                	<a href="#Centre" data-toggle="tab"><%=valorsAlumne.get(0).getCentre().getNom() %></a>
+	                                	<%=valorsAlumne.get(0).getCentre().getNom() %>
 	                                </div>
                                 </div>  
                                 <hr>

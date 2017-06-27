@@ -49,16 +49,11 @@ public class ComprovarData extends HttpServlet {
 		registre.setData(data2);
 		List<Object> llista;
 		
-		try {
-			List <String> llistaActivitats = rDAO.llistaActivitats();
-			System.out.println(llistaActivitats);
-		} catch (SQLException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
+
 		try {
 			llista = rDAO.valorsData(registre);
-			if(llista.isEmpty()){
+			rDAO.tancarConn();
+			if(llista.isEmpty()){				
 				response.sendRedirect("pages/afegirRegistre.jsp");
 			}else{
 				System.out.println("Hi ha cosetes");
