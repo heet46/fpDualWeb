@@ -45,19 +45,31 @@ public class modificarTutors2 extends HttpServlet {
 		UsuariDAO uDAO=new UsuariDAO();
 		TutorDAO tDAO=new TutorDAO();
 		String idVella=request.getParameter("IdVella");
+		int permis=Integer.parseInt(request.getParameter("permis"));
+		Usuari u=new Usuari();
 		System.out.println(idVella);
 		try {
-			uDAO.modificarUsuari(idVella, new Usuari(request.getParameter("NIF"),
-					request.getParameter("pass"),request.getParameter("nom"),
-					request.getParameter("Pcognom"),request.getParameter("Scognom"),
-					request.getParameter("mail"),2));
+			u.setNIF(request.getParameter("NIF"));
+			System.out.println(request.getParameter("centree"));
+			u.setPasswd(request.getParameter("pass"));
+			u.setNom(request.getParameter("nom"));
+			u.setCognom1(request.getParameter("Pcognom"));
+			u.setCognom2(request.getParameter("Scognom"));
+			u.setMail(request.getParameter("mail"));
+			u.setPermis(2);
+			u.setIdCentre(Integer.parseInt(request.getParameter("centre")));
+			uDAO.modificarUsuari(idVella, u);
 			tDAO.modificarTutor(new Tutor(uDAO.consultaID(request.getParameter("NIF")),request.getParameter("tecno")));
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		doGet(request, response);
-		response.sendRedirect("pages/tutorsConsulta.jsp");
+		if(permis!=2){
+			response.sendRedirect("pages/tutorsConsulta.jsp");
+		}else{
+			response.sendRedirect("pages/tutors.jsp");
+		}
 	}
 
 }

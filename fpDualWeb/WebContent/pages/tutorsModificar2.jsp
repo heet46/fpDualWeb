@@ -198,9 +198,13 @@ try{
                                         </td>
                                         </tr>
                                         <tr>
-                                            <td><br></td>
+                                            <td hidden><input type="hidden" name="centre" value="<%= request.getSession().getAttribute("centre")%>"></td>
                                         </tr>
                                         <tr>
+                                        	<td><br/></td>
+                                        </tr>
+                                        <tr>
+                                        	<td hidden><input type="text" name="permis" value="<%=permis %>"></td>
                                             <th><input type="submit" name="Modificar" class="btn btn-warning"  value="Modificar"/></th>
                                         </tr>
                                     </table>

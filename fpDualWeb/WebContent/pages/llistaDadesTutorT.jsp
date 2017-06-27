@@ -181,12 +181,15 @@ try{
 	                                        				<%=u.getMail()%>
 	                                        			</td>
                                                        	 <form name="form" method="Post" action="../modificarTutor" class="table-link">
-                                                       	    <td hidden>
+                                                       	    <td hidden style="width: 1%">
                                                         		<input type="hidden" name="NIF" value="<%=u.getNIF()%>" size="0">
 	                                        				</td>
                                                         	<td style="width: 5%">
                                                         		<input type="submit" class="btn btn-warning" value="Modificar">
                                                         	</td>
+                                                        	<td hidden style="width: 1%">
+                                                        		<input type="hidden" name="permis" value="<%=permis%>" size="0">
+	                                        				</td>
 														</form>
 	                                        		</tr>
 	                                    </tbody>

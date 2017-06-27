@@ -57,9 +57,11 @@ public class modificarTutor extends HttpServlet {
 		request.getSession().setAttribute("Pcognom", usu.getCognom1());
 		request.getSession().setAttribute("Scognom", usu.getCognom2());
 		request.getSession().setAttribute("mail", usu.getMail());
+		request.getSession().setAttribute("centre", usu.getIdCentre());
+		
 		request.getSession().setAttribute("tecno", tecno);
 		
-		response.sendRedirect("/fpDualWeb/pages/responsablesModificar2.jsp");
+		response.sendRedirect("/fpDualWeb/pages/tutorsModificar2.jsp");
 	}
 
 }

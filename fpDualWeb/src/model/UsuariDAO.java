@@ -94,7 +94,7 @@ public class UsuariDAO {
 		"password='"+usu.getPasswd()+"',"+"nom='"+usu.getNom()+"',"+"primer_cognom='"+usu.getCognom1()+"',"+
 		"segon_cognom='"+usu.getCognom2()+"',mail='"+usu.getMail()+"',permisos="+usu.getPermis()+",id_centre="+usu.getIdCentre()+" "+
 		"WHERE nif='"+NIF+"';";
-		System.out.println(usu.getIdCentre());
+		System.out.println(consultaSQL);
 		gestorDB.modificarRegistre(consultaSQL);
 	}
 	
