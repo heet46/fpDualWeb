@@ -44,6 +44,20 @@ public class RegistreDAO {
 		}
 		return llista;
 	}
+	
+	public int sumaHores(Registre reg) throws SQLException{
+		int suma = 0;
+		ResultSet rs = null;
+		String consultaSQL = "SELECT SUM(r.hores) "
+				+ "FROM registre AS r "
+				+ "WHERE r.data LIKE '"+reg.getData()+"'";
+		
+		rs = gestorDB.consultaRegistres(consultaSQL);
+		while(rs.next()){
+			suma = rs.getInt(1);
+		}
+		return suma;
+	}
 		
 	public void tancarConn(){
 		gestorDB.tancarConnexio();

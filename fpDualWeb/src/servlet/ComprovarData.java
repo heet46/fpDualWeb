@@ -62,9 +62,6 @@ public class ComprovarData extends HttpServlet {
 			e.printStackTrace();
 		}
 		
-
-
-		
 	}
 
 }
