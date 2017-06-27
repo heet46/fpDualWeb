@@ -82,6 +82,7 @@
 <%
 	HttpSession sesion=request.getSession(); 
 	String nif;
+	int permis=0;
 	if(sesion.getAttribute("nif") == null){	
 		session.invalidate();
 		response.sendRedirect("login.jsp");
@@ -90,6 +91,7 @@
 	String usuNom = sesion.getAttribute("nomComplet").toString();
 	String usuCognom = sesion.getAttribute("cognom1Login").toString();
 	String usuMail = sesion.getAttribute("mailLogin").toString();
+	permis = Integer.parseInt(sesion.getAttribute("permis").toString());
 	String sessionID = null;
 	Cookie[] cookies = request.getCookies();
 	if(cookies != null){
@@ -125,7 +127,7 @@
             </div>
         </div>
         <!-- /. NAV TOP  -->
-        <nav class="navbar-default navbar-side" role="navigation">
+       <nav class="navbar-default navbar-side" role="navigation">
             <div class="sidebar-collapse">
               <ul class="nav" id="main-menu">
                 <li >
@@ -134,18 +136,36 @@
                 <li>
                     <a href="alumnes.jsp"><i class="fa fa-graduation-cap "></i>Alumnes</a>
                 </li>
+                
                 <li>
                     <a href="tutors.jsp"><i class="fa fa-book"></i>Tutors</a>
                 </li>
-                <li>
-                <li  class="active-link">
+
+                <li class="active-link">
                     <a href="centre.jsp"><i class="fa fa-university "></i>Centres </a>
                 </li>
                 <li>
                     <a href="activitats.jsp"><i class="fa fa-list "></i>Activitats</a>
                 </li>
+                <li>
+                    <a href="registre.jsp"><i class="fa fa-clock-o"></i>Registre d'hores</a>
+				</li>
+                <%if(permis == 4){ %>
+                    <li>
+                    	<a href="administrador.jsp"><i class="fa fa-user-o"></i>Administrador</a>
+                    </li>
+                    <%} %>
+                 <li>
+                	<a href="responsables.jsp"><i class="fa fa-street-view"></i>Responsables</a>
+                </li>
+                <%if(permis == 1){ %>
+                <li>
+                    	<a href="pages/dadesUsuari.jsp"><i class="fa fa-id-card"></i>Dades d'usuari</a>
+               </li>
+               <%} %>
               </ul>
           </div>
+
         </nav>
         <div id="page-wrapper" >
             <div id="page-inner">
