@@ -104,7 +104,6 @@ try{
 	usuMail = sesion.getAttribute("mailLogin").toString();
 	permis = Integer.parseInt(sesion.getAttribute("permis").toString());
 
-	
 	String sessionID = null;
 	Cookie[] cookies = request.getCookies();
 	if(cookies != null){
@@ -217,18 +216,13 @@ try{
 	 				<div class="row">
 	 					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 	 						<h4>Hores</h4>
-	 						<input type="range" min=1 max=9 name=hores>
+	 						<% double num=9; double num1=(100/(num-1));%>
+	 						<input type="range" min=1 max=<%=num%> name=hores>
 	 						<table width="100%">
 	 							<tr>
-	 								<td width="12.5%">1h</td>
-	 								<td width="12.5%">2h</td>
-	 								<td width="12.5%">3h</td>
-	 								<td width="12.5%">4h</td>
-	 								<td width="12.5%">5h</td>
-	 								<td width="12.5%">6h</td>
-	 								<td width="12.5%">7h</td>
-	 								<td width="12.5%">8h</td>
-	 								<td width="12.5%">9h</td>
+	 							<% for(int i=1;i<=num;i++){ %>
+	 								<td width="<%=num1%>%"><%=i%>h</td>
+	 								<%} %>
 	 							</tr>
 	 						</table>
 	 					</div>
