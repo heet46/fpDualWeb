@@ -348,77 +348,36 @@
 
 		             	<div class='row col-lg-12 col-md-12'>
 
-		             	<table id='myTable' class='table table-striped  table-hover' >
+							
 
-		             	<thead>
-
-			             	<tr>
-
-				             	<th ><b>Nom<b/></th>
-
-				             	<th ><b>Codi<b/></th>
-
-				             	<th ><b>Telefon<b/></th>
-
-				             	<th ><b>Web<b/></th>
-
-			             	</tr>
-
-		             	</thead>
 
 		             	<%
-
-		             	ResultSet rs;
-
-		             	CentreDAO cdao = new CentreDAO();
-
-		             	rs = cdao.centreConsultaResponsabilitat(usuNif);
-
-		             	try { 
-
-		             		String laIdcentre="";
-
-		             		while (rs.next()) { 
-
-		             			out.println("<tr>");
-
-		             			for (int i = 1; i <= 4; i++) { 
-
-		             				if (i > 1) out.print(" \t\t"); 
-
+			             	String laIdcentre="";
+		             		String nom="";
+							String codi="";
+							String telefon="";
+							String web="";
+			             	ResultSet rs;
+			             	CentreDAO cdao = new CentreDAO();
+			             	rs = cdao.centreConsultaResponsabilitat(usuNif);
+			             	try { 
+			             		while (rs.next()) { 
 		             				laIdcentre = rs.getString(1);
-
-		             				String columnValue = rs.getString(i+1); 
-
-		             				out.println("<td>" + columnValue + "</td>");
-
-		             			} 
-
-		             			out.println("<td hidden><input type='hidden' name='idCentre' value=" + laIdcentre + "></td>");
-
-		             			out.println("</tr>");
-
-		             		}	
-
-		             	} catch (SQLException e) { 
-
-		             		  e.printStackTrace(); 
-
-		             	}finally{};
-
-		             	
-
-		             %>
-
-		             </table>
-
-		             <div/>
-
+		             				nom = rs.getString(2);
+									codi = rs.getString(3);
+									telefon = rs.getString(4);
+									web = rs.getString(5);
+			             		}	
+			             	} catch (SQLException e) { 
+			             		  e.printStackTrace(); 
+			             	}finally{};
+						 %>
+							<b>Nom: </b> <%=nom%> <br/>
+							<b>Codi: </b> <%=codi%> <br/>
+							<b>Telefon: </b> <%=telefon%> <br/>
+							<b>Pagina Web: </b> <%=web%> <br/>
                             </div>
-
                         </div>
-
-
                    <p/>  
 
                     

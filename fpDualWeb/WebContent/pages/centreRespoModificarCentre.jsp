@@ -1,7 +1,51 @@
+<%@page import="java.sql.SQLException"%>
+<%@ page import="controlador.*" %>
+<%@ page import="model.*" %>
+<%@ page import="servlet.*" %>
+<%@ page import="java.io.IOException" %>
+<%@ page import="java.io.PrintWriter" %>
+<%@ page import="javax.servlet.ServletException" %>
+<%@ page import="javax.servlet.http.HttpServlet" %>
+<%@ page import="javax.servlet.http.HttpServletRequest" %>
+<%@ page import="javax.servlet.http.HttpServletResponse" %>
+<%@ page import="java.sql.ResultSet" %>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+
+
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<script src="https://use.fontawesome.com/d43d49ce33.js"></script>
+      <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Registre d'hores</title>
+	<!-- Scripts de Control de entrada de datos -->
+    <script>
+
+		function habilitar(value){ //Funcion que comprueba cual radius es marcado para anular o no el input.
+			if(value=="1")
+			{
+				// habilitamos
+				document.getElementById("iddelcentre").disabled=false;
+			}else if(value=="2"){
+				// deshabilitamos
+				document.getElementById("iddelcentre").disabled=true;
+			}
+		}
+
+		function valida(e){ // Funcion que delimita los caracteres que entremos a unicamente Enteros.
+		    tecla = (document.all) ? e.keyCode : e.which;
+		    //Tecla de retroceso para borrar, siempre la permite
+		    if (tecla==8){
+		        return true;
+		    }
+		    // Patron de entrada, en este caso solo acepta numeros
+		    patron =/[0-9]/;
+		    tecla_final = String.fromCharCode(tecla);
+		    return patron.test(tecla_final);
+		}
+	</script>
+	 <script src="https://use.fontawesome.com/d43d49ce33.js"></script>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Registre d'hores</title>
@@ -22,7 +66,7 @@
     <link href="../assets/css/tutors.css" rel="stylesheet" />
      <!-- GOOGLE FONTS-->
     <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
-         <!-- FAVICON -->
+                 <!-- FAVICON -->
 	<link rel="shortcut icon" type="image/ico" href="../assets/img/favicon-clock-o.ico" />
     <script src="assets/js/jquery-3.2.1.min.js"></script>
 
@@ -34,12 +78,11 @@
 		});
 	</script>
 </head>
-<body>
+<body onload="sendInfo()">
 <!-- Permetre acces nomes si hi ha una sessio -->
 <%
 	HttpSession sesion=request.getSession(); 
 	String nif;
-	int permis=0;
 	if(sesion.getAttribute("nif") == null){	
 		session.invalidate();
 		response.sendRedirect("login.jsp");
@@ -49,7 +92,6 @@
 	String usuNom = sesion.getAttribute("nomComplet").toString();
 	String usuCognom = sesion.getAttribute("cognom1Login").toString();
 	String usuMail = sesion.getAttribute("mailLogin").toString();
-	permis = Integer.parseInt(sesion.getAttribute("permis").toString());
 	
 	String sessionID = null;
 	Cookie[] cookies = request.getCookies();
@@ -96,165 +138,94 @@
                 <li>
                     <a href="alumnes.jsp"><i class="fa fa-graduation-cap "></i>Alumnes</a>
                 </li>
-                
                 <li>
                     <a href="tutors.jsp"><i class="fa fa-book"></i>Tutors</a>
                 </li>
-
-                <li class="active-link">
+                <li>
+                <li  class="active-link">
                     <a href="centre.jsp"><i class="fa fa-university "></i>Centres </a>
                 </li>
                 <li>
                     <a href="activitats.jsp"><i class="fa fa-list "></i>Activitats</a>
                 </li>
-                <%if(permis == 4){ %>
-                    <li>
-                    	<a href="administrador.jsp"><i class="fa fa-user-o"></i>Administrador</a>
-                    </li>
-                    <%} %>
-                 <li>
-                	<a href="responsables.jsp"><i class="fa fa-street-view"></i>Responsables</a>
-                </li>
               </ul>
           </div>
 
         </nav>
-        <!-- /. NAV SIDE  -->
-        
-       
         <div id="page-wrapper" >
-        
             <div id="page-inner">
                 
                 <div class="row">
-                 
-                    <div class="col-md-12">
-                    
-                    <a title="Manteniment Centres" href="../index.jsp">
+                    <div class="col-md-12" align="center">
+                    <a title="Manteniment Centres" href="../pages/centre.jsp">
                     	<img border='0' src='../assets/img/BackArrow.ico' style='position:fixed; head:0; right:0;' width="50" height="50" />
                     </a>
-                    
-                     <h2>Manteniment Centres</h2>
-                     
+                     <h2>Modificar el teu Centre</h2>
                     </div>
                 </div>
                  <!-- /. ROW  -->
                   <hr />
                  <!-- /. ROW  --> 
+				<p>
 
-				<!-- Alumnnes  --> 
-				<%if(permis == 1){ %>
-				<div class="col-lg-3 col-md-2 col-sm-2 col-xs-6">
-                      <div class="div-square">
-                           <a href="centreConsultaAlumne.jsp" >
-                        <i class="fa fa-list fa-5x" aria-hidden="true"></i>
-                      <h4>Dades del Teu Centre</h4>
-                      </a>
-                      </div>
-                  </div>
+                <%		
+             	ResultSet rs;
+             	CentreDAO cdao = new CentreDAO();
+             	int idcentre = cdao.centreConsultaModiResponsabilitat(usuNif);
+             	
+             %>
 				
-				
-                <%} %>
 
-                <!-- Tutors  --> 
-				<%if(permis == 2){ %>
-				<div class="col-lg-3 col-md-2 col-sm-2 col-xs-6">
-                      <div class="div-square">
-                           <a href="centreConsultaTutor.jsp" >
-                        <i class="fa fa-list fa-5x" aria-hidden="true"></i>
-                      <h4>Centres dels Teus Alumnes</h4>
-                      </a>
-                      </div>
-                  </div>
-				
-				
-                <%} %>
+			<span id="resultattxt"></span>
+			<script>
+				var request;
+				function sendInfo() {
+					var v=<%=idcentre%>;
+					var url="centreModificarRespon2.jsp?val="+v;
+			
+					if(window.XMLHttpRequest){
+						request=new XMLHttpRequest();
+					}
+					else if(window.ActiveXObject){
+						request=new ActiveXObject("Microsoft.XMLHTTP");
+					}
+			
+					try {
+						request.onreadystatechange=getInfo;
+						request.open("GET",url,true);
+						request.send();
+					}
+					catch(e) {
+						alert("Unable to connect to server");
+					}
+				}
+			
+				function getInfo(){
+					if(request.readyState==4){
+						var val=request.responseText;
+						document.getElementById('resultattxt').innerHTML=val;
+				}
+			}
+			
+			</script>
+
+
                 
-                <!-- Responsables  --> 
-				<%if(permis == 3){ %>
-				<div class="col-lg-3 col-md-2 col-sm-2 col-xs-6">
-                      <div class="div-square">
-                           <a href="centreConsultaResponsable.jsp" >
-                        <i class="fa fa-list fa-5x" aria-hidden="true"></i>
-                      <h4>Informacio del teu centre</h4>
-                      </a>
-                      </div>
-                  </div>
-                  <div class="col-lg-3 col-md-2 col-sm-2 col-xs-6">
-                      <div class="div-square">
-                           <a href="centreRespoModificarCentre.jsp" >
-                        <i class="fa fa-pencil fa-5x" aria-hidden="true"></i>
-                      <h4>Modificar el teu centre</h4>
-                      </a>
-                      </div>
-                  </div>
-				
-				
-                <%} %>
-                
-                <!-- Admins  --> 
-				<%if(permis == 4) { %>
-
-                 <div class="row text-center pad-top" >
-                   	<div class="col-lg-3 col-md-2 col-sm-2 col-xs-6">
-                      	<div class="div-square">
-                           <a href="centreAfegirFINAL.jsp" >
-                        		<i class="fa fa-user-plus fa-5x" aria-hidden="true"></i>
-								<h4>Afegir Centre</h4>
-                      		</a>
-                  		</div>
-					</div>
-
-                  <div class="col-lg-3 col-md-2 col-sm-2 col-xs-6">
-                      <div class="div-square">
-                           <a href="centreModificar.jsp" >
-                        <i class="fa fa-pencil fa-5x" aria-hidden="true"></i>
-                      <h4>Modificar Centre</h4>
-                      </a>
-                      </div>
-                     
-                     
-                  </div>
-
-                  <div class="col-lg-3 col-md-2 col-sm-2 col-xs-6">
-                      <div class="div-square">
-                           <a href="centreConsultar.jsp" >
-                     <i class="fa fa-list fa-5x"></i>
-                      <h4>Llistat de Centres</h4>
-                      </a>
-                      </div>
-                  </div>
-
-
-				<div class="col-lg-3 col-md-2 col-sm-2 col-xs-6">
-                      <div class="div-square">
-                           <a href="cBuscarCentres.jsp" >
-                     <i class="fa fa-list fa-5x"></i>
-                      <h4>Buscar Centres</h4>
-                      </a>
-                      </div>
-                  </div>
-                  
-                  
-                  <div class="col-lg-3 col-md-2 col-sm-2 col-xs-6">
-                      <div class="div-square">
-                           <a href="centreEliminar.jsp" >
-                        <i class="fa fa-user-times fa-5x" aria-hidden="true"></i>
-                      <h4>Eliminar Centres</h4>
-                      </a>
-                  </div>
-                  
-                   <%} %>
+                   <p/>  
                     
                 <!-- /. ROW  -->
+                  <hr />
                  <!-- /. ROW  -->  
+             
                 </div>
                  <!-- /. PAGE INNER  -->
 
                 </div>
 
          <!-- /. PAGE WRAPPER  -->
-        </div>
+         
+            </div>
+
         </div>
     <div class="footer">
       
@@ -263,7 +234,6 @@
                <div class="col-lg-12" >
                     &copy;  2017 Indra Software Labs | Design by: Joan Espuñes, Sergi Fernández, Sisco Navarro, Thiago Hachikyan
                 </div>
-        </div>
         </div>
         </div>
           
