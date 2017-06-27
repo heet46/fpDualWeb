@@ -197,10 +197,13 @@ try{
             <%}else if(permis==2){%>
                       <div class="col-lg-3 col-md-2 col-sm-2 col-xs-6">
                       <div class="div-square">
-                           <a href="tutorsModificar.jsp" >
+                      <form action="../DadesTutorModificar" method="Post" name="form">
+                           <a href="#" onclick="$(this).closest('form').submit()">
                         <i class="fa fa-pencil fa-5x" aria-hidden="true"></i>
                       <h4>Modificar tutors</h4>
                       </a>
+                      <input hidden value="<%=usuNif %>" name="NIF">
+                      </form>
                       </div>
             	             
             	             

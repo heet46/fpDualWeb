@@ -173,8 +173,14 @@
   		<url-pattern>/AdminModificar</url-pattern>
  	 </servlet-mapping>
  	 
- 	 
- 	 
+ 	 <servlet>
+  		<servlet-name>ComprovarData</servlet-name>
+  		<servlet-class>servlet.ComprovarData</servlet-class>
+  	</servlet>
+  	<servlet-mapping>
+  		<servlet-name>ComprovarData</servlet-name>
+  		<url-pattern>/ComprovarData</url-pattern>
+ 	 </servlet-mapping> 	 
  	 
  	 
 	<error-page>

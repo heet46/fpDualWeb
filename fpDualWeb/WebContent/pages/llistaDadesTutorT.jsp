@@ -1,8 +1,14 @@
+<%@page import="model.UsuariDAO" %>
+<%@page import="model.Usuari" %>
+<%@page import="model.TutorDAO" %>
+<%@page import="java.util.List" %>
+<%@page import="java.sql.Date" %>
+<%@page import="java.text.*" %>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <script src="https://use.fontawesome.com/d43d49ce33.js"></script>
-    <meta charset="utf-8" />
+    <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Registre d'hores</title>
 	<!-- BOOTSTRAP STYLES-->
@@ -17,14 +23,22 @@
 
     <link href="../assets/css/bootstrap-theme.min.css" rel="stylesheet" />
     
-    <link href="../assets/css/custom.css" rel="stylesheet" />
+     <link href="../assets/css/bootstrap-X.X.css" rel="stylesheet" />
+     
+     <link href="../assets/css/bootstrap-X.X-flex.css" rel="stylesheet" />
+     
+     <link href="../assets/css/bootstrap.js" rel="stylesheet" />
     
-    <link href="../assets/css/activitats.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.‌​2/css/bootstrap.min.‌​css">
+    
+    <link href="../assets/css/tutors.css" rel="stylesheet" />
+    
+    <link href="../assets/css/custom.css" rel="stylesheet" />
      <!-- GOOGLE FONTS-->
     <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
-    <!-- FAVICON -->
+         <!-- FAVICON -->
 	<link rel="shortcut icon" type="image/ico" href="../assets/img/favicon-clock-o.ico" />
-	</head>
+</head>
 <body>
 <%
 HttpSession sesion=request.getSession(); 
@@ -45,7 +59,6 @@ try{
 	usuCognom = sesion.getAttribute("cognom1Login").toString();
 	usuMail = sesion.getAttribute("mailLogin").toString();
 	permis = Integer.parseInt(sesion.getAttribute("permis").toString());
-
 	
 	String sessionID = null;
 	Cookie[] cookies = request.getCookies();
@@ -54,8 +67,7 @@ try{
 			if(cookie.getName().equals("JSESSIONID")) sessionID = cookie.getValue();			
 		}
 	}
-	
-}catch(Exception e){}
+}catch(Exception e){}	
 %>
     <div id="wrapper">
          <div class="navbar navbar-inverse navbar-fixed-top">
@@ -90,7 +102,6 @@ try{
         <nav class="navbar-default navbar-side" role="navigation">
             <div class="sidebar-collapse">
                 <ul class="nav" id="main-menu">
-                 
                     <li>
                         <a href="../index.jsp" ><i class="fa fa-desktop "></i>Inici </a>
                     </li>
@@ -98,20 +109,15 @@ try{
                     <li>
                         <a href="alumnes.jsp"><i class="fa fa-graduation-cap "></i>Alumnes</a>
                     </li>
-                    <li>
+                    <li  class="active-link">
                         <a href="tutors.jsp"><i class="fa fa-book"></i>Tutors</a>
                     </li>
 
                     <li>
                         <a href="centre.jsp"><i class="fa fa-university "></i>Centres </a>
                     </li>
-                    
                     <li>
-                        <a href="activitats.jsp"><i class="fa fa-list "></i>Activitats </a>
-                    </li>
-                    
-                    <li class="active-link">
-                    	<a href="registre.jsp"><i class="fa fa-clock-o"></i>Registre d'hores</a>
+                        <a href="activitats.jsp"><i class="fa fa-list "></i>Activitats</a>
                     </li>
                     <li>
                         <a href="administrador.jsp"><i class="fa fa-university "></i>Administrador </a>
@@ -122,70 +128,78 @@ try{
                 </ul>
             </div>
 
+
         </nav>
         <!-- /. NAV SIDE  -->
         <div id="page-wrapper" >
             <div id="page-inner">
                 <div class="row">
                     <div class="col-lg-12">
-                     <h2>Registre d'hores</h2>   
+                     <h2>Dades tutor</h2>   
                     </div>
                 </div>              
                  <!-- /. ROW  -->
                   <hr />
                 <div class="row">
-                
+                    <div class="col-lg-12 ">
+                    </div>
  
                     </div>
                   <!-- /. ROW  --> 
-                  <div class="row text-center pad-top">
-                  <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                      <div class="div-square">
-                           <a href="seleccioData.jsp" >
-                        <i class="fa fa-plus-square fa-5x" aria-hidden="true"></i>
-
-                        <h4>Registrar hores</h4>
-                      </a>
-                      </div>
-                     
-                     
-                  </div> 
-                 
-                  <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                      <div class="div-square">
-                           <a href="modificarActivitatsTaula.jsp" >
-                        <i class="fa fa-calendar fa-5x" aria-hidden="true"></i>
-                      <h4>Consultar hores</h4>
-                      </a>
-                      </div>
-                  </div>
-                  
-                <br><br><br><br><br><br><br>
-                   <div class="col-lg-11"></div>
-                <div class="col-lg-1">
-                    <a class="flotante" href="../index.jsp">
-                        <i class="fa fa-arrow-left fa-2x"></i>
-                    </a>
-                </div>
-                  
-              </div>
-                 <!-- /. ROW  -->   
-				 <!-- 
-				 <div class="row">
-                    <div class="col-lg-12 ">
-					<br/>
-                        <div class="alert alert-danger">
-                             <strong>Want More Icons Free ? </strong> Checkout fontawesome website and use any icon <a target="_blank" href="http://fortawesome.github.io/Font-Awesome/icons/">Click Here</a>.
-                        </div>
-                       
-                    </div>
-                    </div>
-                  <!-- /. ROW  --> 
-    </div>
-             <!-- /. PAGE INNER  -->
-            </div>
-         <!-- /. PAGE WRAPPER  -->
-        </div>
+                        
+                            <div class="row">
+                                <div class="col-lg-12">
+                                          
+	                                <table class="table table-hover table-inverse">
+	                                    <thead>
+	                                        <tr id="headeer">
+		                                        <th><span>Nom</span></th>
+		                                        <th><span>Cognom</span></th>
+		                                        <th><span>NIF</span></th>
+		                                        <th><span>E-mail</span></th>
+		                                        <th>&nbsp;</th>
+		                                        <th>&nbsp;</th>
+	                                        </tr>
+	                                    </thead>
+	                                    <tbody>
+	                                        <%
+	                                        	TutorDAO tDAO=new TutorDAO();
+	                                        	UsuariDAO uDAO=new UsuariDAO();
+												Usuari u=uDAO.consultaUsuari(request.getSession().getAttribute("tutNIF").toString());
+	                                        %>
+	                                        		<tr>
+	                                        			<td>
+	                                        				<%=u.getNom()%>
+	                                        			</td>
+	                                        			<td>
+	                                        				<%=u.getCognom1()%>
+	                                        			</td>
+	                                        			<td>
+	                                        				<%=u.getNIF()%>
+	                                        			</td>
+	                                        			<td>
+	                                        				<%=u.getMail()%>
+	                                        			</td>
+                                                       	 <form name="form" method="Post" action="../modificarTutor" class="table-link">
+                                                       	    <td hidden>
+                                                        		<input type="hidden" name="NIF" value="<%=u.getNIF()%>" size="0">
+	                                        				</td>
+                                                        	<td style="width: 5%">
+                                                        		<input type="submit" class="btn btn-warning" value="Modificar">
+                                                        	</td>
+														</form>
+	                                        		</tr>
+	                                    </tbody>
+	                                </table>
+                                   </div>
+                               </div>
+                                   </div>
+                               </div>
+                                                    <a href="tutors.jsp"  id="fletxa">
+               			<i class="fa fa-hand-o-left fa-4x" style='position:fixed; head:0; bottom:50px; right:35px;' width="50" height="50"></i>
+              		</a>
+                           </div>
+                        
     <div class="footer">
       
     
@@ -196,17 +210,10 @@ try{
             </div>
         </div>
           
-
      <!-- /. WRAPPER  -->
     <!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
     <!-- JQUERY SCRIPTS -->
     <!-- CUSTOM SCRIPTS -->
-    
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script src="../assets/js/bootstrap.min.js"></script>
-    <script src="../assets/js/custom.js"></script>
-
-    
    
 </body>
 </html>
