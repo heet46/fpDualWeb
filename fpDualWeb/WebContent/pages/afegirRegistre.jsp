@@ -115,12 +115,20 @@ try{
 }catch(Exception e){}
 
 String data = sesion.getAttribute("afgData").toString();
+double hRestants;
+try{
+	hRestants = Double.parseDouble(sesion.getAttribute("hRestants").toString());
+}catch(Exception e){
+	hRestants = 9;
+}
 List<String> llistaActivitats = null;
 RegistreDAO rDAO = null;
 try{
+	sesion.removeAttribute("horesMaximes");
 	rDAO = new RegistreDAO();
 	llistaActivitats = rDAO.llistaActivitats();
 }catch(Exception e){}
+
 
 %>
     <div id="wrapper">
@@ -198,7 +206,7 @@ try{
 	                <div class="row">
 	                	<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 	                		<h4>Activitat</h4>
-                            <select class="form-control" name="tutor" required>
+                            <select class="form-control" name="activitat" required>
                             	<option value="" selected hidden>Selecciona una activitat</option>
                             	<% 
                             	for(int j=0; j<llistaActivitats.size(); j++) { 
@@ -216,11 +224,11 @@ try{
 	 				<div class="row">
 	 					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 	 						<h4>Hores</h4>
-	 						<% double num=9; double num1=(100/(num-1));%>
-	 						<input type="range" min=1 max=<%=num%> name=hores>
+	 						<% double num1=(100/(hRestants-1));%> 
+	 						<input type="range" min=1 max=<%=hRestants%> name=hores>
 	 						<table width="100%">
 	 							<tr>
-	 							<% for(int i=1;i<=num;i++){ %>
+	 							<% for(int i=1;i<=hRestants;i++){ %>
 	 								<td width="<%=num1%>%"><%=i%>h</td>
 	 								<%} %>
 	 							</tr>

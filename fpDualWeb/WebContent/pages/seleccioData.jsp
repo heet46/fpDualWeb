@@ -32,7 +32,67 @@
 	<link rel="shortcut icon" type="image/ico" href="../assets/img/favicon-clock-o.ico" />
 	
 	<link rel="stylesheet" href="../assets/css/calendari.css">
-	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+	
+	</head>
+<body>
+
+<%
+HttpSession sesion=request.getSession(); 
+String nif=null;
+String usuNif=null;
+String usuNom=null;
+String usuCognom=null;
+String usuMail=null;
+int permis=0;
+int horesMaximes=0;
+try{
+	if(sesion.getAttribute("nif") == null){	
+		session.invalidate();
+		response.sendRedirect("login.jsp");
+	}
+
+	usuNif = sesion.getAttribute("nif").toString();
+	usuNom = sesion.getAttribute("nomComplet").toString();
+	usuCognom = sesion.getAttribute("cognom1Login").toString();
+	usuMail = sesion.getAttribute("mailLogin").toString();
+	permis = Integer.parseInt(sesion.getAttribute("permis").toString());
+
+	
+	String sessionID = null;
+	Cookie[] cookies = request.getCookies();
+	if(cookies != null){
+		for(Cookie cookie : cookies){
+			if(cookie.getName().equals("JSESSIONID")) sessionID = cookie.getValue();			
+		}
+	}
+	
+	sesion.removeAttribute("hRestants");
+	
+	try{
+		horesMaximes = Integer.parseInt(sesion.getAttribute("horesMaximes").toString());
+	}catch(Exception e){
+		horesMaximes = 0;
+	}
+	
+}catch(Exception e){}
+%>
+<!-- JS dependencies -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="../assets/js/bootstrap.min.js"></script>
+   <%
+if(horesMaximes == 1){ %>
+
+<script src="../assets/js/bootbox.min.js"></script>
+<script>		        
+     bootbox.alert("Error, ja has introduït el màxim d'hores possibles per aquesta data", function() {
+         console.log("Alert Callback");
+     });
+</script>
+  <%
+}        
+%>
+
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 	<script>
 	$( function() {
@@ -76,39 +136,8 @@
 
 	});
 	</script>
-	</head>
-<body>
-<%
-HttpSession sesion=request.getSession(); 
-String nif=null;
-String usuNif=null;
-String usuNom=null;
-String usuCognom=null;
-String usuMail=null;
-int permis=0;
-try{
-	if(sesion.getAttribute("nif") == null){	
-		session.invalidate();
-		response.sendRedirect("login.jsp");
-	}
 
-	usuNif = sesion.getAttribute("nif").toString();
-	usuNom = sesion.getAttribute("nomComplet").toString();
-	usuCognom = sesion.getAttribute("cognom1Login").toString();
-	usuMail = sesion.getAttribute("mailLogin").toString();
-	permis = Integer.parseInt(sesion.getAttribute("permis").toString());
 
-	
-	String sessionID = null;
-	Cookie[] cookies = request.getCookies();
-	if(cookies != null){
-		for(Cookie cookie : cookies){
-			if(cookie.getName().equals("JSESSIONID")) sessionID = cookie.getValue();			
-		}
-	}
-	
-}catch(Exception e){}
-%>
     <div id="wrapper">
          <div class="navbar navbar-inverse navbar-fixed-top">
             <div class="adjust-nav">
@@ -157,7 +186,7 @@ try{
                     </li>
                     
                     <li class="active-link">
-                    	<a href="pages/registre.jsp"><i class="fa fa-clock-o"></i>Registre d'hores</a>
+                    	<a href="registre.jsp"><i class="fa fa-clock-o"></i>Registre d'hores</a>
                     </li>
                     <li>
                         <a href="administrador.jsp"><i class="fa fa-university "></i>Administrador </a>

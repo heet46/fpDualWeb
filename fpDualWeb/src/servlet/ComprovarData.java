@@ -47,15 +47,24 @@ public class ComprovarData extends HttpServlet {
 		Registre registre = new Registre();
 		RegistreDAO rDAO = new RegistreDAO();
 		registre.setData(data2);
+		request.getSession().setAttribute("dataRegistre", data2);
 		List<Object> llista;
 		
 
 		try {
 			llista = rDAO.valorsData(registre);
-			rDAO.tancarConn();
 			if(llista.isEmpty()){				
 				response.sendRedirect("pages/afegirRegistre.jsp");
 			}else{
+				int hores = rDAO.sumaHores(registre);
+				if(hores >= 9){
+					request.getSession().setAttribute("horesMaximes", 1);
+					response.sendRedirect("pages/seleccioData.jsp");
+				}else{
+					int restants = 9 - hores;
+					request.getSession().setAttribute("hRestants", restants);
+					response.sendRedirect("pages/afegirRegistre.jsp");
+				}
 				System.out.println("Hi ha cosetes");
 			}
 		} catch (SQLException e) {
