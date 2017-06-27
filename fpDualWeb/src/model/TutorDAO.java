@@ -160,4 +160,22 @@ public class TutorDAO {
 	public void tancarConn(){
 		g.tancarConnexio();
 	}
+
+	public Usuari cercarTutorAlumne(int id) throws SQLException {
+		Usuari u=null;
+		int idTut=0;
+		consultaSQL="SELECT tu.*"+" FROM tutor as tu,alumne as al "+"WHERE tu.id_usuari=al.id_tutor AND al.id_usuari="+id+";";
+		ResultSet rs=g.consultaRegistres(consultaSQL);
+		while(rs.next()){
+			idTut=rs.getInt("id_usuari");
+		}
+		System.out.println(idTut);
+		rs.close();
+		consultaSQL="SELECT us.* "+"FROM tutor as tu,usuari as us "+"WHERE tu.id_usuari=us.id_usuari AND tu.id_usuari="+idTut+";";
+		rs=g.consultaRegistres(consultaSQL);
+		while(rs.next()){
+			u=new Usuari(rs.getString("NIF"),"",rs.getString("nom"),rs.getString("primer_cognom"),"",rs.getString("mail"),rs.getInt("permisos"));
+		}
+		return u;
+	}
 }
