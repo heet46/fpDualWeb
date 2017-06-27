@@ -30,6 +30,52 @@
     <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
     <!-- FAVICON -->
 	<link rel="shortcut icon" type="image/ico" href="../assets/img/favicon-clock-o.ico" />
+	
+	<link rel="stylesheet" href="../assets/css/calendari.css">
+	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+	<script>
+	$( function() {
+	  $("#datepicker").datepicker({
+		  dateFormat: "dd/mm/yy",
+	      monthNames: [ "Gener", "Febrer", "Març", "Abril", "Maig", "Juny", "Juliol", "Agost", "Setembre", "Octubre", "Novembre", "Desembre" ],
+	      monthNamesShort: [ "Gen", "Feb", "Mar", "Abr", "Mai", "Jun", "Jul", "Ago", "Set", "Oct", "Nov", "Des" ],
+	      dayNames: [ "Diumenge", "Dilluns", "Dimarts", "Dimecres", "Dijous", "Divendres", "Dissabte" ],
+	      dayNamesMin: [ "Dl", "Dm", "Dc", "Dj", "Dv", "Ds", "Dg" ],
+	      prevText: "Anterior",
+	      nextText: "Següent",
+	      showAnim: "fold",
+	      duration: "normal"
+	  });
+	  var dateFormat = $( "#datepicker" ).datepicker( "option", "dateFormat" );
+	  $( "#datepicker" ).datepicker( "option", "dateFormat", "dd/mm/yy" );
+	  
+	  var monthNames = $( "#datepicker" ).datepicker( "option", "monthNames" );
+	  $( "#datepicker" ).datepicker( "option", "monthNames", [ "Gener", "Febrer", "Març", "Abril", "Maig", "Juny", "Juliol", "Agost", "Setembre", "Octubre", "Novembre", "Desembre" ] );
+	  
+	  var monthNamesShort = $( "#datepicker" ).datepicker( "option", "monthNamesShort" );
+	  $( "#datepicker" ).datepicker( "option", "monthNamesShort", [ "Gen", "Feb", "Mar", "Abr", "Mai", "Jun", "Jul", "Ago", "Set", "Oct", "Nov", "Des" ] );
+	  
+	  var dayNames = $( "#datepicker" ).datepicker( "option", "dayNames" );
+	  $( "#datepicker" ).datepicker( "option", "dayNames", [ "Diumenge", "Dilluns", "Dimarts", "Dimecres", "Dijous", "Divendres", "Dissabte" ] );
+	  
+	  var dayNamesMin = $( "#datepicker" ).datepicker( "option", "dayNamesMin" );
+	  $( "#datepicker" ).datepicker( "option", "dayNamesMin", [ "Dl", "Dm", "Dc", "Dj", "Dv", "Ds", "Dg" ] );
+	  	  
+	  var prevText = $( "#datepicker" ).datepicker( "option", "prevText" );
+	  $( "#datepicker" ).datepicker( "option", "prevText", "Anterior" );
+	  
+	  var nextText = $( "#datepicker" ).datepicker( "option", "nextText" );
+	  $( "#datepicker" ).datepicker( "option", "nextText", "Següent" );
+	  
+	  var showAnim = $( "#datepicker" ).datepicker( "option", "showAnim" );
+      $( "#datepicker" ).datepicker( "option", "showAnim", "fold" );
+      
+      var duration = $( "#datepicker" ).datepicker( "option", "duration" );
+      $( "#datepicker" ).datepicker( "option", "duration", "normal" );
+
+	});
+	</script>
 	</head>
 <body>
 <%
@@ -132,14 +178,19 @@ try{
                 </div>              
                  <!-- /. ROW  -->
                 <hr />
-                <form action="" method="">
+                <form action="../ComprovarData" method="Post">
 	                <div class="row">
 	                	<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 	                		<h4>Data</h4>
-	                		<input type="date" class="form-control">
+	                		<input type="text" class="form-control" id="datepicker" name="data">
 	                	</div>
 	 				</div>
 	 				<hr>
+	 				<div class="row">
+	                	<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+	                		<input type="submit" class="btn btn-primary" style="margin-top:10px">
+	                	</div>
+	 				</div>
 	                <!-- ROW -->
 				</form>
     		
