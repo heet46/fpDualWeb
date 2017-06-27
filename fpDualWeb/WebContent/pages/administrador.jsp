@@ -101,7 +101,7 @@
                     <a href="tutors.jsp"><i class="fa fa-book"></i>Tutors</a>
                 </li>
 
-                <li class="active-link">
+                <li>
                     <a href="centre.jsp"><i class="fa fa-university "></i>Centres </a>
                 </li>
                 <li>
@@ -111,7 +111,7 @@
                     <a href="registre.jsp"><i class="fa fa-clock-o"></i>Registre d'hores</a>
 				</li>
                 <%if(permis == 4){ %>
-                    <li>
+                    <li class="active-link">
                     	<a href="administrador.jsp"><i class="fa fa-user-o"></i>Administrador</a>
                     </li>
                     <%} %>
