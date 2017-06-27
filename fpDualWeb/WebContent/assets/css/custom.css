@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css?family=Patrick+Hand+SC|Russo+One|Baloo+Bhaina|Crushed|Roboto');
 
 /*=============================================================
     Authour URI: www.binarycart.com
@@ -94,7 +95,8 @@ font-size: 16px;
 }
     .logout-spn a {
         text-decoration:none;
-    }
+		font-family: 'Roboto', cursive;
+	}
     .logout-spn p {
         text-decoration:none;
         font-size:14px;

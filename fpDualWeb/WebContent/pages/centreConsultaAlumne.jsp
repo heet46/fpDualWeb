@@ -160,7 +160,7 @@
                 </li>
                 <%if(permis == 1){ %>
                 <li>
-                    	<a href="pages/dadesUsuari.jsp"><i class="fa fa-id-card"></i>Dades d'usuari</a>
+                    	<a href="dadesUsuari.jsp"><i class="fa fa-id-card"></i>Dades d'usuari</a>
                </li>
                <%} %>
               </ul>

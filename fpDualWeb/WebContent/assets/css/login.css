@@ -1,6 +1,7 @@
-@import url(https://fonts.googleapis.com/css?family=Roboto:300);
+@import url('https://fonts.googleapis.com/css?family=Lobster|Roboto:300');
 h2{
   margin-bottom: 50px;
+  font-family: "Roboto", sans-serif;  
 }
 .login-page {
   width: 360px;
