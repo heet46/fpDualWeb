@@ -106,6 +106,10 @@ try{
                         <a href="centre.jsp"><i class="fa fa-university "></i>Centres </a>
                     </li>
                     
+                    <li>
+                        <a href="activitats.jsp"><i class="fa fa-list "></i>Activitats </a>
+                    </li>
+                    
                     <li class="active-link">
                     	<a href="registre.jsp"><i class="fa fa-clock-o"></i>Registre d'hores</a>
                     </li>
