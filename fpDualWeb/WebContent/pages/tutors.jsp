@@ -130,8 +130,9 @@ try{
                   <hr />
                 
                   <!-- /. ROW  --> 
+                  <div class="row text-center pad-top">
 		<%if(permis==4){%>
-                            <div class="row text-center pad-top">
+                            
                   <div class="col-lg-3 col-md-2 col-sm-2 col-xs-6">
                       <div class="div-square">
                            <a href="tutorsAfegir.jsp" >
