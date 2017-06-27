@@ -187,9 +187,9 @@ try{
                                 <table class="table table-striped  table-hover">
                             <thead>
                                 <tr id="headeer">
-                                    <th>ID</th>
-                                    <th>Codi</th>
-                                    <th>Descripció</th>
+                                    <th width="20%">ID</th>
+                                    <th width="30%">Codi</th>
+                                    <th width="50%">Descripció</th>
                                 </tr>
                             </thead>
                             <%if(llistaActivitats != null){ %> 
@@ -206,9 +206,12 @@ try{
 								<%
 									}
 									
+									
 								%>
                                 
                             </tbody>
+                            <%} if(llistaActivitats != null)
+                            	llistaActivitats.clear(); %>
                         </table>
                   
                 <br><br><br><br><br><br><br><br><br>
@@ -220,7 +223,7 @@ try{
                 </div>
                 
               </div>
-              <%} %>
+              
                  <!-- /. ROW  -->   
 				 <!-- 
 				 <div class="row">

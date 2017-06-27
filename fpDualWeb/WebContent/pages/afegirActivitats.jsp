@@ -150,7 +150,7 @@ try{
                         <div class="form-group">
                             <label class="control-label col-lg-2" for="id">ID:</label>
                             <div class="col-lg-1">
-                                <input type="number" required class="form-control" disabled id="id" name="id">
+                                <input type="number" min="1" onkeypress="return event.charCode >= 48" required class="form-control" disabled id="id" name="id">
                                 
                             </div>
                             <label class="control-label col-lg-1" for="auto">Auto ID:</label>
