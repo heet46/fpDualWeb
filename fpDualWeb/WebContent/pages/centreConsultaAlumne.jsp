@@ -193,11 +193,10 @@
 							<b>Codi: </b> <%=codi%> <br/>
 							<b>Telefon: </b> <%=telefon%> <br/>
 							<b>Pagina Web: </b> <%=web%> <br/>
-                            </div>
-                        </div>
-                   <p/>  
+						</div>
+                    </div>
+                 <p/>  
                 <!-- /. ROW  -->
-                  <hr />
                  <!-- /. ROW  -->  
                 </div>
                  <!-- /. PAGE INNER  -->

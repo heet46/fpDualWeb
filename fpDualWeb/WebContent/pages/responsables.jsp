@@ -114,11 +114,9 @@ try{
                         <a href="administrador.jsp"><i class="fa fa-university "></i>Administrador </a>
                     </li>
                     <%} %>
-                    <%if(permis == 3 || permis == 4){ %>
                     <li class="active-link">
                     	<a href="#"><i class="fa fa-street-view"></i>Responsables</a>
                     </li>
-                    <%} %>
                     <%if(permis == 1){ %>
                     <li>
                     	<a href="pages/dadesUsuari.jsp"><i class="fa fa-id-card"></i>Dades d'usuari</a>

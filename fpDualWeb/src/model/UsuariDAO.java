@@ -82,6 +82,7 @@ public class UsuariDAO {
 		try {
 			while(rs.next()){
 				u=new Usuari(rs.getString("NIF"),rs.getString("password"),rs.getString("nom"),rs.getString("primer_cognom"),rs.getString("segon_cognom"),rs.getString("mail"),rs.getInt("permisos"));
+				u.setIdCentre(rs.getInt("id_centre"));
 			}
 		}catch (SQLException e) {
 			e.printStackTrace();

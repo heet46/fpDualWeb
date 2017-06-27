@@ -132,13 +132,10 @@
                 <div class="row">
                  
                     <div class="col-md-12">
-                    
                     <a title="Manteniment Centres" href="../index.jsp">
                     	<img border='0' src='../assets/img/BackArrow.ico' style='position:fixed; head:0; right:0;' width="50" height="50" />
                     </a>
-                    
                      <h2>Manteniment Centres</h2>
-                     
                     </div>
                 </div>
                  <!-- /. ROW  -->
@@ -146,16 +143,14 @@
                  <!-- /. ROW  --> 
 
 				<!-- Alumnnes  --> 
+				<div class="row text-center pad-top">
 				<%if(permis == 1){ %>
 				<div class="col-lg-3 col-md-2 col-sm-2 col-xs-6">
                       <div class="div-square">
-                           <a href="centreConsultaAlumne.jsp" >
-                        <i class="fa fa-list fa-5x" aria-hidden="true"></i>
-                      <h4>Dades del Teu Centre</h4>
-                      </a>
+                           <a href="centreConsultaAlumne.jsp"><i class="fa fa-list fa-5x" aria-hidden="true"></i><h4>Dades del Teu Centre</h4></a>
                       </div>
                   </div>
-				
+				</div>
 				
                 <%} %>
 
@@ -258,17 +253,13 @@
 
          <!-- /. PAGE WRAPPER  -->
         </div>
-        </div>
+    </div>
     <div class="footer">
-      
-    
-             <div class="row">
-               <div class="col-lg-12" >
-                    &copy;  2017 Indra Software Labs | Design by: Joan Espuñes, Sergi Fernández, Sisco Navarro, Thiago Hachikyan
-                </div>
+    	<div class="row">
+        	<div class="col-lg-12" > &copy;  2017 Indra Software Labs | Design by: Joan Espuñes, Sergi Fernández, Sisco Navarro, Thiago Hachikyan</div>
         </div>
-        </div>
-        </div>
+    </div>
+</div>
           
 
      <!-- /. WRAPPER  -->

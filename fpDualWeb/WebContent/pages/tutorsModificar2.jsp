@@ -106,8 +106,7 @@ try{
         <nav class="navbar-default navbar-side" role="navigation">
             <div class="sidebar-collapse">
                 <ul class="nav" id="main-menu">
-                 
-                    <li>
+                 <li>
                         <a href="../index.jsp" ><i class="fa fa-desktop "></i>Inici </a>
                     </li>
 
@@ -115,21 +114,28 @@ try{
                         <a href="alumnes.jsp"><i class="fa fa-graduation-cap "></i>Alumnes</a>
                     </li>
                     <li  class="active-link">
-                        <a href="tutors.jsp"><i class="fa fa-book"></i>Tutors</a>
+                        <a href="#"><i class="fa fa-book"></i>Tutors</a>
                     </li>
-
                     <li>
                         <a href="centre.jsp"><i class="fa fa-university "></i>Centres </a>
                     </li>
                     <li>
                         <a href="activitats.jsp"><i class="fa fa-list "></i>Activitats</a>
                     </li>
+                    
+                    <!-- Administradors -->
+                    <%if(permis == 4){ %>
                     <li>
                         <a href="administrador.jsp"><i class="fa fa-university "></i>Administrador </a>
                     </li>
+                    <%} %>
+                    
+                    <!-- Responsables o Administradors -->
+                    <%if(permis == 3 || permis == 4){ %>
                     <li>
                     	<a href="responsables.jsp"><i class="fa fa-street-view"></i>Responsables</a>
                     </li>
+                    <%} %>
                 </ul>
             </div>
 
