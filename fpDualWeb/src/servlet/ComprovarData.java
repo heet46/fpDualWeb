@@ -13,8 +13,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import model.Alumne;
 import model.Registre;
 import model.RegistreDAO;
+import model.UsuariDAO;
 
 @WebServlet("/ComprovarData")
 public class ComprovarData extends HttpServlet {
@@ -34,6 +36,14 @@ public class ComprovarData extends HttpServlet {
 		
 		String data = request.getParameter("data");
 		request.getSession().setAttribute("afgData", data);
+		String nif = request.getSession().getAttribute("nif").toString();
+		
+		
+		UsuariDAO uDAO = new UsuariDAO();
+		int id = uDAO.consultaID(nif);
+		uDAO.tancarConn();
+		Alumne alum = new Alumne();
+		alum.setIdUsuari(id);
 		
 		Date date;
 		String data2 = null;
@@ -47,15 +57,26 @@ public class ComprovarData extends HttpServlet {
 		Registre registre = new Registre();
 		RegistreDAO rDAO = new RegistreDAO();
 		registre.setData(data2);
+		registre.setAlumne(alum);
+		
+		request.getSession().setAttribute("dataRegistre", data2);
 		List<Object> llista;
 		
 
 		try {
 			llista = rDAO.valorsData(registre);
-			rDAO.tancarConn();
 			if(llista.isEmpty()){				
 				response.sendRedirect("pages/afegirRegistre.jsp");
 			}else{
+				int hores = rDAO.sumaHores(registre);
+				if(hores >= 9){
+					request.getSession().setAttribute("horesMaximes", 1);
+					response.sendRedirect("pages/seleccioData.jsp");
+				}else{
+					int restants = 9 - hores;
+					request.getSession().setAttribute("hRestants", restants);
+					response.sendRedirect("pages/afegirRegistre.jsp");
+				}
 				System.out.println("Hi ha cosetes");
 			}
 		} catch (SQLException e) {

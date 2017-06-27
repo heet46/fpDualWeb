@@ -318,7 +318,6 @@ public class AlumneDAO {
 			dades.add(u);
 		}
 		
-		
 		return dades;
 	}
 	

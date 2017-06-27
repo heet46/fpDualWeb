@@ -219,12 +219,13 @@ try{
                       </div>
             	             
             	<!-- Alumnes -->             
+            	<div class="row text-center pad-top">
             	<%}else if(permis==1){%>
-            		  <div  class="row text-center pad-top">
+            		  
 	                  <div class="col-lg-3 col-md-2 col-sm-2 col-xs-6">
 	                      <div class="div-square">
 	                      	<form action="../DadesTutorAlumne" method="Post" name="form">
-	                           <a href="#" onclick="$(this).closest('form').submit()">
+	                           <a href="#" onclick="$(this).closest('form').submit()" style="color:#808080">
 	                     <i class="fa fa-search fa-5x"></i>
 	                      <h4>Dades tutor</h4>
 	                      </a>

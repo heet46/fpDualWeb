@@ -55,6 +55,8 @@ try{
 		}
 	}
 	
+	sesion.removeAttribute("horesMaximes");
+
 }catch(Exception e){}
 %>
     <div id="wrapper">
