@@ -213,7 +213,7 @@ if(horesMaximes == 1){ %>
 	                <div class="row">
 	                	<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 	                		<h4>Data</h4>
-	                		<input type="text" class="form-control" id="datepicker" name="data">
+	                		<input type="text" required class="form-control" id="datepicker" name="data">
 	                	</div>
 	 				</div>
 	 				<hr>
