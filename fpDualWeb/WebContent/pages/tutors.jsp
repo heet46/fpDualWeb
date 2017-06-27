@@ -187,10 +187,13 @@ try{
                   <div  class="row text-center pad-top">
 	                  <div class="col-lg-3 col-md-2 col-sm-2 col-xs-6">
 	                      <div class="div-square">
-	                           <a href="llistaTutors.jsp" >
+	                      	<form action="../DadesTutorsCentre" method="Post" name="form">
+	                           <a href="#" onclick="$(this).closest('form').submit()">
 	                     <i class="fa fa-search fa-5x"></i>
 	                      <h4>Llista tutors</h4>
 	                      </a>
+	                      <input hidden value="<%=usuNif %>" name="NIF">
+	                      </form>
 	                      </div>
 	                  </div>
 				</div>
@@ -211,10 +214,13 @@ try{
             		  <div  class="row text-center pad-top">
 	                  <div class="col-lg-3 col-md-2 col-sm-2 col-xs-6">
 	                      <div class="div-square">
-	                           <a href="llistaTutors.jsp" >
+	                      	<form action="../DadesTutorAlumne" method="Post" name="form">
+	                           <a href="#" onclick="$(this).closest('form').submit()">
 	                     <i class="fa fa-search fa-5x"></i>
 	                      <h4>Dades tutor</h4>
 	                      </a>
+	                      <input hidden value="<%=usuNif %>" name="NIF">
+	                      </form>
 	                      </div>
 	                  </div>
 	                 </div>

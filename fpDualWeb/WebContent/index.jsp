@@ -134,7 +134,7 @@
                     </li>
                     <%if(permis == 4){ %>
                     <li>
-                        <a href="pages/administrador.jsp"><i class="fa fa-university "></i>Administrador </a>
+                        <a href="pages/administrador.jsp"><i class="fa fa-user-o "></i>Administrador </a>
                     </li>
                     <%} %>
                     <%if(permis == 3 || permis == 4){ %>
@@ -228,7 +228,7 @@
                   <div class="col-lg-3 col-md-2 col-sm-2 col-xs-6">
                       <div class="div-square">
                            <a href="pages/administrador.jsp" >
-						<i class="fa fa-university fa-5x" aria-hidden="true"></i>
+						<i class="fa fa-user-o fa-5x" aria-hidden="true"></i>
                         <h4>Administrador</h4>
                       </a>
                       </div>

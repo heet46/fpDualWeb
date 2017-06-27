@@ -174,6 +174,38 @@ public class CentreDAO {
 		return id;
 	}
 
+	// CONSULTES - ALUMNES / TUTORS / RESPONSABLES
+
+	public ResultSet idTutorperNIF(String NIF) throws SQLException {
+		String consultaSQL = "SELECT ce.* FROM centre as ce, alumne as al, usuari as us WHERE al.id_usuari=us.id_usuari AND ce.Id_centre=us.id_centre AND al.id_tutor = (SELECT DISTINCT sal.id_tutor FROM alumne as sal, usuari as sus WHERE sal.id_tutor=sus.id_usuari AND sus.NIF LIKE '"
+				+ NIF + "');";
+		return gestorDB.consultaRegistres(consultaSQL);
+	}
+
+	public ResultSet centreAlumneperNIF(String NIF) throws SQLException {
+		String consultaSQL = "SELECT ce.* FROM alumne as al, usuari as us, centre as ce WHERE al.id_usuari=us.id_usuari AND us.id_centre=ce.Id_centre AND us.NIF LIKE '"
+				+ NIF + "';";
+		return gestorDB.consultaRegistres(consultaSQL);
+	}
+
+	public ResultSet centreConsultaResponsabilitat(String NIF) throws SQLException {
+		String consultaSQL = "SELECT ce.* FROM responsable as re, centre as ce WHERE re.Id_centre=ce.Id_centre AND re.Id_usuari = (SELECT id_usuari FROM usuari WHERE NIF LIKE '"
+				+ NIF + "');";
+		return gestorDB.consultaRegistres(consultaSQL);
+	}
+
+	public int centreConsultaModiResponsabilitat(String NIF) throws SQLException {
+		ResultSet rs = null;
+		int id = 0;
+		String consultaSQL = "SELECT ce.id_centre FROM responsable as re, centre as ce WHERE re.Id_centre=ce.Id_centre AND re.Id_usuari = (SELECT id_usuari FROM usuari WHERE NIF LIKE '"
+				+ NIF + "');";
+		rs = gestorDB.consultaRegistres(consultaSQL);
+		while (rs.next()) {
+			id = rs.getInt(1);
+		}
+		return id;
+	}
+
 	public void tancarCon() {
 		gestorDB.tancarConnexio();
 	}
