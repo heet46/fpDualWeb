@@ -19,7 +19,6 @@ public class RegistreDAO {
 		List<Object> valors = new ArrayList<Object>();
 		ResultSet rs = null;
 		String consultaSQL = "SELECT * FROM registre WHERE data='"+reg.getData()+"'";
-		System.out.println(consultaSQL);
 		
 		rs = gestorDB.consultaRegistres(consultaSQL);
 		

@@ -49,7 +49,6 @@ public class ComprovarData extends HttpServlet {
 		List<Object> llista;
 		try {
 			llista = rDAO.valorsData(registre);
-			System.out.println(llista.toString());
 			if(llista.isEmpty()){
 				System.out.println("No hi ha res al registre");
 			}else{

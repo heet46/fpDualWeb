@@ -141,7 +141,7 @@ try{
                   <div class="row text-center pad-top">
                   <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                       <div class="div-square">
-                           <a href="afegirHores.jsp" >
+                           <a href="seleccioData.jsp" >
                         <i class="fa fa-plus-square fa-5x" aria-hidden="true"></i>
 
                         <h4>Registrar hores</h4>
