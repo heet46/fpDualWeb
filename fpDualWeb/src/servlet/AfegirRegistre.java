@@ -57,7 +57,7 @@ public class AfegirRegistre extends HttpServlet {
 			rDAO.afegirRegistre(registre);			
 			
 			response.sendRedirect("pages/registre.jsp");
-		} catch (SQLException e) {
+		} catch (SQLException e) { 
 			e.printStackTrace();
 			System.out.println(hores);
 
