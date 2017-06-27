@@ -115,6 +115,15 @@
   		<url-pattern>/CentreFormulariModificar</url-pattern>
  	 </servlet-mapping>	 
  	 
+ 	 <servlet>
+  		<servlet-name>CentreFormulariModificarRespon2</servlet-name>
+  		<servlet-class>CentreFormulariModificarRespon2</servlet-class>
+  	</servlet>
+  	<servlet-mapping>
+  		<servlet-name>CentreFormulariModificarRespon2</servlet-name>
+  		<url-pattern>/CentreFormulariModificarRespon2</url-pattern>
+ 	 </servlet-mapping>	
+ 	 
  	 
  	 <servlet>
   		<servlet-name>CercarAlumne</servlet-name>
