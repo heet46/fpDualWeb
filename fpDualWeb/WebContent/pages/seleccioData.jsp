@@ -173,7 +173,9 @@ try{
             <div id="page-inner">
                 <div class="row">
                     <div class="col-lg-12">
-                     <h2>Selecciona una data</h2>   
+                    <br>
+                     <h2 style="display:inline">Selecciona una data</h2>
+                     <div style="float:right; font-size:16px" ><a href="registre.jsp"><strong>Torna enrere</strong></a></div>    
                     </div>
                 </div>              
                  <!-- /. ROW  -->

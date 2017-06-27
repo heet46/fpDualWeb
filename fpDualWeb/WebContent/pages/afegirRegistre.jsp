@@ -172,7 +172,7 @@ try{
                     </li>
                     
                     <li class="active-link">
-                    	<a href="pages/registre.jsp"><i class="fa fa-clock-o"></i>Registre d'hores</a>
+                    	<a href="registre.jsp"><i class="fa fa-clock-o"></i>Registre d'hores</a>
                     </li>
                     <li>
                         <a href="administrador.jsp"><i class="fa fa-university "></i>Administrador </a>
