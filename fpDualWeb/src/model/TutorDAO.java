@@ -135,6 +135,28 @@ public class TutorDAO {
 		return existeix;
 	}
 	
+	public List<Usuari> consultaTutorsCentre(Tutor t) throws SQLException{
+		List<Integer> ids=new ArrayList<Integer>();
+		List<Usuari> tutors=new ArrayList<Usuari>();
+		consultaSQL="SELECT tu.id_usuari "+"FROM tutor as tu,alumne as al,responsable as re,usuari as us "+
+				"WHERE tu.id_usuari=al.id_tutor AND us.id_usuari=al.id_usuari "+
+				" AND us.id_centre=re.Id_centre AND re.Id_usuari="+t.getId_usuari()+";";
+		ResultSet rs=g.consultaRegistres(consultaSQL);
+		while(rs.next()){
+			ids.add(rs.getInt("Id_usuari"));
+		}
+		rs.close();
+		for(int i=0;i!=ids.size();i++){
+			consultaSQL="SELECT us.*"+" FROM usuari as us,tutor as tu "+"WHERE us.id_usuari=tu.id_usuari AND "+
+						"tu.id_usuari="+ids.get(i)+";";
+			rs=g.consultaRegistres(consultaSQL);
+			while(rs.next()){
+				tutors.add(new Usuari(rs.getString("NIF"),"",rs.getString("nom"),rs.getString("primer_cognom"),"",rs.getString("mail"),rs.getInt("permisos")));
+			}
+		}
+		return tutors;
+	}
+	
 	public void tancarConn(){
 		g.tancarConnexio();
 	}
