@@ -56,7 +56,7 @@ public class RegistreDAO {
 		ResultSet rs = null;
 		String consultaSQL = "SELECT SUM(r.hores) "
 				+ "FROM registre AS r "
-				+ "WHERE r.data LIKE '"+reg.getData()+"'";
+				+ "WHERE r.data LIKE '"+reg.getData()+"' AND r.id_alumne LIKE "+reg.getAlumne().getIdUsuari();
 		
 		rs = gestorDB.consultaRegistres(consultaSQL);
 		while(rs.next()){
