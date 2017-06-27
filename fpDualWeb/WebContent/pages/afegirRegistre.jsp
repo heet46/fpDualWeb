@@ -1,4 +1,10 @@
+<%@ page import="controlador.*" %>
+<%@ page import="model.*" %>
+<%@ page import="servlet.*" %>
+<%@ page import="java.util.*" %>
+
 <!DOCTYPE html>
+<%@page import="model.RegistreDAO"%>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <script src="https://use.fontawesome.com/d43d49ce33.js"></script>
@@ -38,12 +44,12 @@
 	$( function() {
 	  $("#datepicker").datepicker({
 		  dateFormat: "dd/mm/yy",
-	      monthNames: [ "Gener", "Febrer", "Març", "Abril", "Maig", "Juny", "Juliol", "Agost", "Setembre", "Octubre", "Novembre", "Desembre" ],
+	      monthNames: [ "Gener", "Febrer", "MarÃ§", "Abril", "Maig", "Juny", "Juliol", "Agost", "Setembre", "Octubre", "Novembre", "Desembre" ],
 	      monthNamesShort: [ "Gen", "Feb", "Mar", "Abr", "Mai", "Jun", "Jul", "Ago", "Set", "Oct", "Nov", "Des" ],
 	      dayNames: [ "Diumenge", "Dilluns", "Dimarts", "Dimecres", "Dijous", "Divendres", "Dissabte" ],
 	      dayNamesMin: [ "Dl", "Dm", "Dc", "Dj", "Dv", "Ds", "Dg" ],
 	      prevText: "Anterior",
-	      nextText: "Següent",
+	      nextText: "SegÃ¼ent",
 	      showAnim: "fold",
 	      duration: "normal"
 	  });
@@ -51,7 +57,7 @@
 	  $( "#datepicker" ).datepicker( "option", "dateFormat", "dd/mm/yy" );
 	  
 	  var monthNames = $( "#datepicker" ).datepicker( "option", "monthNames" );
-	  $( "#datepicker" ).datepicker( "option", "monthNames", [ "Gener", "Febrer", "Març", "Abril", "Maig", "Juny", "Juliol", "Agost", "Setembre", "Octubre", "Novembre", "Desembre" ] );
+	  $( "#datepicker" ).datepicker( "option", "monthNames", [ "Gener", "Febrer", "MarÃ§", "Abril", "Maig", "Juny", "Juliol", "Agost", "Setembre", "Octubre", "Novembre", "Desembre" ] );
 	  
 	  var monthNamesShort = $( "#datepicker" ).datepicker( "option", "monthNamesShort" );
 	  $( "#datepicker" ).datepicker( "option", "monthNamesShort", [ "Gen", "Feb", "Mar", "Abr", "Mai", "Jun", "Jul", "Ago", "Set", "Oct", "Nov", "Des" ] );
@@ -66,7 +72,7 @@
 	  $( "#datepicker" ).datepicker( "option", "prevText", "Anterior" );
 	  
 	  var nextText = $( "#datepicker" ).datepicker( "option", "nextText" );
-	  $( "#datepicker" ).datepicker( "option", "nextText", "Següent" );
+	  $( "#datepicker" ).datepicker( "option", "nextText", "SegÃ¼ent" );
 	  
 	  var showAnim = $( "#datepicker" ).datepicker( "option", "showAnim" );
       $( "#datepicker" ).datepicker( "option", "showAnim", "fold" );
@@ -108,6 +114,15 @@ try{
 	}
 	
 }catch(Exception e){}
+
+String data = sesion.getAttribute("afgData").toString();
+List<String> llistaActivitats = null;
+RegistreDAO rDAO = null;
+try{
+	rDAO = new RegistreDAO();
+	llistaActivitats = rDAO.llistaActivitats();
+}catch(Exception e){}
+
 %>
     <div id="wrapper">
          <div class="navbar navbar-inverse navbar-fixed-top">
@@ -173,22 +188,55 @@ try{
             <div id="page-inner">
                 <div class="row">
                     <div class="col-lg-12">
-                     <h2>Selecciona una data</h2>   
+                     <br>
+                     <h2 style="display:inline">Nou registre d'activitats&nbsp;</h2> <%=data %>
+                     <div style="float:right; font-size:16px" ><a href="seleccioData.jsp"><strong>Torna enrere</strong></a></div> 
                     </div>
                 </div>              
                  <!-- /. ROW  -->
                 <hr />
-                <form action="../ComprovarData" method="Post">
+                <form action="../AfegirRegistre" method="Post">
 	                <div class="row">
 	                	<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-	                		<h4>Data</h4>
-	                		<input type="text" class="form-control" id="datepicker" name="data">
+	                		<h4>Activitat</h4>
+                            <select class="form-control" name="tutor" required>
+                            	<option value="" selected hidden>Selecciona una activitat</option>
+                            	<% 
+                            	for(int j=0; j<llistaActivitats.size(); j++) { 
+                            	%>
+	                                <option value="<%=llistaActivitats.get(j).toString() %>">
+	                                	<%=llistaActivitats.get(j).toString() %>
+	                                </option>
+                            <% 
+                            	} 
+                            %>
+                            </select>
 	                	</div>
 	 				</div>
 	 				<hr>
 	 				<div class="row">
+	 					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+	 						<h4>Hores</h4>
+	 						<input type="range" min=1 max=9 name=hores>
+	 						<table width="100%">
+	 							<tr>
+	 								<td width="12.5%">1h</td>
+	 								<td width="12.5%">2h</td>
+	 								<td width="12.5%">3h</td>
+	 								<td width="12.5%">4h</td>
+	 								<td width="12.5%">5h</td>
+	 								<td width="12.5%">6h</td>
+	 								<td width="12.5%">7h</td>
+	 								<td width="12.5%">8h</td>
+	 								<td width="12.5%">9h</td>
+	 							</tr>
+	 						</table>
+	 					</div>
+	 				</div>
+	 				<hr>
+	 				<div class="row">
 	                	<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-	                		<input type="submit" class="btn btn-primary" style="margin-top:10px">
+	                		<input type="submit" class="btn btn-primary" style="margin-top:10px" value="Afegir registre">
 	                	</div>
 	 				</div>
 	                <!-- ROW -->
@@ -203,7 +251,7 @@ try{
     <div class="footer">
 		<div class="row">
 			<div class="col-lg-12" >
-			    &copy;  2017 Indra Software Labs | Design by: Joan Espuñes, Sergi Fernández, Sisco Navarro, Thiago Hachikyan
+			    &copy;  2017 Indra Software Labs | Design by: Joan EspuÃ±es, Sergi FernÃ¡ndez, Sisco Navarro, Thiago Hachikyan
 			</div>
         </div>
 	</div>

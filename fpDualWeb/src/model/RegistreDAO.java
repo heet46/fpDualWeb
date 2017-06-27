@@ -31,6 +31,19 @@ public class RegistreDAO {
 
 		return valors;
 	}
+	
+	public List<String> llistaActivitats() throws SQLException{
+		List<String> llista = new ArrayList<String>();
+		ResultSet rs = null;
+		String consultaSQL = "SELECT DISTINCT codi FROM activitat";
+		
+		rs = gestorDB.consultaRegistres(consultaSQL);
+		
+		while(rs.next()){
+			llista.add(rs.getString(1));
+		}
+		return llista;
+	}
 		
 	public void tancarConn(){
 		gestorDB.tancarConnexio();
