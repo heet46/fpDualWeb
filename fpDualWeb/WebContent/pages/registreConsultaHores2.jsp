@@ -44,16 +44,42 @@
 		outt.println("</thead>");
 		int contador = 0;
 		String ConsultaSQL = null;
+		String nAlumne = "";
+		String nActivitat = "";
 		if (alumne == null || alumne == "") {
-		} else { ConsultaSQL = " id_alumne LIKE '%" + alumne + "%'";
+		} else { 
+			rs = rdao.codiIdAlumne(alumne);
+			while (rs.next()) { 
+				nAlumne = rs.getString(1); 
+				System.out.println("nAlumne -> " + nAlumne);
+     		}
+			System.out.println("nAlumne -> " + nAlumne);
+			ConsultaSQL = " id_alumne LIKE '%" + nAlumne + "%'";
 			contador = 1;
 		}
+		
+
 		if (activitat == null || activitat == "") {
-		} else { if (contador == 0) { ConsultaSQL = " id_activitat LIKE '%" + activitat + "%'";
+		} else { 
+			rs = rdao.codiIdActivitat(activitat);
+			while (rs.next()) { 
+				nActivitat = rs.getString(1); 
+				System.out.println("nActivitat -> " + nActivitat);
+     		}
+			
+			if (contador == 0) { ConsultaSQL = " id_activitat LIKE '%" + nActivitat + "%'";
 			} else { ConsultaSQL += " AND id_activitat LIKE '%" + activitat + "%'"; } contador = 1;
 		}
+		
+		
+		
+		
+		
+		
 		if (data == null || data == "") {
-		} else { if (contador == 0) { ConsultaSQL = " data LIKE '%" + data + "%'";
+		} else { 
+			
+			if (contador == 0) { ConsultaSQL = " data LIKE '%" + data + "%'";
 			} else { ConsultaSQL += " AND data LIKE '%" + data + "%'";}			
 		contador = 1;
 		}

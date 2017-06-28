@@ -45,6 +45,7 @@ public class ModificarResponsable2 extends HttpServlet {
 		UsuariDAO uDAO=new UsuariDAO();
 		CentreDAO cDAO=new CentreDAO();
 		String idVella=(String)request.getParameter("IdVella");
+		int permis=Integer.parseInt(request.getParameter("permis"));
 		Usuari u=new Usuari();
 		u.setNIF(request.getParameter("NIF"));
 		u.setPasswd(request.getParameter("pass"));
@@ -62,7 +63,11 @@ public class ModificarResponsable2 extends HttpServlet {
 			e.printStackTrace();
 		}
 		doGet(request, response);
-		response.sendRedirect("pages/responsablesGestio.jsp");
+		if(permis==3){
+			response.sendRedirect("pages/responsables.jsp");
+		}else{
+			response.sendRedirect("pages/responsablesGestio.jsp");
+		}
 	}
 
 }
