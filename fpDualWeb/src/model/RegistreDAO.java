@@ -93,6 +93,16 @@ public class RegistreDAO {
 
 		return rs;
 	}
+	
+	public ResultSet consultarHoresTutor(String consul) throws SQLException {
+		ResultSet rs = null;
+		String consultaSQL = "SELECT * FROM registre,tutor,alumne WHERE tutor.id_usuari=alumne.id_tutor AND registre.id_alumne=alumne.id_usuari AND" + consul + ";";
+		
+		System.out.println("consultaDAO -> " + consultaSQL);
+		rs = gestorDB.consultaRegistres(consultaSQL);
+
+		return rs;
+	}
 
 	public ResultSet codiIdActivitat(String text) throws SQLException {
 		ResultSet rs = null;

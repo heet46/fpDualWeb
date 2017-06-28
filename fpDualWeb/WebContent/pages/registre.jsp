@@ -176,7 +176,25 @@ try{
                       <div class="div-square">
                            <a href="registreConsultaHores.jsp" >
                         <i class="fa fa-calendar fa-5x" aria-hidden="true"></i>
-                      <h4>Consultar hores</h4>
+                      <h4>Consultar hores Alumne/Admin</h4>
+                      </a>
+                      </div>
+                  </div>
+                  
+                  <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                      <div class="div-square">
+                           <a href="registreConsultaHoresTutors.jsp" >
+                        <i class="fa fa-calendar fa-5x" aria-hidden="true"></i>
+                      <h4>Consultar hores Tutors</h4>
+                      </a>
+                      </div>
+                  </div>
+                  
+                  <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                      <div class="div-square">
+                           <a href="registreConsultaHoresResponsables.jsp" >
+                        <i class="fa fa-calendar fa-5x" aria-hidden="true"></i>
+                      <h4>Consultar hores Responsable</h4>
                       </a>
                       </div>
                   </div>
