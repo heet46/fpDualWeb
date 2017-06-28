@@ -164,10 +164,10 @@ try{
                                 <select class="form-control" id="codi" name="codi" required>
                                     <option hidden selected value="">Selecciona una opció...</option>
                                     <option value="SQL">SQL (Consulta de dades)</option>
-                                    <option value="JAV">JAV (Programació amb Java)</option>
+                                    <option value="JAVA">JAVA (Programació amb Java)</option>
                                     <option value="C++">C++ (Programació amb C++)</option>
                                     <option value="NET">NET (Programació amb .NET)</option>
-                                    <option value="SAP">C++ (Programació amb SAP)</option>
+                                    <option value="SAP">SAP (Programació amb SAP)</option>
                                 </select>
                             </div>
                         </div>
@@ -187,8 +187,7 @@ try{
                     </form>    
                 </div>
                   <!-- /. ROW  --> 
-                            
-                <br><br><br><br><br><br><br>
+                  
                 <div class="col-lg-11"></div>
                 <div class="col-lg-1">
                     <a class="flotante" href="activitats.jsp">

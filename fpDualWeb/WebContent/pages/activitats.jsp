@@ -141,29 +141,26 @@ try{
                 
  
                     </div>
-                  <!-- /. ROW  --> 
-                            <div class="row text-center pad-top">
-                  <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
-                      <div class="div-square">
-                           <a href="afegirActivitats.jsp" >
-                        <i class="fa fa-plus-square fa-5x" aria-hidden="true"></i>
-
+                  <!-- /. ROW  -->
+                 	<div class="row text-center pad-top">
+       				<div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
+           				<div class="div-square">
+                			<a href="afegirActivitats.jsp" >
+             				<i class="fa fa-plus-square fa-5x" aria-hidden="true"></i>
                         <h4>Afegir activitat</h4>
                       </a>
                       </div>
-                     
-                     
+                
                   </div> 
-                 
-                  <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
-                      <div class="div-square">
+
+                 	<div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
+                     	<div class="div-square">
                            <a href="modificarActivitatsTaula.jsp" >
                         <i class="fa fa-pencil fa-5x" aria-hidden="true"></i>
                       <h4>Modificar activitat</h4>
                       </a>
                       </div>
-                     
-                     
+       
                   </div>
                   <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
                       <div class="div-square">
@@ -173,7 +170,7 @@ try{
                       </a>
                       </div>
                   </div>
-                  
+
                   <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
                       <div class="div-square">
                            <a href="eliminarActivitats.jsp">
@@ -182,6 +179,7 @@ try{
                       </a>
                       </div>
                   </div>
+
                   
                   <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
                       <div class="div-square">
