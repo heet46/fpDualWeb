@@ -139,6 +139,7 @@ try{
                   <hr />
                 
                   <!-- /. ROW  --> 
+                  <% if(permis==4){%>
                             <div class="row text-center pad-top">
                   <div class="col-lg-3 col-md-2 col-sm-2 col-xs-6">
                       <div class="div-square">
@@ -194,7 +195,23 @@ try{
                      <a href="../index.jsp"  id="fletxa">
                			<i class="fa fa-hand-o-left fa-4x" style='position:fixed; head:0; bottom:50px; right:35px;' width="50" height="50"></i>
               		</a>
-              </div>
+             <%}else if(permis==2){%>
+                  <div  class="row text-center pad-top">
+	                  <div class="col-lg-3 col-md-2 col-sm-2 col-xs-6">
+	                      <div class="div-square">
+	                      	<form action="../DadesResponsableAlumnes" method="Post" name="form">
+	                           <a href="#" onclick="$(this).closest('form').submit()" style="color:#808080">
+	                     <i class="fa fa-id-card fa-5x"></i>
+	                      <h4>Llista responsables</h4>
+	                      </a>
+	                      <input hidden value="<%=usuNif %>" name="NIF">
+	                      </form>
+	                      </div>
+	                  </div>
+				</div>
+             
+             <%} %>
+                           </div>
                   <!-- /. ROW  --> 
     
     </div>

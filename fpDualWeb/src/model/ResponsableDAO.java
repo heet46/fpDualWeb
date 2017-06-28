@@ -72,6 +72,33 @@ public class ResponsableDAO {
 		return respos;
 	}
 	
+	public List<Usuari> cercarResponsableAlumnes(int id) throws SQLException{
+		consultaSQL="SELECT re.id_usuari "
+				+ "FROM responsable as re,alumne as al,tutor as tu,usuari as us "
+				+"WHERE al.id_usuari=us.id_usuari AND tu.id_usuari=al.id_tutor AND re.Id_centre=us.id_centre "
+				+ "AND tu.id_usuari="+id;
+		ResultSet rs=g.consultaRegistres(consultaSQL);
+		List<Integer> ids=new ArrayList<Integer>();
+		List<Usuari> respos=new ArrayList<Usuari>();
+		Usuari u=null;
+		while(rs.next()){
+			ids.add(rs.getInt("id_usuari"));
+		}
+		rs.close();
+		for(int i=0;i<ids.size();i++){
+			consultaSQL="SELECT us.* "
+						+"FROM usuari as us "
+						+"WHERE us.Id_usuari="+ids.get(i);
+			rs=g.consultaRegistres(consultaSQL);
+			while(rs.next()){
+				u=new Usuari(rs.getString("NIF"),"",rs.getString("nom"),rs.getString("primer_cognom"),rs.getString("segon_cognom"),rs.getString("mail"),rs.getInt("permisos"));
+				respos.add(u);
+			}
+			rs.close();
+		}
+		return respos;
+	}
+	
 	public void tancarConn(){
 		g.tancarConnexio();
 	}

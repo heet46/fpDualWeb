@@ -195,7 +195,7 @@ try{
 	                  <div class="col-lg-3 col-md-2 col-sm-2 col-xs-6">
 	                      <div class="div-square">
 	                      	<form action="../DadesTutorsCentre" method="Post" name="form">
-	                           <a href="#" onclick="$(this).closest('form').submit()">
+	                           <a href="#" onclick="$(this).closest('form').submit()" style="color:#808080">
 	                     <i class="fa fa-search fa-5x"></i>
 	                      <h4>Llista tutors</h4>
 	                      </a>
@@ -210,7 +210,7 @@ try{
                       <div class="col-lg-3 col-md-2 col-sm-2 col-xs-6">
                       <div class="div-square">
                       <form action="../DadesTutorModificar" method="Post" name="form">
-                           <a href="#" onclick="$(this).closest('form').submit()">
+                           <a href="#" onclick="$(this).closest('form').submit()" style="color:#808080">
                         <i class="fa fa-pencil fa-5x" aria-hidden="true"></i>
                       <h4>Modificar Dades</h4>
                       </a>

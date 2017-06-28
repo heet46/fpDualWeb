@@ -160,6 +160,7 @@ try{
 	                                        <tr id="headeer">
 		                                        <th><span>Nom</span></th>
 		                                        <th><span>Cognom</span></th>
+		                                        <th><span>Segon Cognom</span></th>
 		                                        <th><span>NIF</span></th>
 		                                        <th><span>E-mail</span></th>
 	                                        </tr>
@@ -184,6 +185,9 @@ try{
 	                                        			</td>
 	                                        			<td>
 	                                        				<%=u.getCognom1()%>
+	                                        			</td>
+	                                        			¡<td>
+	                                        				<%=u.getCognom2()%>
 	                                        			</td>
 	                                        			<td>
 	                                        				<%=u.getNIF()%>

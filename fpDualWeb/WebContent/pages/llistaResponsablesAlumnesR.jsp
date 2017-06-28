@@ -1,6 +1,6 @@
 <%@page import="model.UsuariDAO" %>
 <%@page import="model.Usuari" %>
-<%@page import="model.TutorDAO" %>
+<%@page import="model.ResponsableDAO" %>
 <%@page import="java.util.List" %>
 <%@page import="java.sql.Date" %>
 <%@page import="java.text.*" %>
@@ -166,16 +166,18 @@ try{
 	                                    </thead>
 	                                    <tbody>
 	                                        <%
-	                                        	TutorDAO tDAO=new TutorDAO();
+	                                        	ResponsableDAO rDAO=new ResponsableDAO();
 	                                        	UsuariDAO uDAO=new UsuariDAO();
-	                                        	int id=Integer.parseInt(request.getSession().getAttribute("idAl").toString());
+	                                        	int id=Integer.parseInt(request.getSession().getAttribute("idTut").toString());
 	                                        	System.out.println(id);
-	                                    		Usuari u=null;
+	                                    		List<Usuari> respos=null;
 	                                    		try {
-	                                    			u=tDAO.cercarTutorAlumne(id);
+	                                    			respos=rDAO.cercarResponsableAlumnes(id);
 	                                    		} catch (Exception e) {
 	                                    			e.printStackTrace();
 	                                    		}
+	                                    		
+	                                    		for(Usuari u:respos){
 	                                        %>
 	                                        		<tr>
 	                                        			<td>
@@ -185,7 +187,7 @@ try{
 	                                        				<%=u.getCognom1()%>
 	                                        			</td>
 	                                        			<td>
-	                                        				<%=u.getCognom2()%>
+	                                        				<%=u.getCognom2() %>
 	                                        			</td>
 	                                        			<td>
 	                                        				<%=u.getNIF()%>
@@ -194,6 +196,7 @@ try{
 	                                        				<%=u.getMail()%>
 	                                        			</td>
 	                                        		</tr>
+	                                       <%} %>
 	                                    </tbody>
 	                                </table>
                                    </div>
