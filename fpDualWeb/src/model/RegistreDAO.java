@@ -25,15 +25,17 @@ public class RegistreDAO {
 	public List<Object> valorsData(Registre reg) throws SQLException {
 		List<Object> valors = new ArrayList<Object>();
 		ResultSet rs = null;
-		String consultaSQL = "SELECT * FROM registre WHERE data='" + reg.getData() + "'";
+		String consultaSQL = "SELECT a.codi, r.data, r.hores "
+				+ "FROM registre AS r, activitat AS a WHERE data='" + reg.getData() + "' "
+				+ "AND r.id_activitat=a.id_activitat "
+				+ "AND id_alumne LIKE " + reg.getAlumne().getIdUsuari();
 
 		rs = gestorDB.consultaRegistres(consultaSQL);
 
 		while (rs.next()) {
-			valors.add(rs.getInt(1));
-			valors.add(rs.getInt(2));
-			valors.add(rs.getDate(3));
-			valors.add(rs.getInt(4));
+			valors.add(rs.getString(1));
+			valors.add(rs.getDate(2));
+			valors.add(rs.getInt(3));
 		}
 
 		return valors;
