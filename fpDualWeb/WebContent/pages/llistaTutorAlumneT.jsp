@@ -216,9 +216,15 @@ try{
                                </div>
                                    </div>
                                </div>
-                                                    <a href="tutors.jsp"  id="fletxa">
-               			<i class="fa fa-hand-o-left fa-4x" style='position:fixed; head:0; bottom:50px; right:35px;' width="50" height="50"></i>
-              		</a>
+                    <%if(permis == 1){ %>
+                    	<a href="dadesUsuari.jsp"  id="fletxa">
+	               			<i class="fa fa-hand-o-left fa-4x" style='position:fixed; head:0; bottom:50px; right:35px;' width="50" height="50"></i>
+	              		</a>
+                    <%}else{ %>
+	                    <a href="tutors.jsp"  id="fletxa">
+	               			<i class="fa fa-hand-o-left fa-4x" style='position:fixed; head:0; bottom:50px; right:35px;' width="50" height="50"></i>
+	              		</a>
+              		<%} %>
                            </div>
                         
     <div class="footer">

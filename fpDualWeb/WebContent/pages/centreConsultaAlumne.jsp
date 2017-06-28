@@ -181,9 +181,16 @@
             <div id="page-inner">
                 <div class="row">
                     <div class="col-md-12" align="center">
-                    <a title="Manteniment Centres" href="../pages/centre.jsp">
-                    	<img border='0' src='../assets/img/BackArrow.ico' style='position:fixed; head:0; right:0;' width="50" height="50" />
-                    </a>
+                    <%if(permis == 1){ %>
+                    	<a title="Manteniment Centres" href="dadesUsuari.jsp">
+                    		<img border='0' src='../assets/img/BackArrow.ico' style='position:fixed; head:0; right:0;' width="50" height="50" />
+                    	</a>
+                    <%}else{ %>
+	                    <a title="Manteniment Centres" href="../pages/centre.jsp">
+                    		<img border='0' src='../assets/img/BackArrow.ico' style='position:fixed; head:0; right:0;' width="50" height="50" />
+                    	</a>
+              		<%} %>
+                   
                      <h2>Dades del Teu Centre</h2>
                     </div>
                 </div>

@@ -157,7 +157,7 @@ try{
                   <!-- /. ROW  --> 
                   <div class="row text-center pad-top">
                    
-                    <%if(permis != 4){ %>
+                    <%if(permis == 1){ %>
                   <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                       <div class="div-square">
                            <a href="seleccioData.jsp" >
@@ -167,8 +167,12 @@ try{
                       </div>
                   </div> 
                  <%} %>
-                 
+               
+                 <%if(permis == 1){ %>
                   <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                  <%}else{ %>
+                  <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                  <%} %>
                       <div class="div-square">
                            <a href="registreConsultaHores.jsp" >
                         <i class="fa fa-calendar fa-5x" aria-hidden="true"></i>
@@ -194,6 +198,7 @@ try{
                       </a>
                       </div>
                   </div>
+
                   
                 <br><br><br><br><br><br><br>
                    <div class="col-lg-11"></div>
