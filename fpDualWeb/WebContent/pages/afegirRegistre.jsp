@@ -92,8 +92,11 @@ String usuNom=null;
 String usuCognom=null;
 String usuMail=null;
 int permis=0;
+double hRestants=0;
+String data = null;
+List<String> llistaActivitats = null;
 try{
-	if(sesion.getAttribute("nif") == null){	
+	if(sesion.getAttribute("nif").toString() == null){	
 		session.invalidate();
 		response.sendRedirect("login.jsp");
 	}
@@ -112,23 +115,21 @@ try{
 		}
 	}
 	
+	data = sesion.getAttribute("afgData").toString();
+	
+	try{
+		hRestants = Double.parseDouble(sesion.getAttribute("hRestants").toString());
+	}catch(Exception e){
+		hRestants = 9;
+	}
+	
+	RegistreDAO rDAO = null;
+	try{
+		sesion.removeAttribute("horesMaximes");
+		rDAO = new RegistreDAO();
+		llistaActivitats = rDAO.llistaActivitats();
+	}catch(Exception e){}
 }catch(Exception e){}
-
-String data = sesion.getAttribute("afgData").toString();
-double hRestants;
-try{
-	hRestants = Double.parseDouble(sesion.getAttribute("hRestants").toString());
-}catch(Exception e){
-	hRestants = 9;
-}
-List<String> llistaActivitats = null;
-RegistreDAO rDAO = null;
-try{
-	sesion.removeAttribute("horesMaximes");
-	rDAO = new RegistreDAO();
-	llistaActivitats = rDAO.llistaActivitats();
-}catch(Exception e){}
-
 
 %>
     <div id="wrapper">
