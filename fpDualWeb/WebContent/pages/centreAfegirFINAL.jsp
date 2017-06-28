@@ -201,7 +201,7 @@
         </td>
         <td><br>
         
-            <input type="text" name="nomCentre" id="idNomCentre" maxlength="30" value="" onblur="validarNom()" required /><span><font color="silver"> *</font></span><span id="comprovaNom"> </span>
+            <input type="text" name="nomCentre" id="idNomCentre" maxlength="30" value="" onkeyup="validarNom()" required /><span><font color="silver"> *</font></span><span id="comprovaNom"> </span>
 	<script>      
        function validarNom() {
 			if ($('#idNomCentre').val().length == 0) {
@@ -238,7 +238,7 @@
           Codi del Centre:
           </td>
           <td>
-            <input type="text" name="codiCentre" id="idCodiDelCentre" value=""  maxlength="5" onkeypress="return valida(event)" onblur="validarCodiCentre()" required /><span><font color="silver"> *</font></span><span id="comprovaCodiCentre"> </span>
+            <input type="text" name="codiCentre" id="idCodiDelCentre" value=""  maxlength="5" onkeyup="return valida(event)" onblur="validarCodiCentre()" required /><span><font color="silver"> *</font></span><span id="comprovaCodiCentre"> </span>
             
             <script>      
        function validarCodiCentre() {
@@ -270,7 +270,7 @@
           Telefon:
           </td>
           <td>
-            <input type="text" name="Telefon" id="idTelefon" value=""  maxlength="9" onkeypress="return valida(event)" onblur="validarTelefon()" required /><span><font color="silver"> *</font></span><span id="comprovaTelefon"> </span>
+            <input type="text" name="Telefon" id="idTelefon" value=""  maxlength="9" onkeypress="return valida(event)" onkeyup="validarTelefon()" required /><span><font color="silver"> *</font></span><span id="comprovaTelefon"> </span>
              <script>      
        function validarTelefon() {
 			if ($('#idTelefon').val().length == 0) {
@@ -308,7 +308,7 @@
           </td>
           <td>
 
-            <input type="text" name="pagWeb" id="idPagWeb" maxlength="30" value="" onblur="validarURL(this.idPagWeb)" required /><span><font color="silver"> *</font></span><span id="comprovaUrl"> </span>
+            <input type="text" name="pagWeb" id="idPagWeb" maxlength="30" value="" onkeyup="validarURL(this.idPagWeb)" required /><span><font color="silver"> *</font></span><span id="comprovaUrl"> </span>
              
   	<script>   
 	    function validarURL() {
@@ -363,7 +363,7 @@
           ID del Centre:
           </td>
           <td>
-            <input type="text" id="iddelcentre" name="idcentre" maxlength="5" onblur="validarIdCentre()" onkeypress="return valida(event)"/> <span name="comprovarNID" id="comprovaID"> </span>
+            <input type="text" id="iddelcentre" name="idcentre" maxlength="5" onkeyup="validarIdCentre()" onkeypress="return valida(event)"/> <span name="comprovarNID" id="comprovaID"> </span>
 
        <script>  
        
