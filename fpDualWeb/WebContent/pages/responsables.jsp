@@ -92,9 +92,6 @@ try{
                     <li>
                         <a href="../index.jsp" ><i class="fa fa-desktop "></i>Inici </a>
                     </li>
-					<li>
-                    	<a href="registre.jsp"><i class="fa fa-clock-o"></i>Registre d'hores</a>
-                    </li>
                     <li>
                         <a href="alumnes.jsp"><i class="fa fa-graduation-cap "></i>Alumnes</a>
                     </li>
@@ -114,6 +111,9 @@ try{
                         <a href="administrador.jsp"><i class="fa fa-university "></i>Administrador </a>
                     </li>
                     <%} %>
+                    <li>
+                    	<a href="registre.jsp"><i class="fa fa-clock-o"></i>Registre d'hores</a>
+                    </li>
                     <li class="active-link">
                     	<a href="#"><i class="fa fa-street-view"></i>Responsables</a>
                     </li>
@@ -224,6 +224,21 @@ try{
 	                      </div>
 	                  </div>
 				</div>
+             <%}else if(permis==1){%>
+             	<div  class="row text-center pad-top">
+	                  <div class="col-lg-3 col-md-2 col-sm-2 col-xs-6">
+	                      <div class="div-square">
+	                      	<form action="../DadesResponsableCentre" method="Post" name="form">
+	                           <a href="#" onclick="$(this).closest('form').submit()" style="color:#808080">
+	                     <i class="fa fa-id-card fa-5x"></i>
+	                      <h4>Dades responsable</h4>
+	                      </a>
+	                      <input hidden value="<%=usuNif %>" name="NIF">
+	                      </form>
+	                      </div>
+	                  </div>
+				</div>
+             
              <%} %>
                            </div>
                   <!-- /. ROW  --> 

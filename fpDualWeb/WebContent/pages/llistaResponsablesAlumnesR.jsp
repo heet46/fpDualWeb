@@ -109,8 +109,8 @@ try{
                     <li>
                         <a href="alumnes.jsp"><i class="fa fa-graduation-cap "></i>Alumnes</a>
                     </li>
-                    <li  class="active-link">
-                        <a href="#"><i class="fa fa-book"></i>Tutors</a>
+                    <li>
+                        <a href="tutors.jsp"><i class="fa fa-book"></i>Tutors</a>
                     </li>
                     <li>
                         <a href="centre.jsp"><i class="fa fa-university "></i>Centres </a>
@@ -127,6 +127,9 @@ try{
                     <%} %>
                     
                     <li>
+                    	<a href="registre.jsp"><i class="fa fa-clock-o"></i>Registre d'hores</a>
+                    </li>
+                    <li class="active-link">
                     	<a href="responsables.jsp"><i class="fa fa-street-view"></i>Responsables</a>
                     </li>
                 </ul>

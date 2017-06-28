@@ -112,13 +112,12 @@ try{
                         <a href="administrador.jsp"><i class="fa fa-university "></i>Administrador </a>
                     </li>
                     <%} %>
-                    
-                    <!-- Responsables o Administradors -->
-                    <%if(permis == 3 || permis == 4){ %>
                     <li>
-                    	<a href="responsables.jsp"><i class="fa fa-street-view"></i>Responsables</a>
+                    	<a href="registre.jsp"><i class="fa fa-clock-o"></i>Registre d'hores</a>
                     </li>
-                    <%} %>
+                    <li>
+                    	<a href="#"><i class="fa fa-street-view"></i>Responsables</a>
+                    </li>
                 </ul>
             </div>
         </nav>

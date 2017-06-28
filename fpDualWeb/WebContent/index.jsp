@@ -249,7 +249,7 @@
                       </div>
                   </div>
                   <%} %>
-                  <%if(permis >= 3){%>
+                  <%if(permis >= 2){%>
                   <div class="col-lg-3 col-md-2 col-sm-2 col-xs-6">
                       <div class="div-square">
                         <a href="pages/responsables.jsp" >
