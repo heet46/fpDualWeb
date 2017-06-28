@@ -59,6 +59,13 @@ public class AfegirRegistre extends HttpServlet {
 			response.sendRedirect("pages/registre.jsp");
 		} catch (SQLException e) { 
 			System.out.println("Error clau primari ja inserida");
+			try {
+				rDAO.modificarRegistre(registre);
+				response.sendRedirect("pages/registre.jsp");
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 		}
 	}
 

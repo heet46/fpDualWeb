@@ -21,6 +21,13 @@ public class RegistreDAO {
 		System.out.println(consultaSQL);
 		gestorDB.modificarRegistre(consultaSQL);
 	}
+	
+	public void modificarRegistre(Registre reg) throws SQLException{
+		String consultaSQL = "UPDATE REGISTRE SET HORES = HORES + "+reg.getHores()+" WHERE ID_ALUMNE = "+reg.getAlumne().getIdUsuari()+" AND DATA = '"+reg.getData()+"'";
+		if(gestorDB.modificarRegistre(consultaSQL)!=0){
+			System.out.println("Modificació realitzada amb èxit");
+		}
+	}
 
 	public List<Object> valorsData(Registre reg) throws SQLException {
 		List<Object> valors = new ArrayList<Object>();
