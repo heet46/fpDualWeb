@@ -39,11 +39,11 @@
 		outt.println("<th ><b>Alumne<b/></th>");
 		outt.println("<th ><b>Data<b/></th>");
 		outt.println("<th ><b>Hores<b/></th>");
-		outt.println("<th ><b><b/></th>");
 		outt.println("</tr>");
 		outt.println("</thead>");
 		int contador = 0;
 		String ConsultaSQL = null;
+		String Consulta2SQL = null;
 		String nAlumne = "";
 		String nActivitat = "";
 		if (alumne == null || alumne == "") {
@@ -51,31 +51,21 @@
 			rs = rdao.codiIdAlumne(alumne);
 			while (rs.next()) { 
 				nAlumne = rs.getString(1); 
-				System.out.println("nAlumne -> " + nAlumne);
      		}
-			System.out.println("nAlumne -> " + nAlumne);
 			ConsultaSQL = " id_alumne LIKE '%" + nAlumne + "%'";
 			contador = 1;
 		}
-		
-
 		if (activitat == null || activitat == "") {
 		} else { 
 			rs = rdao.codiIdActivitat(activitat);
 			while (rs.next()) { 
 				nActivitat = rs.getString(1); 
-				System.out.println("nActivitat -> " + nActivitat);
      		}
 			
-			if (contador == 0) { ConsultaSQL = " id_activitat LIKE '%" + nActivitat + "%'";
-			} else { ConsultaSQL += " AND id_activitat LIKE '%" + activitat + "%'"; } contador = 1;
+			if (contador == 0) { ConsultaSQL = " id_activitat LIKE '" + nActivitat + "'" ;
+			} else { ConsultaSQL += " AND id_activitat LIKE '%" + nActivitat + "%'" ; } contador = 1;
 		}
-		
-		
-		
-		
-		
-		
+
 		if (data == null || data == "") {
 		} else { 
 			
@@ -84,22 +74,41 @@
 		contador = 1;
 		}
 		response.setContentType("text/html");
-		System.out.println("consulta -> " + ConsultaSQL);
 		if (contador == 0) {
 			System.out.println("No hi ha dades per fer la consulta.");
 		} else {
 			rs = rdao.consultarHores(ConsultaSQL);
 			String nid = "";
-			while (rs.next()) {
+			ResultSet r2s = null;
+			String colr1 = "";
+			String colr2 = "";
+			while (rs.next()) { 
 				outt.println("<tr>");
-				for (int i = 1; i <= 4; i++) {
-					String columnValue = rs.getString(i);
-					if(i == 1){
-						nid = rs.getString(i);
+
+					//String columnValue = rs.getString(i);
+					String col1 = rs.getString(1);
+					String col2 = rs.getString(2);
+					String col3 = rs.getString(3);
+					
+					r2s = rdao.nomIdActivitat(col1);
+					
+					while (r2s.next()) { 
+						colr1 = r2s.getString(1);
 					}
-					outt.println("<td>" + columnValue + "</td>");
-				} 
-			outt.println("</tr>");
+					
+					r2s = rdao.nomIdAlumne(col2);
+					
+					while (r2s.next()) { 
+						colr2 = r2s.getString(1);
+					}
+					
+					String col4 = rs.getString(4);
+					outt.println("<td>" + colr1 + "</td>");
+					outt.println("<td>" + colr2 + "</td>");
+					outt.println("<td>" + col3 + "</td>");
+					outt.println("<td>" + col4 + "</td>");
+					
+				 outt.println("</tr>");
 			}
 		}	
 	%>

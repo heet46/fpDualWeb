@@ -25,10 +25,9 @@ public class RegistreDAO {
 	public List<Object> valorsData(Registre reg) throws SQLException {
 		List<Object> valors = new ArrayList<Object>();
 		ResultSet rs = null;
-		String consultaSQL = "SELECT a.codi, r.data, r.hores "
-				+ "FROM registre AS r, activitat AS a WHERE data='" + reg.getData() + "' "
-				+ "AND r.id_activitat=a.id_activitat "
-				+ "AND id_alumne LIKE " + reg.getAlumne().getIdUsuari();
+		String consultaSQL = "SELECT a.codi, r.data, r.hores " + "FROM registre AS r, activitat AS a WHERE data='"
+				+ reg.getData() + "' " + "AND r.id_activitat=a.id_activitat " + "AND id_alumne LIKE "
+				+ reg.getAlumne().getIdUsuari();
 
 		rs = gestorDB.consultaRegistres(consultaSQL);
 
@@ -101,6 +100,22 @@ public class RegistreDAO {
 	public ResultSet codiIdAlumne(String text) throws SQLException {
 		ResultSet rs = null;
 		String consultaSQL = "SELECT id_usuari FROM usuari WHERE nom LIKE '%" + text + "%';";
+		System.out.println("La consulta ->" + consultaSQL);
+		rs = gestorDB.consultaRegistres(consultaSQL);
+		return rs;
+	}
+
+	public ResultSet nomIdActivitat(String text) throws SQLException {
+		ResultSet rs = null;
+		String consultaSQL = "SELECT DISTINCT codi FROM activitat WHERE id_activitat LIKE '%" + text + "%';";
+		System.out.println("La consulta ->" + consultaSQL);
+		rs = gestorDB.consultaRegistres(consultaSQL);
+		return rs;
+	}
+
+	public ResultSet nomIdAlumne(String text) throws SQLException {
+		ResultSet rs = null;
+		String consultaSQL = "SELECT DISTINCT nom FROM usuari WHERE id_usuari LIKE '%" + text + "%';";
 		System.out.println("La consulta ->" + consultaSQL);
 		rs = gestorDB.consultaRegistres(consultaSQL);
 		return rs;
