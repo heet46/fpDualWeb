@@ -186,7 +186,7 @@ try{
 	                                        			<td>
 	                                        				<%=u.getCognom1()%>
 	                                        			</td>
-	                                        			¡<td>
+	                                        			<td>
 	                                        				<%=u.getCognom2()%>
 	                                        			</td>
 	                                        			<td>
