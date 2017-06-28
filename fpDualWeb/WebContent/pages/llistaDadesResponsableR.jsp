@@ -1,11 +1,13 @@
 <%@page import="model.UsuariDAO" %>
-<%@page import="model.CentreDAO" %>
-<%@page import="java.util.*" %>
+<%@page import="model.Usuari" %>
+<%@page import="java.util.List" %>
+<%@page import="java.sql.Date" %>
+<%@page import="java.text.*" %>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <script src="https://use.fontawesome.com/d43d49ce33.js"></script>
-    <meta charset="utf-8" />
+    <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Registre d'hores</title>
 	<!-- BOOTSTRAP STYLES-->
@@ -20,30 +22,21 @@
 
     <link href="../assets/css/bootstrap-theme.min.css" rel="stylesheet" />
     
+     <link href="../assets/css/bootstrap-X.X.css" rel="stylesheet" />
+     
+     <link href="../assets/css/bootstrap-X.X-flex.css" rel="stylesheet" />
+     
+     <link href="../assets/css/bootstrap.js" rel="stylesheet" />
+    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.â€Œâ€‹2/css/bootstrap.min.â€Œâ€‹css">
+    
     <link href="../assets/css/tutors.css" rel="stylesheet" />
     
     <link href="../assets/css/custom.css" rel="stylesheet" />
      <!-- GOOGLE FONTS-->
     <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
-     <!-- FAVICON -->
+         <!-- FAVICON -->
 	<link rel="shortcut icon" type="image/ico" href="../assets/img/favicon-clock-o.ico" />
-      
-<script type="text/javascript">
-   var restrict = function(tb) {
-     tb.value = tb.value.replace(/[^a-zA-Zñç]/g, '');
-   };
-</script>
-<script type="text/javascript">
-function validateForm()
-{
-var g=document.getElementById("tec");
-if (g.selectedIndex==0)
-  {
-  alert("No s'ha seleccionat una tecnologia.");
-  return false;
-  }
-}
-    </script>
 </head>
 <body>
 <%
@@ -73,9 +66,8 @@ try{
 			if(cookie.getName().equals("JSESSIONID")) sessionID = cookie.getValue();			
 		}
 	}
-}catch(Exception e){}
+}catch(Exception e){}	
 %>
-
     <div id="wrapper">
          <div class="navbar navbar-inverse navbar-fixed-top">
             <div class="adjust-nav">
@@ -109,28 +101,31 @@ try{
         <nav class="navbar-default navbar-side" role="navigation">
             <div class="sidebar-collapse">
                 <ul class="nav" id="main-menu">
-                 
-                    <li>
+					<li>
                         <a href="../index.jsp" ><i class="fa fa-desktop "></i>Inici </a>
                     </li>
 
                     <li>
                         <a href="alumnes.jsp"><i class="fa fa-graduation-cap "></i>Alumnes</a>
                     </li>
-                    <li>
-                        <a href="tutors.jsp"><i class="fa fa-book"></i>Tutors</a>
+                    <li  class="active-link">
+                        <a href="#"><i class="fa fa-book"></i>Tutors</a>
                     </li>
-
                     <li>
                         <a href="centre.jsp"><i class="fa fa-university "></i>Centres </a>
                     </li>
                     <li>
                         <a href="activitats.jsp"><i class="fa fa-list "></i>Activitats</a>
                     </li>
+                    
+                    <!-- Administradors -->
+                    <%if(permis == 4){ %>
                     <li>
                         <a href="administrador.jsp"><i class="fa fa-university "></i>Administrador </a>
                     </li>
-                    <li class="active-link">
+                    <%} %>
+                    
+                    <li>
                     	<a href="responsables.jsp"><i class="fa fa-street-view"></i>Responsables</a>
                     </li>
                 </ul>
@@ -143,7 +138,7 @@ try{
             <div id="page-inner">
                 <div class="row">
                     <div class="col-lg-12">
-                     <h2>Modificar responsables</h2>   
+                     <h2>Dades tutor</h2>   
                     </div>
                 </div>              
                  <!-- /. ROW  -->
@@ -154,69 +149,66 @@ try{
  
                     </div>
                   <!-- /. ROW  --> 
-                            <div class="row text-center pad-top">
-                                <form method="Post" name="Form" onsubmit="return validateForm()" action="../ModificarResponsable2">
-                                    <table>
-                                        <tr>
-                                            <td>NIF: </td>
-                                            <input type="hidden" name="IdVella" value="${NIF}">
-                                            <input type="hidden" name="permis" value="<%=permis %>">
-                                            <td><input type="text" class="form-control" name="NIF" size="25"  value="${NIF}" required/></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Password: </td>
-                                            <td><input type="password" class="form-control" name="pass" value="${password}" size="25" required/></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Nom: </td>
-                                            <td><input type="text" class="form-control" onpaste="restrict(this);" onkeypress="restrict(this);" onkeyup="restrict(this);" name="nom" size="25"  value="${nom}" required/></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Primer cognom: </td>
-                                            <td><input type="text" class="form-control" onpaste="restrict(this);" onkeypress="restrict(this);" onkeyup="restrict(this);" name="Pcognom" value="${Pcognom}" size="25" required/></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Segon cognom: </td>
-                                            <td><input type="text" class="form-control" onpaste="restrict(this);" onkeypress="restrict(this);" onkeyup="restrict(this);" name="Scognom" value="${Scognom}" size="25"/></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Mail: </td>
-                                            <td><input type="email" class="form-control" name="mail" value="${mail}" size="25" required/></td>
-                                        </tr>
-                                        <tr>
-                                        <td>Centre: </td>
-                                        <td>
-                                        	<%CentreDAO cDAO=new CentreDAO(); %>
-											<select id="tec" name="centre" class="form-control" required>
-                                                <option selected hidden value="selec">Selecciona una opció:</option>
-                                                <%List<String> centres=cDAO.nomsCentres();
-                                                for(int i=0;i<centres.size();i++){%>
-                                                	<option value="<%=centres.get(i)%>"> <%=centres.get(i)%></option>
-                                                <%
-                                                }
-                                                %>
-                                             </select>
-                                        </td>
-                                        </tr>
-                                        <tr>
-                                            <td><br></td>
-                                        </tr>
-                                        <tr>
-                                            <th><input type="submit" name="Modificar" class="btn btn-warning"  value="Modificar"/></th>
-                                        </tr>
-                                    </table>
-                                </form>
- 
-                  </div>
-                                       <a href="tutorsModificar.jsp"  id="fletxa">
+                        
+                            <div class="row">
+                                <div class="col-lg-12">
+                                          
+	                                <table class="table table-hover table-inverse">
+	                                    <thead>
+	                                        <tr id="headeer">
+		                                        <th><span>Nom</span></th>
+		                                        <th><span>Cognom</span></th>
+		                                        <th><span>Segon Cognom</span></th>
+		                                        <th><span>NIF</span></th>
+		                                        <th><span>E-mail</span></th>
+		                                        <th>&nbsp;</th>
+		                                        <th>&nbsp;</th>
+	                                        </tr>
+	                                    </thead>
+	                                    <tbody>
+	                                        <%
+	                                        	UsuariDAO uDAO=new UsuariDAO();
+												Usuari u=uDAO.consultaUsuari(request.getSession().getAttribute("nifRes").toString());
+	                                        %>
+	                                        		<tr>
+	                                        			<td>
+	                                        				<%=u.getNom()%>
+	                                        			</td>
+	                                        			<td>
+	                                        				<%=u.getCognom1()%>
+	                                        			</td>
+	                                        			<td>
+	                                        				<%=u.getCognom2() %>
+	                                        			</td>
+	                                        			<td>
+	                                        				<%=u.getNIF()%>
+	                                        			</td>
+	                                        			<td>
+	                                        				<%=u.getMail()%>
+	                                        			</td>
+                                                       	 <form name="form" method="Post" action="../ModificarResponsable" class="table-link">
+                                                       	    <td hidden style="width: 1%">
+                                                        		<input type="hidden" name="NIF" value="<%=u.getNIF()%>" size="0">
+	                                        				</td>
+                                                        	<td style="width: 5%">
+                                                        		<input type="submit" class="btn btn-warning" value="Modificar">
+                                                        	</td>
+                                                        	<td hidden style="width: 1%">
+                                                        		<input type="hidden" name="permis" value="<%=permis%>" size="0">
+	                                        				</td>
+														</form>
+	                                        		</tr>
+	                                    </tbody>
+	                                </table>
+                                   </div>
+                               </div>
+                                   </div>
+                               </div>
+                                                    <a href="tutors.jsp"  id="fletxa">
                			<i class="fa fa-hand-o-left fa-4x" style='position:fixed; head:0; bottom:50px; right:35px;' width="50" height="50"></i>
               		</a>
-              </div>
-                  <!-- /. ROW  --> 
-    </div>
-             <!-- /. PAGE INNER  -->
-            </div>
-         <!-- /. PAGE WRAPPER  -->
+                           </div>
+                        
     <div class="footer">
       
     
@@ -231,11 +223,6 @@ try{
     <!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
     <!-- JQUERY SCRIPTS -->
     <!-- CUSTOM SCRIPTS -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script src="../assets/js/bootstrap.min.js"></script>
-    <script src="../assets/js/custom.js"></script>
-
-    
    
 </body>
 </html>
