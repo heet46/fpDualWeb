@@ -115,9 +115,11 @@ try{
                     <li>
                     	<a href="registre.jsp"><i class="fa fa-clock-o"></i>Registre d'hores</a>
                     </li>
+                    <%if(permis>=2){%>
                     <li>
-                    	<a href="#"><i class="fa fa-street-view"></i>Responsables</a>
+                    	<a href="responsables.jsp"><i class="fa fa-street-view"></i>Responsables</a>
                     </li>
+                    <%} %>
                 </ul>
             </div>
         </nav>
