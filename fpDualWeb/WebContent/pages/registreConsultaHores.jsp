@@ -201,8 +201,8 @@
 							</td>
 						</tr>
 						<tr>
-						<td><input type='text' name='aactivitat' id='activitat' placeholder='ID Activitat...' title='Introdueix la activitat a Buscar.' onkeyup='sendInfo()'></td>
-							<td><input type='text' name='aalumne' id='alumne' placeholder='ID Alumne...' title='Introdueix el Nom de l´Alumne a Buscar.' onkeyup='sendInfo()'></td>
+						<td><input type='text' name='aactivitat' id='activitat' placeholder='Activitat...' title='Introdueix la activitat a Buscar.' onkeyup='sendInfo()'></td>
+							<td><input type='text' name='aalumne' id='alumne' placeholder='Alumne...' title='Introdueix el Nom de l´Alumne a Buscar.' onkeyup='sendInfo()'></td>
 							<td><input type='text' name='ddata' id='data' placeholder='aaaa-mm-dd...' title='Introdueix la data a Buscar.' onkeyup='sendInfo()'></td>
 						</tr>
 					</table>
