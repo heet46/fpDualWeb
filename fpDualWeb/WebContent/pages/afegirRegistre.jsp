@@ -287,15 +287,14 @@ try{
 					             		<b>Data: </b> <%=llistaRegistres.get(i+1)%> <br/>
 										<b>Hores: </b> <%=llistaRegistres.get(i+2)%> <br/>
 										<b>Activitat: </b> <%=llistaRegistres.get(i)%> <br/>
-
 									</div>
 			                    </div>
 		                	</div>
 		                <%
 		                j++;
-		                i = i+4;
+		                i = i+3;
 		                	}
-	                	}	                	
+	                	}
 	                	%>
 	                	</div>
 	                </div>
