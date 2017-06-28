@@ -70,7 +70,6 @@ public class RegistreDAO {
 		int id = 0;
 		ResultSet rs = null;
 		String consultaSQL = "SELECT a.id_activitat " + "FROM activitat AS a " + "WHERE a.codi='" + codi + "'";
-		System.out.println(consultaSQL);
 		rs = gestorDB.consultaRegistres(consultaSQL);
 
 		while (rs.next()) {
@@ -83,7 +82,6 @@ public class RegistreDAO {
 	public ResultSet consultarHores(String consul) throws SQLException {
 		ResultSet rs = null;
 		String consultaSQL = "SELECT * FROM registre WHERE" + consul + ";";
-		System.out.println(consultaSQL);
 		rs = gestorDB.consultaRegistres(consultaSQL);
 
 		return rs;
@@ -92,7 +90,6 @@ public class RegistreDAO {
 	public ResultSet codiIdActivitat(String text) throws SQLException {
 		ResultSet rs = null;
 		String consultaSQL = "SELECT id_activitat FROM activitat WHERE codi LIKE '%" + text + "%';";
-		System.out.println("La consulta ->" + consultaSQL);
 		rs = gestorDB.consultaRegistres(consultaSQL);
 		return rs;
 	}
@@ -100,7 +97,6 @@ public class RegistreDAO {
 	public ResultSet codiIdAlumne(String text) throws SQLException {
 		ResultSet rs = null;
 		String consultaSQL = "SELECT id_usuari FROM usuari WHERE nom LIKE '%" + text + "%';";
-		System.out.println("La consulta ->" + consultaSQL);
 		rs = gestorDB.consultaRegistres(consultaSQL);
 		return rs;
 	}
@@ -108,7 +104,6 @@ public class RegistreDAO {
 	public ResultSet nomIdActivitat(String text) throws SQLException {
 		ResultSet rs = null;
 		String consultaSQL = "SELECT DISTINCT codi FROM activitat WHERE id_activitat LIKE '%" + text + "%';";
-		System.out.println("La consulta ->" + consultaSQL);
 		rs = gestorDB.consultaRegistres(consultaSQL);
 		return rs;
 	}
@@ -116,7 +111,6 @@ public class RegistreDAO {
 	public ResultSet nomIdAlumne(String text) throws SQLException {
 		ResultSet rs = null;
 		String consultaSQL = "SELECT DISTINCT nom FROM usuari WHERE id_usuari LIKE '%" + text + "%';";
-		System.out.println("La consulta ->" + consultaSQL);
 		rs = gestorDB.consultaRegistres(consultaSQL);
 		return rs;
 	}
