@@ -229,10 +229,17 @@
 			<br>
 			
 			<script>
-			window.onload=sendInfo();
+			<%if(permis == 1){ %>
+				window.onload=sendInfo();
+			<%} %>
 				var request;
 				function sendInfo() {
-					var i=document.vinform.a2alumne.value;
+					<%if(permis == 1){ %>
+						var i=document.vinform.a2alumne.value;
+					<%} %>
+					<%if(permis != 1){ %>
+					var i=document.vinform.aalumne.value;
+				<%} %>
 					var u=document.vinform.aactivitat.value;
 					var d=document.vinform.ddata.value;
 					var h=document.vinform.ddata.value;

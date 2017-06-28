@@ -17,19 +17,15 @@
 		String hores = "";
 	    if(request.getParameter("val") != null && request.getParameter("val") != ""){
 	    	alumne = request.getParameter("val");
-			System.out.println("alumne: " + alumne);
 		}
 	    if(request.getParameter("va1") != null && request.getParameter("va1") != ""){
 	    	activitat = request.getParameter("va1");
-			System.out.println("activitat: " + activitat);
 		}
 	    if(request.getParameter("va2") != null && request.getParameter("va2") != ""){
 	    	data = request.getParameter("va2");
-			System.out.println("data: " + data);
 		}
 	    if(request.getParameter("va3") != null && request.getParameter("va3") != ""){
 	    	hores = request.getParameter("va3");
-			System.out.println("data: " + hores);
 		}
 		outt.println("<div class='row col-lg-12 col-md-12'>");
 		outt.println("<table id='myTable' class='table table-striped  table-hover' >");
