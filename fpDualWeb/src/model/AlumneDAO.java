@@ -321,6 +321,28 @@ public class AlumneDAO {
 		return dades;
 	}
 	
+	public List<Alumne> alumnesTutoritzats(Tutor tut) throws SQLException{
+		List<Alumne> llista = new ArrayList<Alumne>();
+		ResultSet rs = null;
+		String consultaSQL = "SELECT u.nom, u.primer_cognom, u.segon_cognom, u.id_usuari, u.NIF, u.mail "
+				+ "FROM alumne AS a, usuari AS u, usuari AS u2 "
+				+ "WHERE a.id_usuari=u.id_usuari AND a.id_tutor=u2.id_usuari AND u2.NIF='"+tut.getNIF()+"'";
+		
+		rs = gestorDB.consultaRegistres(consultaSQL);
+		while(rs.next()){
+			Alumne al = new Alumne();
+			al.setIdUsuari(rs.getInt("id_usuari"));
+			al.setNIF(rs.getString("NIF"));
+			al.setMail(rs.getString("mail"));
+			al.setNom(rs.getString("nom"));
+			al.setCognom1(rs.getString("primer_cognom"));
+			al.setCognom2(rs.getString("segon_cognom"));
+			
+			llista.add(al);
+		}
+		return llista;
+	}
+	
 	public void tancarConn(){
 		gestorDB.tancarConnexio();
 	}

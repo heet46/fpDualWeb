@@ -134,6 +134,7 @@
               
                 <!-- /. ROW  --> 
                 <div class="row text-center pad-top">
+                	<%if(permis > 3){ %>
 					<div class="col-lg-3 col-md-2 col-sm-2 col-xs-6">
                     	<div class="div-square">
                         	<a href="afegirAlumne.jsp" >
@@ -142,7 +143,8 @@
                       		</a>
                       	</div>                     
                   	</div> 
-                 
+                  	<%} %>
+                 	<%if(permis == 4){ %>
                   	<div class="col-lg-3 col-md-2 col-sm-2 col-xs-6">
                       	<div class="div-square">
                            	<a href="modificarAlumne.jsp" >
@@ -151,7 +153,8 @@
                       		</a>
                       	</div>                     
                   	</div>
-                  	
+                  	<%} %>
+                  	<%if(permis == 4){ %>
                   	<div class="col-lg-3 col-md-2 col-sm-2 col-xs-6">
                     	<div class="div-square">
                         	<a href="llistatAlumnes.jsp" >
@@ -160,7 +163,8 @@
                       		</a>
                       	</div>
                   	</div>
-                  
+                  	<%} %>
+                  	<%if(permis == 4){ %>
                   	<div class="col-lg-3 col-md-2 col-sm-2 col-xs-6">
                       	<div class="div-square">
                         	<a href="eliminarAlumne.jsp" >
@@ -169,7 +173,8 @@
                       		</a>
                       	</div>                     
                   	</div>
-              
+              		<%} %>
+              		<%if(permis >= 3){ %>
               		<div class="col-lg-3 col-md-2 col-sm-2 col-xs-6">
                     	<div class="div-square">
 							<a href="cercarAlumne.jsp" >
@@ -178,6 +183,17 @@
                      		</a>
                      	</div>
 					</div>
+					<%} %>
+					<%if(permis == 2){ %>
+					<div class="col-lg-3 col-md-2 col-sm-2 col-xs-6">
+                    	<div class="div-square">
+							<a href="alumnesTutor.jsp" >
+	                    		<i class="fa fa-users fa-5x" aria-hidden="true"></i>
+	                     		<h4>Els teus alumnes</h4>
+                     		</a>
+                     	</div>
+					</div>
+					<%} %>
               	</div>
     		</div> <!-- /. PAGE INNER  -->
 		</div> <!-- /. PAGE WRAPPER  -->
