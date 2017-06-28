@@ -28,16 +28,21 @@ public class DadesTutorAlumne extends HttpServlet {
         // TODO Auto-generated constructor stub
     }
 
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    	doPost(request,response);	
+    }
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		UsuariDAO uDAO=new UsuariDAO();
 		TutorDAO tDAO=new TutorDAO();
-		String NIF=request.getParameter("NIF");
+		String NIF=request.getSession().getAttribute("nif").toString();
+		System.out.println(NIF);
 		int id=uDAO.consultaID(NIF);
 		request.getSession().setAttribute("idAl",id);
 		response.sendRedirect("pages/llistaTutorAlumneT.jsp");
+		
 	}
 
 }

@@ -71,6 +71,7 @@
 			}
 		}
 	}catch(Exception e){}
+	finally{}
 		
 %>
 
@@ -114,32 +115,41 @@
                     <li class="active-link">
                         <a href="index.jsp" ><i class="fa fa-desktop "></i>Inici </a>
                     </li>
+                    <%if(permis > 1){ %>
                     <li>
                         <a href="pages/alumnes.jsp"><i class="fa fa-graduation-cap "></i>Alumnes</a>
                     </li>
+                    <%} %>
+                    <%if(permis > 1){ %>
                     <li>
                         <a href="pages/tutors.jsp"><i class="fa fa-book"></i>Tutors</a>
                     </li>
-
+					<%} %>
+                    <%if(permis > 1){ %>
                     <li>
                         <a href="pages/centre.jsp"><i class="fa fa-university "></i>Centres </a>
                     </li>
-                    <%if(permis == 2 || permis == 3 || permis == 4){%>
+                    <%} %>
+                    <%if(permis >= 2){%>
                     <li>
                         <a href="pages/activitats.jsp"><i class="fa fa-list "></i>Activitats</a>
                     </li>
                     <%} %>
+                    <%if(permis == 1 || permis == 2){ %>
                     <li>
                     	<a href="pages/registre.jsp"><i class="fa fa-clock-o"></i>Registre d'hores</a>
                     </li>
+                    <%} %>
                     <%if(permis == 4){ %>
                     <li>
                         <a href="pages/administrador.jsp"><i class="fa fa-user-o "></i>Administrador </a>
                     </li>
                     <%} %>
+                    <%if(permis > 1){ %>
                     <li>
                     	<a href="pages/responsables.jsp"><i class="fa fa-street-view"></i>Responsables</a>
                     </li>
+                    <%} %>
                     <%if(permis == 1){ %>
                     <li>
                     	<a href="pages/dadesUsuari.jsp"><i class="fa fa-id-card"></i>Dades d'usuari</a>
@@ -171,7 +181,8 @@
 
 
                   <!-- /. ROW  --> 
-                            <div class="row text-center pad-top">
+                  <div class="row text-center pad-top">
+                  <%if(permis > 1){%>
                   <div class="col-lg-3 col-md-2 col-sm-2 col-xs-6">
                       <div class="div-square">
                            <a href="pages/alumnes.jsp">
@@ -179,10 +190,9 @@
                         <h4>Alumnes</h4>
                       </a>
                       </div>
-                     
-                     
                   </div> 
-                 
+                  <%} %>
+                  <%if(permis > 1){%>
                   <div class="col-lg-3 col-md-2 col-sm-2 col-xs-6">
                       <div class="div-square">
                            <a href="pages/tutors.jsp" >
@@ -190,38 +200,45 @@
                       <h4>Tutors</h4>
                       </a>
                       </div>
-                     
-                     
                   </div>
+                  <%} %>
+                  <%if(permis > 1){%>
                   <div class="col-lg-3 col-md-2 col-sm-2 col-xs-6">
                       <div class="div-square">
                            <a href="pages/centre.jsp" >
-<i class="fa fa-university fa-5x" aria-hidden="true"></i>
+						<i class="fa fa-university fa-5x" aria-hidden="true"></i>
                       <h4>Centres</h4>
                       </a>
                       </div>
-                     
-                  <%if(permis == 2 || permis == 3 || permis == 4){%>
                   </div>
-                  <div class="col-lg-3 col-md-2 col-sm-2 col-xs-6">
-                      <div class="div-square">
-                           <a href="pages/activitats.jsp" >
- <i class="fa fa-list fa-5x"></i>
-                      <h4>Activitats</h4>
-                      </a>
-                      </div>
-                  <%} %> 
-                     
-                  </div>
+                  <%} %>
+                  <%if(permis >= 2){%>
                   
                   <div class="col-lg-3 col-md-2 col-sm-2 col-xs-6">
                       <div class="div-square">
+                           <a href="pages/activitats.jsp" >
+ 						<i class="fa fa-list fa-5x"></i>
+                      <h4>Activitats</h4>
+                      </a>
+                      </div>
+                  </div>
+                  <%} %> 
+                  
+                  <%if(permis == 1 || permis == 2){ %>
+                  <%if(permis == 1){ %>
+                  		<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                  <%}else{ %>
+						<div class="col-lg-3 col-md-2 col-sm-2 col-xs-6">
+                  <%} %>
+                      <div class="div-square">
                            <a href="pages/registre.jsp" >
- <i class="fa fa-clock-o fa-5x"></i>
+ 						<i class="fa fa-clock-o fa-5x"></i>
                       <h4>Registre d'hores</h4>
                       </a>
                       </div>
                   </div>
+                  <%} %>
+                  
                   <%if(permis == 4){%>
                   <div class="col-lg-3 col-md-2 col-sm-2 col-xs-6">
                       <div class="div-square">
@@ -232,26 +249,28 @@
                       </div>
                   </div>
                   <%} %>
-                  <%if(permis == 3 || permis == 4){%>
+                  <%if(permis >= 3){%>
                   <div class="col-lg-3 col-md-2 col-sm-2 col-xs-6">
                       <div class="div-square">
-                           <a href="pages/responsables.jsp" >
-                    <i class="fa fa-street-view fa-5x"></i>
-                      <h4>Responsables</h4>
+                        <a href="pages/responsables.jsp" >
+                          	<i class="fa fa-street-view fa-5x"></i>
+                     		<h4>Responsables</h4>
+                     	</a>
+                     </div>
+				  </div>
+				<%} %>
+					
+				<%if(permis == 1){ %>
+					<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                      <div class="div-square">
+                           <a href="pages/dadesUsuari.jsp" >
+                    <i class="fa fa-id-card fa-5x"></i>
+                      <h4>Dades d'usuari</h4>
                       </a>
                       </div>
 					</div>
-					<%} %>
-					<%if(permis == 1){ %>
-						<div class="col-lg-3 col-md-2 col-sm-2 col-xs-6">
-	                      <div class="div-square">
-	                           <a href="pages/dadesUsuari.jsp" >
-	                    <i class="fa fa-id-card fa-5x"></i>
-	                      <h4>Dades d'usuari</h4>
-	                      </a>
-	                      </div>
-						</div>
-					<%} %>
+				<%} %>
+					
                   </div>
                   
               </div>

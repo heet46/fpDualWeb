@@ -155,15 +155,18 @@ $(document).ready(function()
                     <div class="col-lg-12 col-md-12">
                     
                     
-                        <table class="table table-striped table-hover tablesorter" id="myTable">
-                            <thead>
+                        <table class="table table-striped table-hover tablesorter">
                             	<tr>
 									<th><input type="text" id="myId" onkeyup="buscarId()" placeholder="ID..." style="width:30px"></th>
-									<th><input type="text" id="myNom" onkeyup="buscarNom()" placeholder="Filtrar per nom..." style="width:100%"></th>
-									<th><input type="text" id="myCog" onkeyup="buscarCog()" placeholder="Filtrar per cognom..." style="width:100%"></th>
-									<th><input type="text" id="myTut" onkeyup="buscarTut()" placeholder="Filtrar per tutor..." style="width:100%"></th>
+									<th width="15%"><input type="text" id="myNom" onkeyup="buscarNom()" placeholder="Filtrar per nom..." style="width:100%"></th>
+									<th width="27%"><input type="text" id="myCog" onkeyup="buscarCog()" placeholder="Filtrar per cognom..." style="width:100%"></th>
+									<th width="16%"><input type="text" id="myTut" onkeyup="buscarTut()" placeholder="Filtrar per tutor..." style="width:100%"></th>
 									<th><input type="text" id="myCentre" onkeyup="buscarCentre()" placeholder="Filtrar per centre..." style="width:100%"></th>
-								</tr>
+									<th width="20%"></th>
+								</tr>							
+						</table>
+						<table class="table table-striped table-hover tablesorter" id="myTable">
+                            <thead>
                                 <tr id="headeer">
                                     <th>#</th>
                                     <th>Nom</th>

@@ -145,16 +145,18 @@
 
 				<div class="row">
                     <div class="col-lg-12 col-md-12">
-                        <table class="table table-striped  table-hover" id="myTable">
-                            
-                            <thead>
-	                            <tr>
+                    	<table class="table table-striped  table-hover">
+                            	<tr>
 									<th><input type="text" id="myId" onkeyup="buscarId()" placeholder="ID..." style="width:30px"></th>
-									<th><input type="text" id="myNom" onkeyup="buscarNom()" placeholder="Filtrar per nom..." style="width:100%"></th>
-									<th><input type="text" id="myCog" onkeyup="buscarCog()" placeholder="Filtrar per cognom..." style="width:100%"></th>
-									<th><input type="text" id="myTut" onkeyup="buscarTut()" placeholder="Filtrar per tutor..." style="width:100%"></th>
+									<th width="15.5%"><input type="text" id="myNom" onkeyup="buscarNom()" placeholder="Filtrar per nom..." style="width:100%"></th>
+									<th width="27.5%"><input type="text" id="myCog" onkeyup="buscarCog()" placeholder="Filtrar per cognom..." style="width:100%"></th>
+									<th width="16.5%"><input type="text" id="myTut" onkeyup="buscarTut()" placeholder="Filtrar per tutor..." style="width:100%"></th>
 									<th><input type="text" id="myCentre" onkeyup="buscarCentre()" placeholder="Filtrar per centre..." style="width:100%"></th>
+									<th width="18%"></th>
 								</tr>
+						</table>
+                        <table class="table table-striped  table-hover" id="myTable">
+                            <thead>
                                 <tr id="headeer">
                                     <th>#</th>
                                     <th>Nom</th>
