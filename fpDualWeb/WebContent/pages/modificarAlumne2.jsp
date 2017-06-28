@@ -6,14 +6,15 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-      <meta charset="utf-8" />
+	<script src="https://use.fontawesome.com/d43d49ce33.js"></script>
+    <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Registre d'hores</title>
 	<!-- BOOTSTRAP STYLES-->
     <link href="../assets/css/bootstrap.css" rel="stylesheet" />
      <!-- FONTAWESOME STYLES-->
     <link href="../assets/css/font-awesome.css" rel="stylesheet" />
-        <!-- CUSTOM STYLES-->
+    <!-- CUSTOM STYLES-->
     <link href="../assets/css/bootstrap-theme.css" rel="stylesheet" />
 
     <link href="../assets/css/bootstrap-theme.min.css" rel="stylesheet" />
@@ -22,11 +23,11 @@
 
     <link href="../assets/css/bootstrap-theme.min.css" rel="stylesheet" />
     
-     <link href="../assets/css/custom.css" rel="stylesheet" />
-     <!-- GOOGLE FONTS-->
-	 <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
-   	 <!-- FAVICON -->
-	 <link rel="shortcut icon" type="image/ico" href="../assets/img/favicon-clock-o.ico" />
+    <link href="../assets/css/custom.css" rel="stylesheet" />
+    <!-- GOOGLE FONTS-->
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
+   	<!-- FAVICON -->
+	<link rel="shortcut icon" type="image/ico" href="../assets/img/favicon-clock-o.ico" />
 </head>
 <body>
      
@@ -133,24 +134,49 @@
         <nav class="navbar-default navbar-side" role="navigation">
             <div class="sidebar-collapse">
                 <ul class="nav" id="main-menu">
-                 
-                    <li>
-                        <a href="../index.jsp" ><i class="fa fa-desktop "></i>Panell de control </a>
+                 	<li>
+                        <a href="../index.jsp" ><i class="fa fa-desktop "></i>Inici </a>
                     </li>
-
+                    <%if(permis > 1){ %>
                     <li class="active-link">
                         <a href="alumnes.jsp"><i class="fa fa-graduation-cap "></i>Alumnes</a>
                     </li>
+                    <%} %>
+                    <%if(permis > 1){ %>
                     <li>
                         <a href="tutors.jsp"><i class="fa fa-book"></i>Tutors</a>
                     </li>
-
+					<%} %>
+                    <%if(permis > 1){ %>
                     <li>
                         <a href="centre.jsp"><i class="fa fa-university "></i>Centres </a>
                     </li>
+                    <%} %>
+                    <%if(permis >= 2){%>
                     <li>
                         <a href="activitats.jsp"><i class="fa fa-list "></i>Activitats</a>
                     </li>
+                    <%} %>
+                    <%if(permis == 1 || permis == 2 || permis==3){ %>
+                    <li>
+                    	<a href="registre.jsp"><i class="fa fa-clock-o"></i>Registre d'hores</a>
+                    </li>
+                    <%} %>
+                    <%if(permis == 4){ %>
+                    <li>
+                        <a href="administrador.jsp"><i class="fa fa-user-o "></i>Administrador </a>
+                    </li>
+                    <%} %>
+                    <%if(permis > 1){ %>
+                    <li>
+                    	<a href="responsables.jsp"><i class="fa fa-street-view"></i>Responsables</a>
+                    </li>
+                    <%} %>
+                    <%if(permis == 1){ %>
+                    <li>
+                    	<a href="dadesUsuari.jsp"><i class="fa fa-id-card"></i>Dades d'usuari</a>
+                    </li>
+                    <%} %>
                 </ul>
             </div>
 

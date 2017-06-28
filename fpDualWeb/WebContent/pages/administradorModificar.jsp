@@ -127,8 +127,8 @@
         <!-- /. NAV SIDE  -->
         <div id="page-wrapper" >
             <div id="page-inner">
-                <div class="row">
-                    <div class="col-lg-12">
+                <div class="row text-center pad-top">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <a title="Manteniment Administradors" href="../pages/administrador.jsp">
                     	<img border='0' src='../assets/img/BackArrow.ico' style='position:fixed; head:0; right:0;' width="50" height="50" />
                     </a>
@@ -137,16 +137,11 @@
                 </div>              
                  <!-- /. ROW  -->
                   <hr />
-                <div class="row">
-                    <div class="col-lg-12 ">
-                       
-                    </div>
- 
-                    </div>
+                
                   <!-- /. ROW  --> 
                  
                             <div class="row">
-                                <div class="col-lg-12">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 	                                <table class="table table-hover table-inverse" id="myTable">
 	                                    <thead>
 	                                    	<tr>
@@ -205,12 +200,8 @@
                                 </div>
                                               
                             </div>        
-                  <!-- /. ROW  --> 
-             <!-- /. PAGE INNER  -->
-         <!-- /. PAGE WRAPPER  -->
-    <div class="footer">
-      
-    
+
+    	<div class="footer">
             <div class="row">
                 <div class="col-lg-12" >
                     &copy;  2017 Indra Software Labs | Design by: Joan Espuñes, Sergi Fernández, Sisco Navarro, Thiago Hachikyan
@@ -243,9 +234,7 @@
 	    } 
 	  }
 	}
-</script>
 
-<script>
 	function buscarNIF() {
 	  // Declare variables 
 	  var input, filter, table, tr, td, i;
@@ -266,9 +255,7 @@
 	    } 
 	  }
 	}
-</script>
 
-<script>
 	function buscarCog() {
 	  // Declare variables 
 	  var input, filter, table, tr, td, i;

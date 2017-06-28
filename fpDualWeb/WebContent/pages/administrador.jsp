@@ -90,34 +90,47 @@
         <nav class="navbar-default navbar-side" role="navigation">
             <div class="sidebar-collapse">
               <ul class="nav" id="main-menu">
-                <li >
-                    <a href="../index.jsp" ><i class="fa fa-desktop "></i>Inici</a>
-                </li>
-                <li>
-                    <a href="alumnes.jsp"><i class="fa fa-graduation-cap "></i>Alumnes</a>
-                </li>
-                
-                <li>
-                    <a href="tutors.jsp"><i class="fa fa-book"></i>Tutors</a>
-                </li>
-
-                <li>
-                    <a href="centre.jsp"><i class="fa fa-university "></i>Centres </a>
-                </li>
-                <li>
-                    <a href="activitats.jsp"><i class="fa fa-list "></i>Activitats</a>
-                </li>
-                <li>
-                    <a href="registre.jsp"><i class="fa fa-clock-o"></i>Registre d'hores</a>
-				</li>
-                <%if(permis == 4){ %>
-                    <li class="active-link">
-                    	<a href="administrador.jsp"><i class="fa fa-user-o"></i>Administrador</a>
+                	<li>
+                        <a href="../index.jsp" ><i class="fa fa-desktop "></i>Inici </a>
+                    </li>
+                    <%if(permis > 1){ %>
+                    <li>
+                        <a href="alumnes.jsp"><i class="fa fa-graduation-cap "></i>Alumnes</a>
                     </li>
                     <%} %>
-                 <li>
-                	<a href="responsables.jsp"><i class="fa fa-street-view"></i>Responsables</a>
-                </li>
+                    <%if(permis > 1){ %>
+                    <li>
+                        <a href="tutors.jsp"><i class="fa fa-book"></i>Tutors</a>
+                    </li>
+					<%} %>
+                    <%if(permis > 1){ %>
+                    <li>
+                        <a href="centre.jsp"><i class="fa fa-university "></i>Centres </a>
+                    </li>
+                    <%} %>
+                    <%if(permis >= 2){%>
+                    <li>
+                        <a href="activitats.jsp"><i class="fa fa-list "></i>Activitats</a>
+                    </li>
+                    <%} %>
+                    <li>
+                    	<a href="registre.jsp"><i class="fa fa-clock-o"></i>Registre d'hores</a>
+                    </li>
+                    <%if(permis == 4){ %>
+                    <li class="active-link">
+                        <a href="administrador.jsp"><i class="fa fa-user-o "></i>Administrador </a>
+                    </li>
+                    <%} %>
+                    <%if(permis > 1){ %>
+                    <li>
+                    	<a href="responsables.jsp"><i class="fa fa-street-view"></i>Responsables</a>
+                    </li>
+                    <%} %>
+                    <%if(permis == 1){ %>
+                    <li>
+                    	<a href="dadesUsuari.jsp"><i class="fa fa-id-card"></i>Dades d'usuari</a>
+                    </li>
+                    <%} %>
               </ul>
           </div>
 

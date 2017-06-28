@@ -343,6 +343,21 @@ public class AlumneDAO {
 		return llista;
 	}
 	
+	public List<String> centresResponsable(Responsable res) throws SQLException{
+		List<String> llista = new ArrayList<String>();
+		ResultSet rs = null;
+		String consultaSQL = "SELECT c.Nom "
+				+ "FROM centre AS c, usuari AS u "
+				+ "WHERE u.permisos=3 AND u.id_centre=c.Id_centre AND u.NIF='"+res.getNIF()+"'";
+		
+		rs = gestorDB.consultaRegistres(consultaSQL);
+		while(rs.next()){
+			llista.add(rs.getString(1));
+		}
+		
+		return llista;
+	}
+	
 	public void tancarConn(){
 		gestorDB.tancarConnexio();
 	}

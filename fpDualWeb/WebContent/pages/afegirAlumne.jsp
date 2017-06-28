@@ -6,6 +6,7 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
+	<script src="https://use.fontawesome.com/d43d49ce33.js"></script>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Registre d'hores</title>
@@ -41,6 +42,10 @@
 	String usuCognom=null;
 	String usuMail=null;
 	int permis=0;
+	List<String> llistaCentres = null;
+	List<String> llistaTutors = null;
+	List<String> llistaCentresResponsable = null;
+
 	try{
 		if(sesion.getAttribute("nif") == null){	
 			session.invalidate();
@@ -60,16 +65,22 @@
 				if(cookie.getName().equals("JSESSIONID")) sessionID = cookie.getValue();			
 			}
 		}
+		CentreDAO cDAO = new CentreDAO();
+		llistaCentres = cDAO.nomsCentres();
+		TutorDAO tDAO = new TutorDAO();
+		llistaTutors = tDAO.nomsTutors();
+		
+		cDAO.tancarCon();
+		tDAO.tancarConn();
+		
+		if(permis == 3){
+			AlumneDAO aDAO = new AlumneDAO();
+			Responsable res = new Responsable();
+			res.setNIF(usuNif);
+			llistaCentresResponsable = aDAO.centresResponsable(res);
+		}
 	}catch(Exception e){}	
-	
-	CentreDAO cDAO = new CentreDAO();
-	List<String> llistaCentres = cDAO.nomsCentres();
-	TutorDAO tDAO = new TutorDAO();
-	List<String> llistaTutors = tDAO.nomsTutors();
-	
-	cDAO.tancarCon();
-	tDAO.tancarConn();
-	
+		
 	int duplicat;
 	try{
 		duplicat = Integer.parseInt(session.getAttribute("duplicat").toString());
@@ -138,24 +149,47 @@
         <nav class="navbar-default navbar-side" role="navigation">
             <div class="sidebar-collapse">
                 <ul class="nav" id="main-menu">
-                 
                     <li>
                         <a href="../index.jsp" ><i class="fa fa-desktop "></i>Inici </a>
                     </li>
-
+                    <%if(permis > 1){ %>
                     <li class="active-link">
                         <a href="alumnes.jsp"><i class="fa fa-graduation-cap "></i>Alumnes</a>
                     </li>
+                    <%} %>
+                    <%if(permis > 1){ %>
                     <li>
                         <a href="tutors.jsp"><i class="fa fa-book"></i>Tutors</a>
                     </li>
-
+					<%} %>
+                    <%if(permis > 1){ %>
                     <li>
                         <a href="centre.jsp"><i class="fa fa-university "></i>Centres </a>
                     </li>
+                    <%} %>
+                    <%if(permis >= 2){%>
                     <li>
                         <a href="activitats.jsp"><i class="fa fa-list "></i>Activitats</a>
                     </li>
+                    <%} %>
+                    <li>
+                    	<a href="registre.jsp"><i class="fa fa-clock-o"></i>Registre d'hores</a>
+                    </li>
+                    <%if(permis == 4){ %>
+                    <li>
+                        <a href="administrador.jsp"><i class="fa fa-user-o "></i>Administrador </a>
+                    </li>
+                    <%} %>
+                    <%if(permis > 1){ %>
+                    <li>
+                    	<a href="responsables.jsp"><i class="fa fa-street-view"></i>Responsables</a>
+                    </li>
+                    <%} %>
+                    <%if(permis == 1){ %>
+                    <li>
+                    	<a href="dadesUsuari.jsp"><i class="fa fa-id-card"></i>Dades d'usuari</a>
+                    </li>
+                    <%} %>
                 </ul>
             </div>
 
@@ -254,21 +288,39 @@
                             %>
                             </select>
                         </div>
-                        <div class="col-md-6">
-                            <h5>Centre</h5>
-                            <select class="form-control" name="centre" required>
-                            	<option value="" selected hidden>Selecciona el centre</option>
-                            	<% 
-                            	for(int i=0; i<llistaCentres.size(); i++) { 
-                            	%>
-	                                <option value="<%=llistaCentres.get(i) %>">
-	                                	<%=llistaCentres.get(i) %>
-	                                </option>
-                            <% 
-                            	} 
-                            %>
-                            </select>
-                        </div>
+                        <%if(permis == 3){ %>
+	                        <div class="col-md-6">
+	                            <h5>Centre</h5>
+	                            <select class="form-control" name="centre" required>
+	                            	<option value="" selected hidden>Selecciona el centre</option>
+	                            	<% 
+	                            	for(int i=0; i<llistaCentresResponsable.size(); i++) { 
+	                            	%>
+		                                <option value="<%=llistaCentresResponsable.get(i) %>">
+		                                	<%=llistaCentresResponsable.get(i) %>
+		                                </option>
+	                            <% 
+	                            	} 
+	                            %>
+	                            </select>
+	                        </div>
+                        <%}else{ %>
+	                        <div class="col-md-6">
+	                            <h5>Centre</h5>
+	                            <select class="form-control" name="centre" required>
+	                            	<option value="" selected hidden>Selecciona el centre</option>
+	                            	<% 
+	                            	for(int i=0; i<llistaCentres.size(); i++) { 
+	                            	%>
+		                                <option value="<%=llistaCentres.get(i) %>">
+		                                	<%=llistaCentres.get(i) %>
+		                                </option>
+	                            <% 
+	                            	} 
+	                            %>
+	                            </select>
+	                        </div>
+                        <%} %>
                 </div>
                 <hr>
                 <div class="row">
