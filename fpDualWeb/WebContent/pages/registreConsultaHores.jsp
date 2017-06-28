@@ -93,6 +93,7 @@
 	String usuNom = sesion.getAttribute("nomComplet").toString();
 	String usuCognom = sesion.getAttribute("cognom1Login").toString();
 	String usuMail = sesion.getAttribute("mailLogin").toString();
+	String usu1Nom = sesion.getAttribute("nomLogin").toString();
 	permis = Integer.parseInt(sesion.getAttribute("permis").toString());
 	
 	String sessionID = null;
@@ -207,8 +208,20 @@
 							</td>
 						</tr>
 						<tr>
-						<td><input type='text' name='aactivitat' id='activitat' placeholder='Activitat...' title='Introdueix la activitat a Buscar.' onkeyup='sendInfo()'></td>
-							<td><input type='text' name='aalumne' id='alumne' placeholder='Alumne...' title='Introdueix el Nom de l´Alumne a Buscar.' onkeyup='sendInfo()'></td>
+						
+						<td><input type='text'  name='aactivitat' id='activitat' placeholder='Activitat...' title='Introdueix la activitat a Buscar.' onkeyup='sendInfo()'></td>
+						
+						<%if(permis == 1){ %>
+							
+							<td hidden><input type='text' value='<%=usu1Nom%>' name='a2alumne' id='a2lumne' placeholder='Alumne...'></td>
+							
+							<%} %>
+							
+							
+						
+						<%if(permis != 1){ %>
+						<td><input type='text' name='aalumne' id='alumne' placeholder='Alumne...' title='Introdueix el Nom de l´Alumne a Buscar.' onkeyup='sendInfo()'></td>
+						<%} %>
 							<td><input type='text' name='ddata' id='data' placeholder='aaaa-mm-dd...' title='Introdueix la data a Buscar.' onkeyup='sendInfo()'></td>
 						</tr>
 					</table>
@@ -216,9 +229,10 @@
 			<br>
 			
 			<script>
+			window.onload=sendInfo();
 				var request;
 				function sendInfo() {
-					var i=document.vinform.aalumne.value;
+					var i=document.vinform.a2alumne.value;
 					var u=document.vinform.aactivitat.value;
 					var d=document.vinform.ddata.value;
 					var h=document.vinform.ddata.value;
