@@ -169,7 +169,7 @@
                     <a href="registre.jsp"><i class="fa fa-clock-o"></i>Registre d'hores</a>
 				</li>
                 <li>
-                    	<a href="pages/dadesUsuari.jsp"><i class="fa fa-id-card"></i>Dades d'usuari</a>
+                    	<a href="dadesUsuari.jsp"><i class="fa fa-id-card"></i>Dades d'usuari</a>
                </li>
                
                <%} %>
@@ -182,7 +182,7 @@
                 
                 <div class="row">
                     <div class="col-md-12" align="center">
-                    <a title="Manteniment Centres" href="../pages/registre.jsp">
+                    <a title="Registre Hores" href="../pages/registre.jsp">
                     	<img border='0' src='../assets/img/BackArrow.ico' style='position:fixed; head:0; right:0;' width="50" height="50" />
                     </a>
                      <h2>Registre d'hores dels Alumnes</h2>
