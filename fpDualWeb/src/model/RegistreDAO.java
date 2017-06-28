@@ -80,7 +80,6 @@ public class RegistreDAO {
 	}
 
 	public ResultSet consultarHores(String consul) throws SQLException {
-		int id = 0;
 		ResultSet rs = null;
 		String consultaSQL = "SELECT * FROM registre WHERE" + consul + ";";
 		System.out.println(consultaSQL);
