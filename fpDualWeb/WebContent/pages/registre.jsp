@@ -156,17 +156,17 @@ try{
                     </div>
                   <!-- /. ROW  --> 
                   <div class="row text-center pad-top">
+                   
+                    <%if(permis != 4){ %>
                   <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                       <div class="div-square">
                            <a href="seleccioData.jsp" >
                         <i class="fa fa-plus-square fa-5x" aria-hidden="true"></i>
-
                         <h4>Registrar hores</h4>
                       </a>
                       </div>
-                     
-                     
                   </div> 
+                 <%} %>
                  
                   <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                       <div class="div-square">
