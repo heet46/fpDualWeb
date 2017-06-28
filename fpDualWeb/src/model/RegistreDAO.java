@@ -80,12 +80,27 @@ public class RegistreDAO {
 	}
 
 	public ResultSet consultarHores(String consul) throws SQLException {
-		int id = 0;
 		ResultSet rs = null;
 		String consultaSQL = "SELECT * FROM registre WHERE" + consul + ";";
 		System.out.println(consultaSQL);
 		rs = gestorDB.consultaRegistres(consultaSQL);
 
+		return rs;
+	}
+
+	public ResultSet codiIdActivitat(String text) throws SQLException {
+		ResultSet rs = null;
+		String consultaSQL = "SELECT id_activitat FROM activitat WHERE codi LIKE '%" + text + "%';";
+		System.out.println("La consulta ->" + consultaSQL);
+		rs = gestorDB.consultaRegistres(consultaSQL);
+		return rs;
+	}
+
+	public ResultSet codiIdAlumne(String text) throws SQLException {
+		ResultSet rs = null;
+		String consultaSQL = "SELECT id_usuari FROM usuari WHERE nom LIKE '%" + text + "%';";
+		System.out.println("La consulta ->" + consultaSQL);
+		rs = gestorDB.consultaRegistres(consultaSQL);
 		return rs;
 	}
 

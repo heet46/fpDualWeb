@@ -31,6 +31,7 @@ public class ComprovarData extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.getSession().removeAttribute("nRegistres");
 		SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("yyyy-MM-dd");
 		SimpleDateFormat DATE_FORMAT2 = new SimpleDateFormat("dd/MM/yyyy");
 		
@@ -61,11 +62,12 @@ public class ComprovarData extends HttpServlet {
 		
 		request.getSession().setAttribute("dataRegistre", data2);
 		List<Object> llista;
-		
+		int nRegistres;
 
 		try {
 			llista = rDAO.valorsData(registre);
 			if(llista.isEmpty()){				
+				request.getSession().setAttribute("nRegistres", 0);
 				response.sendRedirect("pages/afegirRegistre.jsp");
 			}else{
 				int hores = rDAO.sumaHores(registre);
@@ -73,11 +75,18 @@ public class ComprovarData extends HttpServlet {
 					request.getSession().setAttribute("horesMaximes", 1);
 					response.sendRedirect("pages/seleccioData.jsp");
 				}else{
+					//Num de registres en una data i un alumne determinats
+					nRegistres = llista.size()/3;
+					request.getSession().setAttribute("nRegistres", nRegistres);
+					
+					//Num d'hores restants a introduir
 					int restants = 9 - hores;
 					request.getSession().setAttribute("hRestants", restants);
+					
+					//Passar la llista de valors
+					request.getSession().setAttribute("llistaRegistre", llista);
 					response.sendRedirect("pages/afegirRegistre.jsp");
 				}
-				System.out.println("Hi ha cosetes");
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();

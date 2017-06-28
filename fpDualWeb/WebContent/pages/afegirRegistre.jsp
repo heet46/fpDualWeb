@@ -86,15 +86,18 @@
 <body>
 <%
 HttpSession sesion=request.getSession(); 
-String nif=null;
-String usuNif=null;
-String usuNom=null;
-String usuCognom=null;
-String usuMail=null;
-int permis=0;
-double hRestants=0;
+String nif = null;
+String usuNif = null;
+String usuNom = null;
+String usuCognom = null;
+String usuMail = null;
+int permis = 0;
+double hRestants = 0;
 String data = null;
+int nReg = 0;
 List<String> llistaActivitats = null;
+List<Object> llistaRegistres = null;
+
 try{
 	if(sesion.getAttribute("nif").toString() == null){	
 		session.invalidate();
@@ -116,6 +119,8 @@ try{
 	}
 	
 	data = sesion.getAttribute("afgData").toString();
+	llistaRegistres = (ArrayList<Object>)sesion.getAttribute("llistaRegistre");
+	nReg = Integer.parseInt(sesion.getAttribute("nRegistres").toString());
 	
 	try{
 		hRestants = Double.parseDouble(sesion.getAttribute("hRestants").toString());
@@ -243,6 +248,38 @@ try{
 	                	</div>
 	 				</div>
 	                <!-- ROW -->
+	                <hr>
+	                <br>
+	                
+	                <div class="row">
+	                	<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+	                	<%
+	                	if(nReg > 0){
+	                		int i=0;
+	                		int j=1;
+		                	while(i<llistaRegistres.size()){
+		                %>
+		                	<div class="panel panel-primary">
+			                    <div class="panel-heading">
+			                        Registre #<%=j %>
+			                    </div>
+								<div class="panel-body">
+					             	<div class='row col-lg-12 col-md-12'>
+					             		<b>Data: </b> <%=llistaRegistres.get(i+1)%> <br/>
+										<b>Hores: </b> <%=llistaRegistres.get(i+2)%> <br/>
+										<b>Activitat: </b> <%=llistaRegistres.get(i)%> <br/>
+
+									</div>
+			                    </div>
+		                	</div>
+		                <%
+		                j++;
+		                i = i+4;
+		                	}
+	                	}	                	
+	                	%>
+	                	</div>
+	                </div>
 				</form>
     		
     		</div> <!-- PAGE-INNER -->
