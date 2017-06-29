@@ -133,17 +133,13 @@
         <div id="page-wrapper" >
         
             <div id="page-inner">
-                
-                <div class="row">
-                 
-                    <div class="col-md-12">
-                    <a title="Manteniment Centres" href="../index.jsp">
+             
+                <a title="Manteniment Centres" href="../index.jsp">
                     	<img border='0' src='../assets/img/BackArrow.ico' style='position:fixed; head:0; right:0;' width="50" height="50" />
                     </a>
-                     <h2>Gestió Centres</h2>
-                    </div>
-                </div>
+                <h2><i class="fa fa-university" aria-hidden="true"> </i> Gestió Centres</h2>
                  <!-- /. ROW  -->
+                 
                   <hr />
                  <!-- /. ROW  --> 
 

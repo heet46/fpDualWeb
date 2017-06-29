@@ -149,11 +149,9 @@
                     <a title="Manteniment Administradors" href="../index.jsp">
                     	<img border='0' src='../assets/img/BackArrow.ico' style='position:fixed; head:0; right:0;' width="50" height="50" />
                     </a>
-                    
-                     <h2>Gestió Administradors</h2>
-                     
                     </div>
                 </div>
+                <h2><i class="fa fa-user-o" aria-hidden="true"> </i> Gestió d'Administradors</h2>
                  <!-- /. ROW  -->
                   <hr />
                  <!-- /. ROW  --> 
