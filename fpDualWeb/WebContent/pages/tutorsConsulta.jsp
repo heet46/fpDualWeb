@@ -153,7 +153,7 @@ try{
             <div id="page-inner">
                 <div class="row">
                     <div class="col-lg-12">
-                     <h2>Gestió tutors</h2>   
+                     <h2><i id="imgTitol" class="fa fa-id-card" aria-hidden="true">&nbsp;</i>Gestió tutors</h2>   
                     </div>
                 </div>              
                  <!-- /. ROW  -->

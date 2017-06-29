@@ -41,28 +41,33 @@
 </head>
 <body>
 <%
-
 HttpSession sesion=request.getSession(); 
-String nif;
-if(sesion.getAttribute("nif") == null){	
-	session.invalidate();
-	response.sendRedirect("login.jsp");
-}
-
-String usuNif = sesion.getAttribute("nif").toString();
-String usuNom = sesion.getAttribute("nomComplet").toString();
-String usuCognom = sesion.getAttribute("cognom1Login").toString();
-String usuMail = sesion.getAttribute("mailLogin").toString();
-
-String sessionID = null;
-Cookie[] cookies = request.getCookies();
-if(cookies != null){
-	for(Cookie cookie : cookies){
-		if(cookie.getName().equals("JSESSIONID")) sessionID = cookie.getValue();			
+String nif=null;
+String usuNif=null;
+String usuNom=null;
+String usuCognom=null;
+String usuMail=null;
+int permis=0;
+try{
+	if(sesion.getAttribute("nif") == null){	
+		session.invalidate();
+		response.sendRedirect("login.jsp");
 	}
-}	
+
+	usuNif = sesion.getAttribute("nif").toString();
+	usuNom = sesion.getAttribute("nomComplet").toString();
+	usuCognom = sesion.getAttribute("cognom1Login").toString();
+	usuMail = sesion.getAttribute("mailLogin").toString();
+	permis = Integer.parseInt(sesion.getAttribute("permis").toString());
 	
-	session.setAttribute("existeix", 0);
+	String sessionID = null;
+	Cookie[] cookies = request.getCookies();
+	if(cookies != null){
+		for(Cookie cookie : cookies){
+			if(cookie.getName().equals("JSESSIONID")) sessionID = cookie.getValue();			
+		}
+	}
+}catch(Exception e){}
 %>
 
     <div id="wrapper">
@@ -98,29 +103,47 @@ if(cookies != null){
         <nav class="navbar-default navbar-side" role="navigation">
             <div class="sidebar-collapse">
                 <ul class="nav" id="main-menu">
-                    <li>
+					<li>
                         <a href="../index.jsp" ><i class="fa fa-desktop "></i>Inici </a>
                     </li>
-
+                    <%if(permis > 1){ %>
                     <li>
                         <a href="alumnes.jsp"><i class="fa fa-graduation-cap "></i>Alumnes</a>
                     </li>
-                    <li>
+                    <%} %>
+                    <%if(permis > 1){ %>
+                    <li class="active-link">
                         <a href="tutors.jsp"><i class="fa fa-book"></i>Tutors</a>
                     </li>
-
+					<%} %>
+                    <%if(permis > 1){ %>
                     <li>
                         <a href="centre.jsp"><i class="fa fa-university "></i>Centres </a>
                     </li>
+                    <%} %>
+                    <%if(permis >= 2){%>
                     <li>
                         <a href="activitats.jsp"><i class="fa fa-list "></i>Activitats</a>
                     </li>
+                    <%} %>
                     <li>
-                        <a href="administrador.jsp"><i class="fa fa-university "></i>Administrador </a>
+                    	<a href="registre.jsp"><i class="fa fa-clock-o"></i>Registre d'hores</a>
                     </li>
-                    <li class="active-link">
+                    <%if(permis == 4){ %>
+                    <li>
+                        <a href="administrador.jsp"><i class="fa fa-user-o "></i>Administrador </a>
+                    </li>
+                    <%} %>
+                    <%if(permis > 1){ %>
+                    <li>
                     	<a href="responsables.jsp"><i class="fa fa-street-view"></i>Responsables</a>
                     </li>
+                    <%} %>
+                    <%if(permis == 1){ %>
+                    <li>
+                    	<a href="dadesUsuari.jsp"><i class="fa fa-id-card"></i>Dades d'usuari</a>
+                    </li>
+                    <%} %>
                 </ul>
             </div>
 
@@ -131,7 +154,7 @@ if(cookies != null){
             <div id="page-inner">
                 <div class="row">
                     <div class="col-lg-12">
-                     <h2>Consultar responsables</h2>   
+                     <h2><i id="imgTitol" class="fa fa-list" aria-hidden="true">&nbsp;</i>Consultar responsables</h2>   
                     </div>
                 </div>              
                  <!-- /. ROW  -->

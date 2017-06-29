@@ -182,7 +182,7 @@ try{
             <div id="page-inner">
                 <div class="row">
                     <div class="col-lg-12">
-                     <h2>Afegir tutors</h2>   
+                     <h2><i id="imgTitol" class="fa fa-user-plus" aria-hidden="true">&nbsp;</i>Afegir tutors</h2>  
                     </div>
                 </div>              
                  <!-- /. ROW  -->

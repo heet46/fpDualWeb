@@ -138,7 +138,7 @@ try{
             <div id="page-inner">
                 <div class="row">
                     <div class="col-lg-12">
-                     <h2>Gestió tutors</h2>   
+                     <h2><i id="imgTitol" class="fa fa-book" aria-hidden="true">&nbsp;</i>Gestió tutors</h2>   
                     </div>
                 </div>              
                  <!-- /. ROW  -->
@@ -154,7 +154,7 @@ try{
                            <a href="tutorsAfegir.jsp" >
                         <i class="fa fa-user-plus fa-5x" aria-hidden="true"></i>
 
-                        <h4>Afegir tutors</h4>
+                        <h4>Afegir tutor</h4>
                       </a>
                       </div>
                      
@@ -165,7 +165,7 @@ try{
                       <div class="div-square">
                            <a href="tutorsModificar.jsp" >
                         <i class="fa fa-pencil fa-5x" aria-hidden="true"></i>
-                      <h4>Modificar tutors</h4>
+                      <h4>Modificar tutor</h4>
                       </a>
                       </div>
                      
@@ -255,20 +255,18 @@ try{
               </div>
                   <!-- /. ROW  --> 
     
-    </div>
+   		 </div>
+   		 
+   	         </div>
              <!-- /. PAGE INNER  -->
-            </div>
          <!-- /. PAGE WRAPPER  -->
     <div class="footer">
-      
-    
-            <div class="row">
-                <div class="col-lg-12" >
-                    &copy;  2017 Indra Software Labs | Design by: Joan Espuñes, Sergi Fernández, Sisco Navarro, Thiago Hachikyan
-                </div>
+		<div class="row">
+			<div class="col-lg-12" >
+				&copy;  2017 Indra Software Labs | Design by: Joan Espuñes, Sergi Fernández, Sisco Navarro, Thiago Hachikyan
             </div>
         </div>
-          
+	</div>
      <!-- /. WRAPPER  -->
     <!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
     <!-- JQUERY SCRIPTS -->
