@@ -150,7 +150,7 @@
                     	<img border='0' src='../assets/img/BackArrow.ico' style='position:fixed; head:0; right:0;' width="50" height="50" />
                     </a>
                     
-                     <h2>Manteniment Administradors</h2>
+                     <h2>Gestió Administradors</h2>
                      
                     </div>
                 </div>
