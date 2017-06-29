@@ -67,7 +67,7 @@ public class modificarTutors2 extends HttpServlet {
 		doGet(request, response);
 		if(permis!=2){
 			response.sendRedirect("pages/tutorsConsulta.jsp");
-		}else{
+		}else if(permis==2){
 			response.sendRedirect("pages/tutors.jsp");
 		}
 	}

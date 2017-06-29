@@ -226,9 +226,11 @@ try{
                                 </form>
  
                   </div>
-                                       <a href="tutorsModificar.jsp"  id="fletxa">
+                  	<%if(permis!=3){ %>	
+                    <a href="responsablesModificar.jsp"  id="fletxa">
                			<i class="fa fa-hand-o-left fa-4x" style='position:fixed; head:0; bottom:50px; right:35px;' width="50" height="50"></i>
               		</a>
+              		<%} %>
               </div>
                   <!-- /. ROW  --> 
     </div>
