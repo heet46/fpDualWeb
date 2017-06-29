@@ -93,10 +93,10 @@
         <nav class="navbar-default navbar-side" role="navigation">
             <div class="sidebar-collapse">
                 <ul class="nav" id="main-menu">
-                      <li>
+                    <li>
                         <a href="../index.jsp" ><i class="fa fa-desktop "></i>Inici </a>
                     </li>
-					<%if(permis > 1){ %>
+                    <%if(permis > 1){ %>
                     <li class="active-link">
                         <a href="alumnes.jsp"><i class="fa fa-graduation-cap "></i>Alumnes</a>
                     </li>
@@ -116,11 +116,9 @@
                         <a href="activitats.jsp"><i class="fa fa-list "></i>Activitats</a>
                     </li>
                     <%} %>
-                    <%if(permis == 1 || permis == 2){ %>
                     <li>
                     	<a href="registre.jsp"><i class="fa fa-clock-o"></i>Registre d'hores</a>
                     </li>
-                    <%} %>
                     <%if(permis == 4){ %>
                     <li>
                         <a href="administrador.jsp"><i class="fa fa-user-o "></i>Administrador </a>

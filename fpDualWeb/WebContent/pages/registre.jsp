@@ -116,11 +116,9 @@ try{
                         <a href="activitats.jsp"><i class="fa fa-list "></i>Activitats</a>
                     </li>
                     <%} %>
-                    <%if(permis == 1 || permis == 2){ %>
                     <li class="active-link">
                     	<a href="registre.jsp"><i class="fa fa-clock-o"></i>Registre d'hores</a>
                     </li>
-                    <%} %>
                     <%if(permis == 4){ %>
                     <li>
                         <a href="administrador.jsp"><i class="fa fa-user-o "></i>Administrador </a>
@@ -169,7 +167,7 @@ try{
                  <%} %>
                
                  <%if(permis == 1 || permis == 4){ %>
-                  <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                  <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
 
                       <div class="div-square">
                            <a href="registreConsultaHores.jsp" >
