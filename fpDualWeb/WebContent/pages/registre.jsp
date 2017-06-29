@@ -168,36 +168,40 @@ try{
                   </div> 
                  <%} %>
                
-                 <%if(permis == 1){ %>
-                  <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                  <%}else{ %>
+                 <%if(permis == 1 || permis == 4){ %>
                   <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
-                  <%} %>
+
                       <div class="div-square">
                            <a href="registreConsultaHores.jsp" >
                         <i class="fa fa-calendar fa-5x" aria-hidden="true"></i>
-                      <h4>Consultar hores Alumne/Admin</h4>
+                      <h4>Consultar hores</h4>
                       </a>
                       </div>
                   </div>
                   
+                  <%} %>
+                  
+                    <%if(permis == 2){ %>
                   <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                       <div class="div-square">
                            <a href="registreConsultaHoresTutors.jsp" >
                         <i class="fa fa-calendar fa-5x" aria-hidden="true"></i>
-                      <h4>Consultar hores Tutors</h4>
+                      <h4>Consultar hores</h4>
                       </a>
                       </div>
                   </div>
                   
+                  <%} %>
+                  <%if(permis == 3){ %>
                   <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                       <div class="div-square">
                            <a href="registreConsultaHoresResponsables.jsp" >
                         <i class="fa fa-calendar fa-5x" aria-hidden="true"></i>
-                      <h4>Consultar hores Responsable</h4>
+                      <h4>Consultar hores</h4>
                       </a>
                       </div>
                   </div>
+					<%} %>
 
                   
                 <br><br><br><br><br><br><br>
