@@ -73,7 +73,17 @@ public class ComprovarData extends HttpServlet {
 				int hores = rDAO.sumaHores(registre);
 				if(hores >= 9){
 					request.getSession().setAttribute("horesMaximes", 1);
-					response.sendRedirect("pages/seleccioData.jsp");
+					//Num de registres en una data i un alumne determinats
+					nRegistres = llista.size()/3;
+					request.getSession().setAttribute("nRegistres", nRegistres);
+					
+					//Num d'hores restants a introduir
+					int restants = 9 - hores;
+					request.getSession().setAttribute("hRestants", restants);
+					
+					request.getSession().setAttribute("llistaRegistre", llista);
+					response.sendRedirect("pages/afegirRegistre.jsp");
+					
 				}else{
 					//Num de registres en una data i un alumne determinats
 					nRegistres = llista.size()/3;

@@ -182,6 +182,14 @@
   		<url-pattern>/ComprovarData</url-pattern>
  	 </servlet-mapping> 	 
  	 
+ 	 <servlet>
+  		<servlet-name>ModificarRegistre</servlet-name>
+  		<servlet-class>servlet.ModificarRegistre</servlet-class>
+  	</servlet>
+  	<servlet-mapping>
+  		<servlet-name>ModificarRegistre</servlet-name>
+  		<url-pattern>/ModificarRegistre</url-pattern>
+ 	 </servlet-mapping> 
  	 
 	<error-page>
 	    <exception-type>404</exception-type>

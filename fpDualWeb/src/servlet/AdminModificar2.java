@@ -63,6 +63,7 @@ public class AdminModificar2 extends HttpServlet {
 		u.setMail(request.getParameter("mail"));
 		try {
 			uDAO.modificarAdmin(idVella, u);
+			request.getSession().setAttribute("nomComplet", u.getNom()+" "+u.getCognom1()+" "+u.getCognom2());
 		} catch (SQLException e) {
 			// TODO Auto-generated catch blocks
 			e.printStackTrace();

@@ -17,7 +17,7 @@
     font-size: 100pt;
 }*/
 body {
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Roboto', sans-serif;
     line-height:30px;
 }
 
@@ -215,6 +215,17 @@ a .letstry{
 #fletxa{
 	margin:auto;
 	align:bottom;
+}
+
+#opcions{
+	color:white;
+}
+#opcions:hover{
+	color:#214761;
+}
+#titolPanel{
+	font-size: 17px;
+	font-family: 'Roboto', sans-serif;
 }
 
 
