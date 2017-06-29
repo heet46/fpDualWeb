@@ -103,6 +103,16 @@ public class RegistreDAO {
 
 		return rs;
 	}
+	
+	public ResultSet consultarHoresResponsable(String consul) throws SQLException {
+		ResultSet rs = null;
+		String consultaSQL = "SELECT r.* FROM registre as r,usuari as us,alumne as al,responsable as re WHERE r.id_alumne=al.id_usuari AND us.id_usuari=al.id_usuari AND us.id_centre=re.Id_centre AND" + consul + ";";
+		
+		System.out.println("consultaDAO -> " + consultaSQL);
+		rs = gestorDB.consultaRegistres(consultaSQL);
+
+		return rs;
+	}
 
 	public ResultSet codiIdActivitat(String text) throws SQLException {
 		ResultSet rs = null;

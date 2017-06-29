@@ -1,4 +1,5 @@
 <%@page import="model.RegistreDAO"%>
+<%@page import="model.UsuariDAO"%>
 <%@page import="java.util.StringTokenizer"%>
 <%@page import="model.CentreDAO"%>
 <%@page import="java.sql.ResultSet"%>
@@ -27,6 +28,9 @@
 	    if(request.getParameter("va3") != null && request.getParameter("va3") != ""){
 	    	hores = request.getParameter("va3");
 		}
+	    UsuariDAO uDAO=new UsuariDAO();
+	    int idUs=uDAO.consultaID(request.getSession().getAttribute("nif").toString());
+	    System.out.println("id"+idUs);
 		outt.println("<div class='row col-lg-12 col-md-12'>");
 		outt.println("<table id='myTable' class='table table-striped  table-hover' >");
 		outt.println("<thead>");
@@ -69,11 +73,18 @@
 			} else { ConsultaSQL += " AND data LIKE '%" + data + "%'";}			
 		contador = 1;
 		}
+		
+		if(contador == 1){
+			ConsultaSQL += " AND re.id_usuari LIKE "+idUs ;
+			}else{
+				ConsultaSQL += " re.id_usuari LIKE "+idUs ;
+			}
+			System.out.println("CONSULTA ->" + ConsultaSQL);
 		response.setContentType("text/html");
 		if (contador == 0) {
 			System.out.println("No hi ha dades per fer la consulta.");
 		} else {
-			rs = rdao.consultarHores(ConsultaSQL);
+			rs = rdao.consultarHoresResponsable(ConsultaSQL);
 			String nid = "";
 			ResultSet r2s = null;
 			String colr1 = "";

@@ -186,7 +186,7 @@
                     <a title="Registre Hores" href="../pages/registre.jsp">
                     	<img border='0' src='../assets/img/BackArrow.ico' style='position:fixed; head:0; right:0;' width="50" height="50" />
                     </a>
-                     <h2>Registre d'hores dels Responsables</h2>
+                     <h2>Registre d'hores Alumnes Centre</h2>
                     </div>
                 </div>
                  <!-- /. ROW  -->
