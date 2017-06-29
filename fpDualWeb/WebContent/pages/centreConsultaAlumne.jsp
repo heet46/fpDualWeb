@@ -191,9 +191,9 @@
                     	</a>
               		<%} %>
                    
-                     <h2>Dades del Teu Centre</h2>
                     </div>
                 </div>
+                <h2><i class="fa fa-info-circle" aria-hidden="true"> </i> Informacio del teu Centre</h2>
                  <!-- /. ROW  -->
                   <hr />
                  <!-- /. ROW  --> 

@@ -186,9 +186,9 @@
                     <a title="Manteniment Centres" href="../pages/centre.jsp">
                     	<img border='0' src='../assets/img/BackArrow.ico' style='position:fixed; head:0; right:0;' width="50" height="50" />
                     </a>
-                     <h2>Buscar un Centre</h2>
                     </div>
                 </div>
+                <h2><i class="fa fa-search" aria-hidden="true"> </i> Buscar Centres</h2>
                  <!-- /. ROW  -->
                   <hr />
                  <!-- /. ROW  --> 

@@ -174,9 +174,9 @@
                     <a title="Manteniment Centres" href="../pages/centre.jsp">
                     	<img border='0' src='../assets/img/BackArrow.ico' style='position:fixed; head:0; right:0;' width="50" height="50" />
                     </a>
-                     <h2>Dades del Teu Centre de Responsabilitat</h2>
                     </div>
                 </div>
+                <h2><i class="fa fa-info-circle" aria-hidden="true"> </i> Informacio del teu Centre</h2>
                  <!-- /. ROW  -->
                   <hr />
                  <!-- /. ROW  --> 

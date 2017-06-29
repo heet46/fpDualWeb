@@ -153,10 +153,10 @@
                     <div class="col-md-12" align="center">
                     <a title="Manteniment Administradors" href="../pages/administrador.jsp">
                     	<img border='0' src='../assets/img/BackArrow.ico' style='position:fixed; head:0; right:0;' width="50" height="50" />
-                    </a>
-                     <h2>Modificar admins</h2>   
+                    </a>  
                     </div>
-                </div>              
+                </div>    
+                <h2><i class="fa fa-pencil" aria-hidden="true"> </i> Modificar Administradors</h2>          
                  <!-- /. ROW  -->
                   <hr />
                 <div class="row">

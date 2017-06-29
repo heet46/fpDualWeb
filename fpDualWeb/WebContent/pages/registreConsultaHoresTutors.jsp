@@ -193,9 +193,9 @@
                     <a title="Registre Hores" href="../pages/registre.jsp">
                     	<img border='0' src='../assets/img/BackArrow.ico' style='position:fixed; head:0; right:0;' width="50" height="50" />
                     </a>
-                     <h2>Registre d'hores Alumnes</h2>
                     </div>
                 </div>
+                <h2><i class="fa fa-calendar" aria-hidden="true"> </i> Consulta Hores</h2>
                  <!-- /. ROW  -->
                   <hr />
                  <!-- /. ROW  --> 
