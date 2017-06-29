@@ -65,6 +65,16 @@ public class AlumneDAO {
 		gestorDB.modificarRegistre(consultaSQL);
 	}
 	
+	public void modificarAlumne2(Usuari usuari, Alumne alumne) throws SQLException{
+		String consultaSQL = "UPDATE alumne AS a "
+					+ "INNER JOIN usuari AS u "
+					+ "ON a.id_usuari = u.id_usuari "
+					+ "SET u.NIF='"+usuari.getNIF()+"', u.password='"+usuari.getPasswd()+"', u.nom='"+usuari.getNom()+"', u.primer_cognom='"+usuari.getCognom1()+"', u.segon_cognom='"+usuari.getCognom2()+"', u.mail='"+usuari.getMail()+"' "
+					+ "WHERE u.id_usuari="+usuari.getIdUsuari();
+		System.out.println(consultaSQL);
+		gestorDB.modificarRegistre(consultaSQL);
+	}
+	
 	public List<String> consultaIDAlumne() throws SQLException{
 		String consultaSQL="SELECT u.id_usuari, u.nom, u.primer_cognom FROM usuari AS u, alumne AS a WHERE a.id_usuari=u.id_usuari";
 		ResultSet rs = null;

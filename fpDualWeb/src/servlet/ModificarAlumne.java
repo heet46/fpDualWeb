@@ -76,6 +76,7 @@ public class ModificarAlumne extends HttpServlet {
 		String sDataFinal = request.getParameter("dataFinal");
 		int idTutor = 0;
 		int idCentre = 0;
+		int permis = Integer.parseInt(request.getSession().getAttribute("permis").toString());
 		
 		request.getSession().setAttribute("dni2", dni);
 		request.getSession().setAttribute("password2", password);
@@ -143,10 +144,15 @@ public class ModificarAlumne extends HttpServlet {
 		alumne.setTutor(tutor);
 		
 		try {
-			aDAO.modificarAlumne(usuari, alumne);
+			if(permis == 1){
+				aDAO.modificarAlumne2(usuari, alumne);
+				request.getSession().setAttribute("nomComplet", nom+" "+cognoms);
+			}else{
+				aDAO.modificarAlumne(usuari, alumne);
+			}
 			aDAO.tancarConn();
 			request.getSession().setAttribute("duplicat", 0);
-			response.sendRedirect("pages/index.jsp");
+			response.sendRedirect("index.jsp");
 		} catch (SQLException e) {
 			aDAO.tancarConn();
 			request.getSession().setAttribute("duplicat", 1);

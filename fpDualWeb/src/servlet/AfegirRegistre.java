@@ -61,6 +61,7 @@ public class AfegirRegistre extends HttpServlet {
 			System.out.println("Error clau primari ja inserida");
 			try {
 				rDAO.modificarRegistre(registre);
+				request.getSession().removeAttribute("horesMaximes");
 				response.sendRedirect("pages/registre.jsp");
 			} catch (SQLException e1) {
 				// TODO Auto-generated catch block

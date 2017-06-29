@@ -246,6 +246,7 @@
                         </div>
                 </div>
                 <hr>
+                <%if(permis != 1){ %>
                 <div class="row">
                         <div class="col-md-6">
                             <h5>Data inicial</h5>
@@ -291,6 +292,8 @@
                         
                 </div>
                 <hr>
+                <%} %>
+                
                 <div class="row">
                 	<center><input type="submit" class="btn btn-primary" value="MODIFICAR ALUMNE" /></center>                
                 </div>

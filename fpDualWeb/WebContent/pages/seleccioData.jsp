@@ -67,30 +67,14 @@ try{
 	}
 	
 	sesion.removeAttribute("hRestants");
-	
-	try{
-		horesMaximes = Integer.parseInt(sesion.getAttribute("horesMaximes").toString());
-	}catch(Exception e){
-		horesMaximes = 0;
-	}
+    sesion.removeAttribute("horesMaximes");
+
+
 	
 }catch(Exception e){}
 %>
 <!-- JS dependencies -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-<script src="../assets/js/bootstrap.min.js"></script>
-   <%
-if(horesMaximes == 1){ %>
 
-<script src="../assets/js/bootbox.min.js"></script>
-<script>		        
-     bootbox.alert("Error, ja has introduït el màxim d'hores possibles per aquesta data", function() {
-         console.log("Alert Callback");
-     });
-</script>
-  <%
-}        
-%>
 
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>

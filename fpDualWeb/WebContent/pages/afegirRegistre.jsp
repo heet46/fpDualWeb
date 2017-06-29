@@ -37,51 +37,8 @@
     <!-- FAVICON -->
 	<link rel="shortcut icon" type="image/ico" href="../assets/img/favicon-clock-o.ico" />
 	
-	<link rel="stylesheet" href="../assets/css/calendari.css">
 	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-	<script>
-	$( function() {
-	  $("#datepicker").datepicker({
-		  dateFormat: "dd/mm/yy",
-	      monthNames: [ "Gener", "Febrer", "Març", "Abril", "Maig", "Juny", "Juliol", "Agost", "Setembre", "Octubre", "Novembre", "Desembre" ],
-	      monthNamesShort: [ "Gen", "Feb", "Mar", "Abr", "Mai", "Jun", "Jul", "Ago", "Set", "Oct", "Nov", "Des" ],
-	      dayNames: [ "Diumenge", "Dilluns", "Dimarts", "Dimecres", "Dijous", "Divendres", "Dissabte" ],
-	      dayNamesMin: [ "Dl", "Dm", "Dc", "Dj", "Dv", "Ds", "Dg" ],
-	      prevText: "Anterior",
-	      nextText: "Següent",
-	      showAnim: "fold",
-	      duration: "normal"
-	  });
-	  var dateFormat = $( "#datepicker" ).datepicker( "option", "dateFormat" );
-	  $( "#datepicker" ).datepicker( "option", "dateFormat", "dd/mm/yy" );
-	  
-	  var monthNames = $( "#datepicker" ).datepicker( "option", "monthNames" );
-	  $( "#datepicker" ).datepicker( "option", "monthNames", [ "Gener", "Febrer", "Març", "Abril", "Maig", "Juny", "Juliol", "Agost", "Setembre", "Octubre", "Novembre", "Desembre" ] );
-	  
-	  var monthNamesShort = $( "#datepicker" ).datepicker( "option", "monthNamesShort" );
-	  $( "#datepicker" ).datepicker( "option", "monthNamesShort", [ "Gen", "Feb", "Mar", "Abr", "Mai", "Jun", "Jul", "Ago", "Set", "Oct", "Nov", "Des" ] );
-	  
-	  var dayNames = $( "#datepicker" ).datepicker( "option", "dayNames" );
-	  $( "#datepicker" ).datepicker( "option", "dayNames", [ "Diumenge", "Dilluns", "Dimarts", "Dimecres", "Dijous", "Divendres", "Dissabte" ] );
-	  
-	  var dayNamesMin = $( "#datepicker" ).datepicker( "option", "dayNamesMin" );
-	  $( "#datepicker" ).datepicker( "option", "dayNamesMin", [ "Dl", "Dm", "Dc", "Dj", "Dv", "Ds", "Dg" ] );
-	  	  
-	  var prevText = $( "#datepicker" ).datepicker( "option", "prevText" );
-	  $( "#datepicker" ).datepicker( "option", "prevText", "Anterior" );
-	  
-	  var nextText = $( "#datepicker" ).datepicker( "option", "nextText" );
-	  $( "#datepicker" ).datepicker( "option", "nextText", "Següent" );
-	  
-	  var showAnim = $( "#datepicker" ).datepicker( "option", "showAnim" );
-      $( "#datepicker" ).datepicker( "option", "showAnim", "fold" );
-      
-      var duration = $( "#datepicker" ).datepicker( "option", "duration" );
-      $( "#datepicker" ).datepicker( "option", "duration", "normal" );
-
-	});
-	</script>
 	</head>
 <body>
 <%
@@ -95,6 +52,7 @@ int permis = 0;
 double hRestants = 0;
 String data = null;
 int nReg = 0;
+int horesMaximes = 0;
 List<String> llistaActivitats = null;
 List<Object> llistaRegistres = null;
 
@@ -129,13 +87,33 @@ try{
 	}
 	
 	RegistreDAO rDAO = null;
+	rDAO = new RegistreDAO();
+	llistaActivitats = rDAO.llistaActivitats();
 	try{
-		sesion.removeAttribute("horesMaximes");
-		rDAO = new RegistreDAO();
-		llistaActivitats = rDAO.llistaActivitats();
-	}catch(Exception e){}
+		//sesion.removeAttribute("horesMaximes");
+		horesMaximes = Integer.parseInt(sesion.getAttribute("horesMaximes").toString());		
+	}catch(Exception e){
+		horesMaximes = 0;
+	}
+
+	
 }catch(Exception e){}
 
+%>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="../assets/js/bootstrap.min.js"></script>
+   <%
+if(horesMaximes == 1){ %>
+
+<script src="../assets/js/bootbox.min.js"></script>
+<script>		        
+     bootbox.alert("Alerta! ja has introdu�t el m�xim d'hores possibles per aquesta data", function() {
+         console.log("Alert Callback");
+     });
+</script>
+  <%
+}        
 %>
     <div id="wrapper">
          <div class="navbar navbar-inverse navbar-fixed-top">
@@ -227,48 +205,51 @@ try{
                 </div>              
                  <!-- /. ROW  -->
                 <hr />
-                <form action="../AfegirRegistre" method="Post">
-	                <div class="row">
-	                	<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-	                		<h4>Activitat</h4>
-                            <select class="form-control" name="activitat" required>
-                            	<option value="" selected hidden>Selecciona una activitat</option>
-                            	<% 
-                            	for(int j=0; j<llistaActivitats.size(); j++) { 
-                            	%>
-	                                <option value="<%=llistaActivitats.get(j).toString() %>">
-	                                	<%=llistaActivitats.get(j).toString() %>
-	                                </option>
-                            <% 
-                            	} 
-                            %>
-                            </select>
-	                	</div>
-	 				</div>
-	 				<hr>
-	 				<div class="row">
-	 					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-	 						<h4>Hores</h4>
-	 						<% double num1=(100/(hRestants-1));%> 
-	 						<input type="range" min=1 max=<%=hRestants%> name=hores>
-	 						<table width="100%">
-	 							<tr>
-	 							<% for(int i=1;i<=hRestants;i++){ %>
-	 								<td width="<%=num1%>%"><%=i%>h</td>
-	 								<%} %>
-	 							</tr>
-	 						</table>
-	 					</div>
-	 				</div>
-	 				<hr>
-	 				<div class="row">
-	                	<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-	                		<input type="submit" class="btn btn-primary" style="margin-top:10px" value="Afegir registre">
-	                	</div>
-	 				</div>
-	                <!-- ROW -->
+                <%if(horesMaximes != 1){ %>
+	                <form action="../AfegirRegistre" method="Post">
+		                <div class="row">
+		                	<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+		                		<h4>Activitat</h4>
+	                            <select class="form-control" name="activitat" required>
+	                            	<option value="" selected hidden>Selecciona una activitat</option>
+	                            	<% 
+	                            	for(int j=0; j<llistaActivitats.size(); j++) { 
+	                            	%>
+		                                <option value="<%=llistaActivitats.get(j).toString() %>">
+		                                	<%=llistaActivitats.get(j).toString() %>
+		                                </option>
+	                            <% 
+	                            	} 
+	                            %>
+	                            </select>
+		                	</div>
+		 				</div>
+		 				<hr>
+		 				<div class="row">
+		 					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+		 						<h4>Hores</h4>
+		 						<% double num1=(100/(hRestants-1));%> 
+		 						<input type="range" min=1 max=<%=hRestants%> name=hores>
+		 						<table width="100%">
+		 							<tr>
+		 							<% for(int i=1;i<=hRestants;i++){ %>
+		 								<td width="<%=num1%>%"><%=i%>h</td>
+		 								<%} %>
+		 							</tr>
+		 						</table>
+		 					</div>
+		 				</div>
+		 				<hr>
+		 				<div class="row">
+		                	<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+		                		<input type="submit" class="btn btn-primary" style="margin-top:10px" value="Afegir registre">
+		                	</div>
+		 				</div>
+		 			</form>
+		                <!-- ROW -->
 	                <hr>
-	                <br>
+                <%} %>
+                <br>
 	                
 	                <div class="row">
 	                	<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -280,7 +261,11 @@ try{
 		                %>
 		                	<div class="panel panel-primary">
 			                    <div class="panel-heading">
-			                        Registre #<%=j %>
+			                        <span id="titolPanel">Registre #<%=j %></span>
+			                        <span style="float:right">
+			                        	<a href="" id="opcions"><i class="fa fa-pencil fa-2x" aria-hidden="true"></i></a> &nbsp;&nbsp;
+			                        	<a href="" id="opcions"><i class="fa fa-trash-o fa-2x" aria-hidden="true"></i></a>
+			                        </span>
 			                    </div>
 								<div class="panel-body">
 					             	<div class='row col-lg-12 col-md-12'>
@@ -298,7 +283,7 @@ try{
 	                	%>
 	                	</div>
 	                </div>
-				</form>
+				
     		
     		</div> <!-- PAGE-INNER -->
 		
