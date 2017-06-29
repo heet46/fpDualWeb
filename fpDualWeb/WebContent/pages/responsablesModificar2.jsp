@@ -161,7 +161,7 @@ try{
             <div id="page-inner">
                 <div class="row">
                     <div class="col-lg-12">
-                     <h2>Modificar responsables</h2>   
+                     <h2><i id="imgTitol" class="fa fa-pencil" aria-hidden="true">&nbsp;</i>Modificar responsables</h2>   
                     </div>
                 </div>              
                  <!-- /. ROW  -->

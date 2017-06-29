@@ -146,7 +146,7 @@ try{
             <div id="page-inner">
                 <div class="row">
                     <div class="col-lg-12">
-                     <h2>Baixa responsables</h2>   
+                     <h2><i id="imgTitol" class="fa fa-user-times" aria-hidden="true">&nbsp;</i>Baixa responsables</h2>   
                     </div>
                 </div>              
                  <!-- /. ROW  -->
@@ -223,7 +223,7 @@ try{
                                         </div>
                                     </div>
                                 </div>
-                                                     <a href="tutors.jsp"  id="fletxa">
+                                                     <a href="responsables.jsp"  id="fletxa">
                			<i class="fa fa-hand-o-left fa-4x" style='position:fixed; head:0; bottom:50px; right:35px;' width="50" height="50"></i>
               		</a>
                             </div>        

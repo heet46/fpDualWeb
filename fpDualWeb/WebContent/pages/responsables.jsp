@@ -140,7 +140,7 @@ try{
             <div id="page-inner">
                 <div class="row">
                     <div class="col-lg-12">
-                     <h2>Gestió Responsables</h2>   
+                     <h2><i id="imgTitol" class="fa fa-street-view" aria-hidden="true">&nbsp;</i>Gestió Responsables</h2>   
                     </div>
                 </div>              
                  <!-- /. ROW  -->
@@ -154,7 +154,7 @@ try{
                            <a href="responsablesAfegir.jsp" >
                         <i class="fa fa-user-plus fa-5x" aria-hidden="true"></i>
 
-                        <h4>Afegir responsables</h4>
+                        <h4>Afegir responsable</h4>
                       </a> 
                       </div>
                      
@@ -165,7 +165,7 @@ try{
                       <div class="div-square">
                            <a href="responsablesModificar.jsp" >
                         <i class="fa fa-pencil fa-5x" aria-hidden="true"></i>
-                      <h4>Modificar responsables</h4>
+                      <h4>Modificar responsable</h4>
                       </a>
                       </div>
                      
