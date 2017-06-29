@@ -164,7 +164,7 @@ try{
   						<ul class="dropdown-menu dropmenu">
   							<li class="dropdown-header">Filtrar per Codi</li>
   							<li><a href="#" class="small" data-value="'SQL'" tabIndex="-1"><input type="checkbox" value="'SQL'" name="codi1"/>&nbsp;SQL (Consulta de dades)</a></li>
-    						<li><a href="#" class="small" data-value="'JAV'" tabIndex="-1"><input type="checkbox" value="'JAV'" name="codi2"/>&nbsp;JAV (Programació amb Java)</a></li>
+    						<li><a href="#" class="small" data-value="'JAVA'" tabIndex="-1"><input type="checkbox" value="'JAVA'" name="codi2"/>&nbsp;JAVA (Programació amb Java)</a></li>
 							<li><a href="#" class="small" data-value="'C++'" tabIndex="-1"><input type="checkbox" value="'C++'" name="codi3"/>&nbsp;C++ (Programació amb C++)</a></li>
 							<li><a href="#" class="small" data-value="'NET'" tabIndex="-1"><input type="checkbox" value="'NET'" name="codi4"/>&nbsp;NET (Programació amb .NET)</a></li>
 							<li><a href="#" class="small" data-value="'SAP'" tabIndex="-1"><input type="checkbox" value="'SAP'" name="codi5"/>&nbsp;SAP (Programació amb SAP)</a></li>
