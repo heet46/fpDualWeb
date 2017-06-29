@@ -16,7 +16,14 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-      <meta charset="utf-8" />
+<style type="text/css">
+   #divtable {
+        overflow:scroll;
+        height:450px;
+        width:100%;
+   }
+</style>
+    <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Registre d'hores</title>
 	<!-- Scripts de Control de entrada de datos -->

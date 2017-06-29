@@ -32,7 +32,7 @@
 	    UsuariDAO uDAO=new UsuariDAO();
 	    int idUs=uDAO.consultaID(request.getSession().getAttribute("nif").toString());
 	    System.out.println("id"+idUs);
-		outt.println("<div class='row col-lg-12 col-md-12'>");
+	    outt.println("<div id='divtable' class='row col-lg-12 col-md-12'>");
 		outt.println("<table id='myTable' class='table table-striped  table-hover' >");
 		outt.println("<thead>");
 		outt.println("<tr>");
@@ -119,7 +119,7 @@
 				 outt.println("</tr>");
 			}
 		}	
+		outt.println("</table>");		
+		outt.println("<div/>");
 	%>
-	</table>		
-<div/>
 

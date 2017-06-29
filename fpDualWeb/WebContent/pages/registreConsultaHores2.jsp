@@ -27,7 +27,10 @@
 	    if(request.getParameter("va3") != null && request.getParameter("va3") != ""){
 	    	hores = request.getParameter("va3");
 		}
-		outt.println("<div class='row col-lg-12 col-md-12'>");
+	    
+	    
+	    
+		outt.println("<div id='divtable' class='row col-lg-12 col-md-12'>");
 		outt.println("<table id='myTable' class='table table-striped  table-hover' >");
 		outt.println("<thead>");
 		outt.println("<tr>");
@@ -106,8 +109,9 @@
 					
 				 outt.println("</tr>");
 			}
-		}	
+		}
+		outt.println("</table>");	
+		outt.println("<div/>");
 	%>
-	</table>		
-<div/>
+
 
