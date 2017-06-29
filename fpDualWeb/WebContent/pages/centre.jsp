@@ -244,7 +244,7 @@
                   <div class="col-lg-3 col-md-2 col-sm-2 col-xs-6">
                       <div class="div-square">
                            <a href="centreEliminar.jsp" >
-                        <i class="fa fa-times fa-5x" aria-hidden="true"></i>
+                        <i class="fa fa-trash fa-5x" aria-hidden="true"></i>
                       <h4>Eliminar Centres</h4>
                       </a>
                   </div>
