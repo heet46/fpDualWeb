@@ -203,7 +203,11 @@
                     <div class="col-md-12">
                     <br>
                      <h2 style="display:inline">Modificació d'alumnes </h2>
-                     <div style="float:right; font-size:16px" ><a href="modificarAlumne.jsp"><strong>Torna enrere</strong></a></div>
+                     <%if(permis == 1){ %>
+						<div style="float:right; font-size:16px" ><a href="dadesUsuari.jsp"><strong>Torna enrere</strong></a></div>
+                     <%}else{ %>
+                     	<div style="float:right; font-size:16px" ><a href="modificarAlumne.jsp"><strong>Torna enrere</strong></a></div>
+                     <%} %>
                     </div>
                 </div>              
                  <!-- /. ROW  -->
