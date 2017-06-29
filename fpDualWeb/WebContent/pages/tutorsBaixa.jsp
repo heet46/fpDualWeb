@@ -154,7 +154,7 @@ try{
             <div id="page-inner">
                 <div class="row">
                     <div class="col-lg-12">
-                     <h2><i id="imgTitol" class="fa fa-user-times" aria-hidden="true">&nbsp;</i>Baixa tutors</h2>   
+                     <h2><i id="imgTitol" class="fa fa-user-times" aria-hidden="true">&nbsp;</i>Baixa tutor</h2>   
                     </div>
                 </div>              
                  <!-- /. ROW  -->
