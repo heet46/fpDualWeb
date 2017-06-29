@@ -26,13 +26,6 @@
 	<link rel="shortcut icon" type="image/ico" href="../assets/img/favicon-clock-o.ico" />
     <script src="assets/js/jquery-3.2.1.min.js"></script>
 
-	<script type="text/javascript">
-		$(document).ready(function() {
-    		setTimeout(function() {
-        	$(".content").fadeOut(1500);
-    		},1500);
-		});
-	</script>
 </head>
 <body>
 <!-- Permetre acces nomes si hi ha una sessio -->
@@ -171,7 +164,7 @@
                 
                 <!-- Responsables  --> 
 				<%if(permis == 3){ %>
-				<div class="col-lg-3 col-md-2 col-sm-2 col-xs-6">
+				<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                       <div class="div-square">
                            <a href="centreConsultaResponsable.jsp" >
                         <i class="fa fa-info-circle fa-5x" aria-hidden="true"></i>
@@ -180,7 +173,7 @@
                       </a>
                       </div>
                   </div>
-                  <div class="col-lg-3 col-md-2 col-sm-2 col-xs-6">
+                  <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                       <div class="div-square">
                            <a href="centreRespoModificarCentre.jsp" >
                         <i class="fa fa-pencil fa-5x" aria-hidden="true"></i>

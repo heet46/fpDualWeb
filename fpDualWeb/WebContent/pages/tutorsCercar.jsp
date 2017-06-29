@@ -188,7 +188,7 @@ try{
             <div id="page-inner">
                 <div class="row">
                     <div class="col-lg-12">
-                     <h2><i id="imgTitol" class="fa fa-search" aria-hidden="true">&nbsp;</i>Cercar tutors</h2>   
+                     <h2><i id="imgTitol" class="fa fa-search" aria-hidden="true">&nbsp;</i>Cercar tutor</h2>   
                     </div>
                 </div>              
                  <!-- /. ROW  -->
