@@ -171,7 +171,7 @@
                 
                 <!-- Responsables  --> 
 				<%if(permis == 3){ %>
-				<div class="col-lg-3 col-md-2 col-sm-2 col-xs-6">
+				<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                       <div class="div-square">
                            <a href="centreConsultaResponsable.jsp" >
                         <i class="fa fa-info-circle fa-5x" aria-hidden="true"></i>
@@ -180,7 +180,7 @@
                       </a>
                       </div>
                   </div>
-                  <div class="col-lg-3 col-md-2 col-sm-2 col-xs-6">
+                  <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                       <div class="div-square">
                            <a href="centreRespoModificarCentre.jsp" >
                         <i class="fa fa-pencil fa-5x" aria-hidden="true"></i>
