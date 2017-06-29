@@ -7,17 +7,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
     
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-	<script type="text/javascript" src="../assets/js/jquery.tablesorter.js"></script>
 
-
-    <script type="text/javascript">
-	$(document).ready(function() 
-		    { 
-		        $("#myTable").tablesorter(); 
-		    } 
-		);
-	</script>
 
 	<%
 		response.setContentType("text/html");
@@ -44,16 +34,16 @@
 	    
 	    
 		outt.println("<div id='divtable' class='row col-lg-12 col-md-12'>");
-		outt.println("<table id='myTable' class='table table-striped  table-hover' >");
-		outt.println("<thead>");
-		outt.println("<tr id='headeer'>");
-		outt.println("<th ><b>Activitat<b/></th>");
-		outt.println("<th ><b>Alumne<b/></th>");
-		outt.println("<th ><b>Data<b/></th>");
-		outt.println("<th ><b>Hores<b/></th>");
-		outt.println("</tr>");
-		outt.println("</thead>");
-		outt.println("<tbody>");
+			outt.println("<table id='myTable' class='table table-striped  table-hover' >");
+				outt.println("<thead>");
+					outt.println("<tr>");
+						outt.println("<th ><b>Activitat<b/></th>");
+						outt.println("<th ><b>Alumne<b/></th>");
+						outt.println("<th ><b>Data<b/></th>");
+						outt.println("<th ><b>Hores<b/></th>");
+					outt.println("</tr>");
+				outt.println("</thead>");
+			outt.println("<tbody>");
 		int contador = 0;
 		String ConsultaSQL = null;
 		String Consulta2SQL = null;
@@ -125,8 +115,9 @@
 			}
 		}
 		outt.println("</tbody>");
-		outt.println("</table>");	
-		outt.println("<div/>");
-	%>
+	outt.println("</table>");	
+outt.println("<div/>");
+%>
+
 
 

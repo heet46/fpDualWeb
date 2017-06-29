@@ -16,6 +16,8 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
+
+
 <style type="text/css">
    #divtable {
         overflow:scroll;
@@ -28,6 +30,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Registre d'hores</title>
 	<!-- Scripts de Control de entrada de datos -->
+	
     <script>
 
 		function habilitar(value){ //Funcion que comprueba cual radius es marcado para anular o no el input.
@@ -84,7 +87,12 @@
         	$(".content").fadeOut(1500);
     		},1500);
 		});
+		
+		
+		</script>
 	</script>
+	
+		
 </head>
 <body>
 <!-- Permetre acces nomes si hi ha una sessio -->
