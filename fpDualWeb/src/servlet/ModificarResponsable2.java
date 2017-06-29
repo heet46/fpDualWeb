@@ -58,6 +58,9 @@ public class ModificarResponsable2 extends HttpServlet {
 			u.setIdCentre(cDAO.idCentre(request.getParameter("centre")));
 			System.out.println(idVella);
 			uDAO.modificarUsuari(idVella, u);
+			if(permis == 3){
+				request.getSession().setAttribute("nomComplet", u.getNom()+" "+u.getCognom1()+" "+u.getCognom2());
+			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

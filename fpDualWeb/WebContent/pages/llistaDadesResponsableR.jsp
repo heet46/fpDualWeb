@@ -110,7 +110,7 @@ try{
                     </li>
                     <%} %>
                     <%if(permis > 1){ %>
-                    <li class="active-link">
+                    <li>
                         <a href="tutors.jsp"><i class="fa fa-book"></i>Tutors</a>
                     </li>
 					<%} %>

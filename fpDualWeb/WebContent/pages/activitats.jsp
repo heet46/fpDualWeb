@@ -151,8 +151,12 @@ try{
                     </div>
                   <!-- /. ROW  -->
                  	<div class="row text-center pad-top">
-                 	<%if(permis == 2 || permis == 3 || permis == 4){ %>
-       				<div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
+                 	<%if(permis > 1){ %>
+                 	<%if(permis == 3){ %>
+                 		<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                 	<%}else{ %>
+       					<div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
+       				<%} %>
            				<div class="div-square">
                 			<a href="afegirActivitats.jsp" >
              				<i class="fa fa-plus-square fa-5x" aria-hidden="true"></i>
@@ -172,8 +176,12 @@ try{
                       </div>
                   </div>
        			<%} %>
-                  <%if(permis == 2 || permis == 3 || permis == 4){ %>
+                  <%if(permis > 1){ %>
+                  <%if(permis == 3){ %>
+                 		<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                 	<%}else{ %>
                   <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
+                  <%} %>
                       <div class="div-square">
                            <a href="llistatActivitats.jsp" >
                      <i class="fa fa-list fa-5x"></i>

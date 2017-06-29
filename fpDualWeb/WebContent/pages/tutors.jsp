@@ -201,8 +201,9 @@ try{
 	              </div>
 	              
 	         	<!-- Responsables -->
+	         	<div  class="row text-center pad-top">
             	<%}else if(permis==3){ %>
-                  <div  class="row text-center pad-top">
+                  
 	                  <div class="col-lg-3 col-md-2 col-sm-2 col-xs-6">
 	                      <div class="div-square">
 	                      	<form action="../DadesTutorsCentre" method="Post" name="form">
