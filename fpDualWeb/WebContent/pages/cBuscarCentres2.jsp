@@ -39,7 +39,7 @@
 	    	webCentre = request.getParameter("va4");
 			 System.out.println("webcent: " + webCentre  );
 		}
-		outt.println("<div class='row col-lg-12 col-md-12'>");
+	    outt.println("<div id='divtable' class='row col-lg-12 col-md-12'>");
 		outt.println("<table id='myTable' class='table table-striped  table-hover' >");
 		outt.println("<thead>");
 		outt.println("<tr>");
