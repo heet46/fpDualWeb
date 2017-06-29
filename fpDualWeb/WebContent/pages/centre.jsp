@@ -202,7 +202,7 @@
                    	<div class="col-lg-3 col-md-2 col-sm-2 col-xs-6">
                       	<div class="div-square">
                            <a href="centreAfegirFINAL.jsp" >
-                        		<i class="fa fa-user-plus fa-5x" aria-hidden="true"></i>
+                        		<i class="fa fa-plus-square fa-5x" aria-hidden="true"></i>
 								<h4>Afegir Centre</h4>
                       		</a>
                   		</div>
@@ -232,7 +232,7 @@
 				<div class="col-lg-3 col-md-2 col-sm-2 col-xs-6">
                       <div class="div-square">
                            <a href="cBuscarCentres.jsp" >
-                     <i class="fa fa-list fa-5x"></i>
+                     <i class="fa fa-search fa-5x"></i>
                       <h4>Buscar Centres</h4>
                       </a>
                       </div>
@@ -244,7 +244,7 @@
                   <div class="col-lg-3 col-md-2 col-sm-2 col-xs-6">
                       <div class="div-square">
                            <a href="centreEliminar.jsp" >
-                        <i class="fa fa-user-times fa-5x" aria-hidden="true"></i>
+                        <i class="fa fa-times fa-5x" aria-hidden="true"></i>
                       <h4>Eliminar Centres</h4>
                       </a>
                   </div>
