@@ -151,6 +151,7 @@ try{
                     </div>
                   <!-- /. ROW  -->
                  	<div class="row text-center pad-top">
+                 	<%if(permis == 2 || permis == 3 || permis == 4){ %>
        				<div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
            				<div class="div-square">
                 			<a href="afegirActivitats.jsp" >
@@ -159,8 +160,9 @@ try{
                       </a>
                       </div>
                 
-                  </div> 
-
+                  </div>
+                  <%} %>
+					<%if(permis == 2 || permis == 4){ %>
                  	<div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
                      	<div class="div-square">
                            <a href="modificarActivitatsTaula.jsp" >
@@ -168,8 +170,9 @@ try{
                       <h4>Modificar activitat</h4>
                       </a>
                       </div>
-       
                   </div>
+       			<%} %>
+                  <%if(permis == 2 || permis == 3 || permis == 4){ %>
                   <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
                       <div class="div-square">
                            <a href="llistatActivitats.jsp" >
@@ -178,7 +181,8 @@ try{
                       </a>
                       </div>
                   </div>
-
+       			<%} %>
+				<%if(permis == 2 || permis == 4){ %>
                   <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
                       <div class="div-square">
                            <a href="eliminarActivitats.jsp">
@@ -187,8 +191,9 @@ try{
                       </a>
                       </div>
                   </div>
+       			<%} %>
 
-                  
+                  <%if(permis == 2 || permis == 4){ %>
                   <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
                       <div class="div-square">
                            <a href="cercarActivitats.jsp">
@@ -197,6 +202,7 @@ try{
                       </a>
                       </div>
                   </div>
+       			<%} %>
                   
                 <br><br><br><br><br><br><br>
                    <div class="col-lg-11"></div>
