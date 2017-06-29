@@ -26,13 +26,6 @@
 	<link rel="shortcut icon" type="image/ico" href="../assets/img/favicon-clock-o.ico" />
     <script src="assets/js/jquery-3.2.1.min.js"></script>
 
-	<script type="text/javascript">
-		$(document).ready(function() {
-    		setTimeout(function() {
-        	$(".content").fadeOut(1500);
-    		},1500);
-		});
-	</script>
 </head>
 <body>
 <!-- Permetre acces nomes si hi ha una sessio -->
